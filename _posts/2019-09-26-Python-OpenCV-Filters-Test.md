@@ -1,4 +1,4 @@
-﻿﻿---
+---
 title: "Python OpenCV Filters Test"
 tags: 
   - Python OpenCV
@@ -10,7 +10,7 @@ toc: true
 
 ### ConvertLineDrawing using conv and maxpool in Pytorch
 
-먼저 Qiita의 koshian2가 제안하는 방법을 사용해 엣지를 검출해 봅니다. 전체 코드는 [여기서](https://qiita.com/koshian2/items/f53088d1dedaa72f9dca) 확인하실 수 있고, 유저 wakame1367가 해당 소스 코드를 [캐글 커널](https://www.kaggle.com/wakamezake/convertlinedrawing)로 만들어 공개했습니다. 각 링크에서 더 자세한 정보를 확인하실 수 있습니다.
+먼저 Qiita의 koshian2가 제안하는 방법을 사용해 엣지를 검출해 . 전체 코드는 [여기서](https://qiita.com/koshian2/items/f53088d1dedaa72f9dca) 확인하실 수 있고, 유저 wakame1367가 해당 소스 코드를 [캐글 커널](https://www.kaggle.com/wakamezake/convertlinedrawing)로 만들어 공개했습니다. 각 링크에서 더 자세한 정보를 확인하실 수 있습니다.
 
 
 ```python
