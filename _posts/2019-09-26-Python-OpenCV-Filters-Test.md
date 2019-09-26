@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Python OpenCV Filters Test"
 tags: 
   - Python OpenCV
