@@ -1,4 +1,4 @@
-
+﻿
 
 ```python
 # reference - https://qiita.com/koshian2/items/f53088d1dedaa72f9dca
@@ -51,7 +51,7 @@ img
 ```
 
 
-![png](output_3_0.png)
+![png](Images/output_3_0.png)
 
 
 
@@ -78,7 +78,7 @@ plt.imshow(img)
 
 
 
-![png](output_5_1.png)
+![png](Images/output_5_1.png)
 
 
 ### Basic Gradient Kernel
@@ -115,7 +115,7 @@ plt.imshow(merged)
 
 
 
-![png](output_7_1.png)
+![png](Images/output_7_1.png)
 
 
 ### Roberts Mask
@@ -153,7 +153,7 @@ plt.imshow(merged)
 
 
 
-![png](output_9_1.png)
+![png](Images/output_9_1.png)
 
 
 ### Prewitt mask
@@ -191,7 +191,7 @@ plt.imshow(merged)
 
 
 
-![png](output_11_1.png)
+![png](Images/output_11_1.png)
 
 
 ### Sobel filter
@@ -247,7 +247,7 @@ plt.imshow(merged_sobel)
 
 
 
-![png](output_13_1.png)
+![png](Images/output_13_1.png)
 
 
 ### Scharr filter
@@ -295,7 +295,7 @@ plt.imshow(merged_scharr)
 
 
 
-![png](output_15_1.png)
+![png](Images/output_15_1.png)
 
 
 ### Laplacian filter
@@ -330,7 +330,7 @@ plt.imshow(merged)
 
 
 
-![png](output_17_1.png)
+![png](Images/output_17_1.png)
 
 
 ### Canny Edge
@@ -379,7 +379,7 @@ plt.imshow(edges)
 
 
 
-![png](output_19_1.png)
+![png](Images/output_19_1.png)
 
 
 ### Fourier transform 응용
@@ -442,7 +442,7 @@ Fourier(img)
     
 
 
-![png](output_22_1.png)
+![png](Images/output_22_1.png)
 
 
 
