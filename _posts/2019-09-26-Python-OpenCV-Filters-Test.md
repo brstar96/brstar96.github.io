@@ -1,4 +1,21 @@
-﻿
+---
+title: "Post: Standard"
+excerpt_separator: "<!--more-->"
+categories:
+  - Post Formats
+tags:
+  - OpenCV-Python
+  - EdgeDetection
+layout: post
+title:  "Python OpenCV Filters Test"
+author: 이명규(brstar96)
+categories: [ Test/Study ]
+image: 
+featured: true
+hidden: false
+---
+
+
 
 ```python
 # reference - https://qiita.com/koshian2/items/f53088d1dedaa72f9dca
