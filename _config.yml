@@ -20,7 +20,7 @@ title                    : "brstar96의 블로그입니다."
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "brstar96"
-description              : "블로그 테스트"
+description              : "Test blog"
 url                      : "https://brstar96.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "brstar96/brstar96.github.io"
@@ -216,7 +216,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: "Asia/Seoul"
+timezone: Asia/Seoul
 
 
 # Plugins (previously gems:)
