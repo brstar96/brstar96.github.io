@@ -1,8 +1,7 @@
 ---
 title: "Post: Standard"
-excerpt_separator: "<!--more-->"
 categories:
-  - Post Formats
+  - Test
 tags:
   - OpenCV-Python
   - EdgeDetection
@@ -10,9 +9,6 @@ layout: post
 title:  "Python OpenCV Filters Test"
 author: 이명규(brstar96)
 categories: [ Test/Study ]
-image: 
-featured: true
-hidden: false
 ---
 
 
