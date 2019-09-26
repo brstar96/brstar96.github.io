@@ -66,7 +66,7 @@ img
 ![png](/assets/Images/output_5_0.png)
 
 
-이어서, 엣지 검출을 ①Hard-coded kernel과 ②OpenCV 제공 함수를 이용해 진행해 보겠습니다. 우선 테스트를 위한 이미지를 다시 로드하겠습니다.
+이어서, 엣지 검출을 ①Hard-coded kernel과 ②OpenCV 제공 함수를 이용해 진행해 보겠습니다. 우선 테스트를 위한 이미지를 다시 로드하겠습니다. 아래 테스트는 '파이썬으로 만드는 OpenCV 프로젝트'책과 위키피디아를 참고해 진행했습니다.
 
 
 ```python
