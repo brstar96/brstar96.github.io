@@ -6,7 +6,7 @@ tags:
   - Paper Review
 categories:
   - PaperReview
-toc: true
+toc: false
 comments: 
   provider: "disqus"
   disqus:
