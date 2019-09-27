@@ -24,8 +24,8 @@ description              : ""
 url                      : "https://brstar96.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "brstar96/brstar96.github.io"
-teaser                   : "https://github.com/brstar96/brstar96.github.io/blob/master/assets/Images/500x300.png"
-logo                     : "https://github.com/brstar96/brstar96.github.io/blob/master/assets/Images/Deeperence_Logo.png"
+teaser                   : "/assets/Images/500x300.png"
+logo                     : "/assets/Images/Deeperence_Logo.png"
 masthead_title           : "brstar96의 블로그"
 breadcrumbs            : true # true, false (default)
 words_per_minute         : 200
@@ -108,7 +108,7 @@ analytics:
 # Site Author
 author:
   name             : "Myeong-Gyu.Lee"
-  avatar           : "https://github.com/brstar96/brstar96.github.io/blob/master/assets/Images/profile_pic.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/Images/profile_pic.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "**MS Candidate in Computer Science Course.** I'm interested in Vision, Computer Graphics."
   location         : "Seoul, South Korea."
   email            : "brstar96@naver.com"
