@@ -289,9 +289,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: 
-        provider: "disqus"
-        disqus:
-          shortname: "https-brstar96-github-io"
+      comments: true
       share: true
       related: true
