@@ -27,18 +27,18 @@ header:
 
 ## Background(배경지식)
 <span style="font-size:11pt">
- 적은 수의 사진만 갖고 물체를 인식하는 문제는 최근들어 매우 핫합니다.(CVPR2018에서 네 편이었던 것이 올해 CVPR2019에서는 스무 편에 달합니다. ) 일반적으로 이 태스크는 학습 단계에서 많은 수의 카테고리를 갖고 있는 샘플들이 주어집니다. 이후 테스트 단계에서 새로운 카테고리(보통 5개)와 함께 카테고리당 ‘support set’이라고 부르는 1~5장 정도의 적은 샘플들, 그리고 쿼리 이미지들 또한 제공해 줍니다.<br>
+ 적은 수의 사진만 갖고 물체를 인식하는 문제는 최근들어 매우 핫합니다.(CVPR2018에서 네 편이었던 것이 올해 CVPR2019에서는 스무 편에 달합니다. ) 일반적으로 이 태스크는 학습 단계에서 많은 수의 카테고리를 갖고 있는 샘플들이 주어집니다. 이후 테스트 단계에서 새로운 카테고리(보통 5개)와 함께 카테고리당 ‘support set’이라고 부르는 1~5장 정도의 적은 샘플들, 그리고 쿼리 이미지들 또한 제공해 줍니다.<br><br>
  이어서 몇 가지 few-shot learning을 위한 방법들을 구분지어 소개해 보겠습니다. 사실 이 방법론들이 완벽하게 정의된 것은 아니며, 교집합이 존재합니다. <br>
- 오래된 few-shot learning 방법들은 Metric learning에 기반합니다. metric learning의 목적은 동일한 카테고리의 이미지끼리는 가깝게, 다른 카테고리끼리는 멀리 떨어지도록 이미지를 임베딩 공간에 매핑하는 방법을 학습하는 것입니다. 처음보는 카테고리에도 이 방법이 잘 작동하기를 바라죠. <br>
- 그러한 요구에 따라, Meta-learning 기법이 등장했습니다. 이 모델들은 최신 연구들과 엮여 있으며, 다양한 다른 분류기들이 support set을 위한 함수로서 사용됩니다. Meta-learning의 핵심 컨셉은 few-shot 이미지들에 오버피팅되지 않으면서도 새로운 문제에 작 적응하도록 모델의 하이퍼파라미터와 매개 변수를 찾는 것입니다. <br>
- 이와 동시에 학습 데이터를 증강시키는 data augmentation 방법도 매우 인기가 있습니다. 이 방법은 사용 가능한 적은 장수의 샘플들을 통해 더 많은 샘플들을 생성할 수 있도록 (모델에 최적화된) data augmentation 기법을 학습합니다. <br>
+ 오래된 few-shot learning 방법들은 Metric learning에 기반합니다. metric learning의 목적은 동일한 카테고리의 이미지끼리는 가깝게, 다른 카테고리끼리는 멀리 떨어지도록 이미지를 임베딩 공간에 매핑하는 방법을 학습하는 것입니다. 처음보는 카테고리에도 이 방법이 잘 작동하기를 바라죠. <br><br>
+ 그러한 요구에 따라, Meta-learning 기법이 등장했습니다. 이 모델들은 최신 연구들과 엮여 있으며, 다양한 다른 분류기들이 support set을 위한 함수로서 사용됩니다. Meta-learning의 핵심 컨셉은 few-shot 이미지들에 오버피팅되지 않으면서도 새로운 문제에 작 적응하도록 모델의 하이퍼파라미터와 매개 변수를 찾는 것입니다. <br><br>
+ 이와 동시에 학습 데이터를 증강시키는 data augmentation 방법도 매우 인기가 있습니다. 이 방법은 사용 가능한 적은 장수의 샘플들을 통해 더 많은 샘플들을 생성할 수 있도록 (모델에 최적화된) data augmentation 기법을 학습합니다. <br><br>
  마지막으로, 의미론 기반 방법(semantics-based method) 또한 떠오르고 있습니다. 카테고리 이름, 설명 또는 속성만을 기준으로 하여 학습하는 zero-shot learning으로부터 영감을 얻은 이 방법은 시각적인 의미가 부족한 경우에 추가적으로 의미적 정보를 사용하면 도움이 될 수 있습니다. <br>
 </span>
 
 ### Papers covered in this post
 
 * <b><span style="font-size:12pt">Metric learning 분야</span></b>
-    - [Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning](https://arxiv.org/abs/1903.12290) (Wenbin Li et al.)</span>
+    - <span style="font-size:12pt">[Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning](https://arxiv.org/abs/1903.12290) (Wenbin Li et al.)</span>
     - <span style="font-size:12pt">[Few-Shot Learning with Localization in Realistic Settings](https://arxiv.org/abs/1904.08502) (Davis Wertheimer et al.)</span>
     - <span style="font-size:12pt">[Dense Classification and Implanting for Few-Shot Learning](https://arxiv.org/abs/1903.05050) (Yann Lifchitz et al.)</span>
     - <span style="font-size:12pt">[Variational Prototyping-Encoder: One-Shot Learning with Prototypical Images](https://arxiv.org/abs/1904.08482) (Junsik Kim et al.)</span>
@@ -64,7 +64,7 @@ header:
 
 ### Performance on the mini-ImageNet benchmark
 <span style="font-size:11pt">
- <i>(포스트의 내용과) 연관성이 있는 이번 논문들에 대해서 1-shot 성능순으로 정렬해 보았습니다. </i><br>
+ <i>(포스트의 내용과)</i> 연관성이 있는 이번 CVPR 논문들에 대해서 1-shot 성능순으로 정렬해 보았습니다. <br>
 </span>
 
 ![png](/assets/Images/performance-on-the-mini-Imagenet-bench.png)
