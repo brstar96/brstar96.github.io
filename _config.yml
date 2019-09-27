@@ -290,8 +290,8 @@ defaults:
       author_profile: true
       read_time: true
       comments: 
-        provider: "disquis"
-        disquis:
+        provider: "disqus"
+        disqus:
           shortname: "https-brstar96-github-io"
       share: true
       related: true
