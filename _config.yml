@@ -24,8 +24,8 @@ description              : ""
 url                      : "https://brstar96.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "brstar96/brstar96.github.io"
-teaser                   : "/assets/images/500x300.png"
-logo                     : "/assets/images/Deeperence_Logo.png"
+teaser                   : "https://github.com/brstar96/brstar96.github.io/blob/master/assets/Images/500x300.png"
+logo                     : "https://github.com/brstar96/brstar96.github.io/blob/master/assets/Images/Deeperence_Logo.png"
 masthead_title           : "brstar96의 블로그"
 breadcrumbs            : true # true, false (default)
 words_per_minute         : 200
@@ -289,7 +289,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: 
         provider: "disquis"
         disquis:
           shortname: "https-brstar96-github-io"
