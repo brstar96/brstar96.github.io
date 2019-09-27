@@ -1,5 +1,5 @@
 ﻿---
-title: "Python OpenCV Filters Test"
+title: "MLDLstudy카테고리 앵커테스트"
 tags: 
   - Machine Learning
   - Deep Learning
@@ -14,4 +14,4 @@ header:
   teaser: /assets/Images/output_18_1.png
 ---
 
-#MLDLstudy 카테고리 앵커 테스트를 위한 글
+MLDLstudy 카테고리 앵커 테스트를 위한 글
