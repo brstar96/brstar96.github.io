@@ -29,8 +29,8 @@ header:
 3D shape reconstruction from sketches via multi view convolutional networks는 U-Net과 VanilaGAN을 활용해 스케치(Front, Side)로부터 3D Mesh를 reconstruction하는 연구입니다. 기존 연구들이 Voxel과 3D CNN 기반으로 진행되어 온 반면 본 논문은 스케치를 이용해 12개 뷰포인트에 대한 Depth map을 예측하고 그로부터 Normal map과 Mask를 추출하여 3D point cloud를 생성합니다. 이후 이 Point cloud로 screened Poisson Surface Reconstruction algorithm을 돌려 3D mesh로 변환 및 fine-tuning 과정을 거칩니다. 스케치로부터 Reconstruction 과정에 사용되는 Depth map이나 Normal map, Mask map과 같은 Information textures를 예측한다는 점에서 Sketch → Information textures로의 Image to image translation 문제로 보아도 되겠습니다. <br></span>
 
 <center>
-![png](/assets/Images/3Dshape.png)
-![png](/assets/Images/3Dshape2.png)
+<img src="/assets/Images/3Dshape.png">
+<img src="/assets/Images/3Dshape2.png">
 </center>
 
 <span style="font-size:11pt">
@@ -49,16 +49,16 @@ PatchGAN을 사용하기로 한 건 Pix2Pix 논문에서도 언급하고 있듯 
 Predicted Normal, depth map의 퀄리티가 낮은 가장 강력한 이유로 PatchGAN이 적용되지 않았던 것을 의심해 보았으나 효과적인 해결책이 되어 주지는 못했습니다. </span><br>
 
 <center>
-![png](/assets/Images/patchgan-mask.jpg)
-![png](/assets/Images/patchgan-normal.jpg)
-![png](/assets/Images/patchgan-output.jpg)
+<img src="/assets/Images/patchgan-mask.jpg">
+<img src="/assets/Images/patchgan-normal.jpg">
+<img src="/assets/Images/patchgan-output.jpg">
 </center>
 
 <span style="font-size:11pt">
 또한 보잉 여객기와 같이 자주 등장하는 모델에 대해서는 꽤 잘 추론하지만 스타워즈 시리즈에 나올 법한 괴상한 우주선은 아예 추론하지 못하는 모습을 보이기도 했습니다. </span>
 
 <center>
-![png](/assets/Images/wronecase.jpg)
+<img src="/assets/Images/wronecase.jpg">
 </center>
 
 <span style="font-size:11pt">
@@ -66,10 +66,9 @@ Predicted Normal, depth map의 퀄리티가 낮은 가장 강력한 이유로 Pa
 맨 마지막으로 시도해 봤던 구조가 CycleGAN의 ResNet Generator + RF 70 + LSGAN Loss + Batch Instance Normalization 조합이었는데, 베이스라인 대비 메모리 사용량이 1.5배가량 줄어들긴 했습니다. TF 버전과 CUDA 버전을 각각 1.14와 10.0버전으로 올려 100epoch을 학습시킬때 기존에 7일정도 걸리던 것이 4.3일로 줄어들었습니다.<br><br>
 </span>
 
-
 <center>
-![png](/assets/Images/3dreconsVRAM.png)
-![png](/assets/Images/resfinal.png)
+<img src="/assets/Images/3dreconsVRAM.png">
+<img src="/assets/Images/resfinal.png">
 </center>
 
 <span style="font-size:11pt">
