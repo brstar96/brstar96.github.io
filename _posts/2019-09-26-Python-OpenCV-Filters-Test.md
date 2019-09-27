@@ -388,7 +388,7 @@ plt.imshow(merged)
 OpenCV는 위 알고리즘을 구현한 `cv2.Canny()` 함수를 제공하고 있습니다.
 </span>
 
-* <i><b>`edges = cv2.Canny(img, threshold1, threshold2[, edges, apertureSize, L2gradient])`</i></b>
+* <i><b>`edges = cv2.Canny(img, threshold1, threshold2[, edges, apertureSize, L2gradient])`</b></i>
     - <i><b>`img`</b></i> : 입력 이미지(Numpy array)
     - <i><b>`threshold1`, `threshold2`</b></i> : Hysteresis Thresholding에 사용할 최소, 최대값
     - <i><b>`apertureSize`</b></i> : Sobel Mask에 사용할 커널 크기
