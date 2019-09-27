@@ -259,10 +259,10 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
 #   layouts:
 #     category: archive-taxonomy
 #     tag: archive-taxonomy
