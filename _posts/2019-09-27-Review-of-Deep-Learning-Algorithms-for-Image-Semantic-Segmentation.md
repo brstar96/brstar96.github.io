@@ -88,7 +88,7 @@ header:
 <center><img src="/assets/Images/FCN1.png"></center><br>
 <center><img src="/assets/Images/FCN2.png"></center>
 
-<i><center><span style="font-size:10pt">▲ FCN의 아키텍쳐. (우측의 Skip-connection 그림은 역자가 추가) (출처 : [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf))</span></center></i>
+<i><center><span style="font-size:10pt">▲ FCN의 아키텍쳐. (아래의 Skip-connection 그림은 역자가 추가)</i> (출처 : [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf).)</span></center>
 
 ## <b><i>ParseNet</i></b>
 <span style="font-size:11pt">
@@ -97,7 +97,7 @@ header:
 
 <center><img src="/assets/Images/ParseNet.png"></center>
 
-<i><center><span style="font-size:10pt">▲ FCN과 ParseNet의 segmentation 결과 비교(좌측) 및 ParseNet module의 아키텍쳐. (출처 : [W. Liu et al. (2015)](https://arxiv.org/pdf/1506.04579.pdf))</span></center></i>
+<i><center><span style="font-size:10pt">▲ FCN과 ParseNet의 segmentation 결과 비교(좌측) 및 ParseNet module의 아키텍쳐. (출처 : [W. Liu et al. (2015)](https://arxiv.org/pdf/1506.04579.pdf).)</span></center></i>
 
 ## <b><i>Convolutional and Deconvolutional Networks</i></b>
 <span style="font-size:11pt">
@@ -106,7 +106,7 @@ header:
 
 <center><img src="/assets/Images/Convolutional-and-Deconvolutional-Networks.png"></center>
 
-<i><center><span style="font-size:10pt">▲ 합성곱 네트워크의 레이어(Pooling과 convolution)와 역 합성곱 네트워크의 레이어(unpooling과 deconvolution)를 비교한 그림. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf))</span></center></i>
+<i><center><span style="font-size:10pt">▲ 합성곱 네트워크의 레이어(Pooling과 convolution)와 역 합성곱 네트워크의 레이어(unpooling과 deconvolution)를 비교한 그림. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf).)</span></center></i>
 
 <span style="font-size:11pt">
  저자들은 역 합성곱 연산을 통해 뽑은 feature map들에 대해 분석하였으며, 낮은 레벨의 feature map은 후보들에 대해 분류 작업을 수행하는 데 도움이 된다고 주장합니다. 마지막으로, 이미지 내의 모든 후보들에 대해 전체 네트워크로 연산을 수행한 후 연산의 결과로 나온 map들을 연결(concatenate)하여 전체 분할 이미지(fully segmented image)를 얻습니다. 이 네트워크는 2012 PASCAL VOC segmentation 대회에서 72.5%의 mIoU점수를 얻었습니다.<br> 
@@ -114,7 +114,7 @@ header:
 
 <center><img src="/assets/Images/Convolutional-and-Deconvolutional-Networks2.png"></center>
 
-<i><center><span style="font-size:10pt">▲ 전체 네트워크 아키텍쳐. 합성곱 네트워크 부분은 VGG16 아키텍쳐를 기반으로 합니다. 역 합성곱 네트워크 부분은 역 풀링(unpooling) 및 역 합성곱(deconvolution) 레이어를 사용합니다. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf))</span></center></i>
+<i><center><span style="font-size:10pt">▲ 전체 네트워크 아키텍쳐. 합성곱 네트워크 부분은 VGG16 아키텍쳐를 기반으로 합니다. 역 합성곱 네트워크 부분은 역 풀링(unpooling) 및 역 합성곱(deconvolution) 레이어를 사용합니다. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf).)</span></center></i>
 
 ## <b><i>U-Net</i></b>
 
@@ -124,7 +124,7 @@ header:
 
 <center><img src="/assets/Images/UNet.png"></center>
 
-<i><center><span style="font-size:10pt">▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf))</span></center></i>
+<i><center><span style="font-size:10pt">▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf).)</span></center></i>
 
 <br>
 <i>(이하 번역중입니다.)</i>
