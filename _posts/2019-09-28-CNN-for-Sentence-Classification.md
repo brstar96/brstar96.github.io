@@ -13,7 +13,7 @@ comments:
     shortname: "https-brstar96-github-io"
 use_math: true
 header:
-  teaser: /assets/Images/paper-reviewkernel-predictingconvolutionalnetworksfordenoisingmontecarlorenderings-1-638.jpg
+  teaser: /assets/Images/papers-reviewcnn-for-sentence-classification-1-638.jpg
 ---
 <center>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/cCBLyyZrRbdEZD" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </center><br>
