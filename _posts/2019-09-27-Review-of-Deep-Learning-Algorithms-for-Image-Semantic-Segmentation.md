@@ -88,7 +88,7 @@ header:
 <center><img src="/assets/Images/FCN1.png"></center>
 <center><img src="/assets/Images/FCN2.png"></center>
 
-<i><center><span style="font-size:10pt">▲ FCN의 아키텍쳐. (아래의 Skip-connection 그림은 역자가 추가)(출처 : J. Long et al. (2015))</i></span></center>
+<i><center><span style="font-size:10pt">▲ FCN의 아키텍쳐. (아래의 Skip-connection 그림은 역자가 추가)(출처 : J. Long et al. (2015))</span></center></i>
 
 ## <b><i>ParseNet</i></b>
 <span style="font-size:11pt">
