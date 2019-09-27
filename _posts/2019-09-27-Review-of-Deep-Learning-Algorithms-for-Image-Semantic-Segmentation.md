@@ -21,7 +21,7 @@ header:
 
 ## Intro(들어가며)
 
-![png](/assets/Images/COCO.jpg)
+<center>![png](/assets/Images/COCO.jpg)</center>
 
 <i><center>▲ stuff segmentation을 위한 COCO dataset 예시. (http://cocodataset.org/)</center></i><br><br>
 
