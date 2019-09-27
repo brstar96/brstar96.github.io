@@ -1,5 +1,5 @@
 ﻿---
-title: "Reconstruction of Monte Carlo Image Sequences using a Recurrent Denoising Autoencoder"
+title: "(PaperReview) Reconstruction of Monte Carlo Image Sequences using a Recurrent Denoising Autoencoder"
 tags: 
   - Deep Learning
   - Computer Graphics
