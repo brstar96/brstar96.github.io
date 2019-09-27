@@ -4,7 +4,10 @@ tags:
   - Python OpenCV
   - Edge Detection
 toc: true
-comments: true
+comments: 
+  provider: "disqus"
+  disqus:
+    shortname: "https-brstar96-github-io"
 ---
 
 본 글은 애니메이션 캐릭터 얼굴의 엣지를 찾기 위해 다양한 엣지 검출 알고리즘으로 테스트를 수행해본 결과입니다.
