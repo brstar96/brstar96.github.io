@@ -25,7 +25,7 @@ header:
 
 <i><center>▲ stuff segmentation을 위한 COCO dataset 예시. (http://cocodataset.org/)</center></i><br><br>
 
-
+<span style="font-size:10pt">
  딥러닝 알고리즘들은 난이도가 증가함에도 불구하고 여러 컴퓨터 비전 문제들을 해결해 왔습니다. 이전 제 블로그 포스팅에서, 저는 많은 사람들에게 잘 알려진 [Image Clasification](https://medium.com/zylapp/review-of-deep-learning-algorithms-for-image-classification-5fdbca4a05e2)과 [Object Detection](https://medium.com/comet-app/review-of-deep-learning-algorithms-for-object-detection-c1f3d437b852)에 대해 소개한 적 있습니다. 이미지 세그멘테이션 문제에서는 이미지의 각 픽셀을 하나의 인스턴스로 분류하는데, 각 인스턴스(또는 카테고리)는 이미지에 존재하는 객체(도로, 하늘 등등)들과 대응됩니다. 이미지 세그멘테이션 작업은 장면 이해(Scene understanding)의 컨셉 중 하나입니다. 어떻게 딥러닝 모델이 시각적 컨텐츠에 존재하는 글로벌 컨텍스트를 더 잘 배울 수 있을까요?
 
 객체 감지(Object detection) 작업(이하 '태스크')은 복잡성 측면에 있어서 이미지 분류 태스크를 초과했습니다. 객체 감지 태스크는 이미지 안에 존재하는 개체 주위에 경계 상자(Bounding box)를 만들고 각 개체에 대해 분류 작업을 수행합니다. 대부분의 객체 감지 모델은 대부분의 객체 감지 모델은 앵커 상자(anchor box)와 proposal(역주 : Fast RCNN의 Region Proposal을 이야기하는 것 같습니다.)을 통해 객체 주위의 경계 상자를 검출합니다. 불행히도, 일부 모델은 이미지의 전체 맥락(context)을 고려할 수 있지만 주어진 정보 내에서도 작은 부분에 대해서만 분류 작업을 수행합니다. 따라서 이러한 모델들은 자신에게 주어진 장면을 완전히 이해할 수 없습니다. 
@@ -33,12 +33,12 @@ header:
 장면(scene)을 이해하기 위해선 각 시각적 정보가 공간적 정보(spatial information)를 고려하면서 엔티티(여기서는 객체를 의미)와 연관될 필요가 있습니다. 이미지 또는 비디오로부터 동작(Keypoint detection, action recognition, video captioning, visual question answering 등등)을 모델이 이해하는 데 있어 몇 가지 도전적인 문제들이 생겨났으며, 모델이 환경에 대해 잘 이해할 수 있다면 더 많은 분야에서 도움이 되어 줄 것입니다. 예를 들어, 자율 주행 자동차는 주행중에 있어서 도로변을 높은 정밀도로 인식하도록 해야 합니다. 로봇 공학에서 생산에 사용되는 기계는 물체의 정확한 모양을 파악함으로서 물체를 어떻게 잡는지, 두 개의 다른 조각을 어떻게 조립하는지 이해해야 합니다. 
 
 이 블로그 포스트에서는 의미적 이미지 분할화(이하 Image Semantic Segmentation) 문제에 대한 기존의 최신 모델 아키텍쳐들에 대해 설명할 것입니다. 연구자들은 매년 달라지는 다양한 데이터셋(PASCAL, VOC, PASCAL Context, COCO, Cityscapes)들을 사용해 알고리즘을 테스트하고 다양한 평가 메트릭(metric)을 사용해 알고리즘을 평가합니다. 따라서 논문에 인용되어 있는 성능 지표 그 자체는 직접적으로 끼리끼리 비교해 보기가 어렵습니다.  또한 각 알고리즘들의 결과는 사전 훈련된 최상위 네트워크(pretrained backbone)에 따라 달라지며, 본 포스트에 게시된 평가 결과는 각 논문들에서 그들의 테스트셋을 통해 얻은 최고 점수입니다. 
-
 <br>
 
 ## <b>데이터셋 및 평가 지표(Datasets and Metrics)</b>
 
  PASCAL VOC dataset(2012)은 객체 탐지(object detection) 및 분할(segmentation) 태스크에서 일반적으로 사용됩니다. 11k개(11000개) 이상의 이미지를 통해 train 및 validation 데이터셋을 구성하고 10k(10000개)개의 이미지는 테스트 데이터셋으로 사용됩니다. 
+
  
 이미지 분할 대회(Segmentation challenge)는 mIoU(mean Intersection over Union)라는 평가 지표(metric)를 사용해 알고리즘을 평가합니다. IoU(Intersection over Union)는 예측된 오브젝트 위치의 연관성(relevance)을 평가하기 위해 객체 탐지(Object detection)에도 사용되는 평가 지표입니다. IoU는 정답 영역과 모델이 예측한 영역의 중첩된 영역(intersection)과 정답 영역+모델 예측 영역(Union)에 대한 비율로 정의됩니다. mIoU는 테스트 데이터셋의 모든 이미지에 대해 세그멘테이션된 객체들의 모든 IoU 평균값입니다.
 
@@ -110,7 +110,7 @@ FCN은 임의 크기의 이미지를 가져와 입력과 동일한 크기의 seg
 
 ![png](/assets/Images/UNet.png)
 <i><center>▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf))</center></i><br><br>
-
+</span>
 
 
 <br>
