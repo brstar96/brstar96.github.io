@@ -16,7 +16,7 @@ header:
   teaser: /assets/Images/paper-reviewkernel-predictingconvolutionalnetworksfordenoisingmontecarlorenderings-1-638.jpg
 ---
 <center>
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/cCBLyyZrRbdEZD" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <br>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/cCBLyyZrRbdEZD" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </center><br>
 
 <Blockquote><span style="font-size:11pt">- review date: 2017/10/10 (by Meyong-Gyu.LEE @Soongsil Univ.)<br>- Korean review of 'Convolutional Neural Networks for Sentence Classification'(EMNLP2014) and 'A Syllable-based Technique for Word Embeddings of Korean Words'(HCLT 2017)</span></Blockquote>
 
