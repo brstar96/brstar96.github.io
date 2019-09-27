@@ -39,8 +39,7 @@ header:
 
 ![png](/assets/Images/PASCAL-VOC.png)
 
-<i><center>▲ 이미지 분할(Image Segmentation)을 위한 2012 PASCAL VOC dataset의 예 (출처 : http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html)</center></i><br><br>
-
+<i><center>▲ 이미지 분할(Image Segmentation)을 위한 2012 PASCAL VOC dataset의 예 (출처 : http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html)</center></i>
 
 ##  <b><i>PASCAL-Context 데이터셋</i></b>
 <span style="font-size:10pt">
@@ -50,7 +49,7 @@ PASCAL-Context 대회의 공식 평가 지표는 mIoU입니다. 픽셀 정확도
 
 ![png](/assets/Images/PASCAL-Context.png)
 
-<i><center>▲ PASCAL-Context 데이터셋의 예 (출처 : https://cs.stanford.edu/~roozbeh/pascal-context/)</center></i><br><br>
+<i><center>▲ PASCAL-Context 데이터셋의 예 (출처 : https://cs.stanford.edu/~roozbeh/pascal-context/)</center></i>
 
 ##  <b><i>Common Objects in COntext (COCO) 데이터셋</i></b>
 
@@ -62,7 +61,7 @@ IoU 및 AP 평가 지표에 대한 자세한 내용은 [이전 블로그 게시�
 
 ![png](/assets/Images/COCO2.png)
 
-<i><center>▲ 객체 세분화(Object segmentation)를 위한 COCO 데이터셋의 예 (출처 : http://cocodataset.org/)</center></i><br><br>
+<i><center>▲ 객체 세분화(Object segmentation)를 위한 COCO 데이터셋의 예 (출처 : http://cocodataset.org/)</center></i>
 
 ##  <b><i>Cityscapes 데이터셋</i></b>
 <span style="font-size:10pt">
@@ -71,7 +70,7 @@ Cityscapes 데이터셋은 2016년에 공개되었으며 50개 도시에 대해 
 
 ![png](/assets/Images/CityScape.png)
 
-<i><center>▲ Cityscapes 데이터셋의 예 (출처 : https://www.cityscapes-dataset.com/)</center></i><br><br>
+<i><center>▲ Cityscapes 데이터셋의 예 (출처 : https://www.cityscapes-dataset.com/)</center></i>
 
 # <b>네트워크 소개</b>
 ## <b><i>Fully Convolutional Network(FCN)</i></b>
@@ -80,13 +79,12 @@ Cityscapes 데이터셋은 2016년에 공개되었으며 50개 도시에 대해 
 
 [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)은 이미지 세분화(Image segmentation) 문제를 위해 종단 간(end-to-end) 훈련을 수행하는 FCN(Fully Connectec Network)를 개발한 연구자들입니다.<br> 
 FCN은 임의 크기의 이미지를 가져와 입력과 동일한 크기의 segmented image를 생성합니다. 저자들은 잘 알려진 네트워크 아키텍쳐(AlexNet, VGG16, GoogleLeNet)의 Fully connected Layers(FCs)를 합성곱 레이어(Convolution layers)로 대체함으로서 고정되지 않은 사이즈를 가진 인풋 이미지를 받을 수 있게 했습니다. 네트워크는 (레이어를 거칠수록) 크기가 작고 (정보의) 밀도가 높은 여러 feature map을 생성하므로 입력과 동일한 크기의 출력을 생성하기 위해선 업샘플링 과정이 필요합니다. 기본적으로 (업샘플링 과정은) stride가 1보다 낮은 합성곱 레이어들로 구성됩니다. 입력보다 큰 출력을 생성하기 때문에 일반적으로 이를 역 합성곱 연산(Deconvolution)이라고 합니다. 이러한 방법들을 통해 네트워크는 픽셀당 손실(pixel-wise loss)을 최소화하는 방향으로 학습됩니다. 또한 네트워크에 skip-connection 구조를 추가해 높은 레벨의 feature map representation을 네트워크 상단에 있는 보다 구체적이고 밀도가 높은 representation와 결합하도록 했습니다.<br> 
-저자들은 2012 ImageNet 데이터셋으로 pretrain된 모델을 사용하여 2012 PASCAL VOC segmentation 대회에서 62.2%의 mIoU 점수를 얻었습니다. 그에 비해 2012 PASCAL VOC object detection 대회에서는 Faster R-CNN이라는 모델이 78.8% mIoU 점수를 얻었습니다. 두 대회의 결과(다른 모델, 다른 데이터셋 및 다른 문제)를 직접 비교할 수 없긴 하지만, semantic segmentation 태스크는 object detection 태스크에 비해 훨씬 어려운 문제인 것 같습니다.<br> 
+저자들은 2012 ImageNet 데이터셋으로 pretrain된 모델을 사용하여 2012 PASCAL VOC segmentation 대회에서 62.2%의 mIoU 점수를 얻었습니다. 그에 비해 2012 PASCAL VOC object detection 대회에서는 Faster R-CNN이라는 모델이 78.8% mIoU 점수를 얻었습니다. 두 대회의 결과(다른 모델, 다른 데이터셋 및 다른 문제)를 직접 비교할 수 없긴 하지만, semantic segmentation 태스크는 object detection 태스크에 비해 훨씬 어려운 문제인 것 같습니다. <br> 
 </span>
 
 |![png](/assets/Images/FCN1.png)|![png](/assets/Images/FCN2.png)|
 |:---:|:---:|
-<i><center>▲ FCN의 아키텍쳐. (우측의 Skip-connection 그림은 역자가 추가) (출처 : [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf))</center></i><br><br>
-
+<i><center>▲ FCN의 아키텍쳐. (우측의 Skip-connection 그림은 역자가 추가) (출처 : [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf))</center></i>
 
 ## <b><i>ParseNet</i></b>
 <span style="font-size:10pt">
@@ -95,7 +93,7 @@ FCN은 임의 크기의 이미지를 가져와 입력과 동일한 크기의 seg
 </span>
 
 ![png](/assets/Images/ParseNet.png)
-<i><center>▲ FCN과 ParseNet의 segmentation 결과 비교(좌측) 및 ParseNet module의 아키텍쳐. (출처 : [W. Liu et al. (2015)](https://arxiv.org/pdf/1506.04579.pdf))</center></i><br><br>
+<i><center>▲ FCN과 ParseNet의 segmentation 결과 비교(좌측) 및 ParseNet module의 아키텍쳐. (출처 : [W. Liu et al. (2015)](https://arxiv.org/pdf/1506.04579.pdf))</center></i>
 
 ## <b><i>Convolutional and Deconvolutional Networks</i></b>
 <span style="font-size:10pt">
@@ -104,7 +102,7 @@ FCN은 임의 크기의 이미지를 가져와 입력과 동일한 크기의 seg
 </span>
 
 ![png](/assets/Images/Convolutional-and-Deconvolutional-Networks.png)
-<i><center>▲ 합성곱 네트워크의 레이어(Pooling과 convolution)와 역 합성곱 네트워크의 레이어(unpooling과 deconvolution)를 비교한 그림. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf))</center></i><br><br>
+<i><center>▲ 합성곱 네트워크의 레이어(Pooling과 convolution)와 역 합성곱 네트워크의 레이어(unpooling과 deconvolution)를 비교한 그림. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf))</center></i>
 
 <span style="font-size:10pt">
 
@@ -112,7 +110,7 @@ FCN은 임의 크기의 이미지를 가져와 입력과 동일한 크기의 seg
 </span>
 
 ![png](/assets/Images/Convolutional-and-Deconvolutional-Networks2.png)
-<i><center>▲ 전체 네트워크 아키텍쳐. 합성곱 네트워크 부분은 VGG16 아키텍쳐를 기반으로 합니다. 역 합성곱 네트워크 부분은 역 풀링(unpooling) 및 역 합성곱(deconvolution) 레이어를 사용합니다. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf))</center></i><br><br>
+<i><center>▲ 전체 네트워크 아키텍쳐. 합성곱 네트워크 부분은 VGG16 아키텍쳐를 기반으로 합니다. 역 합성곱 네트워크 부분은 역 풀링(unpooling) 및 역 합성곱(deconvolution) 레이어를 사용합니다. (출처 : [H. Noh et al. (2015)](https://arxiv.org/pdf/1505.04366.pdf))</center></i>
 
 ## <b><i>U-Net</i></b>
 
@@ -122,10 +120,6 @@ FCN은 임의 크기의 이미지를 가져와 입력과 동일한 크기의 seg
 </span>
 
 ![png](/assets/Images/UNet.png)
-<i><center>▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf))</center></i><br><br>
-
-
+<i><center>▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf))</center></i>
 
 <i>(이하 번역중입니다.)</i>
-
-
