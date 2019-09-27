@@ -3,6 +3,7 @@ title: "(PaperReview) Image-to-Image Translation with Conditional Adversarial Ne
 tags: 
   - Deep Learning
   - Image to Image Translation
+  - GAN
   - Computer Vision
 categories:
   - PaperReview
