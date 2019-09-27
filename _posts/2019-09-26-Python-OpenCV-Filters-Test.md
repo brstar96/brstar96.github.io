@@ -3,11 +3,15 @@ title: "Python OpenCV Filters Test"
 tags: 
   - Python OpenCV
   - Edge Detection
+categories:
+  - Computer Vision
 toc: true
 comments: 
   provider: "disqus"
   disqus:
     shortname: "https-brstar96-github-io"
+header:
+  teaser: /assets/Images/output_18_1.png
 ---
 
 본 글은 애니메이션 캐릭터 얼굴의 엣지를 찾기 위해 다양한 엣지 검출 알고리즘으로 테스트를 수행해본 결과입니다.
