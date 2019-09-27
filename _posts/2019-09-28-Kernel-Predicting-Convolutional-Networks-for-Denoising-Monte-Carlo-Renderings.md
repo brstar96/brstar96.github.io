@@ -1,6 +1,5 @@
-﻿---</span>
-
-title: "(PaperReview) BN이후의 다양한 정규화 기법들"
+﻿---
+title: "(PaperReview) Kernel Predicting Convolutional Networks For Denoising Monte Carlo Renderings"
 tags: 
   - Deep Learning
   - Realtime 3D Rendering
