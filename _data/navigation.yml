@@ -2,10 +2,12 @@
 main:
   - title: "ML/DL Study"
     url: https://brstar96.github.io/
-  - title: "About Me"
+  - title: "유용한 글 번역"
     url: https://brstar96.github.io/Profile/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
+  - title: "삽질 기록"
+    url: https://brstar96.github.io/
+#   - title: "삽질 기록"
+#     url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
