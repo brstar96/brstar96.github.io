@@ -18,7 +18,7 @@ header:
   teaser: /assets/Images/paper-reviewugatit-unsupervised-generative-attentional-networks-with-adaptive-layerinstance-normalization-for-imagetoimage-translation-1-638.jpg
 ---
 <center>
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/ys8t8cQL0lQNnF" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/FdV0SMnys08Em0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 </center><br>
 
 <Blockquote><span style="font-size:11pt">- review date 1: 2019/08/09 (by Meyong-Gyu.LEE @Soongsil Univ.)<br>- review date 2: 2019/08/11 (by Meyong-Gyu.LEE @Deeperence)<br>- Kor review of 'U-GAT-IT: unsupervised generative attentional networks with adaptive layer-instance normalization for image-to-image translation' (arXiv, Submitted on 25 Jul 2019)</span></Blockquote>
