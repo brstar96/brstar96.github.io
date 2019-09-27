@@ -4,9 +4,11 @@ main:
     url: https://brstar96.github.io/dailylife/Profile/
   - title: "ML/DL Study"
     url: https://brstar96.github.io/categories/#mldlstudy
-  - title: "유용한 글 번역"
+  - title: "번역"
     url: https://brstar96.github.io/categories/#posttranslation
-  - title: "삽질 기록"
+  - title: "논문리뷰"
+    url: https://brstar96.github.io/categories/#paperreview
+  - title: "삽질일기"
     url: https://brstar96.github.io/categories/#shoveling
 #   - title: "삽질 기록"
 #     url: /year-archive/
