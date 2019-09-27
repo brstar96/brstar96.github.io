@@ -15,7 +15,8 @@ use_math: true
 header:
   teaser: /assets/Images/paper-reviewkernel-predictingconvolutionalnetworksfordenoisingmontecarlorenderings-1-638.jpg
 ---
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/Fybg7X1zg3p5Tq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ssuserc9d82a/kernel-predictingconvolutionalnetworksfordenoisingmontecarlorenderings-153995506" title="(Paper Review)Kernel predicting-convolutional-networks-for-denoising-monte-carlo-renderings" target="_blank">(Paper Review)Kernel predicting-convolutional-networks-for-denoising-monte-carlo-renderings</a> </strong> from <strong><a href="https://www.slideshare.net/ssuserc9d82a" target="_blank">MYEONGGYU LEE</a></strong> </div><br>
+<center>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/Fybg7X1zg3p5Tq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ssuserc9d82a/kernel-predictingconvolutionalnetworksfordenoisingmontecarlorenderings-153995506" title="(Paper Review)Kernel predicting-convolutional-networks-for-denoising-monte-carlo-renderings" target="_blank">(Paper Review)Kernel predicting-convolutional-networks-for-denoising-monte-carlo-renderings</a> </strong> from <strong><a href="https://www.slideshare.net/ssuserc9d82a" target="_blank">MYEONGGYU LEE</a></strong> </div></center><br>
 
 <Blockquote><span style="font-size:11pt">review date: 2017/12/5 (by Meyong-Gyu.LEE @Soongsil Univ.)</span></Blockquote>
 
