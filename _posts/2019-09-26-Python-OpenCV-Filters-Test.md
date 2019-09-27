@@ -487,6 +487,7 @@ Fourier(img)
 
 ![png](/assets/Images/output_25_1.png)
 
+![png](/assets/Images/EdgedetectionTestonAnimface.jpg)
 
 
 ```python
