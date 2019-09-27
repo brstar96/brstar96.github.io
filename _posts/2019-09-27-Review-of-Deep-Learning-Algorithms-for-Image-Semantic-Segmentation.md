@@ -85,8 +85,8 @@ header:
  저자들은 2012 ImageNet 데이터셋으로 pretrain된 모델을 사용하여 2012 PASCAL VOC segmentation 대회에서 62.2%의 mIoU 점수를 얻었습니다. 그에 비해 2012 PASCAL VOC object detection 대회에서는 Faster R-CNN이라는 모델이 78.8% mIoU 점수를 얻었습니다. 두 대회의 결과(다른 모델, 다른 데이터셋 및 다른 문제)를 직접 비교할 수 없긴 하지만, semantic segmentation 태스크는 object detection 태스크에 비해 훨씬 어려운 문제인 것 같습니다. <br> 
 </span>
 
-|![png](/assets/Images/FCN1.png)|![png](/assets/Images/FCN2.png)|
-|:---:|:---:|
+<center><img src="/assets/Images/FCN1.png"></center><br>
+<center><img src="/assets/Images/FCN2.png"></center>
 
 <i><center><span style="font-size:10pt">▲ FCN의 아키텍쳐. (우측의 Skip-connection 그림은 역자가 추가) (출처 : [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf))</span></center></i>
 
@@ -119,7 +119,7 @@ header:
 ## <b><i>U-Net</i></b>
 
 <span style="font-size:11pt">
- [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf)은 [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)의 FCN을 확장해 생물학 현미경을 위한 모델을 제안했습니다. 저자들은 (주어진 이미지에서) feature를 뽑아내는 역할을 수행하는 추출(Contraction) 파트와 이미지에 존재하는 패턴을 공간적으로 지역화(spatially localize)하는 확장(Expansion) 파트 두 개의 부분으로 구성되어 있는 U-Net이라는 네트워크를 만들었습니다. 추출(Contraction) 파트(Downsampling으로도 부름)는 FCN 네트워크와 비슷한 구조를 갖고 있으며, 3*3 사이즈의 합성곱 연산을 통해 feature를 추출합니다. 확장(Expansion) 파트(Upsampling으로도 부름)는 역 합성곱(deconvolution, 또는 up-convolution으로도 부름)연산을 사용해 feature map의 개수를 줄이면서 높이와 너비를 늘려 나갑니다. 네트워크의 Downsampling 부분에서 잘라낸 feature map은 (이미지에 존재하는) 패턴 정보가 손실되지 않도록 Upsampling부분으로 복사됩니다. 마지막으로, 1*1 합성곱 연산은 feature map을 처리해 segmentation map을 생성하고 입력 이미지의 각 픽셀을 분류합니다. U-Net이 발표된 이후, U-Net은 최근의 연구들(FPN, PSPNet, DeepLabV3 등)에서 광범위하게 사용되었습니다. 완전히 연결된 레이어(Fully-connected layer)들을 사용하지 않는다는 점에 주목할 필요가 있습니다. 결과적으로 U-Net은 모델의 매개 변수(parameter)의 개수가 줄어들고 적절한 데이터 증강(Data augmentation) 기법을 적용하여 적게 레이블이 지정된 데이터셋으로도 훈련할 수 있습니다. 예를 들어, U-Net의 저자는 실험 중 train을 위해 공개된 데이터셋 중 30장의 이미지만을 사용했습니다.<br> 
+ [O. Ronneberger et al. (2015)](https://arxiv.org/pdf/1505.04597.pdf)은 [J. Long et al. (2015)](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)의 FCN을 확장해 생물학 현미경을 위한 모델을 제안했습니다. 저자들은 (주어진 이미지에서) feature를 뽑아내는 역할을 수행하는 추출(Contraction) 파트와 이미지에 존재하는 패턴을 공간적으로 지역화(spatially localize)하는 확장(Expansion) 파트 두 개의 부분으로 구성되어 있는 U-Net이라는 네트워크를 만들었습니다. 추출(Contraction) 파트(Downsampling으로도 부름)는 FCN 네트워크와 비슷한 구조를 갖고 있으며, 3x3 사이즈의 합성곱 연산을 통해 feature를 추출합니다. 확장(Expansion) 파트(Upsampling으로도 부름)는 역 합성곱(deconvolution, 또는 up-convolution으로도 부름)연산을 사용해 feature map의 개수를 줄이면서 높이와 너비를 늘려 나갑니다. 네트워크의 Downsampling 부분에서 잘라낸 feature map은 (이미지에 존재하는) 패턴 정보가 손실되지 않도록 Upsampling부분으로 복사됩니다. 마지막으로, 1*1 합성곱 연산은 feature map을 처리해 segmentation map을 생성하고 입력 이미지의 각 픽셀을 분류합니다. U-Net이 발표된 이후, U-Net은 최근의 연구들(FPN, PSPNet, DeepLabV3 등)에서 광범위하게 사용되었습니다. 완전히 연결된 레이어(Fully-connected layer)들을 사용하지 않는다는 점에 주목할 필요가 있습니다. 결과적으로 U-Net은 모델의 매개 변수(parameter)의 개수가 줄어들고 적절한 데이터 증강(Data augmentation) 기법을 적용하여 적게 레이블이 지정된 데이터셋으로도 훈련할 수 있습니다. 예를 들어, U-Net의 저자는 실험 중 train을 위해 공개된 데이터셋 중 30장의 이미지만을 사용했습니다.<br> 
 </span>
 
 <center><img src="/assets/Images/UNet.png"></center>
