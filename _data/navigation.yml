@@ -1,11 +1,13 @@
 # main links
 main:
+  - title: "About Me"
+    url: https://brstar96.github.io/dailylife/Profile/
   - title: "ML/DL Study"
-    url: https://brstar96.github.io/
+    url: https://brstar96.github.io/categories/#MLDLstudy
   - title: "유용한 글 번역"
-    url: https://brstar96.github.io/Profile/
+    url: https://brstar96.github.io/categories/#PostTranslation
   - title: "삽질 기록"
-    url: https://brstar96.github.io/
+    url: https://brstar96.github.io/categories/#shoveling
 #   - title: "삽질 기록"
 #     url: /year-archive/
   # - title: "Sample Collections"
