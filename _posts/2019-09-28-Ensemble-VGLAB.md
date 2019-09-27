@@ -16,7 +16,7 @@ header:
   teaser: /assets/Images/book-summary-ensemble-method-2018summermlstudy-1-638.jpg
 ---
 <center>
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/lpi663VMPlZncc" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/20fkvWqtwoF1kQ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>  
 </center><br>
 
 <Blockquote><span style="font-size:11pt">- review date: 2018/07/03 (by Meyong-Gyu.LEE @Soongsil Univ.)<br>- Korean summary of '기계학습'(오일석 저, 한빛아카데미) chapter 12,</span></Blockquote>
