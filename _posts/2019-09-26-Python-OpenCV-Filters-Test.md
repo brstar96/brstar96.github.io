@@ -229,13 +229,13 @@ plt.imshow(merged)
 유명한 필터 중 하나인 소벨 필터는 1968년 어원 소벨(Irwin Sobel)이 제안한 필터로, 중심 픽셀의 차분 비중을 두 배로 주어 수평 및 수직 대각선 경계 검출에 모두 강한 마스크입니다. 가장 대표적인 1차 미분 마스크로써, 전용 함수를 OpenCV에서 제공해 줍니다. 
 </span>
 
-* <i><b><span style="font-size:10pt">`dst = sv2.Sobel(src, ddepth,dx, dy[, dst, ksize, scale, delta, borderType])`</span></b></i>
-    - <i><b><span style="font-size:10pt">`src`</b></i> : 입력 이미지(Numpy array)</span>
-    - <i><b><span style="font-size:10pt">`ddepth`</b></i> : 출력 영상의 dtype <i>(-1 : 입력 영상과 동일한 타입)</i></span>
-    - <i><b><span style="font-size:10pt">`dx, dy`</b></i> : 미분 차수 <i>(0, 1, 2중 선택 가능하며, 둘 다 0일수는 없음.)</i></span>
-    - <i><b><span style="font-size:10pt">`ksize`</b></i> : 커널의 사이즈 <i>(1, 3, 5, 7중 선택 가능)</i></span>
-    - <i><b><span style="font-size:10pt">`scale`</b></i> : 미분에 사용할 계수</span>
-    - <i><b><span style="font-size:10pt">`delta`</b></i> : 연산 결과에 더할 가중치</span>
+* <i><b>`dst = sv2.Sobel(src, ddepth,dx, dy[, dst, ksize, scale, delta, borderType])`</b></i>
+    - <i><b>`src`</b></i> : 입력 이미지(Numpy array)
+    - <i><b>`ddepth`</b></i> : 출력 영상의 dtype <i>(-1 : 입력 영상과 동일한 타입)</i>
+    - <i><b>`dx, dy`</b></i> : 미분 차수 <i>(0, 1, 2중 선택 가능하며, 둘 다 0일수는 없음.)</i>
+    - <i><b>`ksize`</b></i> : 커널의 사이즈 <i>(1, 3, 5, 7중 선택 가능)</i>
+    - <i><b>`scale`</b></i> : 미분에 사용할 계수
+    - <i><b>`delta`</b></i> : 연산 결과에 더할 가중치
 
 <span style="font-size:11pt">
 하지만 소벨 필터는 커널의 크기가 작은 경우 또는 커널의 크기가 크더라도 그 중심에서 멀어질수록 엣지 방향의 정확도가 떨어지는 단점이 존재합니다.<br>
@@ -288,7 +288,7 @@ plt.imshow(merged_sobel)
 샤르 필터는 위에서 언급한 소벨 필터의 단점을 개선한 필터입니다.
 </span>
 
-<i><b><span style="font-size:10pt">`dst = sv2.Scharr(src, ddepth,dx, dy[, dst, scale, delta, borderType])`</span></b></i>
+<i><b>`dst = sv2.Scharr(src, ddepth,dx, dy[, dst, scale, delta, borderType])`</b></i>
 
 
 ```python
@@ -338,7 +338,7 @@ plt.imshow(merged_scharr)
 1차 미분 결과에 대해 다시 한번 미분을 수행하면(2차 미분) 경계를 좀 더 확실히 검출할 수 있습니다. 라플라시안 필터는 대표적인 2차 미분 필터 중 하나로, OpenCV에서는 소벨 필터와 마찬가지로 `cv2.Laplacian()`함수를 제공하고 있습니다.<br>
 </span>
 
-<i><b><span style="font-size:10pt">`dst = sv2.Laplacian(src, ddepth[, dst, ksize, scale, delta, borderType])`<span></b></i>
+<i><b>`dst = sv2.Laplacian(src, ddepth[, dst, ksize, scale, delta, borderType])`</b></i>
 
 <span style="font-size:11pt">
 라플라시안 필터는 노이즈에 민감하기 때문에 가우시안 블러 필터로 어느 정도 노이즈를 경감시키고 적용하는 것이 좋습니다.<br>
@@ -378,25 +378,24 @@ plt.imshow(merged)
 캐니 엣지 검출기는 1986년 존 캐니(John F. Canny)가 제안한 알고리즘으로, 4단계의 알고리즘을 적용해 잡음에 강한 엣지 검출기입니다. 작동 순서는 아래와 같습니다.<br> 
 </span>
 
-* <span style="font-size:10pt">캐니 알고리즘의 작동 순서</span>
-    1. <span style="font-size:10pt">노이즈 제거(Noise Reduction) : 5 X 5 가우시안 블러링 필터로 노이즈 제거</span>
-    2. <span style="font-size:10pt">엣지 그래디언트 방향 계산 : Sobel Mask를 사용해 엣지 및 그래디언트 방향 검출</span>
-    3. <span style="font-size:10pt">비최대치 억제(Non-Maximum Suppression) : 그래디언트 방향에서 검출된 엣지 중 가장 큰 값만 선택하고 나머지는 제거.</span> 
-    4. <span style="font-size:10pt">이력 스레숄딩(Hysteresis Thresholding) : 두 개의 경계값(Max, Min)을 지정한 후 경계 영역에 있는 픽셀들 중 큰 경계값(Max) 밖의 픽셀과 연결성이 없는 픽셀을 제거.</span>
+* <span style="font-size:12pt">캐니 알고리즘의 작동 순서</span>
+    1. <span style="font-size:11pt">노이즈 제거(Noise Reduction) : 5 X 5 가우시안 블러링 필터로 노이즈 제거</span>
+    2. <span style="font-size:11pt">엣지 그래디언트 방향 계산 : Sobel Mask를 사용해 엣지 및 그래디언트 방향 검출</span>
+    3. <span style="font-size:11pt">비최대치 억제(Non-Maximum Suppression) : 그래디언트 방향에서 검출된 엣지 중 가장 큰 값만 선택하고 나머지는 제거.</span> 
+    4. <span style="font-size:11pt">이력 스레숄딩(Hysteresis Thresholding) : 두 개의 경계값(Max, Min)을 지정한 후 경계 영역에 있는 픽셀들 중 큰 경계값(Max) 밖의 픽셀과 연결성이 없는 픽셀을 제거.</span>
 
 <span style="font-size:11pt">    
 OpenCV는 위 알고리즘을 구현한 `cv2.Canny()` 함수를 제공하고 있습니다.
 </span>
 
-* <i><b><span style="font-size:10pt">`edges = cv2.Canny(img, threshold1, threshold2[, edges, apertureSize, L2gradient])`</span></i></b>
-    - <i><b><span style="font-size:10pt">`img`</b></i> : 입력 이미지(Numpy array)</span>
-    - <i><b><span style="font-size:10pt">`threshold1`, `threshold2`</b></i> : Hysteresis Thresholding에 사용할 최소, 최대값</span>
-    - <i><b><span style="font-size:10pt">`apertureSize`</b></i> : Sobel Mask에 사용할 커널 크기</span>
-    - <i><b><span style="font-size:10pt">`L2gradient`</b></i> : 그래디언트 강도를 구할 방식을 지정하는 플래그</span>
-        - <span style="font-size:9pt">`True` : L2 Norm 사용</span>
-        - <span style="font-size:9pt">`False` : L1 Norm 사용</span>
-    - <i><b><span style="font-size:10pt">`edges`</b></i> : 엣지 결과값을 리턴받을 2차원 배열</span>
-
+* <i><b>`edges = cv2.Canny(img, threshold1, threshold2[, edges, apertureSize, L2gradient])`</i></b>
+    - <i><b>`img`</b></i> : 입력 이미지(Numpy array)
+    - <i><b>`threshold1`, `threshold2`</b></i> : Hysteresis Thresholding에 사용할 최소, 최대값
+    - <i><b>`apertureSize`</b></i> : Sobel Mask에 사용할 커널 크기
+    - <i><b>`L2gradient`</b></i> : 그래디언트 강도를 구할 방식을 지정하는 플래그
+        - `True` : L2 Norm 사용
+        - `False` : L1 Norm 사용
+    - <i><b>`edges`</b></i> : 엣지 결과값을 리턴받을 2차원 배열
 
 ```python
 plt.figure(figsize=(60, 20))
@@ -429,7 +428,7 @@ plt.imshow(edges)
 ## Fourier transform 응용
 <span style="font-size:11pt">
 푸리에 트랜스폼은 이미지를 주파수 영역으로 변환한 후 이미지 프로세싱 작업을 수행할 수 있게 해 주며, 주파수 영역에서의 작업이 끝난 후 Inversion Fourier Transform(IFT) 연산을 통해 원래 이미지 영역으로 되돌려 이미지 프로세싱 결과를 확인해 볼 수 있습니다.<br>
-이미지는 X, Y 두 방향으로 샘플링되는 이산 신호로 간주할 수 있으며, 이는 즉 푸리에 변환을 X, Y축 두 방향에 대해 수행하면 이미지의 주파수 표현을 얻을 수 있음을 의미합니다. <br>
+이미지는 X, Y 두 방향으로 샘플링되는 이산 신호로 간주할 수 있으며, 이는 즉 푸리에 변환을 X, Y축 두 방향에 대해 수행하면 이미지의 주파수 표현을 얻을 수 있음을 의미합니다. <br><br>
 사인(sin) 곡선의 경우 짧은 시간에 진폭이 빠르게 변화하면 고주파 신호라고 볼 수 있으며, 천천히 변화하면 저주파 신호로 볼 수 있습니다. 따라서 이미지의 edge(가장자리)와 노이즈는 이미지의 고주파 부분이라고 할 수 있으며, 진폭에 큰 변화가 없으면 저주파 성분으로 볼 수 있습니다.<br>
 </span>
 
