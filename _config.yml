@@ -99,16 +99,16 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
-    anonymize_ip         : # true, false (default)
+    tracking_id          : "UA-148880734-1"
+    anonymize_ip         : false # true, false (default)
 
 
 # Site Author
 author:
   name             : "Myeong-Gyu.Lee"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "https://github.com/brstar96/brstar96.github.io/blob/master/assets/Images/profile_pic.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "**MS Candidate in Computer Science Course.** I'm interested in Vision, Computer Graphics."
   location         : "Seoul, South Korea."
   email            : "brstar96@naver.com"
