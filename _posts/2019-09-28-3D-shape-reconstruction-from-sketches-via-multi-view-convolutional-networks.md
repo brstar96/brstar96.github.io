@@ -1,5 +1,5 @@
 ﻿---
-title: "(PaperReview) 3D shape reconstruction from sketches via multi view convolutional networks"
+title: "(PaperReview+Test) 3D shape reconstruction from sketches via multi view convolutional networks"
 tags: 
   - Deep Learning
   - Computer Graphics
@@ -9,6 +9,7 @@ tags:
   - 3D Reconstruction
 categories:
   - PaperReview
+  - Shoveling
 toc: false
 comments: 
   provider: "disqus"

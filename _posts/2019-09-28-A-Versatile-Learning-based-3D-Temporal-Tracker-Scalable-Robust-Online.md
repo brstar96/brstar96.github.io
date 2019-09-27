@@ -1,5 +1,5 @@
 ﻿---
-title: "(PaperReview) A Versatile Learning based 3D Temporal Tracker - Scalable, Robust, Online"
+title: "(PaperReview+Test) A Versatile Learning based 3D Temporal Tracker - Scalable, Robust, Online"
 tags: 
   - Machine Learning
   - Random Forest
@@ -7,6 +7,7 @@ tags:
   - AR
 categories:
   - PaperReview
+  - Shoveling
 toc: false
 comments: 
   provider: "disqus"
