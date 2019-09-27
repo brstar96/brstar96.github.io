@@ -58,7 +58,7 @@ Predicted Normal, depth map의 퀄리티가 낮은 가장 강력한 이유로 Pa
 또한 보잉 여객기와 같이 자주 등장하는 모델에 대해서는 꽤 잘 추론하지만 스타워즈 시리즈에 나올 법한 괴상한 우주선은 아예 추론하지 못하는 모습을 보이기도 했습니다. </span>
 
 <center>
-<img src="/assets/Images/wronecase.jpg">
+<img src="/assets/Images/wrongcase.jpg">
 </center>
 
 <span style="font-size:11pt">
