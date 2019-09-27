@@ -24,7 +24,7 @@ description              : ""
 url                      : "https://brstar96.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "brstar96/brstar96.github.io"
-teaser                   : "/assets/Images/500x300.png"
+# teaser                   : "/assets/Images/500x300.png"
 logo                     : "/assets/Images/Deeperence_Logo.png"
 masthead_title           : "brstar96의 블로그"
 breadcrumbs            : true # true, false (default)
@@ -113,6 +113,9 @@ author:
   location         : "Seoul, South Korea."
   email            : "brstar96@naver.com"
   links:
+    - label: "Goto Site Main"
+      icon: "fas fa-fw fa-link"
+      url: "https://brstar96.github.io/"
     - label: "Naver Blog"
       icon: "fas fa-fw fa-link"
       url: "https://blog.naver.com/brstar96"
