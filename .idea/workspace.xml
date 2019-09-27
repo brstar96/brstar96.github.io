@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66770afd-f965-42fc-9cad-dda8d6b9af81" name="Default Changelist" comment="update 'Review of Deep Learning Algorithms for Image Semantic Segmentation'">
+    <list default="true" id="66770afd-f965-42fc-9cad-dda8d6b9af81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2019-09-27-Review-of-Deep-Learning-Algorithms-for-Image-Semantic-Segmentation.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-09-27-Review-of-Deep-Learning-Algorithms-for-Image-Semantic-Segmentation.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,8 +41,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2019-09-27-Review-of-Deep-Learning-Algorithms-for-Image-Semantic-Segmentation.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="414">
-                <caret line="30" selection-start-line="30" selection-end-line="30" />
+              <first_editor relative-caret-position="396">
+                <caret line="124" column="19" lean-forward="true" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
               </first_editor>
               <second_editor />
             </state>
@@ -71,6 +72,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>10pt</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -229,7 +235,28 @@
       <option name="project" value="LOCAL" />
       <updated>1569573822900</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update 'Review of Deep Learning Algorithms for Image Semantic Segmentation'">
+      <created>1569573928759</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1569573928759</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update 'Review of Deep Learning Algorithms for Image Semantic Segmentation'">
+      <created>1569574129704</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1569574129704</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update 'Review of Deep Learning Algorithms for Image Semantic Segmentation'">
+      <created>1569574437756</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1569574437756</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -334,8 +361,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2019-09-27-Review-of-Deep-Learning-Algorithms-for-Image-Semantic-Segmentation.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="414">
-            <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <first_editor relative-caret-position="396">
+            <caret line="124" column="19" lean-forward="true" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
           </first_editor>
           <second_editor />
         </state>
