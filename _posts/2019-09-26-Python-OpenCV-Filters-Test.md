@@ -4,7 +4,7 @@ tags:
   - Python OpenCV
   - Edge Detection
 categories:
-  - Computer Vision
+  - shoveling
 toc: true
 comments: 
   provider: "disqus"
