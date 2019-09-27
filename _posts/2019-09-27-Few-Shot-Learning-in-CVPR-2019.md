@@ -37,37 +37,34 @@ header:
 
 ### Papers covered in this post
 
-<span style="font-size:11pt">
-* <b>Metric learning 분야</b>
-    1. [Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning](https://arxiv.org/abs/1903.12290) (Wenbin Li et al.)
-    2. [Few-Shot Learning with Localization in Realistic Settings](https://arxiv.org/abs/1904.08502) (Davis Wertheimer et al.)
-    3. [Dense Classification and Implanting for Few-Shot Learning](https://arxiv.org/abs/1903.05050) (Yann Lifchitz et al.)
-    4. [Variational Prototyping-Encoder: One-Shot Learning with Prototypical Images](https://arxiv.org/abs/1904.08482) (Junsik Kim et al.)
-* <b>Meta learning 분야</b>
-    1. [Meta-Learning with Differentiable Convex Optimization](https://arxiv.org/abs/1904.03758) (Kwonjoon Lee et al.)
-    2. [Edge-labeling Graph Neural Network for Few-shot Learning](https://arxiv.org/abs/1905.01436) (Jongmin Kim et al.)
-    3. [Meta-Transfer Learning for Few-Shot Learning](https://arxiv.org/abs/1812.02391) (Qianru Sun et al.)
-    4. [Generating Classification Weights with GNN Denoising Autoencoders for Few-Shot Learning](https://arxiv.org/abs/1905.01102) (Spyros Gidaris et al.)
-    5. [Finding Task-Relevant Features for Few-Shot Learning by Category Traversal](https://arxiv.org/abs/1905.11116) (Hongyang Li et al.)
-* <b>Data augmentation 분야</b>
-    1. [LaSO: Label-Set Operations networks for multi-label few-shot learning](https://arxiv.org/abs/1902.09811) (Amit Alfassy et al.)
-    2. [Few-Shot Learning via Saliency-guided Hallucination of Samples](https://arxiv.org/abs/1904.03472) (Hongguang Zhang et al.)
-    3. [Spot and Learn: A Maximum-Entropy Patch Sampler for Few-Shot Image Classification](http://openaccess.thecvf.com/content_CVPR_2019/papers/Chu_Spot_and_Learn_A_Maximum-Entropy_Patch_Sampler_for_Few-Shot_Image_CVPR_2019_paper.pdf) (Wen-Hsuan Chu et al.)
-    4. [Image Deformation Meta-Networks for One-Shot Learning](https://arxiv.org/abs/1905.11641) (Zitian Chen et al.)
-* <b>Semantics-based 분야</b>
-    1. [Baby steps towards few-shot learning with multiple semantics](https://arxiv.org/abs/1906.01905) (Eli Schwartz et al.) 
-    2. [Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders](https://arxiv.org/abs/1812.01784) (Edgar Schönfeld et al.)
-    3. [TAFE-Net: Task-Aware Feature Embeddings for Low Shot Learning](https://arxiv.org/abs/1904.05967) (Xin Wang et al.)
-    4. [Large-Scale Few-Shot Learning: Knowledge Transfer With Class Hierarchy](https://arxiv.org/abs/1904.05967) (Aoxue Li et al.)
-* <b>Beyond recognition (인식 이외 다른 분야들을 위한 few-shot learning기법들)</b>
-    1. [RepMet: Representative-based metric learning for classification and one-shot object detection](https://arxiv.org/abs/1806.04728) (Leonid Karlinsky et al.)
-    2. [CANet: Class-Agnostic Segmentation Networks with Iterative Refinement and Attentive Few-Shot Learning](https://arxiv.org/abs/1903.02351) (Chi Zhang et al.)  
-
-</span>
+* <b><span style="font-size:12pt">Metric learning 분야</span></b>
+    1. <span style="font-size:10pt">[Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning](https://arxiv.org/abs/1903.12290) (Wenbin Li et al.)</span>
+    2. <span style="font-size:10pt">[Few-Shot Learning with Localization in Realistic Settings](https://arxiv.org/abs/1904.08502) (Davis Wertheimer et al.)</span>
+    3. <span style="font-size:10pt">[Dense Classification and Implanting for Few-Shot Learning](https://arxiv.org/abs/1903.05050) (Yann Lifchitz et al.)</span>
+    4. <span style="font-size:10pt">[Variational Prototyping-Encoder: One-Shot Learning with Prototypical Images](https://arxiv.org/abs/1904.08482) (Junsik Kim et al.)</span>
+* <b><span style="font-size:12pt">Meta learning 분야</span></b>
+    1. <span style="font-size:10pt">[Meta-Learning with Differentiable Convex Optimization](https://arxiv.org/abs/1904.03758) (Kwonjoon Lee et al.)</span>
+    2. <span style="font-size:10pt">[Edge-labeling Graph Neural Network for Few-shot Learning](https://arxiv.org/abs/1905.01436) (Jongmin Kim et al.)</span>
+    3. <span style="font-size:10pt">[Meta-Transfer Learning for Few-Shot Learning](https://arxiv.org/abs/1812.02391) (Qianru Sun et al.)</span>
+    4. <span style="font-size:10pt">[Generating Classification Weights with GNN Denoising Autoencoders for Few-Shot Learning](https://arxiv.org/abs/1905.01102) (Spyros Gidaris et al.)</span>
+    5. <span style="font-size:10pt">[Finding Task-Relevant Features for Few-Shot Learning by Category Traversal](https://arxiv.org/abs/1905.11116) (Hongyang Li et al.)</span>
+* <b><span style="font-size:12pt">Data augmentation 분야</span></b>
+    1. <span style="font-size:10pt">[LaSO: Label-Set Operations networks for multi-label few-shot learning](https://arxiv.org/abs/1902.09811) (Amit Alfassy et al.)</span>
+    2. <span style="font-size:10pt">[Few-Shot Learning via Saliency-guided Hallucination of Samples](https://arxiv.org/abs/1904.03472) (Hongguang Zhang et al.)</span>
+    3. <span style="font-size:10pt">[Spot and Learn: A Maximum-Entropy Patch Sampler for Few-Shot Image Classification](http://openaccess.thecvf.com/content_CVPR_2019/papers/Chu_Spot_and_Learn_A_Maximum-Entropy_Patch_Sampler_for_Few-Shot_Image_CVPR_2019_paper.pdf) (Wen-Hsuan Chu et al.)</span>
+    4. <span style="font-size:10pt">[Image Deformation Meta-Networks for One-Shot Learning](https://arxiv.org/abs/1905.11641) (Zitian Chen et al.)</span>
+* <b><span style="font-size:12pt">Semantics-based 분야</span></b>
+    1. <span style="font-size:10pt">[Baby steps towards few-shot learning with multiple semantics](https://arxiv.org/abs/1906.01905) (Eli Schwartz et al.)</span> 
+    2. <span style="font-size:10pt">[Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders](https://arxiv.org/abs/1812.01784) (Edgar Schönfeld et al.)</span>
+    3. <span style="font-size:10pt">[TAFE-Net: Task-Aware Feature Embeddings for Low Shot Learning](https://arxiv.org/abs/1904.05967) (Xin Wang et al.)</span>
+    4. <span style="font-size:10pt">[Large-Scale Few-Shot Learning: Knowledge Transfer With Class Hierarchy](https://arxiv.org/abs/1904.05967) (Aoxue Li et al.)</span>
+* <b><span style="font-size:12pt">Beyond recognition (인식 이외 다른 분야들을 위한 few-shot learning기법들)</span></b>
+    1. <span style="font-size:10pt">[RepMet: Representative-based metric learning for classification and one-shot object detection](https://arxiv.org/abs/1806.04728) (Leonid Karlinsky et al.)</span>
+    2. <span style="font-size:10pt">[CANet: Class-Agnostic Segmentation Networks with Iterative Refinement and Attentive Few-Shot Learning](https://arxiv.org/abs/1903.02351) (Chi Zhang et al.)</span>  
 
 ### Performance on the mini-ImageNet benchmark
 <span style="font-size:11pt">
- 연관성이 있고 제출된 논문들에 대해서 1-shot 성능순으로 정렬해 보았습니다. <br>
+ <i>(포스트의 내용과) 연관성이 있는 이번 논문들에 대해서 1-shot 성능순으로 정렬해 보았습니다. </i><br>
 </span>
 
 ![png](/assets/Images/performance-on-the-mini-Imagenet-bench.png)
