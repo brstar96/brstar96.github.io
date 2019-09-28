@@ -8,6 +8,7 @@ tags:
   - VAE
 categories:
   - PaperReview
+  - Event&Seminar
 toc: false
 comments: 
   provider: "disqus"
