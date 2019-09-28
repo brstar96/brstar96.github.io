@@ -10,6 +10,9 @@ main:
     url: https://brstar96.github.io/categories/#paperreview
   - title: "삽질일기"
     url: https://brstar96.github.io/categories/#shoveling
+  - title: "세미나/행사"
+    url: https://brstar96.github.io/categories/#eventandseminar
+    
 #   - title: "삽질 기록"
 #     url: /year-archive/
   # - title: "Sample Collections"
