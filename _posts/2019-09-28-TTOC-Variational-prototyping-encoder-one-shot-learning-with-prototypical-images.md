@@ -25,7 +25,7 @@ header:
 </span>
 
 - ## 목적<br>
-    - <span style="font-size:11pt">기존 데이터셋에서는 데이터셋의 스케일이 크더라도 각 클래스별 분포의 불균형으로 인해 모델을 완벽하게 학습시키는 데에 어려움이 존재</br><br>  
+    - <span style="font-size:11pt">기존 데이터셋에서는 데이터셋의 스케일이 크더라도 각 클래스별 분포의 불균형으로 인해 모델을 완벽하게 학습시키는 데에 어려움이 존재</span><br>  
     ![png](/assets/Images/TTOC-VPE-motivation.png)
     - <span style="font-size:11pt">특정 클래스에 데이터들이 몰려 있고 나머지 부분은 few-shot이라는 한계 존재. TT100K 데이터셋의 경우에도 다섯개 도시 인근에서 10만개의 데이터를 캡쳐했음에도 평가를 하기 어려운 클래스들이 존재하는 제약사향이 잔존.</span>
     - <span style="font-size:11pt">따라서 상기 문제를 해결하고자 하며, 이 문제들이 해결되면 Brand Logo 인식, Public sign 인식을 통한 환경 이해(Understand an environment), Traffic sign 이해를 통한 교통환경 이해(Understand traffic for autonomous vehicle)문제와 같은 다양한 태스크에 적용 가능.</span>
