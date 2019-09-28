@@ -17,7 +17,7 @@ comments:
     shortname: "https-brstar96-github-io"
 use_math: true
 header:
-  teaser: /assets/Images/paper-review-reconstruction-of-monte-carlo-image-sequences-using-a-recurrent-denoising-autoencoder-1-638
+  teaser: /assets/Images/paper-review-reconstruction-of-monte-carlo-image-sequences-using-a-recurrent-denoising-autoencoder-1-638.jpg
 ---
 <center>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/89I0NjlftGP96j" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
