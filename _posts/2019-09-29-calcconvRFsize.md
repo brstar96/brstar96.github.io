@@ -40,7 +40,7 @@ header:
     · <span style="font-size:11pt"><b><i>$KSize$</i></b> : Size of the convolution kernel between input and output.<br></span>
     </Blockquote>
     
-    <span style="font-size:13pt">$InputSize=(OutputSize-1)\timesKernelStride+KernelSize$</span>
+    <span style="font-size:13pt">$InputSize=(OutputSize\ -\ 1)\timesKernelStride+KernelSize.$</span>
     
 - ## 같이 보면 좋은 글
     - <span style="font-size:11pt">[(Stack Overflow) CS231n: Total memory of VGGnet](https://stackoverflow.com/questions/49423323/cs231n-total-memory-of-vggnet)</span> 
