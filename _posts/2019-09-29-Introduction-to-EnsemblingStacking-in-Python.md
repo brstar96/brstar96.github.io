@@ -813,23 +813,19 @@ fig = go.Figure(data=data, layout=layout)
 py.iplot(fig,filename='scatter2010')
 ```
 
-
 <div>
-        
-        
-            <div id="38b0a184-4142-4122-be09-1d97b99a762d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    window.PLOTLYENV.BASE_URL='https://plot.ly';
-                    
-                if (document.getElementById("38b0a184-4142-4122-be09-1d97b99a762d")) {
-                    Plotly.newPlot(
-                        '38b0a184-4142-4122-be09-1d97b99a762d',
-                        [{"marker": {"color": [0.10474135, 0.21837029, 0.04432652, 0.02249159, 0.05432591, 0.02854371, 0.07570305, 0.01088129, 0.24247496, 0.13685733, 0.06128402], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "beb52a36-4a12-4642-afcd-5fb921b14099", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.10474135, 0.21837029, 0.04432652, 0.02249159, 0.05432591, 0.02854371, 0.07570305, 0.01088129, 0.24247496, 0.13685733, 0.06128402]}],
-                        {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Random Forest Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
-                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
-                    ).then(function(){
+<div id="38b0a184-4142-4122-be09-1d97b99a762d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+<script type="text/javascript">
+    require(["plotly"], function(Plotly) {
+        window.PLOTLYENV=window.PLOTLYENV || {};
+        window.PLOTLYENV.BASE_URL='https://plot.ly';
+    if (document.getElementById("38b0a184-4142-4122-be09-1d97b99a762d")) {
+        Plotly.newPlot(
+            '38b0a184-4142-4122-be09-1d97b99a762d',
+            [{"marker": {"color": [0.10474135, 0.21837029, 0.04432652, 0.02249159, 0.05432591, 0.02854371, 0.07570305, 0.01088129, 0.24247496, 0.13685733, 0.06128402], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "beb52a36-4a12-4642-afcd-5fb921b14099", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.10474135, 0.21837029, 0.04432652, 0.02249159, 0.05432591, 0.02854371, 0.07570305, 0.01088129, 0.24247496, 0.13685733, 0.06128402]}],
+            {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Random Forest Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
+            {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+        ).then(function(){
                             
 var gd = document.getElementById('38b0a184-4142-4122-be09-1d97b99a762d');
 var x = new MutationObserver(function (mutations, observer) {{
@@ -852,31 +848,25 @@ var outputEl = gd.closest('.output');
 if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
-
                         })
                 };
                 });
             </script>
         </div>
 
-
-
-<div>
-        
-        
-            <div id="8f074751-16da-4a03-aab5-567c726922d0" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    window.PLOTLYENV.BASE_URL='https://plot.ly';
-                    
-                if (document.getElementById("8f074751-16da-4a03-aab5-567c726922d0")) {
-                    Plotly.newPlot(
-                        '8f074751-16da-4a03-aab5-567c726922d0',
-                        [{"marker": {"color": [0.12165657, 0.37098307, 0.03129623, 0.01591611, 0.05525811, 0.028157, 0.04589793, 0.02030357, 0.17289562, 0.04853517, 0.08910063], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "2c4a0ba2-93f0-4967-a8d6-13a1cdbc52b2", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.12165657, 0.37098307, 0.03129623, 0.01591611, 0.05525811, 0.028157, 0.04589793, 0.02030357, 0.17289562, 0.04853517, 0.08910063]}],
-                        {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Extra Trees Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
-                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
-                    ).then(function(){
+<div>        
+    <div id="8f074751-16da-4a03-aab5-567c726922d0" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+    <script type="text/javascript">
+        require(["plotly"], function(Plotly) {
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            window.PLOTLYENV.BASE_URL='https://plot.ly';
+        if (document.getElementById("8f074751-16da-4a03-aab5-567c726922d0")) {
+            Plotly.newPlot(
+                '8f074751-16da-4a03-aab5-567c726922d0',
+                [{"marker": {"color": [0.12165657, 0.37098307, 0.03129623, 0.01591611, 0.05525811, 0.028157, 0.04589793, 0.02030357, 0.17289562, 0.04853517, 0.08910063], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "2c4a0ba2-93f0-4967-a8d6-13a1cdbc52b2", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.12165657, 0.37098307, 0.03129623, 0.01591611, 0.05525811, 0.028157, 0.04589793, 0.02030357, 0.17289562, 0.04853517, 0.08910063]}],
+                {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Extra Trees Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
+                {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+            ).then(function(){
                             
 var gd = document.getElementById('8f074751-16da-4a03-aab5-567c726922d0');
 var x = new MutationObserver(function (mutations, observer) {{
@@ -899,31 +889,25 @@ var outputEl = gd.closest('.output');
 if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
-
                         })
                 };
                 });
             </script>
         </div>
 
-
-
 <div>
-        
-        
-            <div id="421bfae6-c82f-4c1b-8f37-aea308c7d70b" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    window.PLOTLYENV.BASE_URL='https://plot.ly';
-                    
-                if (document.getElementById("421bfae6-c82f-4c1b-8f37-aea308c7d70b")) {
-                    Plotly.newPlot(
-                        '421bfae6-c82f-4c1b-8f37-aea308c7d70b',
-                        [{"marker": {"color": [0.028, 0.008, 0.012, 0.05866667, 0.032, 0.008, 0.04666667, 0.0, 0.05733333, 0.73866667, 0.01066667], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "955ed24b-c7cd-4aa4-9a13-bd18ff95ee6b", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.028, 0.008, 0.012, 0.05866667, 0.032, 0.008, 0.04666667, 0.0, 0.05733333, 0.73866667, 0.01066667]}],
-                        {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "AdaBoost Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
-                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
-                    ).then(function(){
+    <div id="421bfae6-c82f-4c1b-8f37-aea308c7d70b" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+    <script type="text/javascript">
+        require(["plotly"], function(Plotly) {
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            window.PLOTLYENV.BASE_URL='https://plot.ly';
+        if (document.getElementById("421bfae6-c82f-4c1b-8f37-aea308c7d70b")) {
+            Plotly.newPlot(
+                '421bfae6-c82f-4c1b-8f37-aea308c7d70b',
+                [{"marker": {"color": [0.028, 0.008, 0.012, 0.05866667, 0.032, 0.008, 0.04666667, 0.0, 0.05733333, 0.73866667, 0.01066667], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "955ed24b-c7cd-4aa4-9a13-bd18ff95ee6b", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.028, 0.008, 0.012, 0.05866667, 0.032, 0.008, 0.04666667, 0.0, 0.05733333, 0.73866667, 0.01066667]}],
+                {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "AdaBoost Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
+                {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+            ).then(function(){
                             
 var gd = document.getElementById('421bfae6-c82f-4c1b-8f37-aea308c7d70b');
 var x = new MutationObserver(function (mutations, observer) {{
@@ -946,31 +930,25 @@ var outputEl = gd.closest('.output');
 if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
-
                         })
                 };
                 });
             </script>
         </div>
 
-
-
 <div>
-        
-        
-            <div id="ed256dea-4bf4-4336-a21a-74d5a5fb4518" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    window.PLOTLYENV.BASE_URL='https://plot.ly';
-                    
-                if (document.getElementById("ed256dea-4bf4-4336-a21a-74d5a5fb4518")) {
-                    Plotly.newPlot(
-                        'ed256dea-4bf4-4336-a21a-74d5a5fb4518',
-                        [{"marker": {"color": [0.06796144, 0.03889349, 0.07237845, 0.02628645, 0.11194395, 0.04778854, 0.05965792, 0.02774745, 0.07462718, 0.4593142, 0.01340093], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "6ab66e1c-b36b-48b5-80ba-aafff65fbdc6", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.06796144, 0.03889349, 0.07237845, 0.02628645, 0.11194395, 0.04778854, 0.05965792, 0.02774745, 0.07462718, 0.4593142, 0.01340093]}],
-                        {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Gradient Boosting Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
-                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
-                    ).then(function(){
+    <div id="ed256dea-4bf4-4336-a21a-74d5a5fb4518" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+    <script type="text/javascript">
+        require(["plotly"], function(Plotly) {
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            window.PLOTLYENV.BASE_URL='https://plot.ly';       
+        if (document.getElementById("ed256dea-4bf4-4336-a21a-74d5a5fb4518")) {
+            Plotly.newPlot(
+                'ed256dea-4bf4-4336-a21a-74d5a5fb4518',
+                [{"marker": {"color": [0.06796144, 0.03889349, 0.07237845, 0.02628645, 0.11194395, 0.04778854, 0.05965792, 0.02774745, 0.07462718, 0.4593142, 0.01340093], "colorscale": "Portland", "showscale": true, "size": 25, "sizemode": "diameter", "sizeref": 1}, "mode": "markers", "text": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "type": "scatter", "uid": "6ab66e1c-b36b-48b5-80ba-aafff65fbdc6", "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.06796144, 0.03889349, 0.07237845, 0.02628645, 0.11194395, 0.04778854, 0.05965792, 0.02774745, 0.07462718, 0.4593142, 0.01340093]}],
+                {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Gradient Boosting Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
+                {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+            ).then(function(){
                             
 var gd = document.getElementById('ed256dea-4bf4-4336-a21a-74d5a5fb4518');
 var x = new MutationObserver(function (mutations, observer) {{
@@ -993,13 +971,11 @@ var outputEl = gd.closest('.output');
 if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
-
                         })
                 };
                 });
             </script>
         </div>
-
 
 <span style="font-size:11pt">이제 모든 feature importance의 평균을 계산하고 데이터프레임에 새로운 열(column)로 저장합니다.</span>
 
@@ -1012,18 +988,14 @@ feature_dataframe.head(3)
 ```
 
 
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
@@ -1073,7 +1045,6 @@ feature_dataframe.head(3)
 </div>
 
 
-
 #### 평균 feature importance의 Ploty Barplot 그리기 
 <span style="font-size:11pt">모든 분류기에서 평균 featue importance를 얻은 다음 이를 다음과 같이 ploty가 제공하는 barplot 형태로 그릴 수 있습니다.</span> 
 
@@ -1117,21 +1088,18 @@ py.iplot(fig, filename='bar-direct-labels')
 
 
 <div>
-        
-        
-            <div id="7bbaf8f2-071b-4afc-a2e7-11737703a88d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    window.PLOTLYENV.BASE_URL='https://plot.ly';
-                    
-                if (document.getElementById("7bbaf8f2-071b-4afc-a2e7-11737703a88d")) {
-                    Plotly.newPlot(
-                        '7bbaf8f2-071b-4afc-a2e7-11737703a88d',
-                        [{"marker": {"color": [0.08058984, 0.1590617125, 0.0400003, 0.030840205, 0.0633819925, 0.028122312499999996, 0.0569813925, 0.0147330775, 0.1368327725, 0.34584334250000004, 0.0436130625], "colorscale": "Portland", "reversescale": false, "showscale": true}, "opacity": 0.6, "type": "bar", "uid": "eefa7b3d-a020-4a1a-84f7-41180d023d2f", "width": 0.5, "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.08058984, 0.1590617125, 0.0400003, 0.030840205, 0.0633819925, 0.028122312499999996, 0.0569813925, 0.0147330775, 0.1368327725, 0.34584334250000004, 0.0436130625]}],
-                        {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Barplots of Mean Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
-                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
-                    ).then(function(){
+    <div id="7bbaf8f2-071b-4afc-a2e7-11737703a88d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+    <script type="text/javascript">
+        require(["plotly"], function(Plotly) {
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            window.PLOTLYENV.BASE_URL='https://plot.ly';
+        if (document.getElementById("7bbaf8f2-071b-4afc-a2e7-11737703a88d")) {
+            Plotly.newPlot(
+                '7bbaf8f2-071b-4afc-a2e7-11737703a88d',
+                [{"marker": {"color": [0.08058984, 0.1590617125, 0.0400003, 0.030840205, 0.0633819925, 0.028122312499999996, 0.0569813925, 0.0147330775, 0.1368327725, 0.34584334250000004, 0.0436130625], "colorscale": "Portland", "reversescale": false, "showscale": true}, "opacity": 0.6, "type": "bar", "uid": "eefa7b3d-a020-4a1a-84f7-41180d023d2f", "width": 0.5, "x": ["Pclass", "Sex", "Age", "Parch", "Fare", "Embarked", "Name_length", "Has_Cabin", "FamilySize", "IsAlone", "Title"], "y": [0.08058984, 0.1590617125, 0.0400003, 0.030840205, 0.0633819925, 0.028122312499999996, 0.0569813925, 0.0147330775, 0.1368327725, 0.34584334250000004, 0.0436130625]}],
+                {"autosize": true, "hovermode": "closest", "showlegend": false, "title": {"text": "Barplots of Mean Feature Importance"}, "yaxis": {"gridwidth": 2, "ticklen": 5, "title": {"text": "Feature Importance"}}},
+                {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+            ).then(function(){
                             
 var gd = document.getElementById('7bbaf8f2-071b-4afc-a2e7-11737703a88d');
 var x = new MutationObserver(function (mutations, observer) {{
@@ -1154,7 +1122,6 @@ var outputEl = gd.closest('.output');
 if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
-
                         })
                 };
                 });
@@ -1177,18 +1144,14 @@ base_predictions_train.head()
 ```
 
 
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
@@ -1264,21 +1227,18 @@ py.iplot(data, filename='labelled-heatmap')
 
 
 <div>
-        
-        
-            <div id="94f9851d-f2b8-44be-af81-f31155531aa1" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                require(["plotly"], function(Plotly) {
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    window.PLOTLYENV.BASE_URL='https://plot.ly';
-                    
-                if (document.getElementById("94f9851d-f2b8-44be-af81-f31155531aa1")) {
-                    Plotly.newPlot(
-                        '94f9851d-f2b8-44be-af81-f31155531aa1',
-                        [{"colorscale": "Viridis", "reversescale": true, "showscale": true, "type": "heatmap", "uid": "117ebd26-9bf1-4f54-9b19-6e7919a591da", "x": ["RandomForest", "ExtraTrees", "AdaBoost", "GradientBoost"], "y": ["RandomForest", "ExtraTrees", "AdaBoost", "GradientBoost"], "z": [[1.0, 0.8755416342429254, 0.7828559228783493, 0.7286294836301596], [0.8755416342429254, 1.0, 0.7895054507871532, 0.7215038347699684], [0.7828559228783493, 0.7895054507871532, 1.0, 0.663117156765499], [0.7286294836301596, 0.7215038347699684, 0.663117156765499, 1.0]]}],
-                        {},
-                        {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
-                    ).then(function(){
+    <div id="94f9851d-f2b8-44be-af81-f31155531aa1" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+    <script type="text/javascript">
+        require(["plotly"], function(Plotly) {
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            window.PLOTLYENV.BASE_URL='https://plot.ly';
+        if (document.getElementById("94f9851d-f2b8-44be-af81-f31155531aa1")) {
+            Plotly.newPlot(
+                '94f9851d-f2b8-44be-af81-f31155531aa1',
+                [{"colorscale": "Viridis", "reversescale": true, "showscale": true, "type": "heatmap", "uid": "117ebd26-9bf1-4f54-9b19-6e7919a591da", "x": ["RandomForest", "ExtraTrees", "AdaBoost", "GradientBoost"], "y": ["RandomForest", "ExtraTrees", "AdaBoost", "GradientBoost"], "z": [[1.0, 0.8755416342429254, 0.7828559228783493, 0.7286294836301596], [0.8755416342429254, 1.0, 0.7895054507871532, 0.7215038347699684], [0.7828559228783493, 0.7895054507871532, 1.0, 0.663117156765499], [0.7286294836301596, 0.7215038347699684, 0.663117156765499, 1.0]]}],
+                {},
+                {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly", "responsive": true}
+            ).then(function(){
                             
 var gd = document.getElementById('94f9851d-f2b8-44be-af81-f31155531aa1');
 var x = new MutationObserver(function (mutations, observer) {{
@@ -1301,7 +1261,6 @@ var outputEl = gd.closest('.output');
 if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
-
                         })
                 };
                 });
