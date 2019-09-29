@@ -78,7 +78,6 @@ header:
     <a href="/assets/Images/Revisiting-Local-Descriptor-based-Image-to-Class-Measure-for-Few-shot-Learning.png"><img src="/assets/Images/Revisiting-Local-Descriptor-based-Image-to-Class-Measure-for-Few-shot-Learning.png"></a>
 </figure>
 
-
 <span style="font-size:11pt">
  이 연구에서 저자들은 bag-of-word 시절 느낌이 들게 하는 local descriptors를 제안합니다. 그러나 features가 CNN으로부터 뽑힌다는 것과, 모든 것들이 end-to-end로 학습된다는 것이 차이점입니다. 논문의 결과는 벤치마크 결과의 아래쪽에 있습니다. <br>
 </span>

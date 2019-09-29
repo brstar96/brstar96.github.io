@@ -24,8 +24,9 @@ header:
 # Intro(들어가며)
 
 <figure>
-    <a href="/assets/Images/COCO.jpg"><img src="/assets/Images/COCO.jpg"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ stuff segmentation을 위한 COCO dataset 예시. (http://cocodataset.org/)</span></center></i></figcaption>
+    <center>
+    <a href="/assets/Images/COCO.jpg"><img src="/assets/Images/COCO.jpg"></a></center>
+    <figcaption><i><center><span style="font-size:11pt">▲ stuff segmentation을 위한 COCO dataset 예시. (http://cocodataset.org/)</span></center></i></figcaption>
 </figure>
 
 <span style="font-size:11pt">
@@ -43,7 +44,8 @@ header:
 </span>
 
 <figure>
-    <a href="/assets/Images/PASCAL-VOC.png"><img src="/assets/Images/PASCAL-VOC.png"></a>
+    <center>
+    <a href="/assets/Images/PASCAL-VOC.png"><img src="/assets/Images/PASCAL-VOC.png"></a></center>
     <figcaption><i><center><span style="font-size:10pt">▲ 이미지 분할(Image Segmentation)을 위한 2012 PASCAL VOC dataset의 예 (출처 : http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html)</span></center></i></figcaption>
 </figure>
 
@@ -53,7 +55,8 @@ header:
 </span>
 
 <figure>
-    <a href="/assets/Images/PASCAL-Context.png"><img src="/assets/Images/PASCAL-Context.png"></a>
+    <center>
+    <a href="/assets/Images/PASCAL-Context.png"><img src="/assets/Images/PASCAL-Context.png"></a></center>
     <figcaption><i><center><span style="font-size:10pt">▲ PASCAL-Context 데이터셋의 예 (출처 : https://cs.stanford.edu/~roozbeh/pascal-context/)</span></center></i></figcaption>
 </figure>
 
@@ -66,8 +69,9 @@ header:
 </span>
 
 <figure>
-    <a href="/assets/Images/COCO2.png"><img src="/assets/Images/COCO2.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ 객체 세분화(Object segmentation)를 위한 COCO 데이터셋의 예 (출처 : http://cocodataset.org/)</span></center></i></figcaption>
+    <center>
+    <a href="/assets/Images/COCO2.png"><img src="/assets/Images/COCO2.png"></a></center>
+    <figcaption><i><center><span style="font-size:11pt">▲ 객체 세분화(Object segmentation)를 위한 COCO 데이터셋의 예 (출처 : http://cocodataset.org/)</span></center></i></figcaption>
 </figure>
 
 ##  <b><i>Cityscapes 데이터셋</i></b>
@@ -75,8 +79,9 @@ header:
  Cityscapes 데이터셋은 2016년에 공개되었으며 50개 도시에 대해 세그먼트화된 도시 이미지들로 구성되어 있습니다. Train 및 validation을 위한 23.5k장의 이미지(정밀하고 거칠게 주석이 달린)들과 테스트를 위한 1.5k장의 이미지(정밀한 주석만 달린)들로 구성되어 있습니다. 이미지는 땅, 인간, 차량, 구조물, 객체, 자연물, 하늘, 텅 빈 부분 8개의 슈퍼 카테고리 내에서 29개의 클래스로 PASCAL-Context 데이터셋처럼 분할되어 있습니다. 꽤 복잡하기 때문에 semantic segmentation 모델을 평가하는 데 종종 사용되기도 합니다. 또한 자율 주행을 위한 실제 거리 이미지들과 상당히 유사성을 지니는 것으로도 유명합니다. Semantic segmentation 모델의 성능은 PASCAL 데이터셋처럼 mIoU 평가 지표를 사용하여 계산됩니다.<br> 
 </span>
 <figure>
-    <a href="/assets/Images/CityScape.png"><img src="/assets/Images/CityScape.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ Cityscapes 데이터셋의 예 (출처 : https://www.cityscapes-dataset.com/)</span></center></i></figcaption>
+    <center>
+    <a href="/assets/Images/CityScape.png"><img src="/assets/Images/CityScape.png"></a></center>
+    <figcaption><i><center><span style="font-size:11pt">▲ Cityscapes 데이터셋의 예 (출처 : https://www.cityscapes-dataset.com/)</span></center></i></figcaption>
 </figure>
 
 <br>
@@ -89,10 +94,10 @@ header:
  저자들은 2012 ImageNet 데이터셋으로 pretrain된 모델을 사용하여 2012 PASCAL VOC segmentation 대회에서 62.2%의 mIoU 점수를 얻었습니다. 그에 비해 2012 PASCAL VOC object detection 대회에서는 Faster R-CNN이라는 모델이 78.8% mIoU 점수를 얻었습니다. 두 대회의 결과(다른 모델, 다른 데이터셋 및 다른 문제)를 직접 비교할 수 없긴 하지만, semantic segmentation 태스크는 object detection 태스크에 비해 훨씬 어려운 문제인 것 같습니다. <br> 
 </span>
 
-<figure class = half>
+<figure class = "half">
     <a href="/assets/Images/FCN1.png"><img src="/assets/Images/FCN1.png"></a>
     <a href="/assets/Images/FCN2.png"><img src="/assets/Images/FCN2.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ FCN의 아키텍쳐. (우측의 Skip-connection 그림은 역자가 추가)(출처 : J. Long et al. (2015))</span></center></i></figcaption>
+    <figcaption><i><center><span style="font-size:11pt">▲ FCN의 아키텍쳐. (우측의 Skip-connection 그림은 역자가 추가)(출처 : J. Long et al. (2015))</span></center></i></figcaption>
 </figure>
 
 ## <b><i>ParseNet</i></b>
@@ -102,8 +107,9 @@ header:
 
 
 <figure>
-    <a href="/assets/Images/ParseNet.png"><img src="/assets/Images/ParseNet.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ FCN과 ParseNet의 segmentation 결과 비교(좌측) 및 ParseNet module의 아키텍쳐. (출처 : W. Liu et al. (2015))</span></center></i></figcaption>
+    <center>
+    <a href="/assets/Images/ParseNet.png"><img src="/assets/Images/ParseNet.png"></a></center>
+    <figcaption><i><center><span style="font-size:11pt">▲ FCN과 ParseNet의 segmentation 결과 비교(좌측) 및 ParseNet module의 아키텍쳐. (출처 : W. Liu et al. (2015))</span></center></i></figcaption>
 </figure>
 
 ## <b><i>Convolutional and Deconvolutional Networks</i></b>
@@ -121,8 +127,9 @@ header:
 </span>
 
 <figure>
-    <a href="/assets/Images/Convolutional-and-Deconvolutional-Networks2.png"><img src="/assets/Images/Convolutional-and-Deconvolutional-Networks2.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ 전체 네트워크 아키텍쳐. 합성곱 네트워크 부분은 VGG16 아키텍쳐를 기반으로 합니다. 역 합성곱 네트워크 부분은 역 풀링(unpooling) 및 역 합성곱(deconvolution) 레이어를 사용합니다. (출처 : H. Noh et al. (2015))</span></center></i></figcaption>
+    <center>
+    <a href="/assets/Images/Convolutional-and-Deconvolutional-Networks2.png"><img src="/assets/Images/Convolutional-and-Deconvolutional-Networks2.png"></a></center>
+    <figcaption><i><center><span style="font-size:11pt">▲ 전체 네트워크 아키텍쳐. 합성곱 네트워크 부분은 VGG16 아키텍쳐를 기반으로 합니다. 역 합성곱 네트워크 부분은 역 풀링(unpooling) 및 역 합성곱(deconvolution) 레이어를 사용합니다. (출처 : H. Noh et al. (2015))</span></center></i></figcaption>
 </figure>
 
 ## <b><i>U-Net</i></b>
@@ -132,8 +139,9 @@ header:
 </span>
 
 <figure>
-    <a href="/assets/Images/UNet.png"><img src="/assets/Images/UNet.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : O. Ronneberger et al. (2015))</span></center></i></figcaption>
+    <center>
+    <a href="/assets/Images/UNet.png"><img src="/assets/Images/UNet.png"></a></center>
+    <figcaption><i><center><span style="font-size:11pt">▲ 인풋 이미지 사이즈와 함께 도식화한 U-Net 아키텍쳐.(출처 : O. Ronneberger et al. (2015))</span></center></i></figcaption>
 </figure>
 
 
