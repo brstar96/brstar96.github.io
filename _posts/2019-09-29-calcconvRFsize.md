@@ -36,7 +36,7 @@ header:
     <Blockquote>
     · <span style="font-size:11pt"><b><i>$ReceptiveField$</i></b> : Size of the receptive field can be reversed from the output network size.<br></span>
     · <span style="font-size:11pt"><b><i>$InputSize$</i></b> : Size of the sense node of the output node. <br></span>
-    · <span style="font-size:11pt"><b><i>$KernelStride$</i></b> : Moving step size of the convolutional kernel.</span>
+    · <span style="font-size:11pt"><b><i>$KernelStride$</i></b> : Moving step size of the convolutional kernel.<br></span>
     · <span style="font-size:11pt"><b><i>$KSize$</i></b> : Size of the convolution kernel between input and output.<br></span>
     </Blockquote>
     
