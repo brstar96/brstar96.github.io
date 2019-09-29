@@ -1,5 +1,5 @@
 ---
-title: "Python OpenCV Filters Test"
+title: "(KR-KaggleKernelTranscription)Titanic Top 4% with ensemble modeling"
 tags: 
   - Kaggle competition
   - Machine Learning
