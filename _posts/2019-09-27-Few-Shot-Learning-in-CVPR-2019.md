@@ -67,33 +67,44 @@ header:
  <i>(포스트의 내용과)</i> 연관성이 있는 이번 CVPR 논문들에 대해서 1-shot 성능순으로 정렬해 보았습니다. <br>
 </span>
 
-![png](/assets/Images/performance-on-the-mini-Imagenet-bench.png)
+<figure>
+    <a href="/assets/Images/performance-on-the-mini-Imagenet-bench.png"><img src="/assets/Images/performance-on-the-mini-Imagenet-bench.png"></a>
+</figure>
 
 ## Metric learning methods
 ### <b><i>§ Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning, Li et. al</i></b>
 
-![png](/assets/Images/Revisiting-Local-Descriptor-based-Image-to-Class-Measure-for-Few-shot-Learning.png)
+<figure>
+    <a href="/assets/Images/Revisiting-Local-Descriptor-based-Image-to-Class-Measure-for-Few-shot-Learning.png"><img src="/assets/Images/Revisiting-Local-Descriptor-based-Image-to-Class-Measure-for-Few-shot-Learning.png"></a>
+</figure>
+
 
 <span style="font-size:11pt">
  이 연구에서 저자들은 bag-of-word 시절 느낌이 들게 하는 local descriptors를 제안합니다. 그러나 features가 CNN으로부터 뽑힌다는 것과, 모든 것들이 end-to-end로 학습된다는 것이 차이점입니다. 논문의 결과는 벤치마크 결과의 아래쪽에 있습니다. <br>
 </span>
 
 ### <b><i>§ Few-Shot Learning with Localization in Realistic Settings, Wertheimer et. al</i></b>
-![png](/assets/Images/Few-Shot-Learning-with-Localization-in-Realistic-Settings.png)
+<figure>
+    <a href="/assets/Images/Few-Shot-Learning-with-Localization-in-Realistic-Settings.png"><img src="/assets/Images/Few-Shot-Learning-with-Localization-in-Realistic-Settings.png"></a>
+</figure>
 
 <span style="font-size:11pt">
  클래스 밸런스를 맞추기 위해 인위적으로 클래스 5개에 대해 테스트하는 few-shot benchmark 방식이 현실적이지 않다고 주장하는 이 논문의 저자들은 새로운 데이터셋과 벤치마크 방식을 제안했습니다. 저자들의 모델은 동시에 지역화(Localization) 및 분류(Classification)를 수행합니다. 그러나 단점은 주석이 달린 bounding box 데이터셋이 필요하다는 것입니다. 저자들의 연구에 사용된 분류기는 prototypical network들을 기반으로 하였으나 최종적으로 사용된 feature vectors는 모델에 통과된 전경과 배경의 vector representation을 연결(concat)한 것입니다. <br>
 </span>
 
 ### <b><i>§ Dense Classification and Implanting for Few-Shot Learning, Lifchitz et. al</i></b>
-![png](/assets/Images/Dense-Classification-and-Implanting-for-Few-Shot-Learning.png)
+<figure>
+    <a href="/assets/Images/Dense-Classification-and-Implanting-for-Few-Shot-Learning.png"><img src="/assets/Images/Dense-Classification-and-Implanting-for-Few-Shot-Learning.png"></a>
+</figure>
 
 <span style="font-size:11pt">
  이 연구에서 분류(classification)는 조밀하게(densly) 수행됩니다. 모델의 끝부분에서 Global average pooling을 사용하지 않는 대신 모든 공간의 위치들에 대해 올바르게 분류되어야 합니다. 또한 테스트 타임 중 마지막 레이어 부분에서 fine-tuning을 하지 않는 대신 뉴런을 추가하고 미세 조정함으로써 각 계층을 넓힙니다. (추가된 레이어의 가중치만 학습하고 이전 뉴런들의 가중치는 고정합니다.)<br>
 </span>
 
 ### <b><i>§ Variational Prototyping-Encoder: One-Shot Learning with Prototypical Images, Kim et. al.</i></b>
-![png](/assets/Images/Variational-Prototyping-Encoder-One-Shot-Learning-with-Prototypical-Images.png)
+<figure>
+    <a href="/assets/Images/Variational-Prototyping-Encoder-One-Shot-Learning-with-Prototypical-Images.png"><img src="/assets/Images/Variational-Prototyping-Encoder-One-Shot-Learning-with-Prototypical-Images.png"></a>
+</figure>
 
 <span style="font-size:11pt">
  이 연구는 로고 또는 도로 표지판 분류를 다루는 one-shot(한장) 분류 문제를 다루고 있습니다. 이 연구에서는 그래픽 이미지(로고, 표지판과 같은)를 프로토타입(원형)으로 취급합니다. 이후 실제 현실의 로고, 표지판 이미지를 프로토타입 이미지에 매핑하는 meta-task를 학습해 좋은 representation을 만드는 방법을 학습합니다. <br><br>
@@ -102,14 +113,18 @@ header:
 
 ## Meta-learning methods
 ### <b><i>§ Meta-Learning with Differentiable Convex Optimization, Lee et. al</i></b>
-![png](/assets/Images/Meta-Learning-with-Differentiable-Convex-Optimization.png)
+<figure>
+    <a href="/assets/Images/Meta-Learning-with-Differentiable-Convex-Optimization.png"><img src="/assets/Images/Meta-Learning-with-Differentiable-Convex-Optimization.png"></a>
+</figure>
 
 <span style="font-size:11pt">
  이 연구는 의미론적 정보(semantic information)을 사용하지 않는 방법들 중 최고의 벤치마크 결과를 보여 줍니다. SVM 분류기와 학습된 end-to-end 분류기를 결합해 강력한 백본망을 구성하였으며, 이 연구를 통해 저자들은 프로토타입 네트워크(Prototypical network)와 함께 자신들이 만든 백본망을 사용하는 것만으로 높은 정확도를 달성했습니다. SVM을 사용하면 성능이 더 좋아지는 것 또한 보여줍니다. 분류기의 인풋으로 들어가는 feature의 차원이 꽤 높게 유지되지만, SVM이 고차원 features를 더 잘 처리하기 때문에 성능이 부스팅된 것이 아닌가 싶습니다. <br>
 </span>
 
 ### <b><i>§ Edge-Labeling Graph Neural Network for Few-shot Learning, Kim et. al </i></b>
-![png](/assets/Images/Edge-Labeling-Graph-Neural-Network-for-Few-shot-Learning.png)
+<figure>
+    <a href="/assets/Images/Edge-Labeling-Graph-Neural-Network-for-Few-shot-Learning.png"><img src="/assets/Images/Edge-Labeling-Graph-Neural-Network-for-Few-shot-Learning.png"></a>
+</figure>
 
 <span style="font-size:11pt">
  Graph Neural Network는 이전에도 few-shot learning에 여러 번 사용되었습니다. Graph Neural Network의 기본적인 아이디어는 각 이미지를 그래프의 노드로 표현하는 것이며, 노드들이 얼마나 유사한지에 따라 정보(node representation)가 전파됩니다. 일반적으로 분류 문제는 노드들(node representations)의 거리에 따라 암시적으로 수행되지만, 저자는 여기서 노드 사이의 유사성을 설명하는 explicit features per edge를 제안합니다. <i>(역자 주 : 노드를 잇는 선을 edge라고 합니다.)</i><br>
@@ -123,7 +138,9 @@ header:
 </span>
 
 ### <b><i>§ Meta-Transfer Learning for Few-Shot Learning, Sun et. al</i></b>
-![png](/assets/Images/Meta-Transfer-Learning-for-Few-Shot-Learning.png)
+<figure>
+    <a href="/assets/Images/Meta-Transfer-Learning-for-Few-Shot-Learning.png"><img src="/assets/Images/Meta-Transfer-Learning-for-Few-Shot-Learning.png"></a>
+</figure>
 
 <span style="font-size:11pt">
  이 연구에는 두 가지 중요한 요소가 있습니다. 1. weight를 고정한 상태에서 레이어 당 scale과 shift만 학습되는 pre-trained model의 미세 조정(fine tuning), 2. Hard task mining이 그것입니다.  제가 MAML에 대해 잘못 알고 있는 게 아니라면 Batch normalization 레이어에 대해 fine-tuning을 적용합니다. 이것은 즉 scale과 shift만 학습하는 것과 같지 않습니까? Hard batch mining(이전 task에서 낮은 정확도를 가진 클래스들을 모아 task를 구성한 것)은 MAML의 윗단에서 적용할 때 효과적인 것으로 보입니다. <br>
