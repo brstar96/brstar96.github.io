@@ -34,13 +34,13 @@ header:
         - <span style="font-size:11pt">따라서 `conv_1`의 출력 텐서 사이즈는 55 x 55 x 96이며, 3채널(RGB) 이미지이기 때문에 3이 곱해져 총 55 x 55 x 96(kernel개수) x 3이 최종 출력 사이즈가 됨.</span>
 - ## Calculate Receptive Field Size
     <Blockquote>
-    - <span style="font-size:11pt"><b><i>$Receptive Field$</i></b> : Size of the receptive field can be reversed from the output network size.<br></span>
-    - <span style="font-size:11pt"><b><i>$Input_size$</i></b> : Size of the sense node of the output node. <br></span>
-    - <span style="font-size:11pt"><b><i>$K_stride$</i></b> : Moving step size of the convolutional kernel.</span>
-    - <span style="font-size:11pt"><b><i>$K_size$</i></b> : Size of the convolution kernel between input and output.<br></span>
+    - <span style="font-size:11pt"><b><i>$ReceptiveField$</i></b> : Size of the receptive field can be reversed from the output network size.<br></span>
+    - <span style="font-size:11pt"><b><i>$InputSize$</i></b> : Size of the sense node of the output node. <br></span>
+    - <span style="font-size:11pt"><b><i>$KernelStride$</i></b> : Moving step size of the convolutional kernel.</span>
+    - <span style="font-size:11pt"><b><i>$KSize$</i></b> : Size of the convolution kernel between input and output.<br></span>
     </Blockquote>
     
-    <span style="font-size:13pt">$Input_size=(output_size-1)\timesK_stride+K_size$</span>
+    <span style="font-size:13pt">$InputSize=(OutputSize-1)\timesKernelStride+KernelSize$</span>
     
 - ## 같이 보면 좋은 글
     - <span style="font-size:11pt">[(Stack Overflow) CS231n: Total memory of VGGnet](https://stackoverflow.com/questions/49423323/cs231n-total-memory-of-vggnet)</span> 
