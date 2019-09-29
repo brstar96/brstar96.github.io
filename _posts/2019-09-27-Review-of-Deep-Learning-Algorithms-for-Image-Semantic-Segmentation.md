@@ -23,7 +23,7 @@ header:
 
 # Intro(들어가며)
 
-<figure>
+<figure class = "align-center">
     <center>
     <a href="/assets/Images/COCO.jpg"><img src="/assets/Images/COCO.jpg"></a></center>
     <figcaption><i><center><span style="font-size:11pt">▲ stuff segmentation을 위한 COCO dataset 예시. (http://cocodataset.org/)</span></center></i></figcaption>
