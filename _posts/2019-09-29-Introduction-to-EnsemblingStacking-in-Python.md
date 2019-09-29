@@ -17,11 +17,10 @@ header:
 
 <span style="font-size:11pt">This code is written by [Anisotropic](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python).</span>
 
-
 ## 소개
 <span style="font-size:11pt">이 노트북은 학습 모델을 앙상블(결합)하는 방법, 특히 스태킹(stacking)이라고 알려진 앙상블 기법의 변형에 대해 매우 기본적이고 간단한 소개를 하고 있습니다. 간략하게 말하자면, 첫 번째 레벨(base)에서 사용되는 스태킹은 몇 가지 기본 분류기를 통해 예측을 수행한 다음 두 번째 레벨에서 다른 모델을 사용해 첫 번째 레벨에서 나온 예측 결과를 다시 예측합니다.<br><br> 
 타이타닉 데이터세트는 Kaggle의 많은 신규 사용자들이 접하는 데이터셋임과 동시에 스태킹 개념을 도입한 첫 번째 후보 데이터셋입니다. 스태킹 기법이 Kaggle 대회들에 있어서 많은 우승 팀의 주요 솔루션으로 쓰였음에도 이 주제에 대한 커널이 많이 부족하기 때문에, 이 노트북이 그 공백을 어느 정도 채울 수 있기를 바랍니다.<br><br>
-저 또한 Kaggle 초보자입니다. 그럼에도 제가 기회를 만들고 공부할 수 있게 해 준 앙상블/스태킹 스크립트는 AllState Severity Claims 대회에서 우수한 성적을 거둔 Faron이 만들었습니다. 이 노트북의 내용은 Faron의 스크립트로부터 타이타닉 문제가 분류기들에 대한 앙상블임을 고려하여 이식되었지만 Faron은 회귀를 위한 앙상블을 작업했습니다. 여기에서 Faron의 스크립트를 확인할 수 있습니다 :<br><br></span> 
+저 또한 Kaggle 초보자입니다. 그럼에도 제가 기회를 만들고 공부할 수 있게 해 준 앙상블/스태킹 스크립트는 AllState Severity Claims 대회에서 우수한 성적을 거둔 Faron이 만들었습니다. 이 노트북의 내용은 Faron의 스크립트로부터 타이타닉 문제가 분류기들에 대한 앙상블임을 고려하여 이식되었지만 Faron은 회귀를 위한 앙상블을 작업했습니다. 여기에서 Faron의 스크립트를 확인할 수 있습니다 :<br></span> 
 
 [Stacking Starter](https://www.kaggle.com/mmueller/allstate-claims-severity/stacking-starter/run/390867) : by Faron
 
@@ -180,7 +179,7 @@ train.head(3)
 
 <span style="font-size:11pt">
 범주형 자료에서 어떤 식으로든 정보를 추출하는 것이 놀라운 일은 아닙니다.<br> 
-Sina는 feature engineering에 대한 매우 포괄적이고 잘 구성된 노트북을 갖고 있습니다. 그의 작업물을 확인해 보십시오.<br><br></span> 
+Sina는 feature engineering에 대한 매우 포괄적이고 잘 구성된 노트북을 갖고 있습니다. 그의 작업물을 확인해 보십시오.<br></span> 
 
 [Titanic Best Working Classfier](https://www.kaggle.com/sinakhorami/titanic/titanic-best-working-classifier) : by Sina
 
@@ -466,8 +465,7 @@ class SklearnHelper(object):
 
 <span style="font-size:11pt">여기서는 여러분께서 이미 알고 있더라도 파이썬에서 객체나 클래스를 사용하는 게 익숙하지 않은 분들을 위해 양해를 부탁드리겠습니다. 위에서 타이핑한 코드에 대해 설명해 드리겠습니다. 기본 분류기를 만들 때 Sklearn 라이브러리에 이미 들어 있는 모델만 사용할 것이므로 우리는 이것을 클래스로 확장할 수 있습니다.<br><br> 
 <b>`def init`</b> : 클래스의 기본 생성자를 호출하는 파이썬 표준입니다. 즉 객체(여기서는 분류기가 객체입니다)를 만들기 위해서는 clf(원하는 sklearn 분류기), seed(랜덤값을 만들기 위한 초기값) 및 params(분류기 학습을 위한 파라미터)를 지정해야 합니다.<br>
-
-나머지 코드는 단순히 sklearn 분류기들에 존재하는 train 메소드를 호출하는 SklearnHelper 클래스의 메소드들입니다. 기본적으로 다양한 Sklearn 분류기들을 확장하는 래퍼(참조) 클래스를 만들어 스태커(Stacking 앙상블을 위한 객체)에 여러 학습 모델들을 구현해 쌓을 때 동일한 코드를 반복 작성해야 하는 부담을 줄여 줍니다. 
+나머지 코드는 단순히 sklearn 분류기들에 존재하는 train 메소드를 호출하는 SklearnHelper 클래스의 메소드들입니다. 기본적으로 다양한 Sklearn 분류기들을 확장하는 래퍼(참조) 클래스를 만들어 스태커(Stacking 앙상블을 위한 객체)에 여러 학습 모델들을 구현해 쌓을 때 동일한 코드를 반복 작성해야 하는 부담을 줄여 줍니다.</span> 
 
 ### Out-of-Fold Predictions
 <span style="font-size:11pt">소개 섹션에서 언급한 것처럼, 스태킹은 기본 분류기의 예측을 두 번째 레벨 모델의 학습을 위한 입력으로 사용합니다. 그러나 첫 번째 레벨의 모델을 학습할 때 단순히 전체 학습 데이터를 사용하여 학습을 진행하면 안됩니다. 모델이 전체 테스트셋에 대한 예측값을 만들고 그것을 두 번째 레벨 학습에 사용할 수 있기 때문입니다. 이렇게 하면 첫 번째 단계 모델이 테스트셋을 이미 "보았기" 때문에 예측 결과에 위험이 따르게 됩니다. 따라서 이러한 결과물을 이용해 두 번째 레벨 모델 학습에 넣어주게 되면 오버피팅을 유발하게 됩니다.</span> 
@@ -1061,7 +1059,7 @@ predictions = gbm.predict(x_test)
 
 <span style="font-size:11pt">모델에서 사용된 XGBoost 매개 변수들에 대해 빠르게 설명하겠습니다.</span> 
 
-- <span style="font-size:11pt"><b>`max_depth`<b> : tree를 얼마나 키울지 결정합니다. 지나치게 높으면 과적합을 유발합니다.</span>
+- <span style="font-size:11pt"><b>`max_depth`</b> : tree를 얼마나 키울지 결정합니다. 지나치게 높으면 과적합을 유발합니다.</span>
 - <span style="font-size:11pt"><b>`gamma`</b> : tree의 leaf 노드(맨 마지막)에서 추가 파티션을 만드는 데 필요한 minimum loss reduction입니다. 클수록 더 보수적인(안전한) 알고리즘이 될 것입니다.</span> 
 - <span style="font-size:11pt"><b>`eta`</b> : 과적합(overfitting)을 방지하기 위해 각 부스팅 단계에서 사용되는 스텝 사이즈 감소량입니다.</span> 
 
@@ -1087,8 +1085,7 @@ StackingSubmission.to_csv("StackingSubmission.csv", index=False)
 ### 결론
 <span style="font-size:11pt">이 노트북은 학습 모델들을 쌓기(stacking) 위한 스크립트를 소개하고 있습니다. 다시한번 Faron과 Sina에게 고마움을 표합니다.<br><br> 
 스태킹이나 앙상블 기법에 대한 다른 훌륭한 자료는 MLWave:[Kaggle Ensembling Guide](http://mlwave.com/kaggle-ensembling-guide/)를 참고하십시오. <br><br>
-
-다음에 또 뵙겠습니다. 
+다음에 또 뵙겠습니다. </span>
 
 
 ```python
