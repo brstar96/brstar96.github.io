@@ -19,8 +19,6 @@ header:
 <span style="font-size:11pt">
 원문글 : [Review of Deep Learning Algorithms for Image Semantic Segmentation](https://medium.com/@arthur_ouaknine/review-of-deep-learning-algorithms-for-image-semantic-segmentation-509a600f7b57)</span>
 
-<br>
-
 # Intro(들어가며)
 
 <figure class = "align-center">
@@ -35,7 +33,6 @@ header:
  장면(scene)을 이해하기 위해선 각 시각적 정보가 공간적 정보(spatial information)를 고려하면서 엔티티(여기서는 객체를 의미)와 연관될 필요가 있습니다. 이미지 또는 비디오로부터 동작(Keypoint detection, action recognition, video captioning, visual question answering 등등)을 모델이 이해하는 데 있어 몇 가지 도전적인 문제들이 생겨났으며, 모델이 환경에 대해 잘 이해할 수 있다면 더 많은 분야에서 도움이 되어 줄 것입니다. 예를 들어, 자율 주행 자동차는 주행중에 있어서 도로변을 높은 정밀도로 인식하도록 해야 합니다. 로봇 공학에서 생산에 사용되는 기계는 물체의 정확한 모양을 파악함으로서 물체를 어떻게 잡는지, 두 개의 다른 조각을 어떻게 조립하는지 이해해야 합니다.<br><br> 
  이 블로그 포스트에서는 의미적 이미지 분할화(이하 Image Semantic Segmentation) 문제에 대한 기존의 최신 모델 아키텍쳐들에 대해 설명할 것입니다. 연구자들은 매년 달라지는 다양한 데이터셋(PASCAL, VOC, PASCAL Context, COCO, Cityscapes)들을 사용해 알고리즘을 테스트하고 다양한 평가 메트릭(metric)을 사용해 알고리즘을 평가합니다. 따라서 논문에 인용되어 있는 성능 지표 그 자체는 직접적으로 끼리끼리 비교해 보기가 어렵습니다.  또한 각 알고리즘들의 결과는 사전 훈련된 최상위 네트워크(pretrained backbone)에 따라 달라지며, 본 포스트에 게시된 평가 결과는 각 논문들에서 그들의 테스트셋을 통해 얻은 최고 점수입니다.<br> 
 </span>
-<br>
 
 # <b>데이터셋 및 평가 지표(Datasets and Metrics)</b>
 <span style="font-size:11pt">
@@ -84,8 +81,6 @@ header:
     <figcaption><i><center><span style="font-size:11pt">▲ Cityscapes 데이터셋의 예 (출처 : https://www.cityscapes-dataset.com/)</span></center></i></figcaption>
 </figure>
 
-<br>
-
 # <b>네트워크 소개</b>
 ## <b><i>Fully Convolutional Network(FCN)</i></b>
 <span style="font-size:11pt">
@@ -118,7 +113,7 @@ header:
 
 <figure class = "align-center">
     <a href="/assets/Images/Convolutional-and-Deconvolutional-Networks.png"><img src="/assets/Images/Convolutional-and-Deconvolutional-Networks.png"></a>
-    <figcaption><i><center><span style="font-size:10pt">▲ 합성곱 네트워크의 레이어(Pooling과 convolution)와 역 합성곱 네트워크의 레이어(unpooling과 deconvolution)를 비교한 그림. (출처 : H. Noh et al. (2015))</span></center></i></figcaption>
+    <figcaption><i><center><span style="font-size:11pt">▲ 합성곱 네트워크의 레이어(Pooling과 convolution)와 역 합성곱 네트워크의 레이어(unpooling과 deconvolution)를 비교한 그림. (출처 : H. Noh et al. (2015))</span></center></i></figcaption>
 </figure>
 
 <span style="font-size:11pt">
