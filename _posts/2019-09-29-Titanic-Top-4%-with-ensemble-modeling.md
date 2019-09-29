@@ -136,7 +136,7 @@ print(IDtest) # 승객 ID 출력
 
 <span style="font-size:11pt">여기에서는 NaN, Null과 같은 Outliers를 검출해 봅니다.</span> 
 
-![IQR](/assets/Images/kaggletranscription/titanic-top4%/1.png)
+![IQR](/assets/Images/kaggletranscription/titanic-top4/1.png)
 
 <span style="font-size:11pt">이미지 출처:https://blog.naver.com/PostView.nhn?blogId=sw4r&logNo=221021173204</span>
 
@@ -766,7 +766,7 @@ g = sns.heatmap(train[['Survived', 'SibSp','Parch','Age','Fare']].corr(), annot 
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_22_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_22_0.png)
 
 
 <span style="font-size:11pt">단지 Fare feature만이 생존 확률과 유의미한 상관 관계가 있는 것으로 보입니다. 그러나 다른 features가 유용하지 않다는 의미는 아닙니다. 이러한 features의 하위 집단은 생존 여부와 상관이 있을 수 있습니다. 이를 확인하려면 다른 features를 자세히 조사할 필요가 있습니다.</span> 
@@ -789,7 +789,7 @@ g = g.set_ylabels("Survival Probability")
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_25_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_25_1.png)
 
 
 <span style="font-size:11pt">형제/배우자가 많은 승객은 생존 기회가 적습니다. <br> 
@@ -812,7 +812,7 @@ g = g.set_ylabels("Survival Probability")
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_28_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_28_1.png)
 
 
 <span style="font-size:11pt">작은 가족들은 단일(Parch 0), 중간(Parch 3, 4), 큰(Parch 5, 6) 크기의 가족들에 비해 생존 기회가 더 많았습니다. 부모/자녀가 3명인 승객의 생존 여부에 중요한 표준 편차가 있음에 유의해야 합니다.</span> 
@@ -827,7 +827,7 @@ g = g.map(sns.distplot, 'Age')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_31_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_31_0.png)
 
 
 <span style="font-size:11pt">연령(Age)에 대한 분포는 꼬리 분포(Tailed distribution, 왼쪽 또는 오른쪽으로 최빈값이 몰려 있고 다른 방향으로 갈수록 꼬리가 길어지는 형태의 분포) 또는 정규분포(Gaussian distribution)인 것처럼 보입니다.<br><br>
@@ -848,7 +848,7 @@ g = g.legend(['Not Survived', 'Survived'])
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_33_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_33_0.png)
 
 
 <span style="font-size:11pt">두 밀도를 겹쳐서 보게 되면, 우리는 0~5살 사이의 아기들 영역에서 튀는 값(peak)이 존재하는 것을 명확하게 확인할 수 있습니다.</span> 
@@ -883,7 +883,7 @@ g = g.legend(loc='best')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_39_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_39_0.png)
 
 
 <span style="font-size:11pt">여기서 볼 수 있듯이, Fare의 분포는 매우 기울어 있습니다. 이러한 feature는 scale이 조정된 경우에도 모델에서 매우 높은 값으로 인한 초과(overweight very high values in the model)를 유발할 수 있습니다. 이 경우, 기울기를 줄이기 위해 로그 함수로 변환하는 것이 좋습니다.</span> 
@@ -902,7 +902,7 @@ g = g.legend(loc='best')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_42_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_42_0.png)
 
 
 <span style="font-size:11pt">로그 함수를 취해 주니 확실히 기울기가 줄어든 것이 보입니다.</span> 
@@ -918,7 +918,7 @@ g = g.set_ylabel('Survival Probability')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_46_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_46_0.png)
 
 
 
@@ -989,7 +989,7 @@ g = g.set_ylabels("Survival Probability")
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_50_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_50_1.png)
 
 
 
@@ -1006,7 +1006,7 @@ g = g.set_ylabels('Survival Probability')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_51_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_51_1.png)
 
 <span style="font-size:11pt">
 승객들의 생존 여부는 세 클래스 모두 동일하지 않음을 알 수 있습니다. 1등석 승객은 2등석, 3등석 승객보다 생존 기회가 더 많았습니다. <br>
@@ -1121,7 +1121,7 @@ g = g.set_ylabels('Survival Probability')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_58_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_58_1.png)
 
 
 <span style="font-size:11pt">Cherbourg(C)에서 오는 승객들에게는 더 많은 생존 기회가 있었던 것으로 보입니다.<br> 
@@ -1142,7 +1142,7 @@ g = g.set_ylabels('Count')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_60_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_60_1.png)
 
 <span style="font-size:11pt">
 삼등석 클래스는 Southampton(S)과 Queenstown(Q)에서 온 승객들이 가장 많은 반면 Cherbourg에서 온 승객들은 대부분 일등석이었으며, 생존률이 가장 높았습니다.<br><br> 
@@ -1174,19 +1174,19 @@ g = sns.factorplot(y='Age', x='SibSp', data=dataset, kind='box')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_63_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_63_1.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_63_2.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_63_2.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_63_3.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_63_3.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_63_4.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_63_4.png)
 
 
 <span style="font-size:11pt">Age 분포는 남성 및 여성의 하위 인구 집단에서 동일하기 때문에 Sex는 Age를 예측하는데 유익하지 않습니다. 그러나 1등석 승객은 2등석 승객보다 나이가 많고, 2등석 승객은 3등석 승객보다 나이가 많습니다. 또한 부모/자녀가 많은 남자 승객일수록 나이가 많으며 형제/배우자가 있는 남자 승객일수록 젊었습니다.</span> 
@@ -1203,7 +1203,7 @@ g = sns.heatmap(dataset[['Age', 'Sex', 'SibSp', 'Parch', 'Pclass']].corr(), cmap
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_66_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_66_0.png)
 
 <span style="font-size:11pt">
 상관 관계 맵(correlation map)은 Parch를 제외한 factorplots를 보여줍니다. Age는 Sex와 상관이 없지만 Pclass, Parch 및 SibSp와 음의 상관 관계가 있습니다.<br> 
@@ -1253,11 +1253,11 @@ g = sns.factorplot(x='Survived', y='Age', data=train, kind='violin')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_70_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_70_1.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_70_2.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_70_2.png)
 
 
 <span style="font-size:11pt">Age에 따른 생존한 하위집단과 사망한 하위집단 사이의 중간값 차이는 존재하지 않습니다. 그러나 생존한 승객들의 바이올린 그래프에서 우리는 여전히 어린 아이들이 높은 생존율을 보이는 것을 확인할 수 있습니다.</span> 
@@ -1311,7 +1311,7 @@ g = plt.setp(g.get_xticklabels(), rotation=45)
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_76_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_76_0.png)
 
 
 <span style="font-size:11pt">dataset에는 17개의 호칭이 존재합니다. 대부분의 칭호가 매우 드물기 때문에 우리는 4개 정도의 카테고리로 나머지 칭호들을 그룹화할 수 있습니다.</span>
@@ -1331,7 +1331,7 @@ g = g.set_xticklabels(['Master', 'Miss/Ms/Mme/Mlle/Mrs','Mr', 'Rare'])
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_79_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_79_0.png)
 
 
 
@@ -1346,7 +1346,7 @@ g = g.set_ylabels('Survival Probability')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_80_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_80_1.png)
 
 <span style="font-size:11pt">
 "여성과 어린 아이를 먼저 탈출시켜라"<br>
@@ -1378,7 +1378,7 @@ g = g.set_ylabels("Survival Probability")
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_85_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_85_1.png)
 
 
 <span style="font-size:11pt">가족 크기(Fsize) feature는 중요한 역할을 맡고 있는 것처럼 보입니다. 생존율은 대가족에서 매우 심각했습니다. 여기에 이어서, 저는 가족 크기에 대해 4개의 카테고리를 만들기로 했습니다.</span> 
@@ -1418,19 +1418,19 @@ g = g.set_ylabels('Survival Probability')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_88_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_88_1.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_88_2.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_88_2.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_88_3.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_88_3.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_88_4.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_88_4.png)
 
 
 <span style="font-size:11pt">가족 크기에 따른 Factorplot들은 작거나 중간 크기의 가족들이 혼자 탑승한 승객이나 대가족보다 생존 기회가 더 많았음을 보여줍니다.</span> 
@@ -1701,7 +1701,7 @@ g = sns.countplot(dataset['Cabin'], order=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'T
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_101_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_101_0.png)
 
 
 
@@ -1715,7 +1715,7 @@ g = g.set_ylabels('Survival Probability')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_102_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_102_1.png)
 
 
 <span style="font-size:11pt">객실을 가진 승객의 수가 적기 때문에 생존 확률은 중요한 표준편차를 가지며, 따라서 우리는 각각 다른 갑판에서의 승객 생존 확률을 구분할 수 없습니다.<br> 
@@ -2063,7 +2063,7 @@ g = g.set_title('Cross Validation Scores')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_118_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_118_0.png)
 
 
 <span style="font-size:11pt">저는 앙상블 모델링을 위해 SVC, RandomForest, ExtraTrees 및 GradientBoosting 분류기를 선택하기로 했습니다.</span> 
@@ -2301,23 +2301,23 @@ g = plot_learning_curve(gsGBC.best_estimator_,"GradientBoosting learning curves"
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_128_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_128_0.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_128_1.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_128_1.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_128_2.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_128_2.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_128_3.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_128_3.png)
 
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_128_4.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_128_4.png)
 
 <span style="font-size:11pt">
 GradientBoosting 및 AdaBoost 분류기는 Train set에 대해 오버피팅되는 경향이 있습니다. 점차 증가하는 모양의 Cross-Validation curve에 따르면 GradientBoosting과 AdaBoost는 더 많은 triaining example에서 더 잘 수행될 수 있는 것을 알 수 있습니다.<br><br> 
@@ -2349,7 +2349,7 @@ for row in range(nrows):
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_131_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_131_0.png)
 
 
 <span style="font-size:11pt">네 개의 트리 기반 분류기(AdaBoost, ExtraTrees, RandomForest, GradientBoosting)에 대한 feature importance를 그려 보았습니다.<br><br> 
@@ -2377,7 +2377,7 @@ g = sns.heatmap(ensemble_results.corr(), vmin=0.4, vmax=1, cmap="Blues", annot=T
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4%/output_133_0.png)
+![png](/assets/Images/kaggletranscription/titanic-top4/output_133_0.png)
 
 
 <span style="font-size:11pt">간혹 AdaBoost가 다른 분류기와 비교되는 것을 제외하고는 다섯 개의 분류기는 꽤 비슷한 결과를 예측하는 것으로 보입니다.<br> 
