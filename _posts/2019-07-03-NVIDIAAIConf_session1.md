@@ -35,10 +35,10 @@ header:
     - <span style="font-size:11pt">Full precision과 비교해서 손해를 보지 않는 정도로 최대한 FP16을 쓰되 hyperparameter는 건드리지 않게끔 해야 함.</span>
     - <span style="font-size:11pt">기존에는 MP training(Mixed precision training)을 하면 acc가 망가지는것이 아닌가에 대한 걱정이 있었으나 그렇지는 않은 모양.</span>  
     - <span style="font-size:11pt">TF에서 MP를 사용했더니 3배의 속도 향상이 있었지만 사용하기 어려워 NVIDIA에서 Tensorcore에 AMP(Automatic Mixed Precision)을 추가. </span>
-    - <figure>
+    <figure>
         <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/2.png">
         <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/2.png"></a>
-      </figure>
+    </figure>
     - <span style="font-size:11pt">모델 구성에 따라 Tensorcore를 사용하는 비중이 높아질수록 훈련 성능이 올라가며, acc면에서도 학습이 잘 되는 것을 확인 가능.</span>
 - ### Mixed Precision is General Purpose
     - <figure>
