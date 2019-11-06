@@ -6,6 +6,7 @@ tags:
 categories:
   - PostTranslation
 toc: true
+author_profile: false
 comments: 
   provider: "disqus"
   disqus:

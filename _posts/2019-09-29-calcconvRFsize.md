@@ -8,6 +8,7 @@ tags:
 categories:
   - MLDLstudy
 toc: true
+author_profile: false
 comments: 
   provider: "disqus"
   disqus:

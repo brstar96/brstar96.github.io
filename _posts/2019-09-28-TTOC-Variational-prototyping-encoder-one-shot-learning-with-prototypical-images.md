@@ -10,6 +10,7 @@ categories:
   - PaperReview
   - Event&Seminar
 toc: true
+author_profile: false
 comments: 
   provider: "disqus"
   disqus:

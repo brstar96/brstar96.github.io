@@ -11,6 +11,7 @@ categories:
   - PaperReview
   - Shoveling
 toc: false
+author_profile: false
 comments: 
   provider: "disqus"
   disqus:

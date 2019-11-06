@@ -11,6 +11,7 @@ tags:
 categories:
   - PaperReview
 toc: false
+author_profile: false
 comments: 
   provider: "disqus"
   disqus:
