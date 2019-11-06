@@ -25,16 +25,16 @@ header:
     <figure>
         <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/1.png">
         <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/1.png"></a>
-    </figure>
-    - <span style="font-size:11pt">Volta, Turing 아키텍쳐에서 사용 가능하며 각 FP16 엘리먼트에 대해 연산한 후 FP32로 합치는 식으로 작동.</span>  
+        <figcaption><center>▲ Volta, Turing 아키텍쳐에서 사용 가능하며 각 FP16 엘리먼트에 대해 연산한 후 FP32로 합치는 식으로 작동.</center></figcaption>
+    </figure>  
     - <span style="font-size:11pt">단정밀도를 사용하므로 파라미터 사이즈가 줄어들어 메모리 사용량이 줄어듬. 즉 두 배의 데이터를 처리할 수 있게 됨.</span>
     - <span style="font-size:11pt">모델의 퍼포먼스를 높이기 위해 FP16을 사용하면 FP32 대비 x8의 연산처리량(throughput), x2의 메모리 처리량, 1/2의 메모리 사용량 효과를 볼 수 있음. </span>
 - ## Mixed Precision Training이란?
     <figure>
         <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/2.png">
         <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/2.png"></a>
+        <figcaption><center>▲ MP는 연산속도와 정확도(accuracy) 사이의 트레이트오프 밸런스를 맞추기 위한 방법</center></figcaption>
     </figure>
-    - <span style="font-size:11pt">연산속도와 정확도(accuracy) 사이의 트레이트오프 밸런스를 맞추기 위한 방법.</span>
     - <span style="font-size:11pt">FP16(16 bit floating point)은 speed, scale을 위해 사용하고 task-specific accuracy 유지를 위해 FP32를 섞어 쓰는 것.</span> 
     - <span style="font-size:11pt">Full precision과 비교해서 손해를 보지 않는 정도로 최대한 FP16을 쓰되 hyperparameter는 건드리지 않게끔 해야 함.</span>
     - <span style="font-size:11pt">기존에는 MP training(Mixed precision training)을 하면 acc가 망가지는것이 아닌가에 대한 걱정이 있었으나 그렇지는 않은 모양.</span>  
@@ -44,13 +44,13 @@ header:
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/3.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/3.png"></a>
-    <figcaption><center>MP를 적용 가능한 다양한 태스크 목록</center></figcaption>
+    <figcaption><center>▲ MP를 적용 가능한 다양한 태스크 목록</center></figcaption>
     </figure>
    - <span style="font-size:11pt">NVIDIA 깃헙에 MP를 적용한 많은 예제 코드들이 올라와 있음.</span>
    <figure>
         <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/4.png">
         <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/4.png"></a>
-        <figcaption><center>모델을 새로 짜지 않고 기술적으로 몇 부분만 고쳤음에도 같은 acc를 보인다.</center></figcaption>
+        <figcaption><center>▲ 모델을 새로 짜지 않고 기술적으로 몇 부분만 고쳤음에도 같은 acc를 보인다.</center></figcaption>
     </figure>
 - ### MP Technical guide
     <figure>
@@ -61,7 +61,7 @@ header:
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/6.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/6.png"></a>
-    <figcaption><center>▲ 모델을 반정밀도로 떨어뜨리되 다시 합치는 부분에서 단정밀도로 돌려 놓아야 함.</center></figcaption>
+    <figcaption><center>▲ 반정밀도로 떨어뜨리되 합치는 부분에서 단정밀도로 돌려 놓아야 함.</center></figcaption>
     </figure>
     
     - <span style="font-size:11pt">특정 연산(GEMMs, Convolution 등등)은 TensorCore의 도움을 받되 뒷단의 Softmax나 loss 연산 부분은 acc 유지에 중요한 역할을 하므로 FP32 유지 필수. </span>
@@ -110,7 +110,7 @@ header:
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_2.png"></a>
     <figcaption><center>▲ Tensorflow에서 AMP 사용하기</center></figcaption>
     </figure>
-    <figure>
+    <figure class="half">
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_1.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_1.png"></a>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_2.png">
@@ -130,18 +130,18 @@ header:
     - <span style="font-size:11pt">GPU 하드웨어 특성상 32개의 연산을 묶어서 처리하며, 그래서 8의 배수로 맞춰 주면 가장 최적의 성능이 나온다고 함. </span>
     - <span style="font-size:11pt">VGG같이 사이즈가 3x3이라 애매할 경우는 패딩을 넣어서 돌림(8배수로 바꿔 넣으면 성능이 좋게 나오는 것을 확인 가능)</span>
     - <span style="font-size:11pt">반정밀도를 사용하면 배치 사이즈를 두 배로 늘릴 수 있음. </span>
-    - <span style="font-size:11pt">텐서코어를 잘 사용하고 있는지 확인할 수 있는 방법 : 
+    - <span style="font-size:11pt">텐서코어를 잘 사용하고 있는지 확인할 수 있는 방법 : </span>
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/16.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/16.png"></a>
-    </figure> </span>
-    - <span style="font-size:11pt">Tensorcore를 이용해 BERT모델 돌려보기 : 
+    </figure> 
+    - <span style="font-size:11pt">Tensorcore를 이용해 BERT모델 돌려보기 : </span>
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png"></a>
     <figcaption><center>▲ (좌 - BERT FP32) 맨 왼쪽 패널에서 GPU kernel에 로드된 API list를 확인 가능, 빨간 글자 부분에서 실행 시간도 확인 가능.<br>
     (우 -B ERT FP16) 맨 왼쪽 패널에서 Tensor cores API가 커널에 로드된 것을 확인 가능하며 실행 시간이 2.1배 빨라짐을 확인 가능.</center></figcaption>
-    </figure></span>
+    </figure>
 
 - ## Additional Resources
     <figure class="half">
