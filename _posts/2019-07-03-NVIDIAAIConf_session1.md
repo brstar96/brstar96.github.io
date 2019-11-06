@@ -3,7 +3,7 @@ title: "(Event/Seminar후기) NVIDIA AI Conference 2019 - Tensor Core를 이용�
 tags: 
   - Deep Learning
   - Mixed Precision
-  - Auto Mixed Precision
+  - Automated Mixed Precision
 categories:
   - DL Training Tip
   - Event&Seminar
@@ -56,13 +56,14 @@ header:
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/5.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/5.png"></a>
-    <figcaption><center>MP를 적용하기 위한 세 가지 방법</center></figcaption>
+    <figcaption><center>▲ MP를 적용하기 위한 세 가지 방법</center></figcaption>
     </figure>
-    - <figure>
+    <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/6.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/6.png"></a>
-    <figcaption><center>모델을 반정밀도로 떨어뜨리되 다시 합치는 부분에서 단정밀도로 돌려 놓아야 함.</center></figcaption>
+    <figcaption><center>▲ 모델을 반정밀도로 떨어뜨리되 다시 합치는 부분에서 단정밀도로 돌려 놓아야 함.</center></figcaption>
     </figure>
+    
     - <span style="font-size:11pt">특정 연산(GEMMs, Convolution 등등)은 TensorCore의 도움을 받되 뒷단의 Softmax나 loss 연산 부분은 acc 유지에 중요한 역할을 하므로 FP32 유지 필수. </span>
     - <span style="font-size:11pt">weight는 single precision(단정밀도)을 유지하지만 back-propagation은 half-precision으로 수행</span>
     - <span style="font-size:11pt">single과 half를 섞어 쓰기 때문에 mixed precision training이라고 부름. </span>
@@ -77,18 +78,18 @@ header:
     - <span style="font-size:11pt">Automatic casting : 웬만한 상용 프레임워크(TF, MXNET, Pytorch)들은 Tensor 연산에 대한 expressions가 잘 정의되어 있어 TensorCore를 적용하기 편함. </span>
     - <span style="font-size:11pt">기존에는 네트워크마다 Tensorcore를 적용해보고 적용이 어려우면 사용하지 못했는데 이제는 안정적인 사용이 가능</span>
     - <span style="font-size:11pt">Master weight를 single precision으로 유지하는 것이 핵심으로, acc 유지에 매우 중요한 역할.</span>
-    - <figure>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/8.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/8.png"></a>
-       </figure>
+    <figure>
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/8.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/8.png"></a>
+    </figure>
    - <span style="font-size:11pt">단순히 precision을 다운하면 FP16 이 표현 가능한 범위의 한계로 인해 loss scale 표현에 문제가 생기고, 이로 인해 weight나 gradient가 0으로 바뀔 수 있음. </span>
-   - <figure>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/9.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/9.png"></a>
-       </figure>
+   <figure>
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/9.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/9.png"></a>
+    </figure>
    - <span style="font-size:11pt">따라서 weight는 어쩔 수 없이 single precision으로 유지해야 함. 그래서 shift연산을 해서 값을 올려줌</span>
    - <span style="font-size:11pt">precision마다 최대 크기가 다르기 때문에, 즉 FP16의 최대값이 FP32대비 작기 때문에 shift연산 시 오버플로우를 조심해야 한다. (그러나 이마저도 자동으로 해 줌)</span>
-   <figure>
+    <figure class="third">
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_1.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_1.png"></a>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_2.png">
@@ -100,15 +101,15 @@ header:
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/11.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/11.png"></a>
+    <figcaption><center>▲ 코드 두어줄 정도 추가하면 쓸 수 있도록 업데이트를 했다고 함. (Keras는 아직 개발중)</center></figcaption>
     </figure>
-    - <span style="font-size:11pt">코드 두어줄 정도 추가하면 쓸 수 있도록 업데이트를 했다고 함. (Keras는 아직 개발중)</span>
-    - <figure>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_1.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_1.png"></a>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_2.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_2.png"></a>
-        <figcaption><center>▲ Tensorflow에서 AMP 사용하기</center></figcaption>
-       </figure>
+    <figure class="half">
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_1.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_1.png"></a>
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_2.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_2.png"></a>
+    <figcaption><center>▲ Tensorflow에서 AMP 사용하기</center></figcaption>
+    </figure>
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_1.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_1.png"></a>
@@ -116,11 +117,11 @@ header:
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_2.png"></a>
     <figcaption><center>▲ (좌) 파이토치에서 AMP를 사용해 트레이닝하는 예제, <br>(우) 파이토치에서 Optimization level 설정하는 방법 및 장단점 소개</center></figcaption>
     </figure>
-    - <figure>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/14.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/14.png"></a>
-        <figcaption><center>▲ MXNET에서 AMP를 사용하는 예제 코드</center></figcaption>
-       </figure>
+    <figure>
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/14.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/14.png"></a>
+    <figcaption><center>▲ MXNET에서 AMP를 사용하는 예제 코드</center></figcaption>
+    </figure>
 - ### Performance guide of AMP
     <figure>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/15.png">
@@ -130,20 +131,20 @@ header:
     - <span style="font-size:11pt">VGG같이 사이즈가 3x3이라 애매할 경우는 패딩을 넣어서 돌림(8배수로 바꿔 넣으면 성능이 좋게 나오는 것을 확인 가능)</span>
     - <span style="font-size:11pt">반정밀도를 사용하면 배치 사이즈를 두 배로 늘릴 수 있음. </span>
     - <span style="font-size:11pt">텐서코어를 잘 사용하고 있는지 확인할 수 있는 방법 : 
-        <figure>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/16.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/16.png"></a>
-       </figure> </span>
-    - <span style="font-size:11pt">Tensorcore를 이용해 BERT모델 돌려보기 : </span>
-        <figure>
-        <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png">
-        <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png"></a>
-        <figcaption><center>▲ (좌 - BERT FP32) 맨 왼쪽 패널에서 GPU kernel에 로드된 API list를 확인 가능, 빨간 글자 부분에서 실행 시간도 확인 가능.<br>
-        (우 -B ERT FP16) 맨 왼쪽 패널에서 Tensor cores API가 커널에 로드된 것을 확인 가능하며 실행 시간이 2.1배 빨라짐을 확인 가능.</center></figcaption>
-       </figure>
+    <figure>
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/16.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/16.png"></a>
+    </figure> </span>
+    - <span style="font-size:11pt">Tensorcore를 이용해 BERT모델 돌려보기 : 
+    <figure>
+    <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png">
+    <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png"></a>
+    <figcaption><center>▲ (좌 - BERT FP32) 맨 왼쪽 패널에서 GPU kernel에 로드된 API list를 확인 가능, 빨간 글자 부분에서 실행 시간도 확인 가능.<br>
+    (우 -B ERT FP16) 맨 왼쪽 패널에서 Tensor cores API가 커널에 로드된 것을 확인 가능하며 실행 시간이 2.1배 빨라짐을 확인 가능.</center></figcaption>
+    </figure></span>
 
 - ## Additional Resources
-    <figure>
+    <figure class="half">
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/18_1.png">
     <img src="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/18_1.png"></a>
     <a href="/assets/Images/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/18_2.png">
