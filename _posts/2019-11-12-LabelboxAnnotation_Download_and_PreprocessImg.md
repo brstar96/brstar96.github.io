@@ -347,6 +347,8 @@ def imgDownloader(flag, entireData, dataset_img_savepath, dataset_cat_savepath):
 다운로드를 받는 중 서버 상황에 따라 404에러나 Bad request 에러가 발생할 수 있기 때문에 `imgDownloader`함수는 `'downloadNotExistFile'`와 `'downloadMissingImg'`플래그를 설정할 수 있도록 합니다. `'downloadNotExistFile'` 플래그는 존재하지 않는 파일을 다운로드하고, `'downloadMissingImg'`플래그는 중간에 에러가 발생해 셀이 꺼진 경우 반복 실행해 빠진 이미지를 찾은 후 해당 이미지만 다운로드할 수 있도록 합니다. <i>(사실 HTTP 에러 예외처리를 넣어 주었어야 하지만 이미지 장수가 많지 않아 그냥 `'downloadMissingImg'`을 여러번 반복했습니다.)</i><br>
 </span>
 
+
+
 ```python
 # Download img files
 imgDownloader('downloadNotExistFile', entireData, dataset_img_savepath, dataset_cat_savepath)
@@ -355,11 +357,20 @@ imgDownloader('downloadNotExistFile', entireData, dataset_img_savepath, dataset_
     0 files exist.
     547 files does not exist.
     
+
+
     HBox(children=(IntProgress(value=0, description='Download in Progress : ', max=547, style=ProgressStyle(descri…
 
+
     Current Flag :  downloadNotExistFile
-    ---------------------------------------------------------------------------
     
+
+
+    ---------------------------------------------------------------------------
+
+
+
+
 ```python
 # Search missing files and download them.
 imgDownloader('downloadMissingImg', entireData, dataset_img_savepath, dataset_cat_savepath)
@@ -367,10 +378,18 @@ imgDownloader('downloadMissingImg', entireData, dataset_img_savepath, dataset_ca
 
     439 files are missing.
     
+
+
     HBox(children=(IntProgress(value=0, description='Download in Progress : ', max=439, style=ProgressStyle(descri…
 
+
     Current Flag :  downloadMissingImg
+    
+
+
     ---------------------------------------------------------------------------
+
+    
 
 <span style="font-size:11pt">
 Segment map이 잘 저장되었는지 세 장 정도 뽑아 확인해 보겠습니다. 
