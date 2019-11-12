@@ -103,7 +103,7 @@ json_data[0]
 
     {'ID': 'ck0v1ffqya6hq0848hp0dbvyr',
      'DataRow ID': 'ck0c6gzn1uumm0cwbhym09b0c',
-     'Labeled Data': 'https://storage.labelbox.com/ck0c31n8b839z07013rjc9ph4%2Fe8482bd1-8367-29c9-22d4-4520ba2b9ce2-example-100647.jpg?Expires=1571630247206&KeyName=labelbox-assets-key-1&Signature=wyxR4rHAPDv8odA_mkWkoxDOGIk',
+     'Labeled Data': 'https://storage.labelbox.com/ck0c31n8b',
      'Label': {'eye': [{'geometry': [{'x': 299, 'y': 513},
          (...)]},
        {'geometry': [{'x': 589, 'y': 593},
@@ -169,7 +169,7 @@ print('원본 이미지 파일명 : ',json_data[0]['External ID']) # 원본 이�
 print(json_data[0]['Masks'])
 ```
 
-    {'eye': 'https://faas-gateway.labelbox.com/function/mask-exporter?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYWJlbElkIjoiY2swdjFmZnF5YTZocTA4NDhocDBkYnZ5ciIsImNsYXNzTmFtZSI6ImV5ZSIsInVzZXJJZCI6ImNrMGMzMW44eDgzYTUwNzAxMTRuZW5lcW4iLCJpYXQiOjE1NzA0MjA2NDcsImV4cCI6MTcyODEwMDY0N30.3DWfM0ccu2u5o5z2woOhrEaUe-D3QaWdJSDxsIWktPA', 'nose': 'https://faas-gateway.labelbox.com/function/mask-exporter?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYWJlbElkIjoiY2swdjFmZnF5YTZocTA4NDhocDBkYnZ5ciIsImNsYXNzTmFtZSI6Im5vc2UiLCJ1c2VySWQiOiJjazBjMzFuOHg4M2E1MDcwMTE0bmVuZXFuIiwiaWF0IjoxNTcwNDIwNjQ3LCJleHAiOjE3MjgxMDA2NDd9.ojnS-9SbWU7tUFOgN1f-ooE32T5l6AMtQUTRAyYSWMI', 'mouth': 'https://faas-gateway.labelbox.com/function/mask-exporter?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYWJlbElkIjoiY2swdjFmZnF5YTZocTA4NDhocDBkYnZ5ciIsImNsYXNzTmFtZSI6Im1vdXRoIiwidXNlcklkIjoiY2swYzMxbjh4ODNhNTA3MDExNG5lbmVxbiIsImlhdCI6MTU3MDQyMDY0NywiZXhwIjoxNzI4MTAwNjQ3fQ.dRTeWrCj-CKbGY1plPnJqJLTYG9tiCbt9_920jabFRA', 'eyebrow': 'https://faas-gateway.labelbox.com/function/mask-exporter?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYWJlbElkIjoiY2swdjFmZnF5YTZocTA4NDhocDBkYnZ5ciIsImNsYXNzTmFtZSI6ImV5ZWJyb3ciLCJ1c2VySWQiOiJjazBjMzFuOHg4M2E1MDcwMTE0bmVuZXFuIiwiaWF0IjoxNTcwNDIwNjQ3LCJleHAiOjE3MjgxMDA2NDd9.UdUfiW4-rtjoP6DnDSbueECPuBESnHHrr9n5WduJLa4'}
+    {'eye': 'https://faas-gateway.labelbox.com/function/mask-exporter?'}
     
 
 
@@ -177,7 +177,7 @@ print(json_data[0]['Masks'])
 print(json_data[0]['Masks']['nose'])
 ```
 
-    https://faas-gateway.labelbox.com/function/mask-exporter?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYWJlbElkIjoiY2swdjFmZnF5YTZocTA4NDhocDBkYnZ5ciIsImNsYXNzTmFtZSI6Im5vc2UiLCJ1c2VySWQiOiJjazBjMzFuOHg4M2E1MDcwMTE0bmVuZXFuIiwiaWF0IjoxNTcwNDIwNjQ3LCJleHAiOjE3MjgxMDA2NDd9.ojnS-9SbWU7tUFOgN1f-ooE32T5l6AMtQUTRAyYSWMI
+    https://faas-gateway.labelbox.com/function/mask-exporter?
     
 
 
@@ -344,13 +344,14 @@ def imgDownloader(flag, entireData, dataset_img_savepath, dataset_cat_savepath):
             FinalCatImg.save(catsavepath)
 ```
 <span style="font-size:11pt">
-다운로드를 받는 중 서버 상황에 따라 404에러나 Bad request 에러가 발생할 수 있기 때문에 `imgDownloader`함수는 `'downloadNotExistFile'`와 `'downloadMissingImg'`플래그를 설정할 수 있도록 합니다. `'downloadNotExistFile'` 플래그는 존재하지 않는 파일을 다운로드하고, `'downloadMissingImg'`플래그는 중간에 에러가 발생해 셀이 꺼진 경우 반복 실행해 빠진 이미지를 찾은 후 해당 이미지만 다운로드할 수 있도록 합니다. <i>(사실 HTTP 에러 예외처리를 넣어 주었어야 하지만 이미지 장수가 많지 않아 그냥 `'downloadMissingImg'`을 여러번 반복했습니다.)</i>
+다운로드를 받는 중 서버 상황에 따라 404에러나 Bad request 에러가 발생할 수 있기 때문에 `imgDownloader`함수는 `'downloadNotExistFile'`와 `'downloadMissingImg'`플래그를 설정할 수 있도록 합니다. `'downloadNotExistFile'` 플래그는 존재하지 않는 파일을 다운로드하고, `'downloadMissingImg'`플래그는 중간에 에러가 발생해 셀이 꺼진 경우 반복 실행해 빠진 이미지를 찾은 후 해당 이미지만 다운로드할 수 있도록 합니다. <i>(사실 HTTP 에러 예외처리를 넣어 주었어야 하지만 이미지 장수가 많지 않아 그냥 `'downloadMissingImg'`을 여러번 반복했습니다.)</i><br>
 </span>
 
 ```python
 # Download img files
 imgDownloader('downloadNotExistFile', entireData, dataset_img_savepath, dataset_cat_savepath)
 ```
+
     0 files exist.
     547 files does not exist.
     
@@ -358,10 +359,12 @@ imgDownloader('downloadNotExistFile', entireData, dataset_img_savepath, dataset_
 
     Current Flag :  downloadNotExistFile
     ---------------------------------------------------------------------------
+    
 ```python
 # Search missing files and download them.
 imgDownloader('downloadMissingImg', entireData, dataset_img_savepath, dataset_cat_savepath)
 ```
+
     439 files are missing.
     
     HBox(children=(IntProgress(value=0, description='Download in Progress : ', max=439, style=ProgressStyle(descri…
