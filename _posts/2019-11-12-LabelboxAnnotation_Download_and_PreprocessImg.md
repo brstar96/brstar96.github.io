@@ -19,22 +19,29 @@ header:
 
 <span style="font-size:11pt">
 이번 글에서는 Labelbox로 annotation한 이미지를 세그먼테이션 태스크에 활용할 수 있도록 Segment map으로 변환하는 과정에 대해 다뤄 봅니다. [LabelBox](https://labelbox.com/)는 Object Detection, Segmentation, Classification 태스크의 라벨을 만들 수 있는 웹 기반 툴로, 개인 연구자는 최대 5명을 협업자로 추가해 2500장 이미지의 라벨링 작업을 무료로 수행할 수 있습니다. 그 이상의 작업은 시간당 6달러를 지불하거나 따로 견적을 내어야 한다네요.<br><br>
-저는 Living Webtoon 프로젝트를 위해 TWDNE 데이터셋 중 560여 장을 추려 아래와 같이 eye, nose, mouth, eyebrow 네 클래스에 대해 annotation을 수행했습니다. </span><br>
+저는 Living Webtoon 프로젝트를 위해 TWDNE 데이터셋 중 560여 장을 추려 아래와 같이 eye, nose, mouth, eyebrow 네 클래스에 대해 annotation을 수행했습니다. <br></span>
 
-![1.jpg](/assets/Images/shoveling/labelboxdownload/1.jpg)<br><br>
+![1.jpg](/assets/Images/shoveling/labelboxdownload/1.jpg)<br>
+
 <span style="font-size:11pt">
 하지만 어노테이션을 끝낸 후 다운로드를 받는 과정에서 네 개의 클래스가 모두 합쳐진 이미지를 제공해 주지는 않습니다. 쓸만한 데이터는 각 이미지의 각 클래스별 폴리곤 버텍스 위치와 마스크 이미지 정도이고, LabelBox측에서 PASCAL VOC나 COCO스타일로 segmentation map을 만들어주는 코드를 제공하지만 라벨 컬러나 팔레트를 본인이 원하는 대로 변경하려면 마스크 이미지들을 받아 따로 수정할 필요가 있습니다. <br><br>
 </span>
-![2_1.jpg](/assets/Images/shoveling/labelboxdownload/2_1.jpg)<br><br>
+
+![2_1.jpg](/assets/Images/shoveling/labelboxdownload/2_1.jpg)<br>
+
 <span style="font-size:11pt">
 라벨링을 어느 정도 끝내고 Export를 하게 되면 위와 같이 mask를 포함해 .json 또는 .csv 포맷으로 annotation 데이터를 다운로드받을 수 있습니다. <br><br>
 </span>
-![2.jpg](/assets/Images/shoveling/labelboxdownload/2.jpg)<br><br>
+
+![2.jpg](/assets/Images/shoveling/labelboxdownload/2.jpg)<br>
+
 <span style="font-size:11pt">
 다운로드받은 json파일은 위와 같은 구조를 갖고 있습니다. `Label`은 segment 정보를 폴리곤으로 담고 있는 부분이고, 그 아래로 만든 사람과 프로젝트 이름, 생성 및 업데이트 날짜와 같은 부가 메타 정보가 기술되어 있습니다. 라벨링에 소요된 시간까지도 알 수 있네요. 
 우선 저희에게 제일 필요한 데이터는 라벨링된 이미지이기 때문에 `Masks` 항목의 링크를 통해 이미지를 확인해 보겠습니다. <br><br>
 </span>
-![3.jpg](/assets/Images/shoveling/labelboxdownload/3.jpg)<br><br>
+
+![3.jpg](/assets/Images/shoveling/labelboxdownload/3.jpg)<br>
+
 <span style="font-size:11pt">
 위 이미지의 (c)처럼 깔끔하게 정돈된 이미지가 나와 주었으면 좋으련만, LabelBox에서는 (b)와 같이 클래스 단위로 바이너리 이미지를 제공해 주고 있습니다. 세그먼테이션 모델에 따라 학습 방식이 미묘하게 다를 수 있지만 보통 원본 이미지인 (a)를 입력으로 받아 형형색색의 클래스로 구분한 후 (c) 이미지를 정답 삼아 loss를 구하기 때문에 (b)와 같은 바이너리 이미지는 학습을 위한 정답 이미지로 넣어줄 수 없습니다. 지금부터 저 .json파일로부터 바이너리 이미지를 다운로드받은 후 색깔을 입혀 한 장의 segment map으로 만들어 보겠습니다.<br><br>
 </span>
@@ -236,7 +243,8 @@ entireData[0]
 <span style="font-size:11pt">
 다음으로, 위에서 만든 `entireData`을 활용해 바이너리 이미지들을 다운로드받고 색깔을 입혀 한 장의 이미지로 만드는 과정을 소개합니다. </span>
 
-![4.png](/assets/Images/shoveling/labelboxdownload/4.png)<br><br>
+![4.png](/assets/Images/shoveling/labelboxdownload/4.png)<br>
+
 <span style="font-size:11pt">
 PASCAL-VOC 데이터셋의 라벨 이미지 한 장을 뜯어보면 위와 같이 3채널 컬러 8비트 이미지로 인코딩되어 있음을 알 수 있습니다. 저희는 위에서 본 네 장의 바이너리 이미지들을 위 이미지와 같이 바꾸어 주어야 합니다. 우선 원본 이미지는 `requests`를 이용해 다운로드받고, 바이너리 이미지들은 `imageio`를 이용해 image array로 받습니다. <br><br>
 uint8 타입의 빈 3채널 numpy array `output`을 만들어 준 다음 각 채널의 위치에 바이너리 이미지를 더해 Red, Green, Blue, Yellow 네 개의 색상으로 칠합니다. 
@@ -475,6 +483,7 @@ txtWriter(test, os.path.join(dataset_txt_savepath, 'test.txt'))
 하지만 지금까지 만든 이미지들을 그대로 학습에 사용하면 제대로 된 학습이 이루어지지 않습니다. </span>
 
 ![5.jpg](/assets/Images/shoveling/labelboxdownload/5.jpg)<br><br>
+
 <span style="font-size:11pt">
 학습이 되긴 되지만 정답 그리고 결과 이미지가 무언가 이상하게 디코딩되는 것을 확인할 수 있습니다. 오른쪽이 PASCAL-VOC로 정상 학습 중인 상태의 이미지이고, 왼쪽이 지금까지 저희가 만든 이미지로 학습 중인 모습입니다. 어딘지 모르게 클래스 순서가 뒤바뀐 느낌이 들죠. 이는 png 컬러맵이 달라 발생하는 문제로, 저희의 클래스에 맞게 컬러 팔레트를 새로 만들어 인코딩해 주어야 학습에 문제가 발생하지 않습니다. 지금부터는 저희 클래스 컬러에 맞게 팔레트를 새로 만들어 다시 인코딩해 보겠습니다.<br>
 </span>
@@ -483,6 +492,7 @@ txtWriter(test, os.path.join(dataset_txt_savepath, 'test.txt'))
 <span style="font-size:11pt">
 팔레트를 새로 만들기 전, 내친김에 PASCAL-VOC 데이터셋의 정답 이미지처럼 클래스 세그먼트 테두리에 다른 컬러를 입혀 보겠습니다. PASCAL-VOC데이터셋의 정답 이미지엔 `void`라는 이름의 희끄무레한 클래스가 들어가 있습니다. 지금까지 만든 이미지를 활용해 `void` 클래스를 만들어 보겠습니다.<br> 
 </span>
+
 ![6.jpg](/assets/Images/shoveling/labelboxdownload/6.jpg)
 
 ```python
