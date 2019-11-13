@@ -1,5 +1,5 @@
 ﻿---
-title: "(Event/Seminar후기) NVIDIA AI Conference 2019 - Tensor Core를 이용한 딥러닝 학습 가속을 쉽게 하는 방법"
+title: "[NVIDIA AI Conference 정리] Tensorcore를 이용한 딥러닝 학습 가속을 쉽게 하는 방법"
 tags: 
   - Deep Learning
   - Mixed Precision
