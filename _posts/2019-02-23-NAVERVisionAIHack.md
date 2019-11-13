@@ -38,6 +38,7 @@ header:
 <figure class="half">
     <a href="/assets/Images/event/NaverVisionAIHack/3.jpg"><img src="/assets/Images/event/NaverVisionAIHack/3.jpg"></a>
     <a href="/assets/Images/event/NaverVisionAIHack/3_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/3_1.jpg"></a>
+</figure>
 <figure>
     <a href="/assets/Images/event/NaverVisionAIHack/3_2.jpg"><img src="/assets/Images/event/NaverVisionAIHack/3_2.jpg"></a>
 </figure>
@@ -67,7 +68,7 @@ header:
 <span style="font-size:11pt">
 커넥트원 시설은 외관을 제외한 건물 전체가 촬영금지 구역이라서 지정된 포토존에서만 사진을 찍을 수 있었습니다. 해시태그 이벤트도 같이 하고 있더라고요 ㅎㅎ 선물은 맨투맨과 노트, 손목보호대와 스티커를 받았습니다. <br></span>
 
-<figure class="triple">
+<figure class="third">
     <a href="/assets/Images/event/NaverVisionAIHack/6.jpg"><img src="/assets/Images/event/NaverVisionAIHack/6.jpg"></a>
     <a href="/assets/Images/event/NaverVisionAIHack/6_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/6_1.jpg"></a>
     <a href="/assets/Images/event/NaverVisionAIHack/6_2.jpg"><img src="/assets/Images/event/NaverVisionAIHack/6_2.jpg"></a>
@@ -78,23 +79,25 @@ header:
 대회와 동시에 한켠에서는 네이버 취업상담과 클로바 AI 비전팀의 인공지능 멘토링, NSML 서비스 관련 멘토링도 진행되었습니다. 멘토님들의 열정이 정말 대단하셔서 당초 예정된 시간을 훌쩍 넘긴 늦은 밤까지 자리에 계셔 주셨어요. 평소 이런 전문적인 조언을 구할 곳이 없어 저희 팀에게는 너무 소중한 기회였습니다. 그동안 궁금했던 부분들을 마음껏 여쭤볼 수 있었거든요. 네이버 내 생활과 관련한 소소한 이야기들도 들려 주시고, 간간히 공부 팁도 알려 주셨습니다. 다만 경황이 없어 취업상담을 못 가본 것이 크디큰 아쉬움으로 남네요...</span>
 
 <figure class="half">
-    <a href="/assets/Images/event/NaverVisionAIHack/7.jpg"><img src="/assets/Images/event/NaverVisionAIHack/7.jpg"></a>
+    <a href="/assets/Images/event/NaverVisionAIHack/7.png"><img src="/assets/Images/event/NaverVisionAIHack/7.png"></a>
     <a href="/assets/Images/event/NaverVisionAIHack/7_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/7_1.jpg"></a>
 </figure>
 
 <span style="font-size:11pt">
 리더보드 상위권은 정말 박진감이 넘쳐서 보는 재미가 있었습니다. 심해에 있던 팀이 단숨에 상위권에 진입하기도 하고, 특히 우승을 거머쥔 3등 snu_CherryPickers팀은 대회 종료 불과 30분 전에 9등이나 제치고 랭킹되어 탄성을 자아냈습니다. 진행자님 소개처럼 저희 팀도 예선대회부터 왠지 대회 후반부에 닉값을 제대로 할 팀으로 흥미롭게 지켜본 팀인데 결국 우승을 하셨네요. <br></span>
 
+<center>
 <figure>
     <a href="/assets/Images/event/NaverVisionAIHack/8.jpg"><img src="/assets/Images/event/NaverVisionAIHack/8.jpg"></a>
 </figure>
+</center>
 
 <span style="font-size:11pt">
 저희 팀은 사실상 꼴찌(mAP Score 0.3064)로 올라왔지만 포기하지 않고 모델 구조 개선과 Data Imbalance 해결, 파라미터 튜닝, Inference 함수 수정을 통해 두배 정도 성능을 개량하여 32등(0.6136)으로 마감했습니다. 앙상블 적용과 Query Expansion과 같은 부가적인 기법들을 적용했더라면 상위권 랭크도 노려볼만했는데 정말 마지막까지 아쉬움만 잔뜩 남네요. 저희는 오히려 Data Imbalance 문제에 집중하느라 시간을 꽤 소모했고, 여러 분류기를 테스트하는 기간이 길어 본질에 집중할 시간을 허비했던 것 같아요. 노하우도 그리 많지 않아 무조건 에폭만 높으면 되는 줄 알고 3000번 돌리기도 하고...프리트레인 모델을 사용하지 않았었습니다. 결국은 feature engineering에 대한 노하우와 SOTA 논문의 높은 이해도, 빠른 적용력과 팀원간 의사소통이 원활한 팀이 상위권에 랭크될 수 있었습니다.<br>
 특히 백본 모델(DenseNet201)의 퍼포먼스가 싱글 분류 성능은 좋지만 시간이 오래 걸려 한번 서밋할 때마다 20분씩 소요되는 바람에 그야말로 긴장의 연속이었어요. 그나마도 NSML이 대회를 위해 제공해준 TPU가 P40(24GB)여서 이정도 퍼포먼스가 나왔지, 더 낮은 하드웨어였다면 학습도 시작하지 못했을 거예요. </span>
 
 <figure>
-    <a href="/assets/Images/event/NaverVisionAIHack/9.jpg"><img src="/assets/Images/event/NaverVisionAIHack/9.jpg"></a>
+    <a href="/assets/Images/event/NaverVisionAIHack/9.png"><img src="/assets/Images/event/NaverVisionAIHack/9.png"></a>
 </figure>
 
 <span style="font-size:11pt">
@@ -103,7 +106,6 @@ header:
 
 <Blockquote>
 <span style="font-size:11pt">
-<i>
 이번 대회에서 느낀 점.<br><br>
 1. 파인튜닝과 앙상블은 Image Retrieval을 비롯한 비전 분야 컴퍼티션에서는 굉장히 자주 쓰입니다.(다만 DenseNet201같이 무거운 모델은 submission 시간을 초과할 수 있어 앙상블이 위험합니다.)<br>
 2. Data Imbalance 문제는 꽤 중요하지만, 학습 결과에 지장을 줄 정도가 아니라면 중요도 비중이 낮습니다.<br>
@@ -112,6 +114,5 @@ header:
 5. Query Expansion은 매우 강력한 성능을 보장하지만 필수는 아닙니다.<br>
 6. DenseNet201은 사랑입니다. 많은 것을 볼수록(큰 RF와 큰 커널 사이즈일수록), 하드웨어가 받쳐줄수록 더 좋은 성능을 내 줍니다.<br>
 7. 프리트레인 모델을 사용했다면 프리트레인 학습에서 정규화 시 사용한 mean과 std로 우리의 데이터셋을 standardization해야 합니다. (테스트셋도 마찬가지입니다.)<br>
-</i>
 </span>
 </Blockquote>
