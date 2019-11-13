@@ -19,9 +19,8 @@ header:
 
 <span style="font-size:11pt">지난 1월 2일부터 시작된 [네이버 Vision AI 해커톤 대회](https://github.com/AiHackathon2018/AI-Vision)가 어제로 끝이 났습니다. 두달간 정말 쉼없이 달려오며 많은 우여곡절을 겪고 소중한 추억을 만들었습니다. 비록 우승권에 들지 못한 채 중하위권에서 대회를 마감했지만 그 자체만으로도 뿌듯하고 많은 깨달음을 얻었습니다. 이번 포스팅은 쟁쟁한 팀의 팀원 분들을 오프라인으로 만날 수 있었던 오프라인 본선 대회에 다녀온 후기입니다~</span>
 
-<figure class="half">
+<figure>
     <a href="/assets/Images/event/NaverVisionAIHack/1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/1.jpg"></a>
-    <a href="/assets/Images/event/NaverVisionAIHack/1_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/1_1.jpg"></a>
 </figure>
 
 <span style="font-size:11pt">
@@ -60,9 +59,8 @@ header:
 <span style="font-size:11pt">
 대회 일정과 간단한 주의사항을 듣고 바로 춘천으로 출발했습니다. 춘천까지는 한시간 40분정도 걸렸고, 가는 동안 Inference 함수를 수정해서 극적으로 mAP스코어를 0.20정도 올릴 수 있었습니다. 실무 경험이나 대회 경험이 많지 않아 대회 내내 무조건 네트워크 구조에만 집중해 왔었는데, 인퍼런스도 학습 못지 않게 중요하다는 사실을 뒤늦게나마 알았습니다. <br></span>
 
-<figure class="half">
+<figure>
     <a href="/assets/Images/event/NaverVisionAIHack/5.jpg"><img src="/assets/Images/event/NaverVisionAIHack/5.jpg"></a>
-    <a href="/assets/Images/event/NaverVisionAIHack/5_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/5_1.jpg"></a>
 </figure>
 
 <span style="font-size:11pt">
