@@ -20,7 +20,7 @@ header:
 <span style="font-size:11pt">지난 1월 2일부터 시작된 [네이버 Vision AI 해커톤 대회](https://github.com/AiHackathon2018/AI-Vision)가 어제로 끝이 났습니다. 두달간 정말 쉼없이 달려오며 많은 우여곡절을 겪고 소중한 추억을 만들었습니다. 비록 우승권에 들지 못한 채 중하위권에서 대회를 마감했지만 그 자체만으로도 뿌듯하고 많은 깨달음을 얻었습니다. 이번 포스팅은 쟁쟁한 팀의 팀원 분들을 오프라인으로 만날 수 있었던 오프라인 본선 대회에 다녀온 후기입니다~</span>
 
 <figure>
-    <a href="/assets/Images/event/NaverVisionAIHack/1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/1.jpg"></a>
+    <a href="/assets/Images/event/NaverVisionAIHack/1.png"><img src="/assets/Images/event/NaverVisionAIHack/1.png"></a>
 </figure>
 
 <span style="font-size:11pt">
@@ -60,25 +60,22 @@ header:
 대회 일정과 간단한 주의사항을 듣고 바로 춘천으로 출발했습니다. 춘천까지는 한시간 40분정도 걸렸고, 가는 동안 Inference 함수를 수정해서 극적으로 mAP스코어를 0.20정도 올릴 수 있었습니다. 실무 경험이나 대회 경험이 많지 않아 대회 내내 무조건 네트워크 구조에만 집중해 왔었는데, 인퍼런스도 학습 못지 않게 중요하다는 사실을 뒤늦게나마 알았습니다. <br></span>
 
 <figure>
-    <a href="/assets/Images/event/NaverVisionAIHack/5.jpg"><img src="/assets/Images/event/NaverVisionAIHack/5.jpg"></a>
+    <a href="/assets/Images/event/NaverVisionAIHack/5.png"><img src="/assets/Images/event/NaverVisionAIHack/5.png"></a>
 </figure>
 
 <span style="font-size:11pt">
 커넥트원 시설은 외관을 제외한 건물 전체가 촬영금지 구역이라서 지정된 포토존에서만 사진을 찍을 수 있었습니다. 해시태그 이벤트도 같이 하고 있더라고요 ㅎㅎ 선물은 맨투맨과 노트, 손목보호대와 스티커를 받았습니다. <br></span>
 
-<figure class="third">
-    <a href="/assets/Images/event/NaverVisionAIHack/6.jpg"><img src="/assets/Images/event/NaverVisionAIHack/6.jpg"></a>
-    <a href="/assets/Images/event/NaverVisionAIHack/6_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/6_1.jpg"></a>
-    <a href="/assets/Images/event/NaverVisionAIHack/6_2.jpg"><img src="/assets/Images/event/NaverVisionAIHack/6_2.jpg"></a>
+<figure>
+    <a href="/assets/Images/event/NaverVisionAIHack/6.png"><img src="/assets/Images/event/NaverVisionAIHack/6.png"></a>
 </figure>
 
 <span style="font-size:11pt">
 대회 기간 동안 운영진, 멘토, 다른 참가자 분과 실시간으로 커뮤니케이션을 할 수 있는 sli.do채널이 운영되었습니다. 정말 각종 공식 이벤트와 드립들의 향연들이 펼쳐졌는데요, 자칫 삭막하게 일만 할 수 있는 대회가 되지 않도록 신청곡도 받고 소소한 이야기를 나눌 수 있어서 너무 좋았습니다. 커넥트원에 운동시설이 있어서 같이 운동을 하자는 분, 혼자와서 식사 같이 할 사람을 찾는 분, 딥러닝을 공부하시는 분이라면 누구나 아는 말로만 듣던 Sung Kim 교수님, 라인의 에반젤리스트님까지 다양한 분들께서 소통을 하셨습니다. Sung Kim 교수님은 실제 오시기도 했다는데 정신이 없어서 저는 뵙지 못했습니다 ㅠㅠ<br><br>
 대회와 동시에 한켠에서는 네이버 취업상담과 클로바 AI 비전팀의 인공지능 멘토링, NSML 서비스 관련 멘토링도 진행되었습니다. 멘토님들의 열정이 정말 대단하셔서 당초 예정된 시간을 훌쩍 넘긴 늦은 밤까지 자리에 계셔 주셨어요. 평소 이런 전문적인 조언을 구할 곳이 없어 저희 팀에게는 너무 소중한 기회였습니다. 그동안 궁금했던 부분들을 마음껏 여쭤볼 수 있었거든요. 네이버 내 생활과 관련한 소소한 이야기들도 들려 주시고, 간간히 공부 팁도 알려 주셨습니다. 다만 경황이 없어 취업상담을 못 가본 것이 크디큰 아쉬움으로 남네요...</span>
 
-<figure class="half">
+<figure>
     <a href="/assets/Images/event/NaverVisionAIHack/7.png"><img src="/assets/Images/event/NaverVisionAIHack/7.png"></a>
-    <a href="/assets/Images/event/NaverVisionAIHack/7_1.jpg"><img src="/assets/Images/event/NaverVisionAIHack/7_1.jpg"></a>
 </figure>
 
 <span style="font-size:11pt">
@@ -100,11 +97,11 @@ header:
 
 <span style="font-size:11pt">
 정말 많은 것을 반성하고 느끼게 해준 대회였습니다. 역시 학문과 연구는 겸손한 자세로 임하고 고정관념에 사로잡히지 않아야 할 것 같습니다. 이런 큰 대회에 처음으로 출사표를 내고 뜻밖에 본선까지 진출하게 되어 티는 내지 않았지만 속으로 자만심에 빠져 있었는데, 1, 2, 3등팀 모두 Image Retrieval 분야는 처음이라는 우승 소감을 듣고 깊이 반성하는 계기가 되었습니다. 대회 컷오프 때마다 아등바등 올라오긴 했지만 '왜 그때 그걸 하려다 말았을까' 하는 아쉬움, 조금만 덜 잘걸...하는 후회가 남네요. 비록 저희 팀은 커넥트원 숙소를 구경하지 못했지만 그 전에 미리 어제 잘 잠을 늘려 두지 못한 제 잘못이죠 ㅠㅠ<br><br>
-대회에 참여한 지난 두어 달 동안 온갖 삽질과 고생을 하며 많은 것을 배웠습니다. 학교에서 배운 것보다 현장에서 배운 것이 더 값지고 소중하네요. 이론도 중요하지만 그걸 구현할 수 있어야 일류가 된다는걸 다시금 깨달았습니다. Naver Vision AI대회에서 얻은 교훈과 동기를 소중히 간직한 채 두 번째 대회를 준비해 봐야겠습니다.</span><br><br>
+대회에 참여한 지난 두어 달 동안 온갖 삽질과 고생을 하며 많은 것을 배웠습니다. 학교에서 배운 것보다 현장에서 배운 것이 더 값지고 소중하네요. 이론도 중요하지만 그걸 구현할 수 있어야 일류가 된다는걸 다시금 깨달았습니다. Naver Vision AI대회에서 얻은 교훈과 동기를 소중히 간직한 채 두 번째 대회를 준비해 봐야겠습니다.</span><br>
 
 <Blockquote>
 <span style="font-size:11pt">
-이번 대회에서 느낀 점.<br><br>
+<b>이번 대회에서 느낀 점.</b><br><br>
 1. 파인튜닝과 앙상블은 Image Retrieval을 비롯한 비전 분야 컴퍼티션에서는 굉장히 자주 쓰입니다.(다만 DenseNet201같이 무거운 모델은 submission 시간을 초과할 수 있어 앙상블이 위험합니다.)<br>
 2. Data Imbalance 문제는 꽤 중요하지만, 학습 결과에 지장을 줄 정도가 아니라면 중요도 비중이 낮습니다.<br>
 3. Feature Engineering은 거의 모든 인공지능 학습에서 필수입니다.<br>
