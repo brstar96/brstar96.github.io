@@ -82,7 +82,7 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
     - <span style="font-size:11pt">통이미지를 convnet에 통과시켜 1-D scalar 확률값을 뽑아내는 방식이 cost가 낮고 빠르기 때문에 저자는 후자의 방식을 추천하고 있습니다.</span>     
 - <span style="font-size:11pt">L1 loss를 사용함으로서 Generator는 Discriminator를 속이는 것 뿐만 아니라 정답 이미지(Ground Truth)와의 L1 distance를 줄이는 역할을 동시에 수행하게 됩니다.</span> 
 - <span style="font-size:11pt">Discriminator에 conditon이 들어가지 않으면, 즉 Generator가 Fake 이미지를 만들 때 본 condition을 Discriminator가 보지 않게 되면 input과 output의 mismatch를 따지지 않게 되므로 성능이 좋지 않습니다. 따라서 Pix2Pix는 condition이 G 뿐만 아니라 D에도 들어가게 됩니다.</span> 
- 
+ <br>
  
  ### Pix2Pix의 Optimization and Inference
  
