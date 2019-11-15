@@ -59,7 +59,7 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
         - <span style="font-size:11pt">1차 마르코프 연쇄 : 한 상태에서 다른 상태로 변할 확률이 현재의 상태에만 의존하는 모델</span>
         - <span style="font-size:11pt">1차 마르코프 가정 : 시간 n에서 어떤 사건이 관측될 확률은 n-1에서의 관측 결과인 q<sub>n-1</sub>에만 의존한다는 가정입니다.</span>     
     - <span style="font-size:11pt">한 부분의 데이터를 알아내기 위해 <b>전체 데이터를 보고 판단하는 것이 아닌, 이웃하고 있는 데이터들과의 관계를 파악해 판단</b>합니다.</span>
-    - <span style="font-size:11pt">이미지의 relevant한 통계적 종속성(statistical dependencies)이 Local level에 존재한다고 가정하고 로컬 이미지 패치의 likelihood를 학습합니다. <i>([「Combining Markov Random Fields and Convolutional Neural Networks for Image Synthesis」](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Li_Combining_Markov_Random_CVPR_2016_paper.pdf) 'Introduction' 내용 중 발췌. 이 논문에서 NxN patches를 사용하는 컨셉이 처음으로 제안되었으나 D가 아닌 생성 모델에만 국한되어 있음.)<i></span>
+    - <span style="font-size:11pt">이미지의 relevant한 통계적 종속성(statistical dependencies)이 Local level에 존재한다고 가정하고 로컬 이미지 패치의 likelihood를 학습합니다. ([「Combining Markov Random Fields and Convolutional Neural Networks for Image Synthesis」](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Li_Combining_Markov_Random_CVPR_2016_paper.pdf) 'Introduction' 내용 중 발췌. 이 논문에서 NxN patches를 사용하는 컨셉이 처음으로 제안되었으나 D가 아닌 생성 모델에만 국한되어 있음.)</span>
     - <span style="font-size:11pt">MRF는 Image restoration, Texture analysis, Image segmentation, Image labeling, Edge detection, Object recognition 등의 분야에 사용됩니다.</span>
     
 ## PatchGAN을 사용하는 주된 이유
@@ -83,7 +83,9 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 - <span style="font-size:11pt">L1 loss를 사용함으로서 Generator는 Discriminator를 속이는 것 뿐만 아니라 정답 이미지(Ground Truth)와의 L1 distance를 줄이는 역할을 동시에 수행하게 됩니다.</span> 
 - <span style="font-size:11pt">Discriminator에 conditon이 들어가지 않으면, 즉 Generator가 Fake 이미지를 만들 때 본 condition을 Discriminator가 보지 않게 되면 input과 output의 mismatch를 따지지 않게 되므로 성능이 좋지 않습니다. 따라서 Pix2Pix는 condition이 G 뿐만 아니라 D에도 들어가게 됩니다.</span> 
  
+ 
  ### Pix2Pix의 Optimization and Inference
+ 
  - <span style="font-size:11pt">Optimization : Vanilla GAN의 optimization 방식을 따랐으며, D에 대해 Gradient Descent step 한번, G에 대해 Gradient Descent step 한번씩 번갈아 가며 학습합니다.</span> 
     - <span style="font-size:11pt">Dropout과 Minibatch SGD를 적용했고, Adam을 사용했습니다.</span> 
 - <span style="font-size:11pt">Inference : 테스트 단계에도 Dropout을 적용하고, test batch의 statistics를 적용한 batch normlaization을 사용했습니다. (일반적으로 다른 모델에서는 training batch의 staatistics를 사용합니다.)</span>
