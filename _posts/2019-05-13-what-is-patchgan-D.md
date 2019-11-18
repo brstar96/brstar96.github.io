@@ -85,8 +85,7 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
  <br>
  
  ### Pix2Pix의 Optimization and Inference
- 
- - <span style="font-size:11pt">Optimization : Vanilla GAN의 optimization 방식을 따랐으며, D에 대해 Gradient Descent step 한번, G에 대해 Gradient Descent step 한번씩 번갈아 가며 학습합니다.</span> 
+- <span style="font-size:11pt">Optimization : Vanilla GAN의 optimization 방식을 따랐으며, D에 대해 Gradient Descent step 한번, G에 대해 Gradient Descent step 한번씩 번갈아 가며 학습합니다.</span> 
     - <span style="font-size:11pt">Dropout과 Minibatch SGD를 적용했고, Adam을 사용했습니다.</span> 
 - <span style="font-size:11pt">Inference : 테스트 단계에도 Dropout을 적용하고, test batch의 statistics를 적용한 batch normlaization을 사용했습니다. (일반적으로 다른 모델에서는 training batch의 staatistics를 사용합니다.)</span>
     - <span style="font-size:11pt">이러한 방식은 instance normalization(batch size가 1~2와 같이 극도로 작은 경우 사용)과 같으며, [Instance normalization: The missing ingredient for fast stylization](https://arxiv.org/pdf/1607.08022.pdf) 논문에서 제안된 바 있습니다. 이미지를 낮은 배치에서 생성할 때 효과적입니다.</span>
