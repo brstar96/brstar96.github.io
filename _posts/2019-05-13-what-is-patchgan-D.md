@@ -99,13 +99,13 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 
 
 ## Reference
-  - <span style="font-size:11pt">Precomputed real-time texture synthesis with markovian generative adversarial networks.</span>
-  - <span style="font-size:11pt">Texture synthesis by non-parametric sampling</span>
-  - <span style="font-size:11pt">Image quilting for texture synthesis and transfer.</span>
-  - <span style="font-size:11pt">Image style transfer using convolutional neural networks.</span>
-  - <span style="font-size:11pt">Combining markov random fields and convolutional neural networks for image synthesis.</span>
+  - <span style="font-size:11pt">LA Gatys at al, ["Image style transfer using convolutional neural networks"](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf), CVPR2016</span> 
+  - <span style="font-size:11pt">Alexei A. Efros et al, ["Texture synthesis by non-parametric sampling"](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/papers/efros-iccv99.pdf), ICCV 1999</span> 
+  - <span style="font-size:11pt">Alexei A. Efros et al, ["Image quilting for texture synthesis and transfer"](https://people.eecs.berkeley.edu/~efros/research/quilting/quilting.pdf)</span>
+  - <span style="font-size:11pt">Chuan Li et al, ["Precomputed Real-Time Texture Synthesis with Markovian Generative Adversarial Networks"](https://arxiv.org/pdf/1604.04382.pdf)</span>
+  - <span style="font-size:11pt">Chuan Li et al, ["Combining markov random fields and convolutional neural networks for image synthesis"](https://arxiv.org/pdf/1601.04589.pdf)</span> 
   - <span style="font-size:11pt">라온피플 네이버 블로그 - [pix2pix 3](http://blog.naver.com/PostView.nhn?blogId=laonple&logNo=221366130381&proxyReferer=https%3A%2F%2Fwww.google.com%2F)</span>
   - <span style="font-size:11pt">[Conditional GAN 관점에서 바라본 pix2pix 네트워크 설명](https://gaiag.tistory.com/57)</span>
-  - <span style="font-size:11pt">https://kakalabblog.wordpress.com/2017/08/10/pix2pix-image-to-image-translation-with-conditional-adversarial-networks/</span>
-  - <span style="font-size:11pt">http://www.navisphere.net/5932/image-to-image-translation-with-conditional-adversarial-networks/</span>
-  - <span style="font-size:11pt">https://newsight.tistory.com/172</span>
+  - <span style="font-size:11pt"><a href = "https://kakalabblog.wordpress.com/2017/08/10/pix2pix-image-to-image-translation-with-conditional-adversarial-networks/">(한국어 논문리뷰 - kakalab) Image-to-image Translation with Conditional Adversarial Networks<a></span>
+  - <span style="font-size:11pt"><a href = "http://www.navisphere.net/5932/image-to-image-translation-with-conditional-adversarial-networks/">(한국어 논문리뷰 - navisphere) Image-to-Image Translation with Conditional Adversarial Networks</a></span>
+  - <span style="font-size:11pt"><a href = "https://newsight.tistory.com/172">Markov Random Field, MRF</a></span>
