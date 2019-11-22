@@ -14,7 +14,7 @@ comments:
   disqus:
     shortname: "https-brstar96-github-io"
 header:
-  teaser: /assets/shoveling/labelboxdownload/3.jpg
+  teaser: /assets/Images/shoveling/labelboxdownload/3.jpg
 ---
 
 <span style="font-size:11pt">
