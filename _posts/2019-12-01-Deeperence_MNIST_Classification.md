@@ -64,7 +64,7 @@ use_cuda = torch.cuda.is_available() # return false if cannot use GPU
 
 
 <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Clt_in_action.gif/400px-Clt_in_action.gif'/></center>
-<center><span style="font-size:11pt"><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></span></center><br>
+<center><span style="font-size:11pt"><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></span></center>
 
 <span style="font-size:11pt">
 서로 다른 모양의 정규분포를 표준화하는 방법은 <u>평균을 0으로, 표준편차를 1로</u> 만들어 주는 것입니다. 개별 이미지에서 해당 train set 전체의 평균을 빼고 표준 편차로 나누어 주면 되는 것이죠. 개별 이미지에서 전체 데이터셋의 평균을 빼 준 것은 0으로 수평이동을 한 것과 같습니다. 거기에 모집단의 표준편차로 나누어 주었으므로 개별 데이터의 표준 편차도 1이 되는 것이죠.<br><br>
@@ -192,7 +192,7 @@ print("label : ", label)
 MNIST 데이터셋의 개별 데이터 한 개는 이미지의 정보를 담고 있는 1차원 tensor과 그 이미지의 int형 라벨로 구성되어 있음을 알 수 있습니다. 이미지의 각 픽셀 값은 0~1 사이의 float형으로 저장되어 있으며, 1에 가까울수록 흰색을, 0에 가까울 수록 검은색으로 표현됩니다. 파이토치는 다른 딥러닝 프레임워크와는 다르게 <b>N(batch_size) x C(channel) x W(width) x H(height) 순서</b>로 이미지 데이터를 처리합니다. 그래서 `one_image.shape`의 결과가 `[1, 28, 28]`로 나타나는 것이죠.<br>
 `plt.imshow`를 통해 이미지를 띄우는 과정에서, `imshow`에 들어가는 이미지 데이터는 1채널 grayscale이나 3(RGB)채널 또는 4(RGBA)채널만이 들어갈 수 있습니다. 따라서 `[W, H]`나 `[W, H, 3]`, `[W, H, 4]`형태만을 넣어줄 수 있죠. Numpy의 `squeeze()`함수는 차원 중 사이즈가 1인 것을 찾아 해당 차원을 제거해 줍니다. Numpy array의 형상을 바꾸는 세 가지 함수 `reshape`, `squeeze`, `expand_dim`는 이미지 데이터 핸들링에 자주 사용되기 때문에 알아두면 편리합니다.</span>
 
-#### 1.4 DataLoader 만들기
+### 1.4 DataLoader 만들기
 <span style="font-size:11pt">
 `train_dataset`과 `test_dataset`을 통해 MNIST 데이터셋을 불러온 후 해야 할 것은 `DataLoader`를 만드는 것입니다.
 </span>
@@ -313,8 +313,8 @@ plt.imshow(merged_hardcoded)
 ![png](/assets/Images/tutomentoring/deeperence_MNIST/output_20_2.png)
 
 <span style="font-size:11pt">
-우리는 소벨 필터를 이용해 둘리 이미지로부터 엣지 feature를 찾는 데 성공했습니다. 원본 둘리 이미지에 소벨 필터를 적용해 얻은 오른쪽 이미지를 <u>feature map</u>이라고 부릅니다. 둘리 이미지는 RGB 3채널로 구성되어 있고, 각 채널에 대해 소벨 필터를 적용했으므로 feature map은 3개가 생기게 됩니다. 이 세 개의 feature map을 [가산 혼합](https://ko.wikipedia.org/wiki/RGB_%EA%B0%80%EC%82%B0%ED%98%BC%ED%95%A9)하여 얻은 것이 오른쪽 둘리 테두리 이미지가 되겠습니다. <br>
-이를 통해, 이미지로부터 찾고 싶은 성분이 있을 때 필터의 종류가 다양할수록 여러 개의 feature map이 생긴다는 사실을 알 수 있습니다. <u>이미지에는 윤곽, 텍스쳐 등의 다양한 정보들이 포함되어 있고, 기존에는 이미지로부터 이러한 특정 feature를 뽑아 내기 위해 커널을 손수 디자인</u>해야 했습니다. (대표적으로 차선 검출에 자주 사용되는 steerable filter 등이 있습니다.) 하지만 이 과정은 대단히 비효율적이기 때문에 <u>필터의 성분을 자동으로 찾아 주는 CNN 알고리즘</u>이 각광을 받게 된 것이죠. 학습을 거듭할수록, 우리의 네트워크 속 커널들은 인풋 이미지에 대해 더 잘 필터링을 수행할 수 있게 될 것입니다. 즉, 알아서 학습한 수많은 필터들을 기반으로 강력한 feature extraction 능력을 갖추게 되는 것이죠.<br> 
+우리는 소벨 필터를 이용해 둘리 이미지로부터 엣지 feature를 찾는 데 성공했습니다. 원본 둘리 이미지에 소벨 필터를 적용해 얻은 오른쪽 이미지를 <u>feature map</u>이라고 부릅니다. 둘리 이미지는 RGB 3채널로 구성되어 있고, 각 채널에 대해 소벨 필터를 적용했으므로 feature map은 3개가 생기게 됩니다. 이 세 개의 feature map을 [가산 혼합](https://ko.wikipedia.org/wiki/RGB_%EA%B0%80%EC%82%B0%ED%98%BC%ED%95%A9)하여 얻은 것이 오른쪽 둘리 테두리 이미지가 되겠습니다. <br><br>
+이를 통해, 이미지로부터 찾고 싶은 성분이 있을 때 필터의 종류가 다양할수록 여러 개의 feature map이 생긴다는 사실을 알 수 있습니다. <u>이미지에는 윤곽, 텍스쳐 등의 다양한 정보들이 포함되어 있고, 기존에는 이미지로부터 이러한 특정 feature를 뽑아 내기 위해 커널을 손수 디자인</u>해야 했습니다. (대표적으로 차선 검출에 자주 사용되는 steerable filter 등이 있습니다.) 하지만 이 과정은 대단히 비효율적이기 때문에 <u>필터의 성분을 자동으로 찾아 주는 CNN 알고리즘</u>이 각광을 받게 된 것이죠. 학습을 거듭할수록, 우리의 네트워크 속 커널들은 인풋 이미지에 대해 더 잘 필터링을 수행할 수 있게 될 것입니다. 즉, 알아서 학습한 수많은 필터들을 기반으로 강력한 feature extraction 능력을 갖추게 되는 것이죠.<br><br> 
 이미지는 상당한 고차원 데이터이기 때문에, 쓸모 없는 정보 또한 많이 포함되어 있습니다. 한 번쯤은 들어 보셨을 <b>차원의 저주 현상</b>(train 샘플 각각이 수천 심지어 수백만 개의 특성을 가지고 있을 때 훈련을 느리게 할 뿐만 아니라, 최적의 솔루션을 찾기 어렵게 만드는 현상)을 줄이기 위한 목적으로서의 convolution 또한 중요한데요, CNN의 핵심은 <b>원본 이미지와 필터를 갖고 convolution 연산을 수행해 중요한 feature를 detect한 후 maxpooling이라는 압축 과정을 거쳐 또 한번 중요한 feature만을 남기는 것</b>입니다. 이 과정을 거침으로서 쓸모없는 데이터가 제거되고 중요한 feature만이 남게 되는 것이죠.</span>
 
 - <span style="font-size:11pt">`nn.Conv2d`를 따라가 보면 다음과 같은 인자들을 확인할 수 있습니다.</span> 
@@ -337,7 +337,7 @@ plt.imshow(merged_hardcoded)
 
 #### 1.5.2 MaxPooling2D 이해하기
 <span style="font-size:11pt">
-<u>MaxPooling은 convolution을 통해 나온 feature에 대해 특정 윈도우 사이즈만큼 돌며 제일 큰 값</u>을 가져옵니다. 아래 이미지가 잘 설명해 주고 있네요. MaxPooling2D는 채널 한개 단위로 실행되므로, 아웃풋 채널 사이즈는 굳이 정해줄 필요가 없습니다. </span>
+<u>MaxPooling은 convolution을 통해 나온 feature에 대해 특정 윈도우 사이즈만큼 돌며 제일 큰 값</u>을 가져옵니다. 아래 이미지가 잘 설명해 주고 있네요. MaxPooling2D는 채널 한개 단위로 실행되므로, 아웃풋 채널 사이즈는 굳이 정해줄 필요가 없습니다. </span><br>
 <img src='http://drive.google.com/uc?export=view&id=1I452-wXunTmdsL6WK2vLYmtHRs2YO2m-' /><br>
 
 - <span style="font-size:11pt">`nn.MaxPool2d`는 따라가 보면 `F.max_pool2d`를 리턴하게 되어 있습니다. 또다시 따라가 보면 다음과 같은 인자들을 확인할 수 있습니다. 핵심 인자들의 쓰임새는 `Conv2d` 레이어와 동일합니다.</span> 
@@ -351,7 +351,7 @@ plt.imshow(merged_hardcoded)
 <span style="font-size:11pt">
 모델을 클래스 단위로 정의하는 이유는 객체 지향 프로그래밍의 장점을 십분 활용하기 위해서입니다. 모델 클래스를 instantiate해 다양한 인풋과 파라미터가 적용된 여러 모델을 만들고 성능을 평가할 때 편리하기 때문입니다. 붕어빵을 구울 때 제빵틀을 만들고 굽는다면 금방금방 붕어빵을 찍어낼 수 있겠죠.</span>
 
-<img src='http://drive.google.com/uc?export=view&id=1n2wQqJc-KRUgZSkO5k_7702ACaVVQ2Kq' /><br>
+<img src='http://drive.google.com/uc?export=view&id=1n2wQqJc-KRUgZSkO5k_7702ACaVVQ2Kq' /><br><br>
 <span style="font-size:11pt">
 이 네트워크는 LeNet-5라는 역사적인 CNN 모델입니다. Yann LeCun 교수님이 우편번호와 수표의 필기체를 인식하기 위한 용도로 개발한 고전적인 CNN 구조이죠. 기존까지 사용하던 무거운 Fully-connected neural network가 가진 한계를 개선하기 위해 등장했습니다. 총 세 개의 convolution 레이어와 2개의 sub-sampling layer(Maxpool2d), 2개의 fully-connected layer로 구성되어 있네요.</span>
 
@@ -391,7 +391,7 @@ class simple_CNN(nn.Module):
 ```
 <span style="font-size:11pt">
 파이토치의 `torch.nn` 패키지는 `Module`들을 구현해 놓은 패키지입니다. `Module`은 입력을 받아 모델로 하여금 출력을 생성하도록 하고 학습 가능한, 즉 미분 가능한 weight를 갖는 Neural Network Layers의 집합입니다. `Linear`, `ReLU`, `Conv2d` 등이 포함되어 있죠.<br>
-위에서 모델을 만들기 위해 가장 먼저 해야 할 일은 class를 하나 만들고 `__init__`을 정의하는 것이라고 말씀드렸습니다. `__init__`에 레이어를 초기화하는 과정에서 `nn.Sequential`에 레이어를 담아 두면 이후 `forward()`에서 레이어를 쌓을 때 편리하게 블록 단위로 쌓을 수 있습니다. 모델이 복잡해질수록 효과가 뛰어나죠.<br> 
+위에서 모델을 만들기 위해 가장 먼저 해야 할 일은 class를 하나 만들고 `__init__`을 정의하는 것이라고 말씀드렸습니다. `__init__`에 레이어를 초기화하는 과정에서 `nn.Sequential`에 레이어를 담아 두면 이후 `forward()`에서 레이어를 쌓을 때 편리하게 블록 단위로 쌓을 수 있습니다. 모델이 복잡해질수록 효과가 뛰어나죠.<br><br> 
 `Softmax`와 `nn.LogSoftmax`레이어는 무슨 역할을 하는 레이어일까요? 직관적으로 설명하자면, <u>K 사이즈의 벡터를 0~1 사이의 값으로 찌그러뜨리는 역할을 함으로서 확률로 변환해 주는 역할</u>을 합니다. 아래 이미지를 보시면 이해가 더 쉬울지도 모르겠네요. 1.6절의 NOTE3에서 이야기를 이어 나가겠지만, <u>pmf(확률질량함수)에서 모든 확률의 합은 1이므로, 모든 클래스 확률의 총합은 1이 되어야 합니다.</u></span><br> 
 
 <img src='http://drive.google.com/uc?export=view&id=1IqeHCjTY8r7d-CryH05swDZ6PdhbDfaj' /><br>
@@ -403,11 +403,11 @@ class simple_CNN(nn.Module):
 2. <span style="font-size:11pt">컴퓨터는 제한된 부동 소수점 표현 방식을 사용하기 때문에 log를 씌워 줌으로서 log scale로 정규화를 하지 않으면 결합확률을 구하는 과정에서 결과가 0에 가까워지게 됩니다. 즉 <u>값이 너무 커지거나(overflow) 0에 가까워지는 문제(underflow)를 방지함으로서 연산의 안정성</u>을 높여 줍니다.</span> 
 
 <span style="font-size:11pt">
-이 예제에서는 LogSoftmax를 구해준 후 아래 `train()`함수에서 호출한 `nll_loss`(Negative Log Likelihood) 에 넘겨 loss를 구했습니다. 하지만 `LogSoftmax`를 사용하지 않고 맨 마지막 레이어의 아웃풋을 바로 `CrossEntropyLoss`에 넘겨주는 것이 레이어를 하나 덜 쌓을 수 있으므로 성능상 조금 이점이 있습니다. <br>
-<u>머신러닝은 베이즈 이론에 기반해 Likelihood를 최대화하는 방향(Maximum likelihood)으로 학습을 진행</u>합니다. <u>입력값(CNN에서는 학습 이미지) X와 모델의 파라미터 θ(CNN에서는 kernel weight)가 주어졌을 때 정답 Y가 나타날 사후확률을 최대화하는 θ를 찾는 것</u>이죠. 따라서 X와 Y는 고정되어 있는 상태이며, 모든 데이터 샘플은 <u>i.i.d condition(Independent and identically distributed condition, 즉 동일한 모집단 내에서 동일한 분포를 따르는 데이터들을 독립적으로 샘플링하는 상황)을 따른다고 가정</u>합니다. 여기에 위에 설명한 것처럼 연산의 속도와 안정성을 높여 주기 위해 log를 씌워 주는 것이죠.<br> 
+이 예제에서는 LogSoftmax를 구해준 후 아래 `train()`함수에서 호출한 `nll_loss`(Negative Log Likelihood) 에 넘겨 loss를 구했습니다. 하지만 `LogSoftmax`를 사용하지 않고 맨 마지막 레이어의 아웃풋을 바로 `CrossEntropyLoss`에 넘겨주는 것이 레이어를 하나 덜 쌓을 수 있으므로 성능상 조금 이점이 있습니다. <br><br>
+<u>머신러닝은 베이즈 이론에 기반해 Likelihood를 최대화하는 방향(Maximum likelihood)으로 학습을 진행</u>합니다. <u>입력값(CNN에서는 학습 이미지) X와 모델의 파라미터 θ(CNN에서는 kernel weight)가 주어졌을 때 정답 Y가 나타날 사후확률을 최대화하는 θ를 찾는 것</u>이죠. 따라서 X와 Y는 고정되어 있는 상태이며, 모든 데이터 샘플은 <u>i.i.d condition(Independent and identically distributed condition, 즉 동일한 모집단 내에서 동일한 분포를 따르는 데이터들을 독립적으로 샘플링하는 상황)을 따른다고 가정</u>합니다. 여기에 위에 설명한 것처럼 연산의 속도와 안정성을 높여 주기 위해 log를 씌워 주는 것이죠.<br><br> 
 이렇게 모델링하면 우리가 가정하는 확률모델이 정규분포일 경우 중심극한정리에 따라 θ 추정에 사용하는 <u>sample space의 크기가 커질수록 진짜 train set의 모수에 수렴하는 특성</u>을 갖게 됩니다. 때문에 머신러닝에서 MLE(Maximum likelihood estimation) 기법을 자주 사용하는 것이죠. 하지만 <u>sample space에 모델의 성능이 큰 영향</u>을 받기 때문에, 최근 이를 보완하는 다양한 기법들이 제안되고 있습니다. </span><br>
 
-<center><img src='http://drive.google.com/uc?export=view&id=1Fw8wHcKiS9jbdZJAD5f45PoiKfca3qhN' /><br></center>
+<center><img src='http://drive.google.com/uc?export=view&id=1Fw8wHcKiS9jbdZJAD5f45PoiKfca3qhN' /></center><br><br>
 <span style="font-size:11pt">
 <u>베이즈 이론에서 likelihood를 최대화하는 것은 두 분포 사이의 거리, 즉 train data와 모델 분포의 거리를 최소화하는 것</u>과 같습니다. 기억이 가물가물하시겠지만 베이즈 이론과 함께 의사가 환자의 CT사진을 보고 종양에 대해 암인지 아닌지를 판별하는 상황을 떠올려 봅시다. 만약 의사의 likelihood가 크지 않다면 암을 제대로 검진할 수 없을 것이고, 속된 말로 돌팔이 소리를 들을 것입니다. 100% 암인지 아닌지 잘은 모르지만, 많은 경험을 갖고 있는 의사라면 암을 정확히 검진할 확률이 100%에 수렴하겠죠.<br><br> 
 아무튼 다시 돌아와서, <u>log likelihood를 최대화하는 것은 negative log likelihood를 minimize하는 것</u>과 같습니다. 때문에 `nll_loss`에 모델이 예측한 값과 정답 값을 넘겨 줌으로서 loss를 구해야 하는 것이죠.</span>
@@ -420,7 +420,7 @@ optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5) # Define optimi
 ```
 
 <span style="font-size:11pt">
-위에서 만들었던 `simple_CNN` 클래스를 이용해 `model`이라는 모델 인스턴스를 만들었습니다. 이제 우리의 모델이 Gradient Descent 알고리즘을 이용해 변수 공간을 탐색할 수 있도록 Optimizer를 정의해 주도록 하겠습니다. <u>딥러닝에서의 최적화는 Optimizer과 Gradient descent 알고리즘을 이용해 loss가 최소가 되는 지점을 찾는 과정을 의미</u>합니다. 학습이라는 것은 곧 이 loss가 최소가 되는 지점에서의 weight값을 찾는 것이죠. 아무튼, 제일 만만하지만 의외로 굉장히 자주 쓰이는 SGD(Stochastic gradient descent) optimizer를 정의해 주겠습니다. SGD는 손실 함수의 기울기를 계산한 후 `lr`(learning rate)을 곱한 값으로 기존 가중치를 갱신합니다. 무작정 기울기 방향으로 이동하기 때문에 탐색 경로가 비효율적일 뿐만 아니라 한참을 탐색하게 되죠. 이 Optimizer는 Adam, AdaGrad 등 다양한 종류가 존재하지만 잘 모르겠다면 일단 SGD나 Adam부터 적용해 보는 것을 추천합니다.<br> 
+위에서 만들었던 `simple_CNN` 클래스를 이용해 `model`이라는 모델 인스턴스를 만들었습니다. 이제 우리의 모델이 Gradient Descent 알고리즘을 이용해 변수 공간을 탐색할 수 있도록 Optimizer를 정의해 주도록 하겠습니다. <u>딥러닝에서의 최적화는 Optimizer과 Gradient descent 알고리즘을 이용해 loss가 최소가 되는 지점을 찾는 과정을 의미</u>합니다. 학습이라는 것은 곧 이 loss가 최소가 되는 지점에서의 weight값을 찾는 것이죠. 아무튼, 제일 만만하지만 의외로 굉장히 자주 쓰이는 SGD(Stochastic gradient descent) optimizer를 정의해 주겠습니다. SGD는 손실 함수의 기울기를 계산한 후 `lr`(learning rate)을 곱한 값으로 기존 가중치를 갱신합니다. 무작정 기울기 방향으로 이동하기 때문에 탐색 경로가 비효율적일 뿐만 아니라 한참을 탐색하게 되죠. 이 Optimizer는 Adam, AdaGrad 등 다양한 종류가 존재하지만 잘 모르겠다면 일단 SGD나 Adam부터 적용해 보는 것을 추천합니다.<br><br> 
 파이토치가 제공하는 SGD optimizer는 오리지널 SGD 알고리즘처럼 세월아 네월아 최적화를 수행하지 않습니다. momentum 개념이 추가되어 보다 빠르게 최적화를 수행하죠. `lr`인자는 최적화를 수행할 스텝 사이즈를 의미하고, `momentum`은 일종의 관성처럼 현재 그래디언트의 방향을 결정할 때 과거 그래디언트의 방향을 얼마나 사용할지 정해 주는 파라미터입니다. 보다 자세한 내용은 [여기](https://tensorflow.blog/2017/03/22/momentum-nesterov-momentum/)를 참고해 주세요.</span>
 
 <blockquote>
@@ -457,8 +457,7 @@ def train(epoch):
 <span style="font-size:11pt">
 `train`함수 맨 윗줄의 `model.train()` 구문은 저희가 위에서 만든 `model`를 학습 모드로 실행할 것임을 의미합니다. <u>이렇게 명시적으로 표시해 주어야 validation 단계에서 backpropagation을 통한 weight 수정이 발생하지 않습니다.</u> 모의고사를 보는 중에 컨닝을 하는 일은 없어야 하기 때문이죠.<br> 
 위에서 언급드린 것처럼, 학습은 한 에폭 동안 여러 gradient descent step을 반복하며 진행됩니다. 저희의 모델은 위에서 만들었던 `train_loader`의 길이를 `batch_size` 개수로 나눈 횟수(`batch_idx`)만큼 돌면서 `data`와 `target`을 갖고 오차를 구해 가중치를 업데이트하게 됩니다. `data`는 이미지 데이터이고, `target`은 해당 이미지 데이터의 정답 클래스 라벨이 되겠습니다.<br><br> 
-<u>데이터를 받은 후 반복문에서 제일 먼저 해야 할 것은 `optimizer.zero_grad()`를 통해 그래디언트를 0으로 초기화해 주는 것</u>입니다. 파이토치는 `.backward()`를 호출할 때마다 그래디언트를 누적하기 때문입니다.<br> 
-초기 가중치, 그러니까 첫 번째 step의 conv layer 가중치는 가우시안 분포를 따르는 랜덤값들로 채워지므로, `data`의 첫 번째 인덱스 이미지는 conv 레이어를 거치며 의미없는 쓰레기 값을 갖게 됩니다. 따라서 모델의 분류 결과인 `output` 또한 엉뚱한 클래스로 나오게 되겠죠.<br> 
+<u>데이터를 받은 후 반복문에서 제일 먼저 해야 할 것은 `optimizer.zero_grad()`를 통해 그래디언트를 0으로 초기화해 주는 것</u>입니다. 파이토치는 `.backward()`를 호출할 때마다 그래디언트를 누적하기 때문입니다. 초기 가중치, 그러니까 첫 번째 step의 conv layer 가중치는 가우시안 분포를 따르는 랜덤값들로 채워지므로, `data`의 첫 번째 인덱스 이미지는 conv 레이어를 거치며 의미없는 쓰레기 값을 갖게 됩니다. 따라서 모델의 분류 결과인 `output` 또한 엉뚱한 클래스로 나오게 되겠죠.<br> 
 그래서 바로 아랫줄의 `F.nll_loss`함수에 모델이 예측한 클래스값 `output`과 정답값 `target`을 넣어 Negative Log Likelihood를 구한 후 `loss.backward()`를 호출하고, `optimizer.step()`을 연이어 호출함으로서 모델의 파라미터를 업데이트해 줍니다. <u>`loss.backward()`는 모델의 매개 변수에 대한 loss의 gradient를 계산하고, `optimizer.step()`을 호출함으로서 이 매개 변수가 갱신</u>됩니다. 이것이 학습이 수행되는 '한 step'인 거죠.</span>
 
 <blockquote>
@@ -466,7 +465,7 @@ def train(epoch):
 <b>-- NOTE 1 --</b><br>
 왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i></span>
 </blockquote>
-<center><img src='http://drive.google.com/uc?export=view&id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ' width=300 /></center><br>
+<center><img src='http://drive.google.com/uc?export=view&id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ', width=300/></center><br>
 
 <blockquote>
 <span style="font-size:11pt">
