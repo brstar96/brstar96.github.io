@@ -1,10 +1,11 @@
 ---
-title: "Python OpenCV Filters Test"
+title: "(Deeperence 1기)Pytorch CNN MNIST Tutorial"
 tags: 
-  - Python OpenCV
-  - Edge Detection
+  - Deep Learning
+  - Tutorial
+  - Mentoring
 categories:
-  - Mentoring/Tutorial
+  - MLDLstudy
 toc: true
 author_profile: false
 comments: 
@@ -12,7 +13,7 @@ comments:
   disqus:
     shortname: "https-brstar96-github-io"
 header:
-  teaser: /assets/Images/output_18_1.png
+  teaser: /assets/Images/tutomentoring/deeperence_MNIST/MNIST_Classification_3.png
 ---
 <span style="font-size:11pt">
 아래 튜토리얼의 실행 가능한 Colab 노트북은 [여기서](https://colab.research.google.com/drive/1ygxE9jzh3PtU05O9zCaQ8Sc-WvuXSOpn) 확인해 보실 수 있습니다. 튜토리얼을 시작하시기 전, 해당 노트북을 개인 드라이브에 복사하신 후 실행하시는 것을 권장해 드립니다. 
