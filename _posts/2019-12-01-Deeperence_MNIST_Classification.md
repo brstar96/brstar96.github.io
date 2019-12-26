@@ -243,7 +243,7 @@ class Dataloader(Dataset):
 
 ### 1.5. 네트워크 만들기
 <span style="font-size:11pt">
-이제 간단한 CNN(Convolution Neural Network) 네트워크를 만들어 봅시다!</span>
+이제 간단한 CNN(Convolution Neural Network) 네트워크를 만들어 봅시다!</span><br>
 <img src='http://drive.google.com/uc?export=view&id=1n2wQqJc-KRUgZSkO5k_7702ACaVVQ2Kq' /><br>
 
 <span style="font-size:11pt">
@@ -463,21 +463,8 @@ def train(epoch):
 <blockquote>
 <span style="font-size:11pt">
 <b>-- NOTE 1 --</b><br>
-왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i></span>
-</blockquote>
-<center><img src='http://drive.google.com/uc?export=view&id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ', width=300/></center><br>
-
-<blockquote>
-<span style="font-size:11pt">
-<b>-- NOTE 2 --</b><br>
-확률론에서 주로 다루는 확률변수(Random variable)는 연속확률변수와 이산확률변수 크게 두 가지로 나눌 수 있습니다. <br><br>
-1. <b>확률변수(Random variable) : </b>확률적인 과정에 따라 값이 결정되는 변수로, 같은 확률공간에 정의된 여러 확률 변수에 대해 이들의 조건부 확률이나 독립 여부를 결정 가능한 변수입니다. 확률공간, 즉 Probability space란 전체 measure가 1인 공간을 의미하며, 보통 확률공간의 measure는 확률을 정의합니다. measure, 즉 '측도'란 특정 부분 집합에 일종의 크기를 부여해 계산할 수 있게 하는 함수를 의미합니다. <br>
-2. <b>연속확률변수(Continuous random variable) :</b> 체중, 온도, 키 등과 같이 유한한 구간을 정해 두어도 소수점 무한대 자리까지의 측정치를 갖는 경우입니다. 즉 확률변수가 취할 수 있는 값은 일정한 구간 내의 실수로서, 그 '수가 무한한 경우'를 연속확률변수라고 부릅니다. <br>
-3. <b>이산확률변수(Discrete random variable) : </b>주사위를 던질 때와 같이 확률변수가 취할 수 있는 값의 수가 유한하거나 무한해도 '셀 수 있는 경우'의 확률변수를 이산확률변수라고 부릅니다. <br><br>
-이 두 가지의 확률변수를 통해 연속 확률 분포(Continuous probability distribution, 대표적으로 정규분포)와 이산 확률 분포(Discrete probability distribution, 대표적으로 이항분포)를 정의할 수 있게 되죠. 하지만, 이 개념을 머신 러닝으로 끌고 오기 위해선 <b>Probability mass function</b>에 대해 알아야 합니다.<br>
-
-참고 자료 : https://datascienceschool.net/view-notebook/4d74d1b5651245a7903583f30ae44608/
-</span>
+왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i></span> <br><br>
+<center><img src="http://drive.google.com/uc?export=view&amp;id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ" width="300"></center><br>
 </blockquote>
 
 <blockquote>
