@@ -64,7 +64,7 @@ use_cuda = torch.cuda.is_available() # return false if cannot use GPU
 
 
 <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Clt_in_action.gif/400px-Clt_in_action.gif'/></center>
-<center><span style="font-size:11pt"><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></span></center>
+<center><span style="font-size:11pt"><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></span></center><br>
 
 <span style="font-size:11pt">
 서로 다른 모양의 정규분포를 표준화하는 방법은 <u>평균을 0으로, 표준편차를 1로</u> 만들어 주는 것입니다. 개별 이미지에서 해당 train set 전체의 평균을 빼고 표준 편차로 나누어 주면 되는 것이죠. 개별 이미지에서 전체 데이터셋의 평균을 빼 준 것은 0으로 수평이동을 한 것과 같습니다. 거기에 모집단의 표준편차로 나누어 주었으므로 개별 데이터의 표준 편차도 1이 되는 것이죠.<br><br>
@@ -467,11 +467,27 @@ def train(epoch):
 <center><img src="http://drive.google.com/uc?export=view&amp;id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ" width="300"></center><br>
 </blockquote>
 
+
+
+<blockquote>
+<span style="font-size:11pt">
+<b>-- NOTE 2 --</b><br>
+확률론에서 주로 다루는 확률변수(Random variable)는 연속확률변수와 이산확률변수 크게 두 가지로 나눌 수 있습니다. <br><br>
+1. <b>확률변수(Random variable) : </b>확률적인 과정에 따라 값이 결정되는 변수로, 같은 확률공간에 정의된 여러 확률 변수에 대해 이들의 조건부 확률이나 독립 여부를 결정 가능한 변수입니다. 확률공간, 즉 Probability space란 전체 measure가 1인 공간을 의미하며, 보통 확률공간의 measure는 확률을 정의합니다. measure, 즉 '측도'란 특정 부분 집합에 일종의 크기를 부여해 계산할 수 있게 하는 함수를 의미합니다. <br>
+2. <b>연속확률변수(Continuous random variable) :</b> 체중, 온도, 키 등과 같이 유한한 구간을 정해 두어도 소수점 무한대 자리까지의 측정치를 갖는 경우입니다. 즉 확률변수가 취할 수 있는 값은 일정한 구간 내의 실수로서, 그 '수가 무한한 경우'를 연속확률변수라고 부릅니다. <br>
+3. <b>이산확률변수(Discrete random variable) : </b>주사위를 던질 때와 같이 확률변수가 취할 수 있는 값의 수가 유한하거나 무한해도 '셀 수 있는 경우'의 확률변수를 이산확률변수라고 부릅니다. <br><br>
+이 두 가지의 확률변수를 통해 연속 확률 분포(Continuous probability distribution, 대표적으로 정규분포)와 이산 확률 분포(Discrete probability distribution, 대표적으로 이항분포)를 정의할 수 있게 되죠. 하지만, 이 개념을 머신 러닝으로 끌고 오기 위해선 <b>Probability mass function</b>에 대해 알아야 합니다.<br><br>
+
+<p>참고 자료 : <a href="https://datascienceschool.net/view-notebook/4d74d1b5651245a7903583f30ae44608/" target="_blank">https://datascienceschool.net/view-notebook/4d74d1b5651245a7903583f30ae44608/</a></p>
+</span>
+</blockquote>
+
+
 <blockquote>
 <span style="font-size:11pt">
 <b>-- NOTE 3 --</b><br>
 1. <b>확률질량함수(Probability mass function, pmf) :</b> 어떤 discrete random variables에 대한 확률 모델(probability model)을 의미합니다. sample space를 구성하는 각각의 outcome마다 총합이 1인 확률을 부여한 것입니다. 한 개의 동전을 두 번 던지는 시행에서 앞면이 나올 수 있는 횟수를 Random variable X라고 하면, X로 나올 수 있는 값은 앞면이 아예 나오지 않는 0, 한번 나오는 1, 두 번 나오는 2이며, 이때 각 확률은 P(X=0)=1/4, P(X=1)=2/4, P(X=2)=1/4이 됩니다. 이렇듯 pmf는 이산확률변수에 대한 확률분포를 나타내는 함수입니다. <br>
-2. <b>확률밀도함수(Probability density function, pdf) : </b>확률밀도함수가 정의된 구간 내에 연속확률변수 X가 포함될 확률이 1임을 정의하는 함수입니다. 즉, 특정 구간에 대해 연속확률변수 X가 포함될 확률은 확률밀도함수를 구간에 대해 정적분한것과 같습니다. 
+2. <b>확률밀도함수(Probability density function, pdf) : </b>확률밀도함수가 정의된 구간 내에 연속확률변수 X가 포함될 확률이 1임을 정의하는 함수입니다. 즉, 특정 구간에 대해 연속확률변수 X가 포함될 확률은 확률밀도함수를 구간에 대해 정적분한것과 같습니다.<br>
 
 더 자세한 내용 참고 : https://bskyvision.com/387
 </span> 
