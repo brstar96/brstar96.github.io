@@ -229,8 +229,8 @@ class Dataloader(Dataset):
 
 1. <span style="font-size:11pt">`__init__(self)`</span>
   - <span style="font-size:11pt">데이터셋 다운로드, read data 등의 작업을 수행하는 부분입니다.</span>
-  - batch_size파라미터 인자를 받아 변수에 할당해 줍니다.</span> 
-  - batch_size데이터셋의 파일 리스트를 받아 로드하고, 존재 유무를 확인합니다. 이를 통해 데이터셋을 파싱해 줍니다.</span> 
+  - <span style="font-size:11pt">파라미터 인자를 받아 변수에 할당해 줍니다.</span> 
+  - <span style="font-size:11pt">데이터셋의 파일 리스트를 받아 로드하고, 존재 유무를 확인합니다. 이를 통해 데이터셋을 파싱해 줍니다.</span> 
 2. <span style="font-size:11pt">`__getitem__(self, index)`</span> 
   - <span style="font-size:11pt">특정 인덱스에 해당하는 아이템을 넘겨 주는 부분입니다. 학습 데이터의 일부를 슬라이싱해 리턴합니다.</span> 
   - <span style="font-size:11pt">`__getitem__`함수가 실행되면 데이터셋의 index를 받게 되고, 이를 통해 학습 데이터의 file path를 읽을 수 있습니다. (`list(self.data[index].keys())`를 통해 확인해볼 수 있습니다.)</span>
