@@ -71,9 +71,10 @@ use_cuda = torch.cuda.is_available() # return false if cannot use GPU
 하지만 아무리 MNIST라고 해도 모든 데이터셋에 대한 모수를 구하는 것은 꽤 귀찮기 때문에, 저희는 미리 다른 분이 구한 평균과 표준편차값을 사용하겠습니다. 다행히도 표준화는 파이토치가 함수로 제공해 줍니다.</span><br>
 
 <blockquote>
+<span style="font-size:11pt">
 <b>-- NOTE --</b><br>
 ImageNet과 같은 거대한 이미지 데이터셋은 누군가 미리 구한 평균과 표준편차가 있습니다. (means = [0.485, 0.456, 0.406], 
-stds = [0.229, 0.224, 0.225]) 이 수치들을 사용해 아래 코드처럼 standardize를 수행할 수 있습니다.  
+stds = [0.229, 0.224, 0.225]) 이 수치들을 사용해 아래 코드처럼 standardize를 수행할 수 있습니다.</span>  
 </blockquote>
 
 <span style="font-size:11pt">
@@ -145,9 +146,10 @@ test_dataset = datasets.MNIST(root='./data/', train=False, transform=standardiza
 <img src='http://drive.google.com/uc?export=view&id=1ROextOTnlEFk-6IEXRLhAyLMtxm9Y5sT' /><br>
 
 <blockquote>
+<span style="font-size:11pt">
 <b>-- NOTE --</b><br>
 Validation set과 Test set은 간혹 사람에 따라 뜻을 혼용해서 쓰기도 합니다. <br> 하지만 기억해야 할 것은, 어쨌든 우리는 Train set으로 모델을 훈련하고, Validation으로 모의고사를 보고, Test로 수능을 본다는 것이지요. 수능특강을 열심히 푼 후(Train) 바로 수능(test)를 볼 수도 있지만, 제일 안전한 것은 모의고사(validation)를 꾸준히 보며 나의 지식을 테스트해보는 것이겠죠. validation과 test의 목적을 구분하는 것은 코드의 맥락에 따라 파악해야 합니다. 
-
+</span>
 </blockquote>
 
 ### 1.3 학습 데이터 살펴보기
@@ -407,7 +409,7 @@ class simple_CNN(nn.Module):
 
 <center><img src='http://drive.google.com/uc?export=view&id=1Fw8wHcKiS9jbdZJAD5f45PoiKfca3qhN' /><br></center>
 <span style="font-size:11pt">
-<u>베이즈 이론에서 likelihood를 최대화하는 것은 두 분포 사이의 거리, 즉 train data와 모델 분포의 거리를 최소화하는 것</u>과 같습니다. 기억이 가물가물하시겠지만 베이즈 이론과 함께 의사가 환자의 CT사진을 보고 종양에 대해 암인지 아닌지를 판별하는 상황을 떠올려 봅시다. 만약 의사의 likelihood가 크지 않다면 암을 제대로 검진할 수 없을 것이고, 속된 말로 돌팔이 소리를 들을 것입니다. 100% 암인지 아닌지 잘은 모르지만, 많은 경험을 갖고 있는 의사라면 암을 정확히 검진할 확률이 100%에 수렴하겠죠.<br> 
+<u>베이즈 이론에서 likelihood를 최대화하는 것은 두 분포 사이의 거리, 즉 train data와 모델 분포의 거리를 최소화하는 것</u>과 같습니다. 기억이 가물가물하시겠지만 베이즈 이론과 함께 의사가 환자의 CT사진을 보고 종양에 대해 암인지 아닌지를 판별하는 상황을 떠올려 봅시다. 만약 의사의 likelihood가 크지 않다면 암을 제대로 검진할 수 없을 것이고, 속된 말로 돌팔이 소리를 들을 것입니다. 100% 암인지 아닌지 잘은 모르지만, 많은 경험을 갖고 있는 의사라면 암을 정확히 검진할 확률이 100%에 수렴하겠죠.<br><br> 
 아무튼 다시 돌아와서, <u>log likelihood를 최대화하는 것은 negative log likelihood를 minimize하는 것</u>과 같습니다. 때문에 `nll_loss`에 모델이 예측한 값과 정답 값을 넘겨 줌으로서 loss를 구해야 하는 것이죠.</span>
 
 ```python
@@ -422,9 +424,9 @@ optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5) # Define optimi
 파이토치가 제공하는 SGD optimizer는 오리지널 SGD 알고리즘처럼 세월아 네월아 최적화를 수행하지 않습니다. momentum 개념이 추가되어 보다 빠르게 최적화를 수행하죠. `lr`인자는 최적화를 수행할 스텝 사이즈를 의미하고, `momentum`은 일종의 관성처럼 현재 그래디언트의 방향을 결정할 때 과거 그래디언트의 방향을 얼마나 사용할지 정해 주는 파라미터입니다. 보다 자세한 내용은 [여기](https://tensorflow.blog/2017/03/22/momentum-nesterov-momentum/)를 참고해 주세요.</span>
 
 <blockquote>
-<font size="11">
+<span style="font-size:11pt">
 <b>-- NOTE --</b><br>
-Optimizer는 상황과 데이터에 따라 이것저것 종류와 파라미터를 바꾸어 가며 실험해 보아야 하는 hyperparameter입니다. 마침 누군가 <a href = "https://ruder.io/optimizing-gradient-descent/">optimizer의 종류와 성능에 대해 비교한 포스팅</a>이 있네요.</font> 
+Optimizer는 상황과 데이터에 따라 이것저것 종류와 파라미터를 바꾸어 가며 실험해 보아야 하는 hyperparameter입니다. 마침 누군가 <a href = "https://ruder.io/optimizing-gradient-descent/">optimizer의 종류와 성능에 대해 비교한 포스팅</a>이 있네요.</span> 
 </blockquote>
 
 
@@ -460,12 +462,14 @@ def train(epoch):
 그래서 바로 아랫줄의 `F.nll_loss`함수에 모델이 예측한 클래스값 `output`과 정답값 `target`을 넣어 Negative Log Likelihood를 구한 후 `loss.backward()`를 호출하고, `optimizer.step()`을 연이어 호출함으로서 모델의 파라미터를 업데이트해 줍니다. <u>`loss.backward()`는 모델의 매개 변수에 대한 loss의 gradient를 계산하고, `optimizer.step()`을 호출함으로서 이 매개 변수가 갱신</u>됩니다. 이것이 학습이 수행되는 '한 step'인 거죠.</span>
 
 <blockquote>
+<span style="font-size:11pt">
 <b>-- NOTE 1 --</b><br>
-왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i>
+왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i></span>
 </blockquote>
 <center><img src='http://drive.google.com/uc?export=view&id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ' width=300 /></center><br>
 
 <blockquote>
+<span style="font-size:11pt">
 <b>-- NOTE 2 --</b><br>
 확률론에서 주로 다루는 확률변수(Random variable)는 연속확률변수와 이산확률변수 크게 두 가지로 나눌 수 있습니다. <br><br>
 1. <b>확률변수(Random variable) : </b>확률적인 과정에 따라 값이 결정되는 변수로, 같은 확률공간에 정의된 여러 확률 변수에 대해 이들의 조건부 확률이나 독립 여부를 결정 가능한 변수입니다. 확률공간, 즉 Probability space란 전체 measure가 1인 공간을 의미하며, 보통 확률공간의 measure는 확률을 정의합니다. measure, 즉 '측도'란 특정 부분 집합에 일종의 크기를 부여해 계산할 수 있게 하는 함수를 의미합니다. <br>
@@ -474,14 +478,17 @@ def train(epoch):
 이 두 가지의 확률변수를 통해 연속 확률 분포(Continuous probability distribution, 대표적으로 정규분포)와 이산 확률 분포(Discrete probability distribution, 대표적으로 이항분포)를 정의할 수 있게 되죠. 하지만, 이 개념을 머신 러닝으로 끌고 오기 위해선 <b>Probability mass function</b>에 대해 알아야 합니다.<br>
 
 참고 자료 : https://datascienceschool.net/view-notebook/4d74d1b5651245a7903583f30ae44608/
+</span>
 </blockquote>
 
 <blockquote>
+<span style="font-size:11pt">
 <b>-- NOTE 3 --</b><br>
 1. <b>확률질량함수(Probability mass function, pmf) :</b> 어떤 discrete random variables에 대한 확률 모델(probability model)을 의미합니다. sample space를 구성하는 각각의 outcome마다 총합이 1인 확률을 부여한 것입니다. 한 개의 동전을 두 번 던지는 시행에서 앞면이 나올 수 있는 횟수를 Random variable X라고 하면, X로 나올 수 있는 값은 앞면이 아예 나오지 않는 0, 한번 나오는 1, 두 번 나오는 2이며, 이때 각 확률은 P(X=0)=1/4, P(X=1)=2/4, P(X=2)=1/4이 됩니다. 이렇듯 pmf는 이산확률변수에 대한 확률분포를 나타내는 함수입니다. <br>
 2. <b>확률밀도함수(Probability density function, pdf) : </b>확률밀도함수가 정의된 구간 내에 연속확률변수 X가 포함될 확률이 1임을 정의하는 함수입니다. 즉, 특정 구간에 대해 연속확률변수 X가 포함될 확률은 확률밀도함수를 구간에 대해 정적분한것과 같습니다. 
 
-더 자세한 내용 참고 : https://bskyvision.com/387 
+더 자세한 내용 참고 : https://bskyvision.com/387
+</span> 
 </blockquote>
 
 
@@ -529,7 +536,9 @@ print('\nTest set: Accuracy: {:.2f}%'.format(100. * correct / len(test_loader.da
 나쁘지 않은 결과를 얻었네요! 다음 핸즈온 튜토리얼에서는 KaKR 3rd 자동차 차종분류 대회 데이터셋을 활용해 더 복잡한 이미지 데이터를 다루어 보겠습니다.</span>
 
 <blockquote>
+<span style="font-size:11pt">
 <b>참고</b><br>
 아래는 Pytorch의 공식 MNIST 튜토리얼 풀코드입니다. 지금까지 배웠던 내용들을 되새김하며 훑어 보시기 바랍니다. 설명이 대단히 길었지만, 코드는 생각했던 것보다 짧네요 :)<br>
 <a href = "https://github.com/pytorch/examples/blob/master/mnist/main.py">https://github.com/pytorch/examples/blob/master/mnist/main.py</a>
+</span>
 </blockquote>
