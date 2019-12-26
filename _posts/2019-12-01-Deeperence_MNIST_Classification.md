@@ -22,25 +22,23 @@ header:
 
 ## 1. Pytorch CNN MNIST Tutorial
 
-<blockquote>
-<b>Deeperence 멱살 스터디는...</b><br>
+
 <span style="font-size:11pt">
+<b>Deeperence 멱살 스터디는...</b><br>
 숭실대학교 머신러닝 소모임 Deeperence에서 진행하는 'Vision AI 멱살 스터디'는 처음 비전 인공지능에 입문하신 분들을 대상으로 제가 한 달간 세 가지 태스크(Classification, Detection, Segmentation)를 속성으로 경험시켜 드리는 스터디입니다. 이름 그대로 멱살을 잡아끄는 듯한 초밀착 멘토링으로 가려운 곳을 시원하게 긁어 드립니다. (이 핸즈온 튜토리얼은 Deeperence, 강남 캐글스터디 초급to고급, 제 <a href = "https://brstar96.github.io/">개인 블로그</a>에 연재됩니다.)<br><br>
 <i>Written by Myeong-Gyu.LEE, 2019-11-20</i></span>
-</blockquote>
 
-안녕하세요, Deeperence 멱살 스터디 첫 번째 시간엔 Deep learning의 'Hello, world!'와도 같은 MNIST 손글씨 분류 문제를 풀어 보도록 하겠습니다. 선형 회귀를 갓 마치고 오신 분들께서 가장 헷갈려 하시는 부분이 고차원 이미지 데이터 핸들링인데요, 이번 시간에 ①MNIST 데이터를 다뤄 보며 1차원 그레이 스케일 이미지에 대해 이해하고, ②[KaKR 3rd 차종분류 대회](https://www.kaggle.com/c/2019-3rd-ml-month-with-kakr)의 데이터셋을 활용해 3차원 RGB 이미지에 대해 이해하는 시간을 가져 보겠습니다. 
+<span style="font-size:11pt">
+안녕하세요, Deeperence 멱살 스터디 첫 번째 시간엔 Deep learning의 'Hello, world!'와도 같은 MNIST 손글씨 분류 문제를 풀어 보도록 하겠습니다. 선형 회귀를 갓 마치고 오신 분들께서 가장 헷갈려 하시는 부분이 고차원 이미지 데이터 핸들링인데요, 이번 시간에 ①MNIST 데이터를 다뤄 보며 1차원 그레이 스케일 이미지에 대해 이해하고, ②[KaKR 3rd 차종분류 대회](https://www.kaggle.com/c/2019-3rd-ml-month-with-kakr)의 데이터셋을 활용해 3차원 RGB 이미지에 대해 이해하는 시간을 가져 보겠습니다.<br> 
+MNIST 데이터셋은 국내는 물론 해외 머신러닝 커뮤니티에서 오랜 시간 사랑받고 연구에 활용되어 왔습니다. MNIST는 1980년대 미국 국립표준기술연구소에서 수집한 6만 개 훈련 이미지, 그리고 1만 개의 테스트 이미지로 구성되어 있습니다. MNIST 데이터셋은 또한 Numpy array 형태로 다양한 머신러닝 프레임워크들에서 기본 제공하고 있습니다.<br> 
+MNIST 데이터셋을 활용한 손글씨 분류 문제는 0부터 9까지의 클래스를 가진 다량의 손글씨 이미지 데이터들을 학습한 후 들어오는 테스트 이미지에 대해 0~9 사이의 분류 결과를 예측하는 것입니다. 이번 노트북에서는 이미지 데이터의 구조와 함께 CNN 훈련을 위해 어떻게 이 데이터를 핸들링할지에 초점을 맞추어 스터디를 진행해 보도록 하겠습니다.<br><br></span>
 
-MNIST 데이터셋은 국내는 물론 해외 머신러닝 커뮤니티에서 오랜 시간 사랑받고 연구에 활용되어 왔습니다. MNIST는 1980년대 미국 국립표준기술연구소에서 수집한 6만 개 훈련 이미지, 그리고 1만 개의 테스트 이미지로 구성되어 있습니다. MNIST 데이터셋은 또한 Numpy array 형태로 다양한 머신러닝 프레임워크들에서 기본 제공하고 있습니다. 
-
-MNIST 데이터셋을 활용한 손글씨 분류 문제는 0부터 9까지의 클래스를 가진 다량의 손글씨 이미지 데이터들을 학습한 후 들어오는 테스트 이미지에 대해 0~9 사이의 분류 결과를 예측하는 것입니다. 이번 노트북에서는 이미지 데이터의 구조와 함께 CNN 훈련을 위해 어떻게 이 데이터를 핸들링할지에 초점을 맞추어 스터디를 진행해 보도록 하겠습니다. 
-
-<b><u>▶튜토리얼을 시작하기 전, 이 Notebook의 사본을 개인 드라이브에 복사하신 후 사본으로 재접속해 주세요!</u></b><br>
-<b><u>▶튜토리얼을 시작하기 전, Google Colab 상단의 메뉴 중 런타임->런타임 유형 변경에서 하드웨어 가속기를 GPU로 설정해 주세요!</u></b>
+<span style="font-size:11pt"><b><u>▶튜토리얼을 시작하기 전, 이 Notebook의 사본을 개인 드라이브에 복사하신 후 사본으로 재접속해 주세요!</u></b><br></span>
+<span style="font-size:11pt"><b><u>▶튜토리얼을 시작하기 전, Google Colab 상단의 메뉴 중 런타임->런타임 유형 변경에서 하드웨어 가속기를 GPU로 설정해 주세요!</u></b></span>
 <center><img src='http://drive.google.com/uc?export=view&id=1A53ZszYoOeND9m2pT5ymXgM6dZeEK2QR'/></center><br>
 
 ### 1.1 필요한 라이브러리 로드하기
-먼저, 기본적인 라이브러리들을 로드해 주겠습니다. `torch.cuda.get_device_name(0)`는 현재 사용 가능한 CUDA device의 이름을 표시해줍니다.
+<span style="font-size:11pt">먼저, 기본적인 라이브러리들을 로드해 주겠습니다. `torch.cuda.get_device_name(0)`는 현재 사용 가능한 CUDA device의 이름을 표시해줍니다.</span>
 
 
 ```python
@@ -61,16 +59,16 @@ use_cuda = torch.cuda.is_available() # return false if cannot use GPU
 ```
 
 ### 1.2 학습 데이터 표준화하기
-이 이후에 진행할 차종분류 튜토리얼에서도 다루겠지만, 일반적으로 머신 러닝에 사용하는 숫자형 데이터는 <b>표준화(Standardization)</b>해주는 것이 좋습니다. 비전 태스크에서 많이 사용하는 Z-score Standardization은 우리가 사용할 학습 데이터가 [중심극한정리](https://ko.wikipedia.org/wiki/%EC%A4%91%EC%8B%AC_%EA%B7%B9%ED%95%9C_%EC%A0%95%EB%A6%AC)를 따라 정규분포를 따른다는 가정을 배경으로 깔고 있습니다. 각 집단, 즉 이미지 각각이 가진 평균과 표준편차가 제각각이라면 모수<i>(모집단의 평균이나 표준편차와 같이 모집단을 설명하는 어떤 값. 여기서 모집단은 train set을 의미합니다.)</i>에 왜곡이 발생할 것입니다. 각각의 이미지는 정규분포 성향을 띌 수 있지만, 각 이미지의 모수를 확실히 통일하고 어느 정도 동등한 조건에서 학습하기 위해 저희의 데이터셋이 표준정규분포(Standard Normal Distribution)를 따르게 할 필요가 있습니다. 
+<span style="font-size:11pt">
+이 이후에 진행할 차종분류 튜토리얼에서도 다루겠지만, 일반적으로 머신 러닝에 사용하는 숫자형 데이터는 <b>표준화(Standardization)</b>해주는 것이 좋습니다. 비전 태스크에서 많이 사용하는 Z-score Standardization은 우리가 사용할 학습 데이터가 [중심극한정리](https://ko.wikipedia.org/wiki/%EC%A4%91%EC%8B%AC_%EA%B7%B9%ED%95%9C_%EC%A0%95%EB%A6%AC)를 따라 정규분포를 따른다는 가정을 배경으로 깔고 있습니다. 각 집단, 즉 이미지 각각이 가진 평균과 표준편차가 제각각이라면 모수<i>(모집단의 평균이나 표준편차와 같이 모집단을 설명하는 어떤 값. 여기서 모집단은 train set을 의미합니다.)</i>에 왜곡이 발생할 것입니다. 각각의 이미지는 정규분포 성향을 띌 수 있지만, 각 이미지의 모수를 확실히 통일하고 어느 정도 동등한 조건에서 학습하기 위해 저희의 데이터셋이 표준정규분포(Standard Normal Distribution)를 따르게 할 필요가 있습니다. </span><br><br>
 
 <center>
 <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Clt_in_action.gif/400px-Clt_in_action.gif' />
-<br><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></center><br><br>
+<span style="font-size:11pt"><br><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></center></span><br><br>
 
-
-서로 다른 모양의 정규분포를 표준화하는 방법은 <u>평균을 0으로, 표준편차를 1로</u> 만들어 주는 것입니다. 개별 이미지에서 해당 train set 전체의 평균을 빼고 표준 편차로 나누어 주면 되는 것이죠. 개별 이미지에서 전체 데이터셋의 평균을 빼 준 것은 0으로 수평이동을 한 것과 같습니다. 거기에 모집단의 표준편차로 나누어 주었으므로 개별 데이터의 표준 편차도 1이 되는 것이죠. 
-
-하지만 아무리 MNIST라고 해도 모든 데이터셋에 대한 모수를 구하는 것은 꽤 귀찮기 때문에, 저희는 미리 다른 분이 구한 평균과 표준편차값을 사용하겠습니다. 다행히도 표준화는 파이토치가 함수로 제공해 줍니다.
+<span style="font-size:11pt">
+서로 다른 모양의 정규분포를 표준화하는 방법은 <u>평균을 0으로, 표준편차를 1로</u> 만들어 주는 것입니다. 개별 이미지에서 해당 train set 전체의 평균을 빼고 표준 편차로 나누어 주면 되는 것이죠. 개별 이미지에서 전체 데이터셋의 평균을 빼 준 것은 0으로 수평이동을 한 것과 같습니다. 거기에 모집단의 표준편차로 나누어 주었으므로 개별 데이터의 표준 편차도 1이 되는 것이죠.<br><br>
+하지만 아무리 MNIST라고 해도 모든 데이터셋에 대한 모수를 구하는 것은 꽤 귀찮기 때문에, 저희는 미리 다른 분이 구한 평균과 표준편차값을 사용하겠습니다. 다행히도 표준화는 파이토치가 함수로 제공해 줍니다.</span><br><br>
 
 <blockquote>
 <b>-- NOTE --</b><br>
@@ -78,16 +76,17 @@ ImageNet과 같은 거대한 이미지 데이터셋은 누군가 미리 구한 �
 stds = [0.229, 0.224, 0.225]) 이 수치들을 사용해 아래 코드처럼 standardize를 수행할 수 있습니다.  
 </blockquote>
 
-MNIST의 mean은 0.1307, std는 0.3081입니다. 
-유명한 데이터셋(cifar10 등)의 mean과 std를 직접 구하고 싶다면 이 [디스커션](https://discuss.pytorch.org/t/normalization-in-the-mnist-example/457/11)의 dlmacedo님이 올린 답변을 참고해 보세요.  
-
+<span style="font-size:11pt">
+MNIST의 mean은 0.1307, std는 0.3081입니다. <br>유명한 데이터셋(cifar10 등)의 mean과 std를 직접 구하고 싶다면 이 [디스커션](https://discuss.pytorch.org/t/normalization-in-the-mnist-example/457/11)의 dlmacedo님이 올린 답변을 참고해 보세요.<br></span>  
+<br>
 
 ```python
 # standardization code
 standardization = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=(0.1307,), std=(0.3081,))])
 ```
 
-`transforms.Compose`를 사용하면 저희가 지정해 준 mean과 std값을 `DataLoader`에 편리하게 넘겨줄 수 있습니다. 위에서 정의한 `standardization`를 `DataLoader`함수에 인자로 넘겨 줌으로서 학습을 위한 <u>데이터를 전처리하고 로드하는 과정을 동시에 수행</u>할 수 있습니다. 저희의 데이터는 이제 표준화되었습니다.
+<span style="font-size:11pt">
+`transforms.Compose`를 사용하면 저희가 지정해 준 mean과 std값을 `DataLoader`에 편리하게 넘겨줄 수 있습니다. 위에서 정의한 `standardization`를 `DataLoader`함수에 인자로 넘겨 줌으로서 학습을 위한 <u>데이터를 전처리하고 로드하는 과정을 동시에 수행</u>할 수 있습니다. 저희의 데이터는 이제 표준화되었습니다.</span><br><br>
 
 <blockquote>
 <b>-- NOTE --</b><br>
@@ -131,19 +130,17 @@ test_dataset = datasets.MNIST(root='./data/', train=False, transform=standardiza
     Done!
     
 
-`torchvision` 모듈의 `datasets.MNIST`클래스는 코드 한줄로 편하게 MNIST를 불러올 수 있도록 파이토치가 제공해 주는 내장 함수입니다. `datasets.MNIST`의 인자로 들어간 `train=True`는 True/False 여부에 따라 각각 다른 set(train/test)을 받을 수 있도록 해 줍니다. <br><br>
+<span style="font-size:11pt">
+`torchvision` 모듈의 `datasets.MNIST`클래스는 코드 한줄로 편하게 MNIST를 불러올 수 있도록 파이토치가 제공해 주는 내장 함수입니다. `datasets.MNIST`의 인자로 들어간 `train=True`는 True/False 여부에 따라 각각 다른 set(train/test)을 받을 수 있도록 해 줍니다. <br><br></span>
 
 
 <img src='http://drive.google.com/uc?export=view&id=1NyyfCjSshvzeJAHU4WYXH-7jeX5dHuJZ' /><br>
 
-
-머신 러닝의 학습 과정에서는 아래와 같이 두 개 내지는 세 개의 set으로 분리해 학습하는 것이 일반적입니다. train set과 validation set으로 나누는 이유는 저희가 <u>train set을 통해 만든 모델이 결과를 얼마나 잘 예측하는지 그 성능을 가늠해 보기 위해서</u>입니다. 머신 러닝의 목적은 다량의 데이터를 통해 패턴을 찾고, 그 패턴으로 하여금 처음 보는 unseen data, 즉 test data에 대해 좋은 성능을 내도록 하는 것입니다. 하지만 train set으로 저희의 모델을 평가하게 되면 이미 모델이 정답을 알고 있기 때문에 공정한 평가를 할 수 없겠죠. 따라서 모델이 보지 못한 validation set을 따로 두어 학습이 다 끝난 후 평가를 해야 합니다. 
-
-<b>더 어렵게 설명하자면,</b> 우리는 먼저 모수 추정, 즉 학습을 위한 데이터셋을 만듭니다. 이때 사용하는 set이 train set이죠. train set 내의 종속 변수값을 얼마나 잘 예측하는지 평가하는 것을 In-sample testing이라고 하고, 보통 `train_loss`와 `train_accuracy`로 어림잡아 평가합니다. 하지만 학습의 궁극적인 목표는 학습에 사용되지 않은 표본에 대해 종속 변수의 값을 잘 추정하는(prediction) 것이므로, 학습에 쓰이지 않은 데이터 집합의 종속변수 값을 얼마나 잘 예측하는지 평가할 필요가 있습니다. 이것을 표본 외 성능 검출(out-of-sample testing)이라고 하며, 대표적으로 <b>교차 검증(Cross validation)</b>방식이 제일 유명합니다. 교차 검증을 수행하는 방법은 크게 `K-fold cross validation`, `Holdout validation` 두 가지로 나뉘죠.
-
-<b>가장 쉬운 설명</b>을 위해 비유를 하자면, 우선 train set은 저희가 수능 공부를 할 때 열심히 푸는 교과서나 수능특강 같은 문제집이 되겠습니다. validation set은 공부한 내용을 평가해 보는 모의고사가 되겠고, test set은 수능시험이 되겠습니다. 따라서 test set은 모델은 물론 사람도 못본 데이터여야 모델의 진정한 성능을 알 수 있게 되는 것이죠. 
-
-이렇게 train과 test set을 나누어 사용하게 되면 <u>모델을 튜닝하는 데 힌트를 얻을 수 있게 됩니다</u>. train_acc는 높은데 validation_acc가 낮다면 모델이 train set에 overfitting되었다고 표현할 수 있겠죠. 그렇다면 우리는 모델에 regularization을 가하거나 epoch을 줄이는 등의 조치를 취할 수 있습니다. 
+<span style="font-size:11pt">
+머신 러닝의 학습 과정에서는 아래와 같이 두 개 내지는 세 개의 set으로 분리해 학습하는 것이 일반적입니다. train set과 validation set으로 나누는 이유는 저희가 <u>train set을 통해 만든 모델이 결과를 얼마나 잘 예측하는지 그 성능을 가늠해 보기 위해서</u>입니다. 머신 러닝의 목적은 다량의 데이터를 통해 패턴을 찾고, 그 패턴으로 하여금 처음 보는 unseen data, 즉 test data에 대해 좋은 성능을 내도록 하는 것입니다. 하지만 train set으로 저희의 모델을 평가하게 되면 이미 모델이 정답을 알고 있기 때문에 공정한 평가를 할 수 없겠죠. 따라서 모델이 보지 못한 validation set을 따로 두어 학습이 다 끝난 후 평가를 해야 합니다.<br><br> 
+<b>더 어렵게 설명하자면,</b> 우리는 먼저 모수 추정, 즉 학습을 위한 데이터셋을 만듭니다. 이때 사용하는 set이 train set이죠. train set 내의 종속 변수값을 얼마나 잘 예측하는지 평가하는 것을 In-sample testing이라고 하고, 보통 `train_loss`와 `train_accuracy`로 어림잡아 평가합니다. 하지만 학습의 궁극적인 목표는 학습에 사용되지 않은 표본에 대해 종속 변수의 값을 잘 추정하는(prediction) 것이므로, 학습에 쓰이지 않은 데이터 집합의 종속변수 값을 얼마나 잘 예측하는지 평가할 필요가 있습니다. 이것을 표본 외 성능 검출(out-of-sample testing)이라고 하며, 대표적으로 <b>교차 검증(Cross validation)</b>방식이 제일 유명합니다. 교차 검증을 수행하는 방법은 크게 `K-fold cross validation`, `Holdout validation` 두 가지로 나뉘죠.<br><br>
+<b>더 쉽게 비유를 해 보자면,</b> 우선 train set은 저희가 수능 공부를 할 때 열심히 푸는 교과서나 수능특강 같은 문제집이 되겠습니다. validation set은 공부한 내용을 평가해 보는 모의고사가 되겠고, test set은 수능시험이 되겠습니다. 따라서 test set은 모델은 물론 사람도 못본 데이터여야 모델의 진정한 성능을 알 수 있게 되는 것이죠. <br><br>
+이렇게 train과 test set을 나누어 사용하게 되면 <u>모델을 튜닝하는 데 힌트를 얻을 수 있게 됩니다</u>. train_acc는 높은데 validation_acc가 낮다면 모델이 train set에 overfitting되었다고 표현할 수 있겠죠. 그렇다면 우리는 모델에 regularization을 가하거나 epoch을 줄이는 등의 조치를 취할 수 있습니다.<br><br></span> 
 
 <img src='http://drive.google.com/uc?export=view&id=1ROextOTnlEFk-6IEXRLhAyLMtxm9Y5sT' /><br>
 
@@ -154,7 +151,8 @@ Validation set과 Test set은 간혹 사람에 따라 뜻을 혼용해서 쓰기
 </blockquote>
 
 ### 1.3 학습 데이터 살펴보기
-학습 데이터를 본격적으로 모델에 넣어 주기 전, MNIST 데이터셋의 구조를 살펴 보도록 합시다. 
+<span style="font-size:11pt">
+학습 데이터를 본격적으로 모델에 넣어 주기 전, MNIST 데이터셋의 구조를 살펴 보도록 합시다.<br><br></span> 
 
 
 ```python
