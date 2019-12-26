@@ -422,8 +422,9 @@ optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5) # Define optimi
 파이토치가 제공하는 SGD optimizer는 오리지널 SGD 알고리즘처럼 세월아 네월아 최적화를 수행하지 않습니다. momentum 개념이 추가되어 보다 빠르게 최적화를 수행하죠. `lr`인자는 최적화를 수행할 스텝 사이즈를 의미하고, `momentum`은 일종의 관성처럼 현재 그래디언트의 방향을 결정할 때 과거 그래디언트의 방향을 얼마나 사용할지 정해 주는 파라미터입니다. 보다 자세한 내용은 [여기](https://tensorflow.blog/2017/03/22/momentum-nesterov-momentum/)를 참고해 주세요.</span>
 
 <blockquote>
+<font size="11">
 <b>-- NOTE --</b><br>
-Optimizer는 상황과 데이터에 따라 이것저것 종류와 파라미터를 바꾸어 가며 실험해 보아야 하는 hyperparameter입니다. 마침 누군가 <a href = "https://ruder.io/optimizing-gradient-descent/">optimizer의 종류와 성능에 대해 비교한 포스팅</a>이 있네요. 
+Optimizer는 상황과 데이터에 따라 이것저것 종류와 파라미터를 바꾸어 가며 실험해 보아야 하는 hyperparameter입니다. 마침 누군가 <a href = "https://ruder.io/optimizing-gradient-descent/">optimizer의 종류와 성능에 대해 비교한 포스팅</a>이 있네요.</font> 
 </blockquote>
 
 
@@ -452,18 +453,17 @@ def train(epoch):
                 100. * batch_idx / len(train_loader), loss.item()))
 ```
 <span style="font-size:11pt">
-`trian`함수 맨 윗줄의 `model.train()` 구문은 저희가 위에서 만든 `model`를 학습 모드로 실행할 것임을 의미합니다. <u>이렇게 명시적으로 표시해 주어야 validation 단계에서 backpropagation을 통한 weight 수정이 발생하지 않습니다.</u> 모의고사를 보는 중에 컨닝을 하는 일은 없어야 하기 때문이죠.<br> 
-위에서 언급드린 것처럼, 학습은 한 에폭 동안 여러 gradient descent step을 반복하며 진행됩니다. 저희의 모델은 위에서 만들었던 `train_loader`의 길이를 `batch_size` 개수로 나눈 횟수(`batch_idx`)만큼 돌면서 `data`와 `target`을 갖고 오차를 구해 가중치를 업데이트하게 됩니다. `data`는 이미지 데이터이고, `target`은 해당 이미지 데이터의 정답 클래스 라벨이 되겠습니다.<br> 
+`train`함수 맨 윗줄의 `model.train()` 구문은 저희가 위에서 만든 `model`를 학습 모드로 실행할 것임을 의미합니다. <u>이렇게 명시적으로 표시해 주어야 validation 단계에서 backpropagation을 통한 weight 수정이 발생하지 않습니다.</u> 모의고사를 보는 중에 컨닝을 하는 일은 없어야 하기 때문이죠.<br> 
+위에서 언급드린 것처럼, 학습은 한 에폭 동안 여러 gradient descent step을 반복하며 진행됩니다. 저희의 모델은 위에서 만들었던 `train_loader`의 길이를 `batch_size` 개수로 나눈 횟수(`batch_idx`)만큼 돌면서 `data`와 `target`을 갖고 오차를 구해 가중치를 업데이트하게 됩니다. `data`는 이미지 데이터이고, `target`은 해당 이미지 데이터의 정답 클래스 라벨이 되겠습니다.<br><br> 
 <u>데이터를 받은 후 반복문에서 제일 먼저 해야 할 것은 `optimizer.zero_grad()`를 통해 그래디언트를 0으로 초기화해 주는 것</u>입니다. 파이토치는 `.backward()`를 호출할 때마다 그래디언트를 누적하기 때문입니다.<br> 
 초기 가중치, 그러니까 첫 번째 step의 conv layer 가중치는 가우시안 분포를 따르는 랜덤값들로 채워지므로, `data`의 첫 번째 인덱스 이미지는 conv 레이어를 거치며 의미없는 쓰레기 값을 갖게 됩니다. 따라서 모델의 분류 결과인 `output` 또한 엉뚱한 클래스로 나오게 되겠죠.<br> 
 그래서 바로 아랫줄의 `F.nll_loss`함수에 모델이 예측한 클래스값 `output`과 정답값 `target`을 넣어 Negative Log Likelihood를 구한 후 `loss.backward()`를 호출하고, `optimizer.step()`을 연이어 호출함으로서 모델의 파라미터를 업데이트해 줍니다. <u>`loss.backward()`는 모델의 매개 변수에 대한 loss의 gradient를 계산하고, `optimizer.step()`을 호출함으로서 이 매개 변수가 갱신</u>됩니다. 이것이 학습이 수행되는 '한 step'인 거죠.</span>
 
 <blockquote>
 <b>-- NOTE 1 --</b><br>
-왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i> <br><br>
-
-<center><img src='http://drive.google.com/uc?export=view&id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ' width=300 /></center><br>
+왜 특정 probability mass function(pmf)로 레이어들을 초기화해야 할까요? 그 이유는 <u>대다수의 머신 러닝은 확률 모형</u>이기 때문입니다. 머신 러닝의 목적은 어떤 확률모델(가우스, 베르누이 등등...)을 써서라도 추정 확률이 1에 수렴하도록 하는 것이며, 이때 train set의 정확한 확률분포는 모르지만 중심극한정리에 따라 대강 정규분포를 따를 것이라고 가정하는 것입니다. 이 가정을 바탕으로 <b>train set의 확률분포를 가우시안 분포로 초기화한 우리의 모델로 하여금 잘 추정하게 하는 것이 핵심 목표</b>입니다.<br><br>이때 손실함수로 negative log likelihood를 쓰게 되면 우리가 만들고자 하는 모델에 대해 다양한 확률분포를 가정할 수 있게 됩니다. 손실 함수 중 하나인 cross entropy는 두 확률분포 사이의 차이를 재는 함수이지만 비교 대상 확률 분포의 종류를 특정하지 않기 때문입니다. 가우시안 분포로 모델을 초기화했다면 Cross entropy 손실함수가 하는 일은 우리가 가진 train dataset과 모델이 가진 가우시안 분포 사이의 차이를 최소화하게 됩니다. <i>(가우시안 분포로 모델의 확률분포를 가정한 경우 Mean squared error과 본질적으로 동일해 cross entropy 대신 MSE를 사용하기도 합니다.)</i>
 </blockquote>
+<center><img src='http://drive.google.com/uc?export=view&id=14DlbZH8MTQuSb0LyVVJ8X44x_iqDQ7zQ' width=300 /></center><br>
 
 <blockquote>
 <b>-- NOTE 2 --</b><br>
