@@ -24,8 +24,9 @@ header:
 
 <blockquote>
 <b>Deeperence 멱살 스터디는...</b><br>
+<span style="font-size:11pt">
 숭실대학교 머신러닝 소모임 Deeperence에서 진행하는 'Vision AI 멱살 스터디'는 처음 비전 인공지능에 입문하신 분들을 대상으로 제가 한 달간 세 가지 태스크(Classification, Detection, Segmentation)를 속성으로 경험시켜 드리는 스터디입니다. 이름 그대로 멱살을 잡아끄는 듯한 초밀착 멘토링으로 가려운 곳을 시원하게 긁어 드립니다. (이 핸즈온 튜토리얼은 Deeperence, 강남 캐글스터디 초급to고급, 제 <a href = "https://brstar96.github.io/">개인 블로그</a>에 연재됩니다.)<br><br>
-<i>Written by Myeong-Gyu.LEE, 2019-11-20</i>
+<i>Written by Myeong-Gyu.LEE, 2019-11-20</i></span>
 </blockquote>
 
 안녕하세요, Deeperence 멱살 스터디 첫 번째 시간엔 Deep learning의 'Hello, world!'와도 같은 MNIST 손글씨 분류 문제를 풀어 보도록 하겠습니다. 선형 회귀를 갓 마치고 오신 분들께서 가장 헷갈려 하시는 부분이 고차원 이미지 데이터 핸들링인데요, 이번 시간에 ①MNIST 데이터를 다뤄 보며 1차원 그레이 스케일 이미지에 대해 이해하고, ②[KaKR 3rd 차종분류 대회](https://www.kaggle.com/c/2019-3rd-ml-month-with-kakr)의 데이터셋을 활용해 3차원 RGB 이미지에 대해 이해하는 시간을 가져 보겠습니다. 
