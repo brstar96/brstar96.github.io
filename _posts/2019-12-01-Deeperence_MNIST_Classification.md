@@ -25,13 +25,13 @@ header:
 
 <span style="font-size:11pt">
 <b>Deeperence 멱살 스터디는...</b><br>
-숭실대학교 머신러닝 소모임 Deeperence에서 진행하는 'Vision AI 멱살 스터디'는 처음 비전 인공지능에 입문하신 분들을 대상으로 제가 한 달간 세 가지 태스크(Classification, Detection, Segmentation)를 속성으로 경험시켜 드리는 스터디입니다. 이름 그대로 멱살을 잡아끄는 듯한 초밀착 멘토링으로 가려운 곳을 시원하게 긁어 드립니다. (이 핸즈온 튜토리얼은 Deeperence, 강남 캐글스터디 초급to고급, 제 <a href = "https://brstar96.github.io/">개인 블로그</a>에 연재됩니다.)<br><br>
+숭실대학교 머신러닝 소모임 Deeperence에서 진행하는 'Vision AI 멱살 스터디'는 처음 비전 인공지능에 입문하신 분들을 대상으로 제가 한 달간 세 가지 태스크(Classification, Detection, Segmentation)를 속성으로 경험시켜 드리는 스터디입니다. 이름 그대로 멱살을 잡아끄는 듯한 초밀착 멘토링으로 가려운 곳을 시원하게 긁어 드립니다. (이 핸즈온 튜토리얼은 Deeperence, 강남 캐글스터디 초급to고급, 제 <a href = "https://brstar96.github.io/">개인 블로그</a>에 연재됩니다.)<br>
 <i>Written by Myeong-Gyu.LEE, 2019-11-20</i></span>
 
 <span style="font-size:11pt">
 안녕하세요, Deeperence 멱살 스터디 첫 번째 시간엔 Deep learning의 'Hello, world!'와도 같은 MNIST 손글씨 분류 문제를 풀어 보도록 하겠습니다. 선형 회귀를 갓 마치고 오신 분들께서 가장 헷갈려 하시는 부분이 고차원 이미지 데이터 핸들링인데요, 이번 시간에 ①MNIST 데이터를 다뤄 보며 1차원 그레이 스케일 이미지에 대해 이해하고, ②[KaKR 3rd 차종분류 대회](https://www.kaggle.com/c/2019-3rd-ml-month-with-kakr)의 데이터셋을 활용해 3차원 RGB 이미지에 대해 이해하는 시간을 가져 보겠습니다.<br> 
-MNIST 데이터셋은 국내는 물론 해외 머신러닝 커뮤니티에서 오랜 시간 사랑받고 연구에 활용되어 왔습니다. MNIST는 1980년대 미국 국립표준기술연구소에서 수집한 6만 개 훈련 이미지, 그리고 1만 개의 테스트 이미지로 구성되어 있습니다. MNIST 데이터셋은 또한 Numpy array 형태로 다양한 머신러닝 프레임워크들에서 기본 제공하고 있습니다.<br> 
-MNIST 데이터셋을 활용한 손글씨 분류 문제는 0부터 9까지의 클래스를 가진 다량의 손글씨 이미지 데이터들을 학습한 후 들어오는 테스트 이미지에 대해 0~9 사이의 분류 결과를 예측하는 것입니다. 이번 노트북에서는 이미지 데이터의 구조와 함께 CNN 훈련을 위해 어떻게 이 데이터를 핸들링할지에 초점을 맞추어 스터디를 진행해 보도록 하겠습니다.<br><br></span>
+MNIST 데이터셋은 국내는 물론 해외 머신러닝 커뮤니티에서 오랜 시간 사랑받고 연구에 활용되어 왔습니다. MNIST는 1980년대 미국 국립표준기술연구소에서 수집한 6만 개 훈련 이미지, 그리고 1만 개의 테스트 이미지로 구성되어 있습니다. MNIST 데이터셋은 또한 Numpy array 형태로 다양한 머신러닝 프레임워크들에서 기본 제공하고 있습니다.<br><br> 
+MNIST 데이터셋을 활용한 손글씨 분류 문제는 0부터 9까지의 클래스를 가진 다량의 손글씨 이미지 데이터들을 학습한 후 들어오는 테스트 이미지에 대해 0~9 사이의 분류 결과를 예측하는 것입니다. 이번 노트북에서는 이미지 데이터의 구조와 함께 CNN 훈련을 위해 어떻게 이 데이터를 핸들링할지에 초점을 맞추어 스터디를 진행해 보도록 하겠습니다.<br></span>
 
 <span style="font-size:11pt"><b><u>▶튜토리얼을 시작하기 전, 이 Notebook의 사본을 개인 드라이브에 복사하신 후 사본으로 재접속해 주세요!</u></b><br></span>
 <span style="font-size:11pt"><b><u>▶튜토리얼을 시작하기 전, Google Colab 상단의 메뉴 중 런타임->런타임 유형 변경에서 하드웨어 가속기를 GPU로 설정해 주세요!</u></b></span>
@@ -60,11 +60,11 @@ use_cuda = torch.cuda.is_available() # return false if cannot use GPU
 
 ### 1.2 학습 데이터 표준화하기
 <span style="font-size:11pt">
-이 이후에 진행할 차종분류 튜토리얼에서도 다루겠지만, 일반적으로 머신 러닝에 사용하는 숫자형 데이터는 <b>표준화(Standardization)</b>해주는 것이 좋습니다. 비전 태스크에서 많이 사용하는 Z-score Standardization은 우리가 사용할 학습 데이터가 [중심극한정리](https://ko.wikipedia.org/wiki/%EC%A4%91%EC%8B%AC_%EA%B7%B9%ED%95%9C_%EC%A0%95%EB%A6%AC)를 따라 정규분포를 따른다는 가정을 배경으로 깔고 있습니다. 각 집단, 즉 이미지 각각이 가진 평균과 표준편차가 제각각이라면 모수<i>(모집단의 평균이나 표준편차와 같이 모집단을 설명하는 어떤 값. 여기서 모집단은 train set을 의미합니다.)</i>에 왜곡이 발생할 것입니다. 각각의 이미지는 정규분포 성향을 띌 수 있지만, 각 이미지의 모수를 확실히 통일하고 어느 정도 동등한 조건에서 학습하기 위해 저희의 데이터셋이 표준정규분포(Standard Normal Distribution)를 따르게 할 필요가 있습니다. </span><br><br>
+이 이후에 진행할 차종분류 튜토리얼에서도 다루겠지만, 일반적으로 머신 러닝에 사용하는 숫자형 데이터는 <b>표준화(Standardization)</b>해주는 것이 좋습니다. 비전 태스크에서 많이 사용하는 Z-score Standardization은 우리가 사용할 학습 데이터가 [중심극한정리](https://ko.wikipedia.org/wiki/%EC%A4%91%EC%8B%AC_%EA%B7%B9%ED%95%9C_%EC%A0%95%EB%A6%AC)를 따라 정규분포를 따른다는 가정을 배경으로 깔고 있습니다. 각 집단, 즉 이미지 각각이 가진 평균과 표준편차가 제각각이라면 모수<i>(모집단의 평균이나 표준편차와 같이 모집단을 설명하는 어떤 값. 여기서 모집단은 train set을 의미합니다.)</i>에 왜곡이 발생할 것입니다. 각각의 이미지는 정규분포 성향을 띌 수 있지만, 각 이미지의 모수를 확실히 통일하고 어느 정도 동등한 조건에서 학습하기 위해 저희의 데이터셋이 표준정규분포(Standard Normal Distribution)를 따르게 할 필요가 있습니다. </span><br>
 
 <center>
 <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Clt_in_action.gif/400px-Clt_in_action.gif' />
-<span style="font-size:11pt"><br><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</i></center></span><br><br>
+<span style="font-size:11pt"><br><i>▲ 중심극한정리에 따라, 매우 불규칙한 분포도 충분히 많은 수를 더하면 결국 정규분포로 수렴합니다.</center></i></span><br><br>
 
 <span style="font-size:11pt">
 서로 다른 모양의 정규분포를 표준화하는 방법은 <u>평균을 0으로, 표준편차를 1로</u> 만들어 주는 것입니다. 개별 이미지에서 해당 train set 전체의 평균을 빼고 표준 편차로 나누어 주면 되는 것이죠. 개별 이미지에서 전체 데이터셋의 평균을 빼 준 것은 0으로 수평이동을 한 것과 같습니다. 거기에 모집단의 표준편차로 나누어 주었으므로 개별 데이터의 표준 편차도 1이 되는 것이죠.<br><br>
