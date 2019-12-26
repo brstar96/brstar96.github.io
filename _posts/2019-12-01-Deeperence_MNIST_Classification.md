@@ -36,7 +36,7 @@ MNIST 데이터셋을 활용한 손글씨 분류 문제는 0부터 9까지의 �
 
 <b><u>▶튜토리얼을 시작하기 전, 이 Notebook의 사본을 개인 드라이브에 복사하신 후 사본으로 재접속해 주세요!</u></b><br>
 <b><u>▶튜토리얼을 시작하기 전, Google Colab 상단의 메뉴 중 런타임->런타임 유형 변경에서 하드웨어 가속기를 GPU로 설정해 주세요!</u></b>
-<center><img src='http://drive.google.com/uc?export=view&id=1A53ZszYoOeND9m2pT5ymXgM6dZeEK2QR' /><br><center>
+<center><img src='http://drive.google.com/uc?export=view&id=1A53ZszYoOeND9m2pT5ymXgM6dZeEK2QR'/></center><br>
 
 ### 1.1 필요한 라이브러리 로드하기
 먼저, 기본적인 라이브러리들을 로드해 주겠습니다. `torch.cuda.get_device_name(0)`는 현재 사용 가능한 CUDA device의 이름을 표시해줍니다.
