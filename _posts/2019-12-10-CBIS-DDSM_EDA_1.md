@@ -20,30 +20,37 @@ CBIS-DDSM은 유방암 Classfication 또는 Detection 분야에서 종종 사용
 
 
 ## CBIS-DDSM_EDA
+<span style="font-size:11pt">
 CBIS-DDSM 데이터셋에서 제공되는 부가 파일들을 활용해 EDA를 수행해 봅니다. CBIS-DDSM 데이터셋은 이미지 데이터(`.dcm`)와 메타 데이터(`.csv`)로 구성되며, 이미지 데이터는 아래와 같은 내역으로 구성되어 있습니다. 
+</span>
 
-* Dataset format
-    * Modality : MG(Mammography)
-    * Number of Patients : 6671
-    * Number of Studies : 6775
-    * Number of Series : 6775
-    * Number of Images : 10239
-    * Entire image size : 163.6GB
+* <span style="font-size:11pt">Dataset format</span>
+    * <span style="font-size:11pt">Modality : MG(Mammography)</span>
+    * <span style="font-size:11pt">Number of Patients : 6671</span>
+    * <span style="font-size:11pt">Number of Studies : 6775</span>
+    * <span style="font-size:11pt">Number of Series : 6775</span>
+    * <span style="font-size:11pt">Number of Images : 10239</span>
+    * <span style="font-size:11pt">Entire image size : 163.6GB</span>
 
+<span style="font-size:11pt">
 전체 이미지는 6671장으로 구성되어 있으며 각 case별 상세 설명이 기재된 네 개의 `.csv`파일이 제공됩니다. `Abnormality type`은 'Calculation case'와 'Mass case'로 나뉘며, Calculation case는 흰색 반점(spots)이나 얼룩덜룩한 형태(flecks)로 관찰되는 `Abnormality type`을 의미하고, Mass case는 Breast Lumps가 구름처럼 mass하게 퍼져 있는 `Abnormality type`을 의미합니다. 
+</span>
 
-- `calc_case_description_train_set.csv`: 두 개의 `abnormality type` 중 `calc`(calcification, 석회화 조직)인 case들을 모아 구성된 <b>train set</b> list입니다. 
-- `calc_case_description_test_set.csv`: 두 개의 `abnormality type` 중 `calc`인 case들을 모아 구성된 <b>test set</b> list입니다. 
-- `mass_case_description_train_set.csv`: 두 개의 `abnormality type` 중 `mass`(mass lumps, 덩어리 조직)인 case들을 모아 구성된 <b>train set</b> list입니다. 
-- `mass_case_description_test_set.csv`: 두 개의 `abnormality type` 중 `mass`인 case들을 모아 구성된 <b>test set</b> list입니다. 
+- <span style="font-size:11pt">`calc_case_description_train_set.csv`: 두 개의 `abnormality type` 중 `calc`(calcification, 석회화 조직)인 case들을 모아 구성된 <b>train set</b> list입니다.</span> 
+- <span style="font-size:11pt">`calc_case_description_test_set.csv`: 두 개의 `abnormality type` 중 `calc`인 case들을 모아 구성된 <b>test set</b> list입니다.</span> 
+- <span style="font-size:11pt">`mass_case_description_train_set.csv`: 두 개의 `abnormality type` 중 `mass`(mass lumps, 덩어리 조직)인 case들을 모아 구성된 <b>train set</b> list입니다.</span> 
+- <span style="font-size:11pt">`mass_case_description_test_set.csv`: 두 개의 `abnormality type` 중 `mass`인 case들을 모아 구성된 <b>test set</b> list입니다.</span> 
 
+<span style="font-size:11pt">
 EDA에 앞서, 데이터셋을 한바퀴 둘러보겠습니다.
+</span>
 
 ## 1. 데이터셋 둘러보기
 
 ### 1.1 `Abnormality type`별 feature 탐색
+<span style="font-size:11pt">
 `Abnormality type`의 구분은 파일명에서 `calc`와 `mass` 접두사로 되어 있습니다. 각 사례(case)는 <u>①원본 이미지</u>와, <u>②원본 이미지에 대응되는 segment annotation</u>과, 해당 segment annotation을 포함하는 ③<u>bounding box를 crop한 이미지</u>를 포함하고 있습니다. 이 꼭지에서는 `Abnormality type`별 각 컬럼의 feature가 의미하는 바를 알아 보도록 하겠습니다.
-
+</span>
 
 ![case_details](/assets/Images/shoveling/CBISDDSM_EDA/1/case_merged.jpg)
 
@@ -1388,4 +1395,5 @@ plt.show()
 
 <span style="font-size:11pt">
 `pathology` column은 train과 test csv에서 각기 다른 양상을 보이는 것을 확인할 수 있습니다. 
+이어지는 내용은 下편에서 다루도록 하겠습니다.  
 </span>
