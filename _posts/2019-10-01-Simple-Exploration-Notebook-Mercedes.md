@@ -16,7 +16,7 @@ header:
   teaser: /assets/kaggletranscription/Simple_Exploration_Notebook-Mercedes/Mercedes-Benz-Greener-Manufacturing.png
 ---
 <span style="font-size:11pt">
-*This notebook is written by SRK.(https://www.kaggle.com/sudalairajkumar/simple-exploration-notebook-mercedes) Thanks for sharing!<br><br>
+*This notebook is written by [SRK](https://www.kaggle.com/sudalairajkumar/simple-exploration-notebook-mercedes). Thanks for sharing!<br><br>
 (역자주:본 커널은 높은 분류 성능을 자랑하기보다, EDA를 수행한 후 XGBoost와 Ramdom Forest모델을 활용하여 feature importance를 찾는 것에 집중하고 있습니다.)
 </span>
 

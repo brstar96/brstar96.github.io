@@ -17,7 +17,7 @@ header:
 ---
 
 <span style="font-size:11pt">
-*This code is written by anokas.(https://www.kaggle.com/anokas/mercedes-eda-xgboost-starter-0-55/comments) Thanks for sharing!
+*This code is written by [anokas](https://www.kaggle.com/anokas/mercedes-eda-xgboost-starter-0-55/comments). Thanks for sharing!
 </span>
 
 ### Mercedes-Benz Greener Manufacturing
