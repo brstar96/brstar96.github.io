@@ -2884,7 +2884,7 @@ plt.show()
 ![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_30_1.png)
 
 <span style="font-size:11pt">
-ID 변수와 관련하여 약간 감소하는 경향이 있는 거승로 보입니다. 이제 train과 test 간에 ID 변수가 어떻게 분포하고 있는지 살펴 보겠습니다. 
+ID 변수와 관련하여 약간 감소하는 경향이 있는 것으로 보입니다. 이제 train과 test 간에 ID 변수가 어떻게 분포하고 있는지 살펴 보겠습니다. 
 </span>
 
 ```python
@@ -2983,6 +2983,5 @@ plt.show()
 
 <span style="font-size:11pt">
 XGBoost와 랜덤 포레스트 간 중요 변수들에 차이가 꽤 있습니다. 왜 그런지는 잘 모르겠습니다.<br><br> 
-
 곧 업데이트하겠습니다.!
 </span>
