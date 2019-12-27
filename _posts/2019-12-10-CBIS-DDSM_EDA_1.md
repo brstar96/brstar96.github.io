@@ -1,7 +1,7 @@
 ---
 title: "CBIS-DDSM 데이터셋 Simple EDA (上)"
 tags: 
-  - Deep Learning
+  - Dataset review
   - EDA
 categories:
   - shoveling
