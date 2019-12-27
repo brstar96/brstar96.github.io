@@ -12,7 +12,7 @@ comments:
   disqus:
     shortname: "https-brstar96-github-io"
 header:
-  teaser: /assets/Images/tutomentoring/deeperence_MNIST/MNIST_Classification_3.png
+  teaser: /assets/Images/shoveling/CBISDDSM_EDA/1/case_merged.jpg
 ---
 <span style="font-size:11pt">
 CBIS-DDSM은 유방암 Classfication 또는 Detection 분야에서 종종 사용되는 데이터셋입니다. 이번 포스트에서는 개인 연구에 활용하기 위해 개인적으로 EDA를 수행한 노트북을 다룹니다. 보다 상세한 통계 정보를 다루는 하(下)편은 언제가 될 지는 모르겠으나 빠른 시일 내로 업데이트해 보겠습니다.   
