@@ -65,12 +65,11 @@ Predicted Normal, depth map의 퀄리티가 낮은 가장 강력한 이유로 Pa
 
 <span style="font-size:11pt">
 저는 이미지의 지역 정보를 보지 못하는 이유가 학습데이터의 정보량을 네트워크가 충분히 담지 못하고 있기 때문으로 생각했고, 그래서 백본을 U-Net에서 ResNet으로 변경해 보았습니다.<br><br>
-맨 마지막으로 시도해 봤던 구조가 CycleGAN의 ResNet Generator + RF 70 + LSGAN Loss + Batch Instance Normalization 조합이었는데, 베이스라인 대비 메모리 사용량이 1.5배가량 줄어들긴 했습니다. TF 버전과 CUDA 버전을 각각 1.14와 10.0버전으로 올려 100epoch을 학습시킬때 기존에 7일정도 걸리던 것이 4.3일로 줄어들었습니다.<br><br>
+맨 마지막으로 시도해 봤던 구조가 CycleGAN의 ResNet Generator + RF 70 + LSGAN Loss + Batch Instance Normalization 조합이었는데, 베이스라인 대비 메모리 사용량이 1.5배가량 줄어들긴 했습니다. TF 버전과 CUDA 버전을 각각 1.14와 10.0버전으로 올려 100epoch을 학습시킬때 기존에 7일정도 걸리던 시간 또한 4.3일로 줄어들었습니다.<br><br>
 </span>
 
 
 <figure>
-    <a href="/assets/Images/3dreconsVRAM.png"><img src="/assets/Images/3dreconsVRAM.png"></a>
     <a href="/assets/Images/resfinal.png"><img src="/assets/Images/resfinal.png"></a>
 </figure>
 
