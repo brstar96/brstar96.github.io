@@ -51,7 +51,7 @@ header:
 - <span style="font-size:11pt">딥러닝 환경설정을 하며 굉장히 자주 만나는 에러가 아닐까 싶습니다. 대개 <u>①CUDA와 cuDNN의 호환성을 무시하고 설치해 버전이 꼬였거나</u>, <u>②관리자 계정에서 설치를 수행하지 않았거나</u>, <u>③올바르게 설치한 후 재부팅하지 않아</u> 발생합니다.</span><br>
     - <span style="font-size:11pt">CUDA 버전에 따라 지원되는 드라이버 리스트 : [https://docs.nvidia.com/deploy/cuda-compatibility/](https://docs.nvidia.com/deploy/cuda-compatibility/)</span><br>
     - <span style="font-size:11pt">제품군에 따라 지원되는 드라이버 리스트 : [https://www.nvidia.com/Download/Find.aspx?lang=en-us](https://www.nvidia.com/Download/Find.aspx?lang=en-us)</span><br>
-    - <span style="font-size:11pt">재부팅 이후에도 동일한 문제가 발생할 경우 `$lsmod | grep nvidia`으로 로딩된 엔비디아 커널을 모두 받은 후 `$sudo rmmod nvidia_drm`, `$sudo rmmod nvidia_modeset`, `$sudo rmmod nvidia_uvm`, `$sudo rmmod nvidia`로 프로세스를 강제로 정지합니다. 이후 `$nvidia-smi`를 통해 드라이버를 다시 로드해 봅니다.</span><br>
+    - <span style="font-size:11pt">재부팅 이후에도 동일한 문제가 발생할 경우 `$lsmod | grep nvidia`으로 로딩된 엔비디아 커널 모듈의 리스트를 모두 확인한 후 `$sudo rmmod nvidia_drm`, `$sudo rmmod nvidia_modeset`, `$sudo rmmod nvidia_uvm`, `$sudo rmmod nvidia`로 프로세스를 강제로 정지합니다. 이후 `$nvidia-smi`를 통해 드라이버를 다시 로드해 봅니다.</span><br>
     - <span style="font-size:11pt">`$rmmod: ERROR: Module nvidia is in use` 메시지가 나타난 경우 `$sudo lsof /dev/nvidia*`로 프로세스를 kill합니다. (대개 도커때문에 발생)</span><br>
 - <span style="font-size:11pt">Substance designer나 렌더러와 같이 딥러닝 프레임워크와 충돌할 수 있는 CUDA 프로그램을 종료한 후 다시 실행해 봅니다.</span><br>    
 
