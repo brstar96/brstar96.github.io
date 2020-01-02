@@ -41,7 +41,7 @@ header:
       - <span style="font-size:11pt">또한, 아래 예시 이미지처럼 클래스 개수에 따라 임베딩된 GT 이미지와 모델 아웃풋의 데이터 형태가 다를 경우에도 발생 가능합니다. </span><br>
       ![png](/assets/Images/fk_gpu2.png)
       - <span style="font-size:11pt">구현체에 따라 GT 이미지가 multiple channel인 경우 에러가 발생할 수 있습니다. GT 이미지가 1개의 채널만 갖고 있는 것은 아닌지 확인해 보세요.</span><br> 
-   - <span style="font-size:11pt">데이터를 처리하는 과정에서 `Numpy array`와 `FloatTensor` 자료형이 충돌함으로 인해 에러가 발생할 수 있습니다. 이러한 상황은 보통 loss를 구할 때 발생하며, `Numpy ndarray`를 `torch.cuda.FloatTensor`로 바꾸거나 반대로 `torch.cuda.FloatTensor`를 `Numpy ndarray`로 변환해 연산해 줍니다. 아래는 제가 후자를 위해 애용하는 함수입니다. </span><br>  
+   - <span style="font-size:11pt">데이터를 처리하는 과정에서 `Numpy array`와 `FloatTensor` 자료형이 충돌함으로 인해 에러가 발생할 수 있습니다. 이러한 상황은 보통 모델 아웃풋에 argmax를 씌워 최종 결과를 내는 과정에서 발생하며, `Numpy ndarray`를 `torch.cuda.FloatTensor`로 바꾸거나 반대로 `torch.cuda.FloatTensor`를 `Numpy ndarray`로 변환해 연산해 줍니다. 아래는 제가 후자를 위해 애용하는 함수입니다. </span><br>  
        ```python
         def to_np(t):
             return t.cpu().detach().numpy()
