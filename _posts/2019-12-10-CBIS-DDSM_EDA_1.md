@@ -88,7 +88,7 @@ print(mass_case_description_test_set_df['subtlety'].unique())
     [5 4 2 3 1]
     
 <span style="font-size:11pt">
-각 `.csv`파일은 아래와 같은 내용들을 포함하고 있습니다. 각 column에 대한 설명은 다음과 같습니다. <i>(중복 feature가 존재하는 경우는 `dataframe['columnname'].unique()`로 유니크한 값만 뽑아 확인)</i>
+각 `.csv`파일은 아래와 같은 내용들을 포함하고 있습니다. 각 column에 대한 설명은 다음과 같으며, 보다 자세한 설명은 https://www.nature.com/articles/sdata2017177에서 확인하실 수 있습니다. <i>(중복 feature가 존재하는 경우는 `dataframe['columnname'].unique()`로 유니크한 값만 뽑아 확인)</i>
 </span>
 
 - <span style="font-size:11pt"><b>`calcification` 타입의 데이터셋 각 컬럼별 설명 (`calc_case_description_train_set_df`, `calc_case_description_test_set_df`)</b></span>
@@ -96,11 +96,11 @@ print(mass_case_description_test_set_df['subtlety'].unique())
     - <span style="font-size:11pt"><b>`breast density`:</b> 유방 조직의 밀도를 구분한 정수형 feature입니다. train csv에는 `1`에서 `4`까지의 int형 feature를, test csv에는 `0`~`4`의 int형 feature를 포함하고 있습니다. (e.g. 3, 4, 1, 2, ...)</span>
     - <span style="font-size:11pt"><b>`left or right breast`:</b> 유방을 촬영한 각도입니다. `LEFT`, `RIGHT`로 구성된 srt형 바이너리 feature입니다. (e.g. LEFT, RIGHT, ...)</span>
     - <span style="font-size:11pt"><b>`image view`:</b> mammography 촬영 방법에 따른 구분입니다. `CC`, `MLO`로 구성된 str형 바이너리 feature입니다. (e.g. CC, MLO, ...)</span>
-    - <span style="font-size:11pt"><b>`abnormality id`:</b> 비정상 정도에 대한 레벨을 구분하는 정수형 feature입니다. [BI-RADS](https://en.wikipedia.org/wiki/BI-RADS)에 따른 각 사례별 분류로 추정되며, train csv는 `1`부터 `7`까지의 범위를 갖는 int형 feature를, test csv는 `1`~`5`의 범위를 갖는 int형 feature를 포함하고 있습니다. (e.g. 3, 2, 5, 1, ...)</span>
+    - <span style="font-size:11pt"><b>`abnormality id`:</b> 해당 case 안에 anomaly 패치가 몇 개인지 구분하기 위한 id입니다. train csv는 `1`부터 `7`까지의 범위를 갖는 int형 feature를, test csv는 `1`~`5`의 범위를 갖는 int형 feature를 포함하고 있습니다. (e.g. 3, 2, 5, 1, ...)</span> 
     - <span style="font-size:11pt"><b>`abnormality type`:</b> `Abnormality type`에 따른 구분입니다. `train`과 `test`로 나뉜 네 개의 `.csv`파일에서 해당 테이블은 파일에 대해 모두 동일한 값을 가지며, `calcification`과 `mass` 두 타입이 존재합니다. 아래 `dataframe.head`를 통해 해당 column 정보를 확인하실 수 있습니다.</span> 
     - <span style="font-size:11pt"><b>`calc type`:</b> `calcification` 타입의 lumps(덩어리)에서 나타나는 Cancer diagnostic 정보입니다. 46종으로 구분되어 있으며, str형 feature입니다. (e.g. AMORPHOUS, ROUND_AND_REGULAR-AMORPHOUS, ...)</span>
     - <span style="font-size:11pt"><b>`calc distribution`:</b> `calc`타입의 lumps 조직이 얼마나 뭉쳐 있는지, 퍼져 있는지에 대한 str형 feature입니다. `CLUSTERED`, `LINEAR`, `REGIONAL`, `DIFFUSELY_SCATTERED`, `SEGMENTAL`, `CLUSTERED-LINEAR`, `CLUSTERED-SEGMENTAL`, `LINEAR-SEGMENTAL`, `REGIONAL-REGIONAL`로 구성되어 있으며, `nan`값도 포함되어 있으므로 핸들링에 주의가 필요합니다. (e.g. CLUSTERED-LINEAR, SEGMENTAL, CLUSTERED, ...)</span>
-    - <span style="font-size:11pt"><b>`assessment`:</b> 확인되지 않은 컬럼입니다. `0`, `2`, `3`, `4`, `5`의 unique한 int형 features가 포함되어 있습니다.</span> 
+    - <span style="font-size:11pt"><b>`assessment`:</b> 비정상 정도에 대한 레벨을 구분하는 정수형 feature입니다. [BI-RADS](https://en.wikipedia.org/wiki/BI-RADS)에 따른 각 사례별 분류로, `0`, `2`, `3`, `4`, `5`의 unique한 int형 features가 포함되어 있습니다.</span>  
     - <span style="font-size:11pt"><b>`pathology`:</b> 해당 lumps에 대한 병리학적 분류를 의미합니다. `BENIGN_WITHOUT_CALLBACK`, `BENIGN`, `MALIGNANT` 세 개의 unique한 str형 features로 구성되어 있으며, 각각 정상(추정), 양성, 음성을 의미합니다. (e.g. BENIGN, BENIGN, MALIGNANT, ...)</span>
     - <span style="font-size:11pt"><b>`subtlety`:</b> 확인되지 않은 컬럼입니다. `1`~`5`의 범위를 갖는 int형 feature로 구성되어 있습니다. (e.g. 3, 4, 1, 5, 2, ...)</span>
     - <span style="font-size:11pt"><b>`image file path`:</b> 원본 이미지 파일(`.dcm`)의 경로입니다.</span> 
