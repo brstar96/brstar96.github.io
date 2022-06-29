@@ -2,58 +2,69 @@
 # If you don't have a JSON Resume you can just edit this YAML file instead.
 # See also: <https://jsonresume.org/>.
 basics:
-  name: "Richard Hendricks"
-  label: "Programmer"
+  name: "이명규 Myeong-Gyu LEE"
+  label: "AI Research Engineer"
   picture: "https://via.placeholder.com/240x240"
-  email: ""
-  phone: "(912) 555-4321"
-  website: "https://piedpiper.com"
+  email: "brstar96@naver.com"
+  phone: "+82-10-8234-3179 (KR)"
+  website: "https://brstar96.github.io/"
   summary: >
-    Richard hails from Tulsa.
-    He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!)
-    Before starting Pied Piper, he worked for Hooli as a part time software developer.
-    While his work focuses on applied information theory,
-    mostly optimizing lossless compression schema of both the length-limited and adaptive variants,
-    his non-work interests range widely,
-    everything from quantum computing to chaos theory.
-    He could tell you about it, but THAT would NOT be a “length-limited” conversation!
-    Open `_data/resume.yml` to edit this text.
+    2017년부터 다양한 머신러닝 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있는 AI 연구원입니다. (21.09.24 ~ 24.09.23 전문연구요원 복무중입니다.)
+    
   location:
-    address: "2712 Broadway St"
-    postalCode: "CA 94115"
-    city: "San Francisco"
-    countryCode: "US"
-    region: "California"
+    address: ""
+    postalCode: ""
+    city: "Seoul"
+    countryCode: "South Korea"
+    region: ""
   profiles:
-    - network: "Twitter"
-      username: "RHendricksCEO"
-      url: ""
+    - network: "Github"
+      username: "brstar96"
+      url: "https://github.com/brstar96"
     - network: "LinkedIn"
-      username: "Richard Hendricks"
-      url: ""
+      username: "Myeong-Gyu LEE"
+      url: "https://www.linkedin.com/in/myeong-gyu-lee-048b68141/"
 work:
-  - company: "Pied Piper"
-    position: "CEO/President"
-    website: "https://piedpiper.com"
-    startDate: "2013-12-01"
+  - company: "SYNERGY A.I."
+    position: "AI Research Scientist (Full-time Technical Research Personnel)"
+    website: "https://synergyai.co/"
+    startDate: "2021-07-26"
     endDate: ""
     summary: >
-      Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has
-      consistently fielded high Weisman Scores™ that are not merely competitive,
-      but approach the theoretical limit of lossless compression.
+      이화의대 교수창업 스타트업으로 의료 영상으로부터 진단 정보를 만들어 낼 수 있는 인공지능 소프트웨어를 개발하는 스타트업입니다.
     highlights:
-      - "Built an algorithm for artist to detect if their music was violating copy right infringement laws"
-      - "Successfully won Techcrunch Disrupt"
-      - "Optimized an algorithm that holds the current world record for Weisman Scores"
-volunteer:
-  - organization: "CoderDojo"
-    position: "Teacher"
-    website: "https://coderdojo.com/"
-    startDate: "2012-01-01"
-    endDate: "2013-01-01"
-    summary: "Global movement of free coding clubs for young people."
+      - Afib Risk Prediction 모델 연구 (2022-03 ~ )
+        - Inifinitt, GE, philips 심전도 기기로부터 생체 신호를 입력받아 심방세동 위험성을 예측하는 모델 연구
+      - Ignite 서비스용 신장 체적 측정 모델 연구 (CT-ADPKD Segmentation) (2021-07 ~ 2022-02)
+        - 상염색체우성 다낭신장병(ADPKD) 환자의 신장 체적 측정 모델 연구
+      - Working as an Technical Research Personnel
+  - company: "Espresomedia"
+    position: "Vision AI Assistant Research Engineer (Full-time)"
+    website: "http://espresomedia.com/"
+    startDate: "2020-06-29"
+    endDate: "2021.07.23"
+    summary: >
+      슈퍼레졸루션 엔진 기술 및 영상복원 기술을 바탕으로 저해상도 영상을 초해상도 변환하는 기술을 연구하는 IT 기업입니다. 
     highlights:
-      - "Awarded 'Teacher of the Month'"
+      - XLSR (Extremely Lightweight SR Network) 모델 연구 (2021-04 ~ 2021-07)
+        - Edge AI 디바이스를 위한 초저지연 초해상화 모델 연구 (Low latency, Low memory footprint)
+        - 다양한 Edge Inference를 위한 솔루션 개발 (TensorRT, TFLite, NNAPI)
+      - Video Enhancement AI 솔루션 개발 (2020-06 ~ 2021-07)
+        - 드라마, 음악방송 등 인물 위주 콘텐츠에서의 통신 대역폭 절감을 위한 부분 초해상화(Partial Super-Resolution) 솔루션 연구
+        - 문제 해결을 위한 데이터셋 구축, 전체 훈련 파이프라인 구축
+        - LDR-> HDR Inverse Tone Mapping 솔루션을 위한 데이터셋 구축, 정제 및 모델 훈련 파이프라인 셋업
+      - Working as an M.S candidate
+  - company: "D-META"
+    position: "AI Researcher (Part-time)"
+    website: "http://www.divus.co.kr/"
+    startDate: "2019-12-03"
+    endDate: "2020-06-19"
+    summary: >
+      제품의 품질과 상태 등을 확인하기 위해 육안검사에 의존하던 기존 방식을 딥러닝 기반의 컴퓨터 시각 기술을 이용하여 자동화하기 위한 솔루션을 개발하고 있는 회사입니다. 
+    highlights:
+      - DoctorCar 2.0 차량 외관 검사 모델 개발 (2019-12 ~ 2020-05)
+        - Participated in Vehicle Exterior Defect Detection Model development and performance improvement using Faster-RCNN. 
+        - ≥2cm^2 Tiny Scratch & Crack Detection, Confidence Thresholding
 education:
   - institution: "University of Oklahoma"
     area: "Information Technology"
@@ -76,28 +87,34 @@ publications:
     website: "https://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)"
     summary: "Innovative middle-out compression algorithm that changes the way we store data."
 skills:
-  - name: "Web Development"
-    level: "Master"
+  - name: "ML/DL Research"
+    level: "Advanced"
     keywords:
-      - "HTML"
-      - "CSS"
-      - "Javascript"
-  - name: "Compression"
-    level: "Master"
+      - "Python"
+      - "Pytorch"
+      - "Scikit-Learn"
+      - "Pandas"
+      - "Super-resolution"
+      - "Semantic Segmantation"
+      - "Unsupervised Representation Learning"
+  - name: "ML Engineering(MLOps)"
+    level: "Novice"
     keywords:
-      - "Mpeg"
-      - "MP4"
-      - "GIF"
+      - "k8s"
+      - "Docker"
 languages:
-  - language: "English"
+  - language: "Korean"
     fluency: "Native speaker"
+  - language: "English"
+    fluency: "Limited working proficiency"
 interests:
-  - name: "Wildlife"
+  - name: "Crypto-assets"
     keywords:
-      - "Ferrets"
-      - "Unicorns"
-references:
-  - name: "Erlich Bachman"
-    reference: >
-      It is my pleasure to recommend Richard, his performance working as a consultant for Main St.
-      Company proved that he will be a valuable addition to any company.
+      - "Crypto-quant"
+      - "De-Fi"
+  - name: "Photography"
+# references:
+#   - name: "Erlich Bachman"
+#     reference: >
+#       It is my pleasure to recommend Richard, his performance working as a consultant for Main St.
+#       Company proved that he will be a valuable addition to any company.
