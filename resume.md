@@ -2,8 +2,7 @@
 layout: resume
 title: Résumé*
 description: >
-  This is the `description` of your resume page, as it will be seen by search engines.
-  You'll probably want to modify it in `resume.md`, and maybe set `hide_description` to `true` in the front matter.
+  I'm a researcher who wants to contribute to creating a bright future with AI. 2017년부터 다양한 머신러닝 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있는 연구원입니다. 
 hide_description: true
 left_column:
   - work
@@ -21,9 +20,5 @@ no_skill_icons: false
 buttons:
   print: true
   pdf: /assets/Resume.pdf
-  # For the vCard you can either provide a link to a .vcf file in assets (see `pdf` above),
-  # or use `h2vx.com` to generate a vCard on the fly based on the structured data of the resume page.
-  # The later requires `hydejack.no_structured_data: false` and only works once the site is deployed to a public URL.
-  vcf: http://h2vx.com/vcf/<!--url-->
   json: /assets/resume.json
 ---
