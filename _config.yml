@@ -20,7 +20,7 @@
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 Myeong-Gyu.LEE Devlog
+title:                 DarkJohn Devlog
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -28,7 +28,7 @@ description:           >
   I'm a researcher who wants to contribute to creating a bright future with CG + AI.
 
 # A shorter description for the sidebar.
-tagline:               다양한 머신러닝 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있습니다.
+tagline:               다양한 ML 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있습니다.
 
 # A list of keywords for your blog
 keywords:              []
@@ -48,8 +48,10 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Blog
-    url:               /blog/
+  - title:             Devlog
+    url:               /devlog/
+  - title:             Lifelog
+    url:               /lifelog/
   - title:             Projects
     url:               /projects/
   - title:             Résume
@@ -118,6 +120,12 @@ defaults:
         background:    rgb(32,32,32)
         overlay:       false
 
+  # comments
+  - scope:
+      type: posts
+    values:
+      comments: true
+
   # Don't include documents in assets in the sitemap
   - scope:
       path:            assets/
@@ -166,11 +174,11 @@ kramdown:
 
 # Set your Google Analytics id to receive `pageview` events.
 # To remove Google Anaylics from your page, remove the line below.
-# google_analytics:      UA-XXXXXXXX-X
+google_analytics:      UA-148880734-1
 
 # Setting a disqus shortname will enable the comment section on
 # pages with `comments: true` in the front matter.
-# disqus:                <username>
+disqus:                https-brstar96-github-io
 
 # Setting a tinyletter username will enable the newsletter subscription box.
 # PRO version only!

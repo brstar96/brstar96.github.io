@@ -1,7 +1,15 @@
 ---
-layout: page
+layout: welcome
 title: 안녕하세요!
-sitemap: false
+cover: true
+selected_projects:
+  - _projects/hydejack-v6.md
+  - /projects/hyde-v2/
+projects_page: projects.md
+selected_posts:
+  - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
+posts_page: /devlog/
+featured: true
 ---
 
 ## Hi, there!

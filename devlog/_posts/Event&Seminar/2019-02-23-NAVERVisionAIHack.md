@@ -1,20 +1,20 @@
 ﻿---
+layout: post
 title: "(Event/Seminar후기) NAVER Vision AI Hackathon 본선 대회에 참여했습니다!"
-tags: 
-  - Machine Learning
-  - Deep Learning
-  - NAVER NSML
-  - Competition
-categories:
-  - Event&Seminar
-toc: false
-author_profile: false
-comments: 
-  provider: "disqus"
-  disqus:
-    shortname: "https-brstar96-github-io"
-header:
-  teaser: /assets/Images/event/NaverVisionAIHack/3_1.jpg
+tags: [Machine Learning, Deep Learning, NAVER NSML, Competition]
+categories: [Event&Seminar]
+author_profile: true
+comments: true
+sitemap: true
+image: /assets/img/devlog/event/NaverVisionAIHack/3.jpg
+accent_image: 
+  background: url('/assets/img/devlog/bgimg1.jpg') center/cover
+  overlay: false
+accent_color: '#ccc'
+theme_color: '#ccc'
+description: >
+  지난 2019년 1월 2일부터 시작된 네이버 Vision AI 해커톤 대회에 두달간 참여하며 겪은 소중한 경험을 나눕니다. 비록 우승권에 들지 못한 채 대회를 마감했지만 그 자체로 많은 깨달음을 얻을 수 있었습니다. 쟁쟁한 팀의 팀원 분들을 오프라인에서 만날 수 있었던 본선 대회에 다녀온 후기입니다. 
+# invert_sidebar: true
 ---
 
 <span style="font-size:11pt">지난 1월 2일부터 시작된 [네이버 Vision AI 해커톤 대회](https://github.com/AiHackathon2018/AI-Vision)가 어제로 끝이 났습니다. 두달간 정말 쉼없이 달려오며 많은 우여곡절을 겪고 소중한 추억을 만들었습니다. 비록 우승권에 들지 못한 채 중하위권에서 대회를 마감했지만 그 자체만으로도 뿌듯하고 많은 깨달음을 얻었습니다. 이번 포스팅은 쟁쟁한 팀의 팀원 분들을 오프라인으로 만날 수 있었던 오프라인 본선 대회에 다녀온 후기입니다~</span>
