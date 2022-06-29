@@ -52,15 +52,13 @@ menu:
     url:               /blog/
   - title:             Projects
     url:               /projects/
-  - title:             Résumé*
+  - title:             Résume
     url:               /resume/
-  - title:             Lifelog
-    url:               /lifelog/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
 legal:
-  - title:             NOTICE
+  - title:             SITE INFO/LICENSES
     url:               /NOTICE/
 
 # This text will appear in a `<small>` tag in the footer of every page.
