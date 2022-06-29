@@ -33,11 +33,9 @@ work:
     summary: >
       이화의대 교수창업 스타트업으로 의료 영상으로부터 진단 정보를 만들어 낼 수 있는 인공지능 소프트웨어를 개발하는 스타트업입니다.
     highlights:
-      - Afib Risk Prediction 모델 연구 (2022-03 ~ )
-          - Inifinitt, GE, philips 심전도 기기로부터 생체 신호를 입력받아 심방세동 위험성을 예측하는 모델 연구
-      - Ignite 서비스용 신장 체적 측정 모델 연구 (CT-ADPKD Segmentation) (2021-07 ~ 2022-02)
-          - 상염색체우성 다낭신장병(ADPKD) 환자의 신장 체적 측정 모델 연구
       - Working as an Technical Research Personnel
+      - Afib Risk Prediction 모델 연구 (2022-03 ~ ) - Inifinitt, GE, philips 심전도 기기로부터 생체 신호를 입력받아 심방세동 위험성을 예측하는 모델 연구
+      - Ignite 서비스용 신장 체적 측정 모델 연구 (CT-ADPKD Segmentation, 2021-07 ~ 2022-02) - 상염색체우성 다낭신장병(ADPKD) 환자의 신장 체적 측정 모델 연구
   - company: "Espresomedia"
     position: "Vision AI Assistant Research Engineer (Full-time)"
     website: "http://espresomedia.com/"
@@ -46,14 +44,10 @@ work:
     summary: >
       슈퍼레졸루션 엔진 기술 및 영상복원 기술을 바탕으로 저해상도 영상을 초해상도 변환하는 기술을 연구하는 IT 기업입니다. 
     highlights:
-      - XLSR (Extremely Lightweight SR Network) 모델 연구 (2021-04 ~ 2021-07)
-          - Edge AI 디바이스를 위한 초저지연 초해상화 모델 연구 (Low latency, Low memory footprint)
-          - 다양한 Edge Inference를 위한 솔루션 개발 (TensorRT, TFLite, NNAPI)
-      - Video Enhancement AI 솔루션 개발 (2020-06 ~ 2021-07)
-          - 드라마, 음악방송 등 인물 위주 콘텐츠에서의 통신 대역폭 절감을 위한 부분 초해상화(Partial Super-Resolution) 솔루션 연구
-          - 문제 해결을 위한 데이터셋 구축, 전체 훈련 파이프라인 구축
-          - LDR-> HDR Inverse Tone Mapping 솔루션을 위한 데이터셋 구축, 정제 및 모델 훈련 파이프라인 셋업
       - Working as an M.S candidate
+      - XLSR (Extremely Lightweight SR Network) 모델 연구 (2021-04 ~ 2021-07) - Edge AI 디바이스를 위한 초저지연 초해상화 모델 연구, 다양한 Edge Inference를 위한 솔루션 개발 (TensorRT, TFLite, NNAPI)
+      - Video Enhancement AI 솔루션 개발 (2020-06 ~ 2021-07) - 드라마, 음악방송 등 인물 위주 콘텐츠에서의 통신 대역폭 절감을 위한 부분 초해상화(Partial Super-Resolution) 솔루션 연구
+      - LDR-> HDR Inverse Tone Mapping 솔루션을 위한 데이터셋 구축, 정제 및 모델 훈련 파이프라인 셋업
   - company: "D-META"
     position: "AI Researcher (Part-time)"
     website: "http://www.divus.co.kr/"
@@ -62,19 +56,32 @@ work:
     summary: >
       제품의 품질과 상태 등을 확인하기 위해 육안검사에 의존하던 기존 방식을 딥러닝 기반의 컴퓨터 시각 기술을 이용하여 자동화하기 위한 솔루션을 개발하고 있는 회사입니다. 
     highlights:
-      - DoctorCar 2.0 차량 외관 검사 모델 개발 (2019-12 ~ 2020-05)
-          - Participated in Vehicle Exterior Defect Detection Model development and performance improvement using Faster-RCNN. 
-          - ≥2cm^2 Tiny Scratch & Crack Detection, Confidence Thresholding
+      - DoctorCar 2.0 차량 외관 검사 모델 개발 (2019-12 ~ 2020-05) - Participated in Vehicle Exterior Defect Detection Model development and performance improvement using Faster-RCNN. (≥2cm^2 Tiny Scratch & Crack Detection, Confidence Thresholding)
 education:
-  - institution: "University of Oklahoma"
-    area: "Information Technology"
-    studyType: "Bachelor"
-    startDate: "2011-06-01"
-    endDate: "2014-01-01"
-    gpa: "4.0"
+  - institution: "Soongsil University"
+    area: "Department of Digital Media(Computer Graphics, Machine Learning)"
+    studyType: "Ph.D Student(temporary leave due to alternative military service)"
+    startDate: "2021.03.02"
+    endDate: ""
+    gpa: "N/A"
     courses:
-      - "DB1101 - Basic SQL"
-      - "CS2011 - Java Introduction"
+      - 패턴인식, 컴퓨터그래픽스특론, 인지과학
+  - institution: "Soongsil University"
+    area: "Department of Digital Media(Computer Graphics, Machine Learning)"
+    studyType: "Master of Engineering - MEng"
+    startDate: "2017-09-01"
+    endDate: "2020-12-21"
+    gpa: "4.14/4.5"
+    courses:
+      - 인공지능특론, 머신러닝, 컴퓨터그래픽특수효과, 스포츠데이터마이닝, 스포츠IT를 위한 컴퓨터그래픽스, VR콘텐츠디자인
+  - institution: "Soongsil University 글로벌미래교육원"
+    area: "Multimedia"
+    studyType: "Bachelor of Engineering"
+    startDate: "2015-03-02"
+    endDate: "2017-08-01"
+    gpa: "3.5/4.5"
+    courses:
+      - 이산수학(전필), C언어(전필), 멀티미디어통신(전필), 프로그래밍언어실습(전선), 자료구조(전선), 데이터베이스(전필)
 awards:
   - title: "Digital Compression Pioneer Award"
     date: "2014-11-01"
