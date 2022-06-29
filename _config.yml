@@ -28,7 +28,7 @@ description:           >
   I'm a researcher who wants to contribute to creating a bright future with CG + AI.
 
 # A shorter description for the sidebar.
-tagline:               `ML/DL``Lifelog`
+tagline:               `ML/DL`, `Lifelog`
 
 # A list of keywords for your blog
 keywords:              []
@@ -50,22 +50,21 @@ author:
 menu:
   - title:             Blog
     url:               /blog/
-  - title:             Lifelog
-    url:               /lifelog/
   - title:             Projects
     url:               /projects/
   - title:             Résumé*
     url:               /resume/
-  
+  - title:             Lifelog
+    url:               /lifelog/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
 legal:
-  - title:             SITE INFO / LICENSE
-    url:               /LICENSE/
-  
+  - title:             NOTICE
+    url:               /NOTICE/
+
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © 2022 Myeong-Gyu.Lee All rights reserved.
+copyright:             © 2022 Myeong-Gyu.LEE All rights reserved.
 
 # Format of the permalinks
 permalink:             /blog/:categories/:year-:month-:day-:title/
