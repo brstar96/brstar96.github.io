@@ -1,6 +1,6 @@
 ---
 layout: welcome
-title: 
+title: 안녕하세요!
 cover: true
 selected_projects:
   - _projects/hydejack-site.md
@@ -13,6 +13,7 @@ accent_image:
   background: url('/assets/img/devlog/bgimg1.jpg') center/cover
   overlay: false
 ---
+
 <center>
 <span style="font-size:15pt">저는 CG와 AI로 밝은 미래를 만드는 데 기여하고 있는 AI Research Engineer 입니다.</span><br>
 <span style="font-size:12pt">2017년부터 다양한 머신러닝 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있습니다.</span><br>
@@ -20,8 +21,18 @@ accent_image:
 
 <span style="font-size: 15px;"><i>Nothing happens unless first we dream.</i></span><br>
 <span style="font-size: 13px;"><i>- Carl Sandburg </i>(1908–1967)</span>
-</center>
+</center><br>
 
+
+- Interested in Deep Machine Learning(Vision AI, Medical AI), Production ML Systems. 
+- Tech Stack: Python intermediate(Pytorch, Keras), C++ beginner(OpenGL)
+
+My detailed Resume here! [Resume]{:.heading.flip-title}
+{:.related-posts.faded}
+
+[Resume]: ./resume.md
+
+<br>
 
 ## Personal Info
 
@@ -34,11 +45,3 @@ accent_image:
 <span lang="EN-US" style="font-size:13pt;color:#11999e"><b>Lab. </b>Soongsil University <a href="http://cglab.ssu.ac.kr/" target="_blank">Computer Graphics Lab</a></span><br>
 <span lang="EN-US" style="font-size:13pt;color:#11999e"><b>SlideShare. </b><a href="https://www.slideshare.net/ssuserc9d82a" target="_blank">https://www.slideshare.net/ssuserc9d82a</a></span><br>
 <span lang="EN-US" style="font-size:13pt;color:#11999e"><b>LinkedIn. </b><a href="https://www.linkedin.com/in/myeong-gyu-lee-048b68141/" target="_blank">https://www.linkedin.com/in/myeong-gyu-lee-048b68141/</a></span><br><br>
-
-- Interested in Deep Machine Learning(Vision AI, Medical AI), Production ML Systems. 
-- Tech Stack: Python intermediate(Pytorch, Keras), C++ beginner(OpenGL)
-
-My detailed Resume here! [Resume]{:.heading.flip-title}
-{:.related-posts.faded}
-
-[Resume]: ./resume.md
