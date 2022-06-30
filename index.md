@@ -17,15 +17,13 @@ accent_image:
 <center>
 <span style="font-size:15pt">저는 CG와 AI로 밝은 미래를 만드는 데 기여하고 있는 AI Research Engineer 입니다.</span><br>
 <span style="font-size:12pt">2017년부터 다양한 머신러닝 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있습니다.</span><br>
+<span style="font-size:12pt"><b><u>◦ Interested in:</u></b> Deep Machine Learning(Vision AI, Medical AI), Production ML Systems.</span><br>
+<span style="font-size:12pt"><b><u>◦ Tech Stack:</u></b> Python intermediate(Pytorch, Keras), C++ beginner(OpenGL)</span><br>
 <span style="font-size:10pt">(현재 전문연구요원으로 복무 중입니다.)</span><br><br>
 
 <span style="font-size: 15px;"><i>Nothing happens unless first we dream.</i></span><br>
 <span style="font-size: 13px;"><i>- Carl Sandburg </i>(1908–1967)</span>
 </center><br>
-
-
-- Interested in Deep Machine Learning(Vision AI, Medical AI), Production ML Systems. 
-- Tech Stack: Python intermediate(Pytorch, Keras), C++ beginner(OpenGL)
 
 My detailed Resume here! [Resume]{:.heading.flip-title}
 {:.related-posts.faded}
