@@ -23,12 +23,15 @@ accent_image:
 
 <span style="font-size: 15px;"><i>Nothing happens unless first we dream.</i></span><br>
 <span style="font-size: 13px;"><i>- Carl Sandburg </i>(1908–1967)</span>
-</center><br>
 
 My detailed Resume here! [Resume]{:.heading.flip-title}
 {:.related-posts.faded}
 
 [Resume]: ./resume.md
+
+</center><br>
+
+
 
 <br>
 
