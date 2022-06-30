@@ -13,9 +13,6 @@ accent_image:
   background: url('/assets/img/devlog/bgimg1.jpg') center/cover
   overlay: false
 ---
-
-## 반갑습니다!
-
 <center>
 <span style="font-size:15pt">저는 CG와 AI로 밝은 미래를 만드는 데 기여하고 있는 AI Research Engineer 입니다.</span><br>
 <span style="font-size:12pt">2017년부터 다양한 머신러닝 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있습니다.</span><br>
