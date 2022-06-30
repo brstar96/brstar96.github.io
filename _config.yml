@@ -60,18 +60,18 @@ menu:
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
 legal:
-  - title:             SITE INFO/LICENSES
+  - title:             SITE INFO / LICENSES
     url:               /NOTICE/
 
 # This text will appear in a `<small>` tag in the footer of every page.
 copyright:             © 2022 Myeong-Gyu.LEE All rights reserved.
 
 # Format of the permalinks
-permalink:             /blog/:categories/:year-:month-:day-:title/
+permalink:             /devlog/:categories/:year-:month-:day-:title/
 
 # Pagination configuration (used by the `blog` layout)
 paginate:              10
-paginate_path:         /blog/:num/
+paginate_path:         /devlog/:num/
 
 
 # Theme
@@ -295,9 +295,8 @@ hydejack:
 
 collections:
   featured_categories:
-    permalink:         /blog/:name/
+    permalink:         /devlog/:name/
     output:            true
-
   featured_tags:
     permalink:         /tag-:name/
     output:            true

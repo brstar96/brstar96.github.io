@@ -3,8 +3,7 @@ layout: welcome
 title: 안녕하세요!
 cover: true
 selected_projects:
-  - _projects/hydejack-v6.md
-  - /projects/hyde-v2/
+  - _projects/hydejack-site.md
 projects_page: projects.md
 selected_posts:
   - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
