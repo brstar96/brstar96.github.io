@@ -3,12 +3,11 @@ layout: post
 title: "(Event/Seminar후기) NAVER Vision AI Hackathon 본선 대회에 참여했습니다!"
 tags: [Machine Learning, Deep Learning, NAVER NSML, Competition]
 categories: [Event&Seminar]
-author_profile: true
 comments: true
 sitemap: true
 image: /assets/img/devlog/event/NaverVisionAIHack/3.jpg
 accent_image: 
-  background: url('/assets/img/devlog/bgimg1.jpg') center/cover
+  background: url('/assets/img/sidebar-bg.gif') center/cover
   overlay: false
 accent_color: '#ccc'
 theme_color: '#ccc'
