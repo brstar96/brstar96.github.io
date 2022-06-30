@@ -28,7 +28,7 @@ description:           >
   I'm a researcher who wants to contribute to creating a bright future with CG + AI.
 
 # A shorter description for the sidebar.
-tagline:               다양한 ML 알고리즘을 활용해 산업 전반에 걸친 다양한 문제를 풀어 오고 있습니다.
+tagline:               다양한 ML 알고리즘을 활용해 산업 전반에 걸친 여러 문제를 풀어 오고 있습니다.
 
 # A list of keywords for your blog
 keywords:              []
@@ -406,24 +406,21 @@ jekyll_compose:
     drafts:
       layout: post
       description: > 
-        A short ~160 character description of your post for search engines,
-        social media previews, etc.
+        DarkJohn's DevLog
       image:
         path: /assets/img/sidebar-bg.jpg
     posts:
       layout: post
       description: > 
-        A short ~160 character description of your post for search engines,
-        social media previews, etc.
+        DarkJohn's DevLog
       image:
-        path: /assets/img/sidebar-bg.jpg
+        path: /assets/img/sidebar-bg.gif
     projects:
       layout: project
       description: > 
-        A short ~160 character description of your post for search engines,
-        social media previews, etc.
+        DarkJohn's Project Lists
       image:
-        path: /assets/img/sidebar-bg.jpg
+        path: /assets/img/sidebar-bg.gif
       links:
         - title: Project Link
           url: https://example.com

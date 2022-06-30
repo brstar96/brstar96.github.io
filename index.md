@@ -1,6 +1,6 @@
 ---
 layout: welcome
-title: 안녕하세요!
+title: 
 cover: true
 selected_projects:
   - _projects/hydejack-site.md
@@ -27,15 +27,16 @@ accent_image:
 
 
 ## Personal Info
-<b><span lang="EN-US" style="font-size:19pt;color:#006e93">Myeong-Gyu LEE | </span><span lang="EN-US" style="font-size:17.0pt;color:#00a7cb">AI Research Engineer</span></b><br>
+
+<b><span lang="EN-US" style="font-size:17pt;color:#006e93">Myeong-Gyu LEE | </span><span lang="EN-US" style="font-size:17.0pt;color:#00a7cb">AI Research Engineer</span></b><br>
 <p align="left" style="text-align:left;text-autospace:ideograph-numeric ideograph-other;word-break:keep-all"> 
 
-<span lang="EN-US" style="font-size:15pt;color:#11999e"><a rel="noreferrer noopener" target="_blank"><b>Mobile. </b>+82-10-8234-3179</a></span><br>
-<span lang="EN-US" style="font-size:15pt;color:#11999e"><a rel="noreferrer noopener" target="_blank"><b>Email.</b> <a href="mailto:brstar96@naver.com" target="_blank" rel="noreferrer noopener">brstar96@naver.com</a>, <a href="mailto:brstar96@soongsil.ac.kr" target="_blank" rel="noreferrer noopener">brstar96@soongsil.ac.kr</a><br>
-<span lang="EN-US" style="font-size:15pt;color:#11999e"><a rel="noreferrer noopener" target="_blank"><b>Messenger(KakaoTalk): </b> dlaudrb96</a></span><br><br>
-<span lang="EN-US" style="font-size:15pt;color:#11999e"><b>Lab. </b>Soongsil University <a href="http://cglab.ssu.ac.kr/" target="_blank">Computer Graphics Lab</a></span><br>
-<span lang="EN-US" style="font-size:15pt;color:#11999e"><b>SlideShare. </b><a href="https://www.slideshare.net/ssuserc9d82a" target="_blank">https://www.slideshare.net/ssuserc9d82a</a></span><br>
-<span lang="EN-US" style="font-size:15pt;color:#11999e"><b>LinkedIn. </b><a href="https://www.linkedin.com/in/myeong-gyu-lee-048b68141/" target="_blank">https://www.linkedin.com/in/myeong-gyu-lee-048b68141/</a></span><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><a rel="noreferrer noopener" target="_blank"><b>Mobile. </b>+82-10-8234-3179</a></span><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><a rel="noreferrer noopener" target="_blank"><b>Email.</b> <a href="mailto:brstar96@naver.com" target="_blank" rel="noreferrer noopener">brstar96@naver.com</a>, <a href="mailto:brstar96@soongsil.ac.kr" target="_blank" rel="noreferrer noopener">brstar96@soongsil.ac.kr</a><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><a rel="noreferrer noopener" target="_blank"><b>Messenger(KakaoTalk): </b> dlaudrb96</a></span><br><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><b>Lab. </b>Soongsil University <a href="http://cglab.ssu.ac.kr/" target="_blank">Computer Graphics Lab</a></span><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><b>SlideShare. </b><a href="https://www.slideshare.net/ssuserc9d82a" target="_blank">https://www.slideshare.net/ssuserc9d82a</a></span><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><b>LinkedIn. </b><a href="https://www.linkedin.com/in/myeong-gyu-lee-048b68141/" target="_blank">https://www.linkedin.com/in/myeong-gyu-lee-048b68141/</a></span><br><br>
 
 - Interested in Deep Machine Learning(Vision AI, Medical AI), Production ML Systems. 
 - Tech Stack: Python intermediate(Pytorch, Keras), C++ beginner(OpenGL)
