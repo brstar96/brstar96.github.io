@@ -21,4 +21,7 @@ buttons:
   print: true
   pdf: /assets/Resume.pdf
   json: /assets/resume.json
+accent_image: 
+  background: url('/assets/img/devlog/bgimg1.jpg') center/cover
+  overlay: false
 ---

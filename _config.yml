@@ -67,11 +67,11 @@ legal:
 copyright:             © 2022 Myeong-Gyu.LEE All rights reserved.
 
 # Format of the permalinks
-permalink:             /devlog/:categories/:year-:month-:day-:title/
+permalink:             /:categories/:year-:month-:day-:title/
 
 # Pagination configuration (used by the `blog` layout)
 paginate:              10
-paginate_path:         /devlog/:num/
+paginate_path:         /:num/
 
 
 # Theme
