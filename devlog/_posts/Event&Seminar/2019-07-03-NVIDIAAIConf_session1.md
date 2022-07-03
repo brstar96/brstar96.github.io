@@ -24,8 +24,8 @@ related_posts:
 
 ## Tensor Core에 대한 설명
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/1.png)
-▲ Volta, Turing 아키텍쳐에서 사용 가능하며 각 FP16 엘리먼트에 대해 연산한 후 FP32로 합치는 식으로 작동.
 
+▲ Volta, Turing 아키텍쳐에서 사용 가능하며 각 FP16 엘리먼트에 대해 연산한 후 FP32로 합치는 식으로 작동.
 {:.figcaption}
 
 - 단정밀도를 사용하므로 파라미터 사이즈가 줄어들어 메모리 사용량이 줄어듬. 즉 두 배의 데이터를 처리할 수 있게 됨.
