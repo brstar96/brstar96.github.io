@@ -17,7 +17,7 @@ related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 
-<Blockquote><span style="font-size:11pt">본 글은 개인적으로 스터디하며 정리한 자료입니다. 간혹 레퍼런스를 찾지 못해 빈 곳이 있으므로 양해 부탁드립니다.</span></Blockquote>
+<Blockquote><span style="font-size:11pt">본 글은 개인적으로 스터디하며 정리한 자료입니다. 간혹 레퍼런스를 찾지 못해 빈 곳이 있으므로 양해 부탁드립니다.</span></Blockquote><br>
 
 ![Full-width image](/assets/img/devlog/MLDLStudy/NNMethodologies/What-is-patchGAN-D/1.jpg)<br>
 
@@ -28,10 +28,11 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 - ImageGAN은 저희가 일반적으로 알고 있는 VanillaGAN처럼 전체 영역에 대해 진위 여부를 판단합니다.
 
 ## 기존 CNN 방식과 Conditional GAN의 차이점
+
 | 기존 방식(CNN) | Conditional GANs |
 |:--------|:--------|
 | - 픽셀 단위의 classification 또는 regression으로 문제를 해결하고자 함.<br>- 각 출력 픽셀들은 다른 픽셀들에 대해 서로 독립적이라고 가정. <br>- Unstructured한 출력 공간의 개념을 갖고 있음.  | - Structured loss를 사용하며, 즉 주어진 목표 이미지와 출력의 다름에 대해 Penalize한다. <br>- Discriminator로 PatchGAN 구조를 자주 사용한다.<br>- 모델에 추가적인 정보를 줌으로서 데이터를 만드는 과정을 지시할 수 있다. |
-
+<br>
 - Loss를 최소화하기 위한 방법으로 유클리디안 거리(L2 distance)를 사용하게 되면 모든 출력의 평균을 최소화하므로 흐린 결과물이 나오게 됩니다.
 - 따라서 출력 이미지를 현실과 구분할 수 없도록 하면서도 목적에 맞게 loss function을 자동으로 학습하게끔 하는 것이 Conditional GAN의 목표입니다.
 
@@ -62,21 +63,21 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 - PatchGAN의 patch size는 Discriminator가 가진 convolution layers에 의해 결정되는 Receptive field size에 따라 결정됩니다. 즉 PatchGAN D는 G가 만든 이미지 일부를 Crop하는 것이 아닙니다.
 - Pix2Pix 논문에서는 256 x 256 크기의 입력 영상과 입력 영상을 G에 넣어 만든 Fake 256 x 256 이미지를 concat한 후 최종적으로 30 x 30 x 1 크기의 feature map을 얻어냅니다. 이 feature map의 1픽셀은 입력 영상에 대한 70 x 70 사이즈의 Receptive field에 해당합니다.
 
-![Full-width image](/assets/img/devlog/MLDLStudy/NNMethodologies/What-is-patchGAN-D/2.jpg)
-▲ 출처 : <a href ='https://arxiv.org/pdf/1803.07422.pdf'>Patch-Based Image Inpainting with Generative Adversarial Networks</a>
+    ![Full-width image](/assets/img/devlog/MLDLStudy/NNMethodologies/What-is-patchGAN-D/2.jpg)
+    ▲ 출처 : <a href ='https://arxiv.org/pdf/1803.07422.pdf'>Patch-Based Image Inpainting with Generative Adversarial Networks</a>
 
-{:.figcaption}
+    {:.figcaption}<br>
 
-- 이후 30 x 30 x 1 feature map의 모든 값을 평균낸 후 Discriminator의 output으로 합니다.  <i>('We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.' - <a href='https://arxiv.org/pdf/1611.07004.pdf'>Pix2Pix 논문</a> 3.2.2절)</i>
+- 이후 30 x 30 x 1 feature map의 모든 값을 평균낸 후 Discriminator의 output으로 합니다. <i>('We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.' - <a href='https://arxiv.org/pdf/1611.07004.pdf'>Pix2Pix 논문</a> 3.2.2절)</i>
     - 여기서 '모든 패치의 평균을 구하는 것'인지, '레이어들을 거치며 최종적으로 1개의 scalar값을 뽑아내는 것'인지 해석의 논란이 생깁니다. 저자들은 이에 대해 어떤 방식을 사용하던 결과물은 수학적으로 동일하다고 이야기합니다. 해당 내용은 저자 공식 깃헙 [#120번 이슈](https://github.com/phillipi/pix2pix/issues/120)과 [#39번 이슈](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/issues/39)에서 다루고 있습니다.
     - 통이미지를 convnet에 통과시켜 1-D scalar 확률값을 뽑아내는 방식이 cost가 낮고 빠르기 때문에 저자는 후자의 방식을 추천하고 있습니다.
 - L1 loss를 사용함으로서 Generator는 Discriminator를 속이는 것 뿐만 아니라 정답 이미지(Ground Truth)와의 L1 distance를 줄이는 역할을 동시에 수행하게 됩니다.
 - Discriminator에 conditon이 들어가지 않으면, 즉 Generator가 Fake 이미지를 만들 때 본 condition을 Discriminator가 보지 않게 되면 input과 output의 mismatch를 따지지 않게 되므로 성능이 좋지 않습니다. 따라서 Pix2Pix는 condition이 G 뿐만 아니라 D에도 들어가게 됩니다.
- <br>
+<br>
  
- ### Pix2Pix의 Optimization and Inference
+### Pix2Pix의 Optimization and Inference
 - Optimization : Vanilla GAN의 optimization 방식을 따랐으며, D에 대해 Gradient Descent step 한번, G에 대해 Gradient Descent step 한번씩 번갈아 가며 학습합니다.
-    - Dropout과 Minibatch SGD를 적용했고, Adam을 사용했습니다.
+- Dropout과 Minibatch SGD를 적용했고, Adam을 사용했습니다.
 - Inference : 테스트 단계에도 Dropout을 적용하고, test batch의 statistics를 적용한 batch normlaization을 사용했습니다. (일반적으로 다른 모델에서는 training batch의 staatistics를 사용합니다.)
     - 이러한 방식은 instance normalization(batch size가 1~2와 같이 극도로 작은 경우 사용)과 같으며, [Instance normalization: The missing ingredient for fast stylization](https://arxiv.org/pdf/1607.08022.pdf) 논문에서 제안된 바 있습니다. 이미지를 낮은 배치에서 생성할 때 효과적입니다.
     - 배치 사이즈가 4일 때는 batch normalization을, 1일때는 instance normalization을 사용했습니다.
