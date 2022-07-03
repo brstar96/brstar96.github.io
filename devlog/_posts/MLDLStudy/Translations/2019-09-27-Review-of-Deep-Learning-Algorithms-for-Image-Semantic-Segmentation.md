@@ -22,12 +22,10 @@ related_posts:
 <b>원문글 : [Review of Deep Learning Algorithms for Image Semantic Segmentation](https://medium.com/@arthur_ouaknine/review-of-deep-learning-algorithms-for-image-semantic-segmentation-509a600f7b57)</b>
 
 # Intro(들어가며)
-<center>
 ![Full-width image](/assets/img/devlog/MLDLStudy/PostTranslation/Review-of-Deep-Learning-Algorithms-for-Image-Semantic-Segmentation/COCO.jpg)
 
 ▲ stuff segmentation을 위한 COCO dataset 예시. (http://cocodataset.org/)
 {:.figcaption}
-</center>
  
 딥러닝 알고리즘들은 난이도가 증가함에도 불구하고 여러 컴퓨터 비전 문제들을 해결해 왔습니다. 이전 제 블로그 포스팅에서, 저는 많은 사람들에게 잘 알려진 [Image Clasification](https://medium.com/zylapp/review-of-deep-learning-algorithms-for-image-classification-5fdbca4a05e2)과 [Object Detection](https://medium.com/comet-app/review-of-deep-learning-algorithms-for-object-detection-c1f3d437b852)에 대해 소개한 적 있습니다. 이미지 세그멘테이션 문제에서는 이미지의 각 픽셀을 하나의 인스턴스로 분류하는데, 각 인스턴스(또는 카테고리)는 이미지에 존재하는 객체(도로, 하늘 등등)들과 대응됩니다. 이미지 세그멘테이션 작업은 장면 이해(Scene understanding)의 컨셉 중 하나입니다. 어떻게 딥러닝 모델이 시각적 컨텐츠에 존재하는 글로벌 컨텍스트를 더 잘 배울 수 있을까요?<br>
 객체 감지(Object detection) 작업(이하 '태스크')은 복잡성 측면에 있어서 이미지 분류 태스크를 초과했습니다. 객체 감지 태스크는 이미지 안에 존재하는 개체 주위에 경계 상자(Bounding box)를 만들고 각 개체에 대해 분류 작업을 수행합니다. 대부분의 객체 감지 모델은 대부분의 객체 감지 모델은 앵커 상자(anchor box)와 proposal<i>(역주 : Fast RCNN의 Region Proposal을 이야기하는 것 같습니다.)</i>을 통해 객체 주위의 경계 상자를 검출합니다. 불행히도, 일부 모델은 이미지의 전체 맥락(context)을 고려할 수 있지만 주어진 정보 내에서도 작은 부분에 대해서만 분류 작업을 수행합니다. 따라서 이러한 모델들은 자신에게 주어진 장면을 완전히 이해할 수 없습니다.<br><br>
