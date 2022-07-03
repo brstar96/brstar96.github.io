@@ -2,7 +2,7 @@
 layout: post
 title: (PaperReview+Test) A Versatile Learning based 3D Temporal Tracker - Scalable, Robust, Online
 tags: [ML, CV, Random Forest, AR]
-categories: [PaperReview, Shoveling]
+categories: [MLDLStudy, Shoveling, PaperReview]
 comments: true
 sitemap: true
 image: /assets/img/devlog/MLDLStudy/PaperReview/versatile-learning-based-3d-temporal-tracker/paper-reviewa-versatile-learning-based-3d-temporal-tracker-scalable-robust-online-1-638.jpg
