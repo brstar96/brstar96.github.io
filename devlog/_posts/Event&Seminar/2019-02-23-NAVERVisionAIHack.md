@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "(Event/Seminar후기) NAVER Vision AI Hackathon 본선 대회에 참여했습니다!"
-tags: [Machine Learning, Deep Learning, NAVER NSML, Competition]
+tags: [ML, DL, NAVER NSML, Competition]
 categories: [Event&Seminar]
 comments: true
 sitemap: true
