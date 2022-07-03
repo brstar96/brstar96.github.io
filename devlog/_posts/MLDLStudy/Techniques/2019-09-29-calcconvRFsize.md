@@ -17,23 +17,20 @@ related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 ## Calculate CNN Output Size
+$$ O = {\frac{I-K+2P}{S}+1}& $$
 $$
 \begin{align*}
-\\
-O &= \frac{I-K+2P}{S}+1 \\
-\\
-
-O: \text{Size~of~output~image}& \\
-I: \text{Size~of~input~image}& \\ 
-K: \text{Size~of~kernels~used~in~the~convolution~layer}& \\ 
-N: \text{Number~of~kernels}& \\
-S: \text{Stride~of~the~convolution~layer}& \\
-P: \text{Padding~size}& \\
+O: \text{Size of output image}& \\
+I: \text{Size of input image}& \\ 
+K: \text{Size of kernels used in the convolution layer}& \\ 
+N: \text{Number of kernels}& \\
+S: \text{Stride of the convolution layer}& \\
+P: \text{Padding size}& \\
 \end{align*}
 $$
 
 ### AlexNet 예시
-  - AlexNet의 입력 이미지 크기를 227 x 227 x 3이라 하고 첫 번째 convolution layer(`conv_1`)가 11 x 11 x 3 `kernel` 96개, `stride = 4`, `padding = 0`일 경우 : $O=\frac{227 - 11 + 2 * 0}{4}+1=55$
+  - AlexNet의 입력 이미지 크기를 227 x 227 x 3이라 하고 첫 번째 convolution layer(`conv_1`)가 11 x 11 x 3 `kernel` 96개, `stride = 4`, `padding = 0`일 경우 : $$ O=\frac{227 - 11 + 2 * 0}{4}+1=55 $$
   - 따라서 `conv_1`의 출력 텐서 사이즈는 55 x 55 x 96이며, 3채널(RGB) 이미지이기 때문에 3이 곱해져 총 55 x 55 x 96(kernel개수) x 3이 최종 출력 사이즈가 됨.
 <br><br>
 
