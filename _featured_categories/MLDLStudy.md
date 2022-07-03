@@ -10,7 +10,7 @@ slug: MLDLStudy
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-   Featured posts from `MLDLStudy` category
+   다양한 ML/DL 스터디를 하며 배운 경험들을 나눕니다. 
 
 # (Optional) You can disable grouping posts by date.
 no_groups: true

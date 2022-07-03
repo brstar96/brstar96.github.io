@@ -10,7 +10,7 @@ slug: Event&Seminar
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-   Featured posts from `Event & Seminars` category
+   다양한 이벤트와 세미나에 참석해 배운 경험을 나눕니다. 
 
 # (Optional) You can disable grouping posts by date.
 no_groups: true

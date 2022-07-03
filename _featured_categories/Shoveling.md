@@ -10,7 +10,7 @@ slug: Shoveling
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-   Featured posts from `Shoveling` category
+   삽질하며 나눈 경험을 나눕니다. 
 
 # (Optional) You can disable grouping posts by date.
 no_groups: true

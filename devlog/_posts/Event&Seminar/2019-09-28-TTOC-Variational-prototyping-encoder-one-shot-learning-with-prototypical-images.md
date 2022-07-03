@@ -12,7 +12,7 @@ accent_image:
 accent_color: '#ccc'
 theme_color: '#ccc'
 description: >
-  본 글은 2019년 7월 17일 SKT T.TOC 주최 최신논문공유회에 참석해 김준식 연사님의 세미나를 받아적은 포스트입니다. 저자 공식 의견과 맞지 않는 내용이 포함되어 있을 수 있사오니 원본 논문을 확인해 보시기 바랍니다.
+  본 글은 2019년 7월 17일 SKT T.TOC 주최 최신논문공유회에 참석해 김준식 연사님의 세미나를 받아적은 포스트입니다. 저자 공식 의견과 맞지 않는 내용이 포함되어 있을 수 있으니 원본 논문을 확인해 보시기 바랍니다.
 related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---

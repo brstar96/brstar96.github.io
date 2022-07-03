@@ -19,8 +19,7 @@ related_posts:
 
 <center>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/HRfU2axTgzNfhe" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-</center><br>
-
+</center>
 <Blockquote><span style="font-size:11pt">- review date: 2019/03/20 (by Meyong-Gyu.LEE @Soongsil Univ.)<br>- Korean review of '3D Shape Reconstruction from Sketches via Multi-view Convolutional Networks'(CVPR 2017)</span></Blockquote><br>
 
 
@@ -61,4 +60,6 @@ Predicted Normal, depth map의 퀄리티가 낮은 가장 강력한 이유로 Pa
 
 ![Full-width image](/assets/img/devlog/MLDLStudy/PaperReview/shape-reconstruction-from-sketches/resfinal.png)<br>
 
-이후로도 이것저것 시도해 보았지만 유의미한 퀄리티 향상이 일어나지 않아 그 이상의 것은 시도해 보지 않았습니다. 개인적인 감상으론 스케치를 이용해 3D mesh를 만드는 발상이 게임 및 3D 프린팅 분야에서 이상적으로 들릴 수 있겠으나 대다수의 GAN 및 Image to image translation 솔루션들이 그렇듯 아카데믹한 성격이 강하고 상업 목적으로 이용하기엔 한계가 큽니다. <br> 디테일 묘사가 떨어진다는 점은 둘째치고라도 prediction을 얻기 위해 하나의 shape(비행기, 사람 등)에서 Titan X GPU 기준 2일(4K training sketches, batch size 2), RTX 2080TI 기준 약 일주일(batch size 1)이 학습 과정에 소요된다는 점(그나마 다행인 것은 학습 완료 후 prediction에는 대략 4.5초 정도밖에 걸리지 않습니다.), predicted information texture들로 3D mesh를 구성하는데 대략 4초가 소요되지만 Intel Xeon E5-2699 v3(약 350만원) CPU를 두 대나 사용한다는 점에서 상당히 비효율적이라고 할 수 있겠습니다. (I7-9700k는 40분 소요)<br>
+이후로도 이것저것 시도해 보았지만 유의미한 퀄리티 향상이 일어나지 않아 그 이상의 것은 시도해 보지 않았습니다. 개인적인 감상으론 스케치를 이용해 3D mesh를 만드는 발상이 게임 및 3D 프린팅 분야에서 이상적으로 들릴 수 있겠으나 대다수의 GAN 및 Image to image translation 솔루션들이 그렇듯 아카데믹한 성격이 강하고 상업 목적으로 이용하기엔 한계가 큽니다. <br> 
+
+디테일 묘사가 떨어진다는 점은 둘째치고라도 prediction을 얻기 위해 하나의 shape(비행기, 사람 등)에서 Titan X GPU 기준 2일(4K training sketches, batch size 2), RTX 2080TI 기준 약 일주일(batch size 1)이 학습 과정에 소요된다는 점(그나마 다행인 것은 학습 완료 후 prediction에는 대략 4.5초 정도밖에 걸리지 않습니다.), predicted information texture들로 3D mesh를 구성하는데 대략 4초가 소요되지만 Intel Xeon E5-2699 v3(약 350만원) CPU를 두 대나 사용한다는 점에서 상당히 비효율적이라고 할 수 있겠습니다. (I7-9700k는 40분 소요)<br>
