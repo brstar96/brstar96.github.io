@@ -12,7 +12,7 @@ accent_image:
 accent_color: '#ccc'
 theme_color: '#ccc'
 description: >
-  642개의 정점을 가진 Geodesic Grid의 각 vertex로부터 깊이 이미지 및 Object Transformation 정보를 얻고, Random Forest Regressor로 학습해 다음 프레임의 Object Transformation을 예측하는 연구입니다. 해당 논문을 리뷰하고 구현하며 얻은 경험을 공유합니다. 
+  이강희 교수님 인공지능특론 대학원수업 발표에 사용한 PPT입니다. 문장 수준의 분류 문제에 word vector와 합성곱 신경망(CNN)을 도입한 연구와 한국어에 최적화된 단어 임베딩 학습 방법을 분석하고, 최적의 성능을 낼 수 있는 말뭉치 및 하이퍼 파라미터가 모델 성능에 미치는 영향을 분석한 연구를 공유합니다. 
 related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
