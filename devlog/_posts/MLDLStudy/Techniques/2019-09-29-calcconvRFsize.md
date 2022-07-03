@@ -17,7 +17,10 @@ related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 ## Calculate CNN Output Size
-$$ O = {\frac{I-K+2P}{S}+1}& $$
+
+$$ O=\frac{I-K+2P}{S}+1 $$
+<br>
+
 $$
 \begin{align*}
 O: \text{Size of output image}& \\
