@@ -2,7 +2,7 @@
 layout: post
 title: (BookSummary) Classification and Ensemble (「파이썬 머신러닝 완벽 가이드」)
 tags: [Book Summary, ML, Ensemble]
-categories: [MLDLStudy, PaperReview]
+categories: [MLDLStudy]
 comments: true
 sitemap: true
 image: /assets/img/devlog/MLDLStudy/bookreview/classification-and-ensemble/classification-and-ensemble-review.jpg

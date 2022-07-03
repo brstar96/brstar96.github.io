@@ -1,8 +1,8 @@
 ﻿---
 layout: post
 title: (PaperReview) CNN for Sentence Classification
-tags: [DL, NLP]
-categories: [MLDLStudy, PaperReview]
+tags: [PaperReview, DL, NLP]
+categories: [MLDLStudy]
 comments: true
 sitemap: true
 image: /assets/img/devlog/MLDLStudy/PaperReview/cnn-for-sentence-classification/papers-reviewcnn-for-sentence-classification-1-638.jpg

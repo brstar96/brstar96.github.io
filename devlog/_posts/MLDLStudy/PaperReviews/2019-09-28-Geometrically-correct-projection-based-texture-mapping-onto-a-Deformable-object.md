@@ -1,8 +1,8 @@
 ﻿---
 layout: post
 title: (PaperReview) Geometrically-correct projection-based texture mapping onto a Deformable object
-tags: [ML, CV, Dynamic Projection Mapping]
-categories: [PaperReview]
+tags: [PaperReview, ML, CV, Dynamic Projection Mapping]
+categories: [MLDLStudy]
 comments: true
 sitemap: true
 image: /assets/img/devlog/MLDLStudy/PaperReview/geometrically-correct-projectionbased-texture-mapping/paper-reviewgeometrically-correct-projectionbased-texture-mapping-onto-a-deformable-object-1-638.jpg

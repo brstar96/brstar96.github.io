@@ -1,8 +1,8 @@
 ﻿---
 layout: post
 title: (PaperReview) Few-Shot Adversarial Learning of Realistic Neural Talking Head Models
-tags: [ML, img2img translation, CV, Meta Learning, Few-Shot Learning, GAN]
-categories: [MLDLStudy, PaperReview]
+tags: [PaperReview, ML, img2img translation, CV, Meta Learning, Few-Shot Learning, GAN]
+categories: [MLDLStudy]
 comments: true
 sitemap: true
 image: /assets/img/devlog/MLDLStudy/PaperReview/realistic-neural-talking-head-models/paper-reviewfewshot-adversarial-learning-of-realistic-neural-talking-head-models-1-638.jpg

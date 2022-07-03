@@ -1,8 +1,8 @@
 ﻿---
 layout: post
 title: "(PaperReview+Test) 3D shape reconstruction from sketches via multi view convolutional networks"
-tags: [ML, DL, CG, CV, img2img translationm Sketch to 3D, 3D Reconstruction]
-categories: [PaperReview, Shoveling]
+tags: [PaperReview, ML, DL, CG, CV, img2img translationm Sketch to 3D, 3D Reconstruction]
+categories: [MLDLStudy, Shoveling]
 comments: true
 sitemap: true
 image: /assets/img/devlog/MLDLStudy/PaperReview/shape-reconstruction-from-sketches/paper-review3d-shape-reconstruction-from-sketches-via-multi-view-convolutional-networks-1-638.jpg

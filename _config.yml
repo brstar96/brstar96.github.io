@@ -52,8 +52,6 @@ author:
 menu:
   - title:             Devlog
     url:               /devlog/
-  - title:             Lifelog
-    url:               /lifelog/
   - title:             Projects
     url:               /projects/
   - title:             Résume
