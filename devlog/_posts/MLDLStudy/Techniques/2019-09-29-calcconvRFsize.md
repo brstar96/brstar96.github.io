@@ -16,10 +16,12 @@ description: >
 related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
+
 ## Calculate CNN Output Size
 
-$$ O=\frac{I-K+2P}{S}+1 $$
-<br>
+- CNN 출력 사이즈 계산 공식: <br>
+  $$ O=\frac{I-K+2P}{S}+1 $$
+
 
 $$
 \begin{align*}
