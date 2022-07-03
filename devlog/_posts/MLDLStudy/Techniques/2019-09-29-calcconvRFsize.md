@@ -17,13 +17,14 @@ related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 ## Calculate CNN Output Size
-- <b>$O=\frac{I-K+2P}{S}+1$</b>
-  - <b><i>$O$</i></b> : Size of output image
-  - <b><i>$I$</i></b> : Size of input image
-  - <b><i>$K$</i></b> : Size of kernels used in the convolution layer
-  - <b><i>$N$</i></b> : Number of kernels
-  - <b><i>$S$</i></b> : Stride of the convolution layer
-  - <b><i>$P$</i></b> : Padding size
+<b>$$ O=\frac{I-K+2P}{S}+1 $$
+
+- <b><i>$$ O $$</i></b> : Size of output image
+- <b><i>$$ I $$</i></b> : Size of input image
+- <b><i>$$ K $$</i></b> : Size of kernels used in the convolution layer
+- <b><i>$$ N $$</i></b> : Number of kernels
+- <b><i>$$ S $$</i></b> : Stride of the convolution layer
+- <b><i>$$ P $$</i></b> : Padding size
 <br><br>
 
 ### AlexNet 예시
