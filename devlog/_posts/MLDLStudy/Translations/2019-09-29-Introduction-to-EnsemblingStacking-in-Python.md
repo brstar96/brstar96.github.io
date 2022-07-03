@@ -1,32 +1,32 @@
 ---
-title: "(KR-KaggleKernelTranscription)Introduction to EnsemblingStacking in Python"
-tags: 
-  - Kaggle competition
-  - Machine Learning
-  - KaggleTranscription(Korean)
-categories:
-  - PostTranslation
-toc: true
-author_profile: false
-comments: 
-  provider: "disqus"
-  disqus:
-    shortname: "https-brstar96-github-io"
-header:
-  teaser: /assets/Images/kaggletitanic.png
+layout: post
+title: (KR-KaggleKernelTranscription)Introduction to EnsemblingStacking in Python
+tags: [ML, Kaggle, KaggleTranscription(KR)]
+categories: [MLDLStudy]
+comments: true
+sitemap: true
+image: /assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/kaggletitanic.png
+accent_image: 
+  background: url('/assets/img/sidebar-bg.gif') center/cover
+  overlay: false
+accent_color: '#ccc'
+theme_color: '#ccc'
+description: >
+  학습 모델을 앙상블(결합)하는 방법, 특히 스태킹(stacking)이라고 알려진 앙상블 기법을 캐글 대회에 사용한 노트북을 번역했습니다. 
+related_posts:
+    - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 
 <span style="font-size:11pt">This code is written by [Anisotropic](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python).</span>
 
 ## 소개
-<span style="font-size:11pt">이 노트북은 학습 모델을 앙상블(결합)하는 방법, 특히 스태킹(stacking)이라고 알려진 앙상블 기법의 변형에 대해 매우 기본적이고 간단한 소개를 하고 있습니다. 간략하게 말하자면, 첫 번째 레벨(base)에서 사용되는 스태킹은 몇 가지 기본 분류기를 통해 예측을 수행한 다음 두 번째 레벨에서 다른 모델을 사용해 첫 번째 레벨에서 나온 예측 결과를 다시 예측합니다.<br><br> 
+이 노트북은 학습 모델을 앙상블(결합)하는 방법, 특히 스태킹(stacking)이라고 알려진 앙상블 기법의 변형에 대해 매우 기본적이고 간단한 소개를 하고 있습니다. 간략하게 말하자면, 첫 번째 레벨(base)에서 사용되는 스태킹은 몇 가지 기본 분류기를 통해 예측을 수행한 다음 두 번째 레벨에서 다른 모델을 사용해 첫 번째 레벨에서 나온 예측 결과를 다시 예측합니다.<br><br> 
 타이타닉 데이터세트는 Kaggle의 많은 신규 사용자들이 접하는 데이터셋임과 동시에 스태킹 개념을 도입한 첫 번째 후보 데이터셋입니다. 스태킹 기법이 Kaggle 대회들에 있어서 많은 우승 팀의 주요 솔루션으로 쓰였음에도 이 주제에 대한 커널이 많이 부족하기 때문에, 이 노트북이 그 공백을 어느 정도 채울 수 있기를 바랍니다.<br><br>
-저 또한 Kaggle 초보자입니다. 그럼에도 제가 기회를 만들고 공부할 수 있게 해 준 앙상블/스태킹 스크립트는 AllState Severity Claims 대회에서 우수한 성적을 거둔 Faron이 만들었습니다. 이 노트북의 내용은 Faron의 스크립트로부터 타이타닉 문제가 분류기들에 대한 앙상블임을 고려하여 이식되었지만 Faron은 회귀를 위한 앙상블을 작업했습니다. 여기에서 Faron의 스크립트를 확인할 수 있습니다 :<br></span> 
+저 또한 Kaggle 초보자입니다. 그럼에도 제가 기회를 만들고 공부할 수 있게 해 준 앙상블/스태킹 스크립트는 AllState Severity Claims 대회에서 우수한 성적을 거둔 Faron이 만들었습니다. 이 노트북의 내용은 Faron의 스크립트로부터 타이타닉 문제가 분류기들에 대한 앙상블임을 고려하여 이식되었지만 Faron은 회귀를 위한 앙상블을 작업했습니다. 여기에서 Faron의 스크립트를 확인할 수 있습니다 :<br>
 
-[Stacking Starter](https://www.kaggle.com/mmueller/allstate-claims-severity/stacking-starter/run/390867) : by Faron
+[Stacking Starter](https://www.kaggle.com/mmueller/allstate-claims-severity/stacking-starter/run/390867) : by Faron <br>
 
-<span style="font-size:11pt">
-여러분들이 이 노트북을 통해 앙상블의 정의와 개념을 잘 전달받기를 바랍니다. 아래에서 언급할 앙상블 기법을 구현한 다른 독립형 kaggle 스크립트는 Public LB 점수가 0.808로 상위 9%였으며 4분 이내에 실행됩니다. 그럼에도 불구하고 저는 이 스크립트를 개선하고 추가할 여지가 많다는 것을 확신합니다. 제가 어떻게 더 향상했으면 좋겠는지에 대한 의견을 남겨 주십시오.</span> 
+여러분들이 이 노트북을 통해 앙상블의 정의와 개념을 잘 전달받기를 바랍니다. 아래에서 언급할 앙상블 기법을 구현한 다른 독립형 kaggle 스크립트는 Public LB 점수가 0.808로 상위 9%였으며 4분 이내에 실행됩니다. 그럼에도 불구하고 저는 이 스크립트를 개선하고 추가할 여지가 많다는 것을 확신합니다. 제가 어떻게 더 향상했으면 좋겠는지에 대한 의견을 남겨 주십시오.
 
 
 ```python
@@ -59,26 +59,9 @@ from sklearn.svm import SVC
 ```
 
 
-        <script type="text/javascript">
-        window.PlotlyConfig = {MathJaxConfig: 'local'};
-        if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-        if (typeof require !== 'undefined') {
-        require.undef("plotly");
-        requirejs.config({
-            paths: {
-                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
-            }
-        });
-        require(['plotly'], function(Plotly) {
-            window._Plotly = Plotly;
-        });
-        }
-        </script>
-        
-
 
 ## Feature Exploration, Engineering and Cleaning
-<span style="font-size:11pt">이제부터 우리는 대부분의 커널들이 진행하는 것처럼 진행할 것입니다. 먼저 손에 들고 있는 데이터를 탐색하고 가능한 feature engineering 방법들에 대해 확인한 후 수치형 데이터로 모든 범주형 특징(categorical features)들을 인코딩할 것입니다.</span> 
+이제부터 우리는 대부분의 커널들이 진행하는 것처럼 진행할 것입니다. 먼저 손에 들고 있는 데이터를 탐색하고 가능한 feature engineering 방법들에 대해 확인한 후 수치형 데이터로 모든 범주형 특징(categorical features)들을 인코딩할 것입니다.
 
 
 ```python
@@ -91,8 +74,6 @@ PassengerId = test['PassengerId']
 
 train.head(3)
 ```
-
-
 
 
 <div>
@@ -178,9 +159,8 @@ train.head(3)
 </div>
 
 
-<span style="font-size:11pt">
 범주형 자료에서 어떤 식으로든 정보를 추출하는 것이 놀라운 일은 아닙니다.<br> 
-Sina는 feature engineering에 대한 매우 포괄적이고 잘 구성된 노트북을 갖고 있습니다. 그의 작업물을 확인해 보십시오.<br></span> 
+Sina는 feature engineering에 대한 매우 포괄적이고 잘 구성된 노트북을 갖고 있습니다. 그의 작업물을 확인해 보십시오.<br>
 
 [Titanic Best Working Classfier](https://www.kaggle.com/sinakhorami/titanic/titanic-best-working-classifier) : by Sina
 
@@ -282,7 +262,7 @@ train = train.drop(['CategoricalAge', 'CategoricalFare'], axis = 1)
 test  = test.drop(drop_elements, axis = 1)
 ```
 
-<span style="font-size:11pt">좋습니다. features를 정리하고 연관 있는(relevant) 정보들을 추출한 후 카테고리 열(categorical columns)들을 삭제했으므로 우리가 갖고 있는 features는 모두 숫자형 자료여야 합니다. 숫자형 자료는 우리의 기계 학습 모델들에 적합한 형식입니다. 그러나 진행하기에 앞서 변경된 데이터셋으로 간단한 상관 관계 및 분포표를 그려 보도록 하겠습니다.</span> 
+좋습니다. features를 정리하고 연관 있는(relevant) 정보들을 추출한 후 카테고리 열(categorical columns)들을 삭제했으므로 우리가 갖고 있는 features는 모두 숫자형 자료여야 합니다. 숫자형 자료는 우리의 기계 학습 모델들에 적합한 형식입니다. 그러나 진행하기에 앞서 변경된 데이터셋으로 간단한 상관 관계 및 분포표를 그려 보도록 하겠습니다. 
 
 ## 시각화
 
@@ -290,8 +270,6 @@ test  = test.drop(drop_elements, axis = 1)
 ```python
 train.head(3)
 ```
-
-
 
 
 <div>
@@ -379,8 +357,7 @@ train.head(3)
 
 
 ### 피어슨 상관관계 히트맵(Pearson Correlation Heatmap)
-
-<span style="font-size:11pt">우리는 이제부터 몇 가지 상관 관계 플롯을 생성하여 서로 연관된 feaures끼리 어떻게 나타나는지 살펴볼 것입니다. 그러기 위해 Seaborn 패키지를 활용해 히트맵을 다음과 같이 매우 편리하게 그려 볼 수 있습니다.</span> 
+우리는 이제부터 몇 가지 상관 관계 플롯을 생성하여 서로 연관된 feaures끼리 어떻게 나타나는지 살펴볼 것입니다. 그러기 위해 Seaborn 패키지를 활용해 히트맵을 다음과 같이 매우 편리하게 그려 볼 수 있습니다.
 
 
 ```python
@@ -391,23 +368,14 @@ sns.heatmap(train.astype(float).corr(),linewidths=0.1,vmax=1.0,
             square=True, cmap=colormap, linecolor='white', annot=True)
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x22cd88b0c18>
-
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/output_11_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/output_11_1.png)
 
 
 ### 플롯으로부터 얻을 수 있는 점
-
-<span style="font-size:11pt">피어슨 상관관계 플롯에서 우리는 서로 강하게 연관된 features가 많지 않다는 것을 알 수 있습니다. 이는 모델을 학습할 때 중복되거나 불필요한 데이터가 없기 때문에 모델에 features를 넣어 주기 좋습니다. 무엇보다도 각 feature에 고유한 정보들이 포함되어 있어 다행입니다. Family Size(가족 크기) 및 Parch(부모 및 자녀 수) 두 feature는 서로 강하게 연관되어 있습니다만 연습을 위해 이 두 feature는 모두 남겨 놓도록 하겠습니다.</span>
+피어슨 상관관계 플롯에서 우리는 서로 강하게 연관된 features가 많지 않다는 것을 알 수 있습니다. 이는 모델을 학습할 때 중복되거나 불필요한 데이터가 없기 때문에 모델에 features를 넣어 주기 좋습니다. 무엇보다도 각 feature에 고유한 정보들이 포함되어 있어 다행입니다. Family Size(가족 크기) 및 Parch(부모 및 자녀 수) 두 feature는 서로 강하게 연관되어 있습니다만 연습을 위해 이 두 feature는 모두 남겨 놓도록 하겠습니다.
 
 ### 쌍을 이루는 플롯 그리기(Pairplots)
-<span style="font-size:11pt">마지막으로 하나의 feature가 다른 feature에 대해 갖는 데이터 분포를 관찰하기 위해 몇 개의 쌍 플롯(Pairplots)을 그려 보도록 하겠습니다. 다시 한번 우리는 Seaborn 패키지를 사용할 것입니다.</span> 
+마지막으로 하나의 feature가 다른 feature에 대해 갖는 데이터 분포를 관찰하기 위해 몇 개의 쌍 플롯(Pairplots)을 그려 보도록 하겠습니다. 다시 한번 우리는 Seaborn 패키지를 사용할 것입니다.
 
 
 ```python
@@ -416,24 +384,16 @@ g = sns.pairplot(train[[u'Survived', u'Pclass', u'Sex', u'Age', u'Parch', u'Fare
 g.set(xticklabels=[])
 ```
 
-
-
-
-    <seaborn.axisgrid.PairGrid at 0x22cd9074048>
-
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/output_13_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/output_13_1.png)
 
 
 ## Ensembling & Stacking models
-<span style="font-size:11pt">간단하게 feature eigineering을 수행해본 후 우리는 마침내 이 노트북의 핵심에 도달했습니다. 이제 스태킹 앙상블을 만들어 봅시다!</span>
+간단하게 feature eigineering을 수행해본 후 우리는 마침내 이 노트북의 핵심에 도달했습니다. 이제 스태킹 앙상블을 만들어 봅시다!
 
 ### Helpers via Python Classes
-<span style="font-size:11pt">여기서부터는 파이썬 클래스를 활용해 보다 편리한 작업을 할 수 있도록 하겠습니다. 프로그래밍을 처음 시작하는 사람은 일반적으로 객체 지향 프로그래밍(Object Oriented Programming, OOP)과 함께 사용되는 클래스라는 개념에 대해 들어보았을 것입니다. 클래스는 객체 생성을 위한 코드/프로그램이며, 해당 클래스에 대한 특정한 함수 및 메소드를 구현하는 데 도움을 줍니다.<br><br> 
-<span style="font-size:11pt"><i>(* 역자 주: '클래스'는 '자동차'에, '메소드 또는 함수'는 '자동차를 구성하는 다양한 기능'들이라고 묘사할 수 있습니다. 자동차라는 클래스는 핸들 조향 기능, 가속 기능, 정지 기능과 같은 다양한 함수들을 포함하고 있습니다. 또한 자동차 클래스를 오토바이라는 새로운 클래스에 상속하면 이제 오토바이 클래스는 조향 기능, 가속 기능, 정지 기능을 상속받아 사용할 수 있게 됩니다.)</i></span><br><br>
-<span style="font-size:11pt">아래의 코드 섹션에서는 Sklearn이 제공하는 모든 분류기들에 공통된 inbuilt methods(train, predict, fit과 같이 분류기가 내장하고 있는 함수들)를 확장할 수 있는 SklearnHelper 클래스를 작성할 것입니다. 따라서 5개의 다른 분류기를 호출하기 위해 동일한 메소드를 5번 반복해서 작성할 필요가 없으므로 중복성이 없어집니다.</span> 
+여기서부터는 파이썬 클래스를 활용해 보다 편리한 작업을 할 수 있도록 하겠습니다. 프로그래밍을 처음 시작하는 사람은 일반적으로 객체 지향 프로그래밍(Object Oriented Programming, OOP)과 함께 사용되는 클래스라는 개념에 대해 들어보았을 것입니다. 클래스는 객체 생성을 위한 코드/프로그램이며, 해당 클래스에 대한 특정한 함수 및 메소드를 구현하는 데 도움을 줍니다.<br><br> 
+<i>(* 역자 주: '클래스'는 '자동차'에, '메소드 또는 함수'는 '자동차를 구성하는 다양한 기능'들이라고 묘사할 수 있습니다. 자동차라는 클래스는 핸들 조향 기능, 가속 기능, 정지 기능과 같은 다양한 함수들을 포함하고 있습니다. 또한 자동차 클래스를 오토바이라는 새로운 클래스에 상속하면 이제 오토바이 클래스는 조향 기능, 가속 기능, 정지 기능을 상속받아 사용할 수 있게 됩니다.)</i><br><br>
+아래의 코드 섹션에서는 Sklearn이 제공하는 모든 분류기들에 공통된 inbuilt methods(train, predict, fit과 같이 분류기가 내장하고 있는 함수들)를 확장할 수 있는 SklearnHelper 클래스를 작성할 것입니다. 따라서 5개의 다른 분류기를 호출하기 위해 동일한 메소드를 5번 반복해서 작성할 필요가 없으므로 중복성이 없어집니다.
 
 ```python
 # Some useful parameters which will come in handy later on
@@ -464,12 +424,12 @@ class SklearnHelper(object):
 # Class to extend XGboost classifer
 ```
 
-<span style="font-size:11pt">여기서는 여러분께서 이미 알고 있더라도 파이썬에서 객체나 클래스를 사용하는 게 익숙하지 않은 분들을 위해 양해를 부탁드리겠습니다. 위에서 타이핑한 코드에 대해 설명해 드리겠습니다. 기본 분류기를 만들 때 Sklearn 라이브러리에 이미 들어 있는 모델만 사용할 것이므로 우리는 이것을 클래스로 확장할 수 있습니다.<br><br> 
+여기서는 여러분께서 이미 알고 있더라도 파이썬에서 객체나 클래스를 사용하는 게 익숙하지 않은 분들을 위해 양해를 부탁드리겠습니다. 위에서 타이핑한 코드에 대해 설명해 드리겠습니다. 기본 분류기를 만들 때 Sklearn 라이브러리에 이미 들어 있는 모델만 사용할 것이므로 우리는 이것을 클래스로 확장할 수 있습니다.<br><br> 
 <b>`def init`</b> : 클래스의 기본 생성자를 호출하는 파이썬 표준입니다. 즉 객체(여기서는 분류기가 객체입니다)를 만들기 위해서는 clf(원하는 sklearn 분류기), seed(랜덤값을 만들기 위한 초기값) 및 params(분류기 학습을 위한 파라미터)를 지정해야 합니다.<br>
-나머지 코드는 단순히 sklearn 분류기들에 존재하는 train 메소드를 호출하는 SklearnHelper 클래스의 메소드들입니다. 기본적으로 다양한 Sklearn 분류기들을 확장하는 래퍼(참조) 클래스를 만들어 스태커(Stacking 앙상블을 위한 객체)에 여러 학습 모델들을 구현해 쌓을 때 동일한 코드를 반복 작성해야 하는 부담을 줄여 줍니다.</span> 
+나머지 코드는 단순히 sklearn 분류기들에 존재하는 train 메소드를 호출하는 SklearnHelper 클래스의 메소드들입니다. 기본적으로 다양한 Sklearn 분류기들을 확장하는 래퍼(참조) 클래스를 만들어 스태커(Stacking 앙상블을 위한 객체)에 여러 학습 모델들을 구현해 쌓을 때 동일한 코드를 반복 작성해야 하는 부담을 줄여 줍니다.
 
 ### Out-of-Fold Predictions
-<span style="font-size:11pt">소개 섹션에서 언급한 것처럼, 스태킹은 기본 분류기의 예측을 두 번째 레벨 모델의 학습을 위한 입력으로 사용합니다. 그러나 첫 번째 레벨의 모델을 학습할 때 단순히 전체 학습 데이터를 사용하여 학습을 진행하면 안됩니다. 모델이 전체 테스트셋에 대한 예측값을 만들고 그것을 두 번째 레벨 학습에 사용할 수 있기 때문입니다. 이렇게 하면 첫 번째 단계 모델이 테스트셋을 이미 "보았기" 때문에 예측 결과에 위험이 따르게 됩니다. 따라서 이러한 결과물을 이용해 두 번째 레벨 모델 학습에 넣어주게 되면 오버피팅을 유발하게 됩니다.</span> 
+소개 섹션에서 언급한 것처럼, 스태킹은 기본 분류기의 예측을 두 번째 레벨 모델의 학습을 위한 입력으로 사용합니다. 그러나 첫 번째 레벨의 모델을 학습할 때 단순히 전체 학습 데이터를 사용하여 학습을 진행하면 안됩니다. 모델이 전체 테스트셋에 대한 예측값을 만들고 그것을 두 번째 레벨 학습에 사용할 수 있기 때문입니다. 이렇게 하면 첫 번째 단계 모델이 테스트셋을 이미 "보았기" 때문에 예측 결과에 위험이 따르게 됩니다. 따라서 이러한 결과물을 이용해 두 번째 레벨 모델 학습에 넣어주게 되면 오버피팅을 유발하게 됩니다.
 
 
 ```python
@@ -493,23 +453,23 @@ def get_oof(clf, x_train, y_train, x_test):
 ```
 
 ## 첫 번째 단계의 모델들을 생성하기
-<span style="font-size:11pt">이제부터 다섯 가지의 분류기를 첫 번째 단계 학습을 위해 준비하겠습니다. 이 모델들은 모두 Sklearn 라이브러리를 통해 편리하게 호출할 수 있으며, 우리가 사용할 분류기의 종류는 다음과 같습니다.</span> 
+이제부터 다섯 가지의 분류기를 첫 번째 단계 학습을 위해 준비하겠습니다. 이 모델들은 모두 Sklearn 라이브러리를 통해 편리하게 호출할 수 있으며, 우리가 사용할 분류기의 종류는 다음과 같습니다.
 
-- <span style="font-size:11pt">Random Forest Classifier</span>
-- <span style="font-size:11pt">Extra Trees Classifier</span>
-- <span style="font-size:11pt">AdaBoost Classifier</span>
-- <span style="font-size:11pt">Gradient Boosting Classifier</span>
-- <span style="font-size:11pt">Support Vector Machine</span>
+- Random Forest Classifier
+- Extra Trees Classifier
+- AdaBoost Classifier
+- Gradient Boosting Classifier
+- Support Vector Machine
 
 #### 인자(파라미터) 소개
-<span style="font-size:11pt">매개 변수들에 대한 간단한 요약만 말씀드리겠습니다.</span> 
+매개 변수들에 대한 간단한 요약만 말씀드리겠습니다.
 
-- <span style="font-size:11pt"><b>`n_jobs`</b> : 학습 과정에 사용될 (CPU)코어 개수입니다. -1로 설정하면 모든 코어가 사용됩니다.</span> 
-- <span style="font-size:11pt"><b>`n_estimators`</b> : 학습 모델의 분류 트리 개수입니다. (기본값은 10개로 설정됩니다.)</span>
-- <span style="font-size:11pt"><b>`max_depth`</b> : 트리의 최대 깊이 또는 노드의 확장 정도를 의미합니다. 지나치게 많은 수를 설정하면 트리가 너무 깊어지며 과적합(Overfitting)할 수 있습니다.</span> 
-- <span style="font-size:11pt"><b>`verbose`</b> : 학습 과정 중 텍스트를 출력할지 여부를 조정합니다. 값을 0으로 주면 모든 텍스트를 출력하지 않는 반면 값 3은 모든 학습 이터레이션 중 트리 학습 프로세스에 대한 텍스트를 출력합니다.</span> 
+- <b>`n_jobs`</b> : 학습 과정에 사용될 (CPU)코어 개수입니다. -1로 설정하면 모든 코어가 사용됩니다.
+- <b>`n_estimators`</b> : 학습 모델의 분류 트리 개수입니다. (기본값은 10개로 설정됩니다.)
+- <b>`max_depth`</b> : 트리의 최대 깊이 또는 노드의 확장 정도를 의미합니다. 지나치게 많은 수를 설정하면 트리가 너무 깊어지며 과적합(Overfitting)할 수 있습니다.
+- <b>`verbose`</b> : 학습 과정 중 텍스트를 출력할지 여부를 조정합니다. 값을 0으로 주면 모든 텍스트를 출력하지 않는 반면 값 3은 모든 학습 이터레이션 중 트리 학습 프로세스에 대한 텍스트를 출력합니다.
 
-<span style="font-size:11pt">Sklearn 공식 웹 사이트를 통해 보다 자세한 설명을 확인하시기 바랍니다. 다른 유용한 파라미터가 있음을 확인하실 수 있을 것입니다.</span> 
+Sklearn 공식 웹 사이트를 통해 보다 자세한 설명을 확인하시기 바랍니다. 다른 유용한 파라미터가 있음을 확인하실 수 있을 것입니다.
 
 
 ```python
@@ -559,7 +519,7 @@ svc_params = {
     }
 ```
 
-<span style="font-size:11pt">위에서 객체지향 프로그래밍의 프레임워크 내에서 객체와 클래스에 대해 언급하였듯, 앞서 정의한 Helper Sklearn 클래스를 통해 다섯 가지의 분류기를 담고있는 5개의 객체를 생성해 보겠습니다.</span>
+위에서 객체지향 프로그래밍의 프레임워크 내에서 객체와 클래스에 대해 언급하였듯, 앞서 정의한 Helper Sklearn 클래스를 통해 다섯 가지의 분류기를 담고있는 5개의 객체를 생성해 보겠습니다.
 
 
 ```python
@@ -572,7 +532,7 @@ svc = SklearnHelper(clf=SVC, seed=SEED, params=svc_params)
 ```
 
 #### Train 데이터와 Test 데이터로부터 Numpy 배열 만들기
-<span style="font-size:11pt">좋습니다. 첫 번째 레벨의 기본 모델 객체를 준비한 후 다음과 같이 원래의 판다스 데이터프레임에서 Numpy 배열을 생성해 학습을 위한 Train과 Test 데이터를 준비할 수 있습니다.</span> 
+좋습니다. 첫 번째 레벨의 기본 모델 객체를 준비한 후 다음과 같이 원래의 판다스 데이터프레임에서 Numpy 배열을 생성해 학습을 위한 Train과 Test 데이터를 준비할 수 있습니다.
 
 
 ```python
@@ -584,7 +544,7 @@ x_test = test.values # Creats an array of the test data
 ```
 
 #### 첫 번째 레벨의 예측값 구하기 
-<span style="font-size:11pt">이제 다섯 개의 첫 번째 레벨 분류기에 Train과 Test 데이터를 넣어 주고 앞서 정의한 Out-of-Fold 예측 함수를 사용해 첫 번째 레벨의 예측값을 구해 봅니다. 아래 코드는 실행에 시간이 다소 걸리므로 몇 분 정도 기다려 주십시오.</span> 
+이제 다섯 개의 첫 번째 레벨 분류기에 Train과 Test 데이터를 넣어 주고 앞서 정의한 Out-of-Fold 예측 함수를 사용해 첫 번째 레벨의 예측값을 구해 봅니다. 아래 코드는 실행에 시간이 다소 걸리므로 몇 분 정도 기다려 주십시오.
 
 
 ```python
@@ -602,8 +562,8 @@ print("Training is complete")
     
 
 #### 다양한 분류기로부터 생성된 Feature Importance
-<span style="font-size:11pt">이제 첫 번째 레벨 분류기들의 학습을 마쳤으므로 Sklearn 모델들의 매우 멋진 기능을 활용할 수 있습니다. 이는 매우 간단한 코드 한 줄만으로 Train 및 Test 세트에서 다양한 features를 출력하는 것입니다.<br><br>
-Sklearn 공식 문서에 따르면 대부분의 분류기들은 단순히 .featureimportances를 입력하는것 만으로도 feature importance를 반환하도록 작성되었습니다. 그러므로 우리는 함수 earliand를 사용하여 매우 유용한 feature를 뽑고 그려 볼 것입니다. </span>
+이제 첫 번째 레벨 분류기들의 학습을 마쳤으므로 Sklearn 모델들의 매우 멋진 기능을 활용할 수 있습니다. 이는 매우 간단한 코드 한 줄만으로 Train 및 Test 세트에서 다양한 features를 출력하는 것입니다.<br><br>
+Sklearn 공식 문서에 따르면 대부분의 분류기들은 단순히 .featureimportances를 입력하는것 만으로도 feature importance를 반환하도록 작성되었습니다. 그러므로 우리는 함수 earliand를 사용하여 매우 유용한 feature를 뽑고 그려 볼 것입니다.
 
 
 ```python
@@ -621,8 +581,7 @@ gb_feature = gb.feature_importances(x_train,y_train)
     [0.08687776 0.00949799 0.04991072 0.01443587 0.05850666 0.02334782
      0.1690867  0.03866105 0.11246703 0.00426682 0.43294159]
     
-
-<span style="font-size:11pt">우리는 아직 feature importance를 할당하고 저장하는 방법을 알지 못합니다. 따라서 위의 코드에서 예측값을 출력하고 아래에서처럼 파이썬 List 자료형에 복사할 것입니다. (지루한 팁에 대해서 양해 부탁드립니다.)</span>
+우리는 아직 feature importance를 할당하고 저장하는 방법을 알지 못합니다. 따라서 위의 코드에서 예측값을 출력하고 아래에서처럼 파이썬 List 자료형에 복사할 것입니다. (지루한 팁에 대해서 양해 부탁드립니다.)
 
 
 ```python
@@ -636,7 +595,7 @@ gb_features = [ 0.06796144 , 0.03889349 , 0.07237845 , 0.02628645 , 0.11194395, 
   ,0.05965792 , 0.02774745,  0.07462718,  0.4593142 ,  0.01340093]
 ```
 
-<span style="font-size:11pt">Ploty 패키지를 통해 쉽게 그래프를 그릴 수 있도록 feature importance가 들어 있는 List로부터 판다스 데이터프레임을 만듭니다.</span> 
+Ploty 패키지를 통해 쉽게 그래프를 그릴 수 있도록 feature importance가 들어 있는 List로부터 판다스 데이터프레임을 만듭니다.
 
 
 ```python
@@ -651,7 +610,7 @@ feature_dataframe = pd.DataFrame( {'features': cols,
 ```
 
 #### Ploty Scatterplots를 통해 Interactive feature importance 불러오기
-<span style="font-size:11pt">여기서 대화형 Ploty 패키지를 사용하여 다음과 같이 'Scatter'를 호출해 여러 분류기로부터 얻은 feature importance를 ploty scatter plot으로 시각화합니다.</span> 
+여기서 대화형 Ploty 패키지를 사용하여 다음과 같이 'Scatter'를 호출해 여러 분류기로부터 얻은 feature importance를 ploty scatter plot으로 시각화합니다.
 
 
 ```python
@@ -812,12 +771,12 @@ fig = go.Figure(data=data, layout=layout)
 py.iplot(fig,filename='scatter2010')
 ```
 
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/Random-Forest-Feature-Importance.png)
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/Extra-Trees-Feature-Importance.png)
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/AdaBoost-Feature-Importance.png)
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/Gradient-Boosting-Feature-Importance.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/Random-Forest-Feature-Importance.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/Extra-Trees-Feature-Importance.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/AdaBoost-Feature-Importance.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/Gradient-Boosting-Feature-Importance.png)
 
-<span style="font-size:11pt">이제 모든 feature importance의 평균을 계산하고 데이터프레임에 새로운 열(column)로 저장합니다.</span>
+이제 모든 feature importance의 평균을 계산하고 데이터프레임에 새로운 열(column)로 저장합니다.
 
 
 ```python
@@ -886,7 +845,7 @@ feature_dataframe.head(3)
 
 
 #### 평균 feature importance의 Ploty Barplot 그리기 
-<span style="font-size:11pt">모든 분류기에서 평균 featue importance를 얻은 다음 이를 다음과 같이 ploty가 제공하는 barplot 형태로 그릴 수 있습니다.</span> 
+모든 분류기에서 평균 featue importance를 얻은 다음 이를 다음과 같이 ploty가 제공하는 barplot 형태로 그릴 수 있습니다.
 
 
 ```python
@@ -926,11 +885,11 @@ fig = go.Figure(data=data, layout=layout)
 py.iplot(fig, filename='bar-direct-labels')
 ```
 
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/Barplots-of-Mean-Feature-Importance.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/Barplots-of-Mean-Feature-Importance.png)
 
 ## 첫번째 단계의 예측값들을 통해 두 번째 단계의 예측값 뽑기
 #### 첫 번째 단계 결과물을 새로운 feature로서 사용하기
-<span style="font-size:11pt">첫 번째 단계로부터 예측값들을 얻었으므로 이제 다음 분류기들을 위한 새로운 feature들의 집합을 구축하는 것을 생각해 볼 수 있습니다. 아래 코드처럼 이전 분류기들로부터 첫 번째 단계의 예측값들을 새 열(column)로 가져오고 이를 통해 다음 분류기들을 학습할 수 있습니다.</span> 
+첫 번째 단계로부터 예측값들을 얻었으므로 이제 다음 분류기들을 위한 새로운 feature들의 집합을 구축하는 것을 생각해 볼 수 있습니다. 아래 코드처럼 이전 분류기들로부터 첫 번째 단계의 예측값들을 새 열(column)로 가져오고 이를 통해 다음 분류기들을 학습할 수 있습니다.
 
 
 ```python
@@ -1024,10 +983,10 @@ data = [
 py.iplot(data, filename='labelled-heatmap')
 ```
 
-![png](/assets/Images/kaggletranscription/titanic-introdensemble/labelled-heatmap.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/labelled-heatmap.png)
 
 
-<span style="font-size:11pt">서로 관련성이 없는 훈련된 모델들을 사용하면 더 좋은 점수를 얻는 것에 유리하다는 기사들과 Kaggle 우승자들의 후기가 있습니다.</span> 
+서로 관련성이 없는 훈련된 모델들을 사용하면 더 좋은 점수를 얻는 것에 유리하다는 기사들과 Kaggle 우승자들의 후기가 있습니다.
 
 
 ```python
@@ -1035,11 +994,11 @@ x_train = np.concatenate(( et_oof_train, rf_oof_train, ada_oof_train, gb_oof_tra
 x_test = np.concatenate(( et_oof_test, rf_oof_test, ada_oof_test, gb_oof_test, svc_oof_test), axis=1)
 ```
 
-<span style="font-size:11pt">첫 번째 단계의 train과 test 예측값들을 연결(concatenate)하여 x_train과 x_test로 연결했으므로, 이제 우리는 두 번째 단계의 학습 모델들의 학습을 진행해 볼 수 있습니다.</span>
+첫 번째 단계의 train과 test 예측값들을 연결(concatenate)하여 x_train과 x_test로 연결했으므로, 이제 우리는 두 번째 단계의 학습 모델들의 학습을 진행해 볼 수 있습니다.
 
 ### XGBoost 분류기를 이용한 두 번째 단계 모델 학습
-<span style="font-size:11pt">이 단계에서 우리는 boosted tree 학습 모델을 위한 매우 유명한 라이브러리인 XGBoost를 선택할 것입니다. XGBoost는 대규모의 boosted tree 알고리즘을 위해 개발되었습니다. 알고리즘에 대한 자세한 설명은 공식 문서를 확인하십시오.<br><br> 
-어쨌든 우리는 XGBClassifier를 호출하고 첫 번째 단계의 train과 target 데이터에 적합(fit)시킬 것입니다. 그리고 학습이 끝난 모델로 다음과 같이 예측을 수행할 것입니다:</span>
+이 단계에서 우리는 boosted tree 학습 모델을 위한 매우 유명한 라이브러리인 XGBoost를 선택할 것입니다. XGBoost는 대규모의 boosted tree 알고리즘을 위해 개발되었습니다. 알고리즘에 대한 자세한 설명은 공식 문서를 확인하십시오.<br><br> 
+어쨌든 우리는 XGBClassifier를 호출하고 첫 번째 단계의 train과 target 데이터에 적합(fit)시킬 것입니다. 그리고 학습이 끝난 모델로 다음과 같이 예측을 수행할 것입니다:
 
 
 ```python
@@ -1058,14 +1017,14 @@ gbm = xgb.XGBClassifier(
 predictions = gbm.predict(x_test)
 ```
 
-<span style="font-size:11pt">모델에서 사용된 XGBoost 매개 변수들에 대해 빠르게 설명하겠습니다.</span> 
+모델에서 사용된 XGBoost 매개 변수들에 대해 빠르게 설명하겠습니다.
 
-- <span style="font-size:11pt"><b>`max_depth`</b> : tree를 얼마나 키울지 결정합니다. 지나치게 높으면 과적합을 유발합니다.</span>
-- <span style="font-size:11pt"><b>`gamma`</b> : tree의 leaf 노드(맨 마지막)에서 추가 파티션을 만드는 데 필요한 minimum loss reduction입니다. 클수록 더 보수적인(안전한) 알고리즘이 될 것입니다.</span> 
-- <span style="font-size:11pt"><b>`eta`</b> : 과적합(overfitting)을 방지하기 위해 각 부스팅 단계에서 사용되는 스텝 사이즈 감소량입니다.</span> 
+- <b>`max_depth`</b> : tree를 얼마나 키울지 결정합니다. 지나치게 높으면 과적합을 유발합니다.
+- <b>`gamma`</b> : tree의 leaf 노드(맨 마지막)에서 추가 파티션을 만드는 데 필요한 minimum loss reduction입니다. 클수록 더 보수적인(안전한) 알고리즘이 될 것입니다.
+- <b>`eta`</b> : 과적합(overfitting)을 방지하기 위해 각 부스팅 단계에서 사용되는 스텝 사이즈 감소량입니다.
 
 #### 제출을 위한 파일 생성하기
-<span style="font-size:11pt">마지막으로, 훈련된 모든 첫 번째 단계 및 두 번째 단계의 모델을 통해 Titanic 대회에 제출할 적절한 형식으로 예측값을 출력해 봅니다.</span> 
+마지막으로, 훈련된 모든 첫 번째 단계 및 두 번째 단계의 모델을 통해 Titanic 대회에 제출할 적절한 형식으로 예측값을 출력해 봅니다.
 
 
 ```python
@@ -1076,19 +1035,13 @@ StackingSubmission.to_csv("StackingSubmission.csv", index=False)
 ```
 
 #### 추가 개선 단계
+지금까지 앙상블 스태커를 제작하는 아주 간단한 방법을 보여 주었습니다. Kaggle 대회에서 가장 높은 순위에서는 괴상한 stacked classifiers의 조합 뿐만 아니라 두 단계 이상까지도 가는 스태킹도 사용하고 있습니다.
 
-<span style="font-size:11pt">지금까지 앙상블 스태커를 제작하는 아주 간단한 방법을 보여 주었습니다. Kaggle 대회에서 가장 높은 순위에서는 괴상한 stacked classifiers의 조합 뿐만 아니라 두 단계 이상까지도 가는 스태킹도 사용하고 있습니다.</span> 
-
-<span style="font-size:11pt">점수를 향상시키기 위해 할 수 있는 몇 가지 추가 단계는 다음과 같습니다:</span>
-1. <span style="font-size:11pt">최적의 매개 변수 값을 찾기 위해 모델을 학습할 때 Cross-validation(교차 검증)을 사용할 수도 있습니다.</span> 
-2. <span style="font-size:11pt">학습에 보다 다양한 기본 모델들을 사용하십시오. 결과가 더 관련성이 없을수록 더 좋은 최종 결과를 보여줍니다.</span> 
+점수를 향상시키기 위해 할 수 있는 몇 가지 추가 단계는 다음과 같습니다:
+1. 최적의 매개 변수 값을 찾기 위해 모델을 학습할 때 Cross-validation(교차 검증)을 사용할 수도 있습니다.
+2. 학습에 보다 다양한 기본 모델들을 사용하십시오. 결과가 더 관련성이 없을수록 더 좋은 최종 결과를 보여줍니다. 
 
 ### 결론
-<span style="font-size:11pt">이 노트북은 학습 모델들을 쌓기(stacking) 위한 스크립트를 소개하고 있습니다. 다시한번 Faron과 Sina에게 고마움을 표합니다.<br><br> 
+이 노트북은 학습 모델들을 쌓기(stacking) 위한 스크립트를 소개하고 있습니다. 다시한번 Faron과 Sina에게 고마움을 표합니다.<br><br> 
 스태킹이나 앙상블 기법에 대한 다른 훌륭한 자료는 MLWave:[Kaggle Ensembling Guide](http://mlwave.com/kaggle-ensembling-guide/)를 참고하십시오. <br><br>
-다음에 또 뵙겠습니다. </span>
-
-
-```python
-
-```
+다음에 또 뵙겠습니다.
