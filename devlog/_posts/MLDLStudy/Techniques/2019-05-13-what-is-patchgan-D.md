@@ -31,8 +31,10 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 
 | 기존 방식(CNN) | Conditional GANs |
 |:--------|:--------|
-| - 픽셀 단위의 classification 또는 regression으로 문제를 해결하고자 함.<br>- 각 출력 픽셀들은 다른 픽셀들에 대해 서로 독립적이라고 가정. <br>- Unstructured한 출력 공간의 개념을 갖고 있음.  | - Structured loss를 사용하며, 즉 주어진 목표 이미지와 출력의 다름에 대해 Penalize한다. <br>- Discriminator로 PatchGAN 구조를 자주 사용한다.<br>- 모델에 추가적인 정보를 줌으로서 데이터를 만드는 과정을 지시할 수 있다. |
+|픽셀 단위의 classification 또는 regression으로 문제를 해결하고자 함.<br>각 출력 픽셀들은 다른 픽셀들에 대해 서로 독립적이라고 가정.<br>Unstructured한 출력 공간의 개념을 갖고 있음.|Structured loss를 사용하며, 즉 주어진 목표 이미지와 출력의 다름에 대해 Penalize한다.<br>Discriminator로 PatchGAN 구조를 자주 사용한다.<br>모델에 추가적인 정보를 줌으로서 데이터를 만드는 과정을 지시할 수 있다.|
+
 <br>
+
 - Loss를 최소화하기 위한 방법으로 유클리디안 거리(L2 distance)를 사용하게 되면 모든 출력의 평균을 최소화하므로 흐린 결과물이 나오게 됩니다.
 - 따라서 출력 이미지를 현실과 구분할 수 없도록 하면서도 목적에 맞게 loss function을 자동으로 학습하게끔 하는 것이 Conditional GAN의 목표입니다.
 
