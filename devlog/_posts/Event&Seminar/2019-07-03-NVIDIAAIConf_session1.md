@@ -12,7 +12,7 @@ accent_image:
 accent_color: '#ccc'
 theme_color: '#ccc'
 description: >
-  본 글은 2019년 7월 2일 NVIDIA AI Conference 행사 중 한재근 과장님께서 'Tensor Core를 이용한 딥러닝 학습 가속을 쉽게 하는 방법 (Getting more DL Training Acceleration using Tensor Cores and AMP)'이라는 제목으로 진행하신 강연을 정리한 글입니다. 원본 내용과 차이가 있을 수 있사오니 행사 공식 슬라이드를 참고하시기 바랍니다.
+  본 글은 2019년 7월 2일 NVIDIA AI Conference 행사 중 한재근 과장님께서 'Tensor Core를 이용한 딥러닝 학습 가속을 쉽게 하는 방법 (Getting more DL Training Acceleration using Tensor Cores and AMP)'이라는 제목으로 진행하신 강연을 정리한 글입니다. 원본 내용과 차이가 있을 수 있으니 행사 공식 슬라이드를 참고하시기 바랍니다.
 related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
@@ -26,7 +26,6 @@ related_posts:
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/1.png)
 ▲ Volta, Turing 아키텍쳐에서 사용 가능하며 각 FP16 엘리먼트에 대해 연산한 후 FP32로 합치는 식으로 작동.
 {:.figcaption}
-
 
 - 단정밀도를 사용하므로 파라미터 사이즈가 줄어들어 메모리 사용량이 줄어듬. 즉 두 배의 데이터를 처리할 수 있게 됨.
 - 모델의 퍼포먼스를 높이기 위해 FP16을 사용하면 FP32 대비 x8의 연산처리량(throughput), x2의 메모리 처리량, 1/2의 메모리 사용량 효과를 볼 수 있음.
@@ -50,11 +49,13 @@ related_posts:
 
 - NVIDIA 깃헙에 MP를 적용한 많은 예제 코드들이 올라와 있음.
     ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/4.png)
+    
     ▲ 모델을 새로 짜지 않고 기술적으로 몇 부분만 고쳤음에도 같은 acc를 보인다.
     {:.figcaption}
 
 ### MP Technical guide
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/5.png)
+
 ▲ MP를 적용하기 위한 세 가지 방법
 {:.figcaption}
 
@@ -79,21 +80,22 @@ related_posts:
 - 기존에는 네트워크마다 Tensorcore를 적용해보고 적용이 어려우면 사용하지 못했는데 이제는 안정적인 사용이 가능
 - Master weight를 single precision으로 유지하는 것이 핵심으로, acc 유지에 매우 중요한 역할.
 
-![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/8.png)
+  ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/8.png)
 
 - 단순히 precision을 다운하면 FP16 이 표현 가능한 범위의 한계로 인해 loss scale 표현에 문제가 생기고, 이로 인해 weight나 gradient가 0으로 바뀔 수 있음.
 
-![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/9.png)
+  ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/9.png)
 
 - 따라서 weight는 어쩔 수 없이 single precision으로 유지해야 함. 그래서 shift연산을 해서 값을 올려줌
 - precision마다 최대 크기가 다르기 때문에, 즉 FP16의 최대값이 FP32대비 작기 때문에 shift연산 시 오버플로우를 조심해야 한다. (그러나 이마저도 자동으로 해 줌)
     
-![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_1.png)
-![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_2.png)
-![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_3.png)
+  ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_1.png)
+  ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_2.png)
+  ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/10_3.png)
     
 ### Getting started on AMP
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/11.png)
+
 ▲ 코드 두어줄 정도 추가하면 쓸 수 있도록 업데이트를 했다고 함. (Keras는 아직 개발중)
 {:.figcaption}
 
@@ -124,6 +126,7 @@ related_posts:
     
     - Tensorcore를 이용해 BERT모델 돌려보기 : 
         ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/17_1.png)
+        
         ▲ (좌 - BERT FP32) 맨 왼쪽 패널에서 GPU kernel에 로드된 API list를 확인 가능, 빨간 글자 부분에서 실행 시간도 확인 가능.<br>
         (우 -B ERT FP16) 맨 왼쪽 패널에서 Tensor cores API가 커널에 로드된 것을 확인 가능하며 실행 시간이 2.1배 빨라짐을 확인 가능.
         {:.figcaption}

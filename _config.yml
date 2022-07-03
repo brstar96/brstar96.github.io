@@ -29,11 +29,11 @@ description:           >
 
 # A shorter description for the sidebar.
 tagline:               >-
-  다양한 ML/DL 알고리즘을 활용해 산업 전반에
-  걸친 여러 문제들을 풀어 오고 있습니다.
+  여러 ML/DL 알고리즘을 활용해 산업 전반에
+  걸친 다양한 문제들을 풀어 오고 있습니다.
 
 # A list of keywords for your blog
-keywords:              []
+keywords:              [deep learning, machine learning, lifelog]
 
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
