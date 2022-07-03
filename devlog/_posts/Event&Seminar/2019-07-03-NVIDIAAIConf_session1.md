@@ -25,6 +25,7 @@ related_posts:
 ## Tensor Core에 대한 설명
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/1.png)
 ▲ Volta, Turing 아키텍쳐에서 사용 가능하며 각 FP16 엘리먼트에 대해 연산한 후 FP32로 합치는 식으로 작동.
+
 {:.figcaption}
 
 - 단정밀도를 사용하므로 파라미터 사이즈가 줄어들어 메모리 사용량이 줄어듬. 즉 두 배의 데이터를 처리할 수 있게 됨.
@@ -32,6 +33,7 @@ related_posts:
 
 ## Mixed Precision Training이란?
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/2.png)
+
 ▲ MP는 연산속도와 정확도(accuracy) 사이의 트레이트오프 밸런스를 맞추기 위한 방법
 {:.figcaption}
 
@@ -44,6 +46,7 @@ related_posts:
 
 ### Mixed Precision is General Purpose
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/3.png)
+
 ▲ MP를 적용 가능한 다양한 태스크 목록
 {:.figcaption}
 
@@ -62,6 +65,7 @@ related_posts:
 <br>
 
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/6.png)
+
 ▲ 반정밀도로 떨어뜨리되 합치는 부분에서 단정밀도로 돌려 놓아야 함.
 {:.figcaption}
 
@@ -100,16 +104,20 @@ related_posts:
 {:.figcaption}
 
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_1.png)
+
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/12_2.png)
+
 ▲ Tensorflow에서 AMP 사용하기
 {:.figcaption}
 
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_1.png)
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/13_2.png)
+
 ▲ (좌) 파이토치에서 AMP를 사용해 트레이닝하는 예제, <br>(우) 파이토치에서 Optimization level 설정하는 방법 및 장단점 소개
 {:.figcaption}
 
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/14.png)
+
 ▲ MXNET에서 AMP를 사용하는 예제 코드
 {:.figcaption}
 
@@ -134,14 +142,17 @@ related_posts:
 ## Additional Resources
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/18_1.png)
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/18_2.png)
+
 ▲ 다양한 모델들에 AMP를 적용한 예제 코드들을 제공.
 {:.figcaption}
 
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/19.png)
+
 ▲ TF, Pytorch, MXNet에서 Tensorcore 활성화하기
 {:.figcaption}
 
 ![Full-width image](/assets/img/devlog/event/NVIDIA_AI_Conf_Sessions/Getting_more_DL_Training_Acceleration_using_Tensor_Cores_and_AMP/20.png)
+
 ▲ GTC Session recordings 2019에 디버깅하는 부분까지 포함해 알려준다고 함.
 {:.figcaption}
 
