@@ -16,16 +16,18 @@ description: >
 related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
+<br>
 
 ## Calculate CNN Output Size
 
-- CNN 출력 사이즈 계산 공식: <br>
-  $$ O=\frac{I-K+2P}{S}+1 $$
+$$ O=\frac{I-K+2P}{S}+1 $$
+
+- $$ O:\text{Size of output image} $$
 
 
 $$
 \begin{align*}
-O: \text{Size of output image}& \\
+
 I: \text{Size of input image}& \\ 
 K: \text{Size of kernels used in the convolution layer}& \\ 
 N: \text{Number of kernels}& \\
