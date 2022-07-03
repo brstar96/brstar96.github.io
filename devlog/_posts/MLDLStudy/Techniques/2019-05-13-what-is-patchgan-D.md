@@ -31,7 +31,7 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 
 | 기존 방식(CNN) | Conditional GANs |
 |:--------|:--------|
-|픽셀 단위의 classification 또는 regression으로 문제를 해결하고자 함.<br>각 출력 픽셀들은 다른 픽셀들에 대해 서로 독립적이라고 가정.<br>Unstructured한 출력 공간의 개념을 갖고 있음.|Structured loss를 사용하며, 즉 주어진 목표 이미지와 출력의 다름에 대해 Penalize한다.<br>Discriminator로 PatchGAN 구조를 자주 사용한다.<br>모델에 추가적인 정보를 줌으로서 데이터를 만드는 과정을 지시할 수 있다.|
+|- 픽셀 단위의 classification 또는 regression으로 문제를 해결하고자 함.<br>- 각 출력 픽셀들은 다른 픽셀들에 대해 서로 독립적이라고 가정.<br>- Unstructured한 출력 공간의 개념을 갖고 있음.|- Structured loss를 사용하며, 즉 주어진 목표 이미지와 출력의 다름에 대해 Penalize한다.<br>- Discriminator로 PatchGAN 구조를 자주 사용한다.<br>- 모델에 추가적인 정보를 줌으로서 데이터를 만드는 과정을 지시할 수 있다.|
 
 - Loss를 최소화하기 위한 방법으로 유클리디안 거리(L2 distance)를 사용하게 되면 모든 출력의 평균을 최소화하므로 흐린 결과물이 나오게 됩니다.
 - 따라서 출력 이미지를 현실과 구분할 수 없도록 하면서도 목적에 맞게 loss function을 자동으로 학습하게끔 하는 것이 Conditional GAN의 목표입니다.
@@ -62,11 +62,11 @@ Image to image tralslation 분야를 공부하다보면 피해갈 수 없는 개
 ### PatchGAN 적용 예시(Pix2Pix)
 - PatchGAN의 patch size는 Discriminator가 가진 convolution layers에 의해 결정되는 Receptive field size에 따라 결정됩니다. 즉 PatchGAN D는 G가 만든 이미지 일부를 Crop하는 것이 아닙니다.
 - Pix2Pix 논문에서는 256 x 256 크기의 입력 영상과 입력 영상을 G에 넣어 만든 Fake 256 x 256 이미지를 concat한 후 최종적으로 30 x 30 x 1 크기의 feature map을 얻어냅니다. 이 feature map의 1픽셀은 입력 영상에 대한 70 x 70 사이즈의 Receptive field에 해당합니다.
-    ![Full-width image](/assets/img/devlog/MLDLStudy/NNMethodologies/What-is-patchGAN-D/2.jpg)
 
-    ▲ 출처 : <a href ='https://arxiv.org/pdf/1803.07422.pdf'>Patch-Based Image Inpainting with Generative Adversarial Networks</a>
+![Full-width image](/assets/img/devlog/MLDLStudy/NNMethodologies/What-is-patchGAN-D/2.jpg)
+▲ 출처 : <a href ='https://arxiv.org/pdf/1803.07422.pdf'>Patch-Based Image Inpainting with Generative Adversarial Networks</a>
 
-    {:.figcaption}<br>
+{:.figcaption} <br>
 
 - 이후 30 x 30 x 1 feature map의 모든 값을 평균낸 후 Discriminator의 output으로 합니다. <i>('We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.' - <a href='https://arxiv.org/pdf/1611.07004.pdf'>Pix2Pix 논문</a> 3.2.2절)</i>
     - 여기서 '모든 패치의 평균을 구하는 것'인지, '레이어들을 거치며 최종적으로 1개의 scalar값을 뽑아내는 것'인지 해석의 논란이 생깁니다. 저자들은 이에 대해 어떤 방식을 사용하던 결과물은 수학적으로 동일하다고 이야기합니다. 해당 내용은 저자 공식 깃헙 [#120번 이슈](https://github.com/phillipi/pix2pix/issues/120)과 [#39번 이슈](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/issues/39)에서 다루고 있습니다.
