@@ -17,6 +17,10 @@ related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 # invert_sidebar: true
 ---
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v14.0" nonce="wtm5X3uW"></script>
+
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="800" data-numposts="5"></div>
 
 지난 1월 2일부터 시작된 [네이버 Vision AI 해커톤 대회](https://github.com/AiHackathon2018/AI-Vision)가 어제로 끝이 났습니다. 두달간 정말 쉼없이 달려오며 많은 우여곡절을 겪고 소중한 추억을 만들었습니다. 비록 우승권에 들지 못한 채 중하위권에서 대회를 마감했지만 그 자체만으로도 뿌듯하고 많은 깨달음을 얻었습니다. 이번 포스팅은 쟁쟁한 팀의 팀원 분들을 오프라인으로 만날 수 있었던 오프라인 본선 대회에 다녀온 후기입니다~<br>
 
