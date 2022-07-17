@@ -1,29 +1,27 @@
 ---
-title: "(KR-KaggleKernelTranscription)Mercedes EDA & XGBoost Starter (~0.55)"
-tags: 
-  - Kaggle competition
-  - Machine Learning
-  - KaggleTranscription(Korean)
-categories:
-  - PostTranslation
-toc: true
-author_profile: false
-comments: 
-  provider: "disqus"
-  disqus:
-    shortname: "https-brstar96-github-io"
-header:
-  teaser: /assets/kaggletranscription/Simple_Exploration_Notebook-Mercedes/Mercedes-Benz-Greener-Manufacturing.png
+layout: post
+title: (KR-KaggleKernelTranscription)Mercedes EDA & XGBoost Starter (~0.55)
+tags: [Kaggle, ML, post translation]
+categories: [MLDLStudy]
+comments: true
+sitemap: true
+image: /assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/Mercedes-Benz-Greener-Manufacturing.jpg
+accent_image: 
+  background: url('/assets/img/sidebar-bg.gif') center/cover
+  overlay: false
+accent_color: '#ccc'
+theme_color: '#ccc'
+description: >
+  Mercedes-Benz Greener Manufacturing 대회의 인기 커널 중 하나를 번역했습니다. 이번 포스트에선 간단한 EDA, XGBoost 모델을 통해 submit 데이터를 만드는 과정에 대해 알아봅니다.  
+related_posts:
+    - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
+
 ---
 
-<span style="font-size:11pt">
-*This code is written by [anokas](https://www.kaggle.com/anokas/mercedes-eda-xgboost-starter-0-55/comments). Thanks for sharing!
-</span>
+*This code is written by [anokas](https://www.kaggle.com/code/anokas/mercedes-eda-xgboost-starter-0-55/notebook). Thanks for sharing!
 
 ### Mercedes-Benz Greener Manufacturing
-<span style="font-size:11pt">
 이 대회에 오신 것을 환영합니다! Mercedes-Benz에서 이번에 생산 라인의 자동차가 테스트 단계를 통과하는 데 걸리는 시간을 예측하는 미션을 우리에게 주었습니다. 고전적인 회귀 문제이며 예측 결과는 R2 score로 평가됩니다. 먼저 주어진 데이터들을 살펴 보겠습니다.
-</span>
 
 ```python
 import numpy as np # linear algebra
@@ -47,10 +45,8 @@ for f in os.listdir('../Dataset'):
     test.csv                      3.19MB
     train.csv                     3.22MB
     
-<span style="font-size:11pt">
 우리가 최근 익숙했던 것들보다 훨씬 작은 데이터셋입니다. 그리고 이미지 데이터는 없습니다! :) 우리는 하나의 train과 test csv파일을 받았으며, 갖고 놀기에 데이터가 매우 단순함을 알 수 있습니다. <br><br>
 이제 메모리에 로딩할 시간입니다!
-</span>
 
 ### Training set
 
@@ -60,11 +56,6 @@ df_train = pd.read_csv('../Dataset/train.csv')
 print('Size of training set: {} rows and {} columns'.format(*df_train.shape))
 df_train.head()
 ```
-
-    Size of training set: 4209 rows and 378 columns
-    
-
-
 
 
 <div>
@@ -234,11 +225,8 @@ df_train.head()
 <p>5 rows × 378 columns</p>
 </div>
 
-
-<span style="font-size:11pt">
 이것을 통해, 우리의 train 데이터는 단지 4000개의 행으로 구성되어 있지만 내부에는 400개의 익명 처리된 features가 있음을 알 수 있습니다. 이것 뿐만 아니라 ID (행 번호와 같지 않으며, 아마 의미가 있을지도 모릅니다.)와 생산라인에서 걸린 초(秒, second) 수인 target value가 제공됩니다. <br><br>
 target 변수의 분포를 살펴 보겠습니다:
-</span>
 
 ```python
 y_train = df_train['y'].values
@@ -255,14 +243,12 @@ print('Count of values above 180: {}'.format(np.sum(y_train > 200)))
     min: 72.11 max: 265.32 mean: 100.66931812782134 std: 12.6778749695168
     Count of values above 180: 1
     
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_5_1.png)
 
 
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_5_1.png)
-
-<span style="font-size:11pt">
 따라서 우리는 위 그래프를 통해 꽤 정규분포와 유사한 분포를 갖고 있으며 100을 기준으로 몰려 있음을 확인할 수 있습니다. 여기서 주목해야 할 것은 딱히 없으며, 모든 값들이 180 밑에 있는 반면 265초 부근에 하나의 특이치가 있습니다. <br><br>
 ID가 행 ID와 동일하지 않다는 사실을 통해 우리는 train set과 test set가 시계열 데이터와 같은 특별하게 정렬된 데이터를 가지는 데이터셋으로부터 무작위 샘플링되었다고 생각해볼 수 있습니다. 시계열 데이터가 제공된 것이 맞는지 확인해 보기 위해 target value가 시간에 따라 어떻게 변하는지 살펴 보도록 하겠습니다. 
-</span>
+
 
 ```python
 plt.figure(figsize=(15, 5))
@@ -281,18 +267,11 @@ print()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_7_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_7_0.png)
 
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_7_2.png)
 
-    
-    
-
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_7_2.png)
-
-<span style="font-size:11pt">
 한눈에 보기에, 지나치게 의심스러운 부분은 없는 것처럼 보입니다. 나중에 자세히 살펴 보도록 하고, 지금은 feature들을 살펴 보도록 하겠습니다.
-</span>
 
 ### Feature Analysis
 
@@ -309,19 +288,12 @@ df_train[cols].dtypes.value_counts()
     Feature types:
     
 
-
-
-
     int64     368
     object      8
     dtype: int64
 
-
-<span style="font-size:11pt">
 우리가 갖고 있는 모든 features를 살펴 보니, 8개의 객체(string 형태와 같은) 변수, 368개의 정수형 변수가 제공되고 있습니다. 우리가 가진 features의 카디널리티는 어떤지 확인해 볼까요? <br><br>
 <i>(역자주: 카디널리티는 DB에서 한 relation을 구성하는 tuple의 수를 의미한다.)</i>
-</span>
-
 
 ```python
 counts = [[], [], []]
@@ -343,10 +315,8 @@ print('Categorical features:', counts[2])
     Constant features: ['X11', 'X93', 'X107', 'X233', 'X235', 'X268', 'X289', 'X290', 'X293', 'X297', 'X330', 'X347']
     Categorical features: ['X0', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X8']
     
-<span style="font-size:11pt">
 흥미롭게도, 우리는 단지 하나의 값만 가진 12개의 features를 갖고 있습니다. 이것들은 supervised 알고리즘에 대해서는 쓸모가 없으며, 따라서 버려야 합니다. (test set에서 비정상 탐지를 위한 목적으로 사용하지 않는 한)<br><br>
 데이터셋의 나머지 부분들은 많은 이진 변수(binary features)들과 몇 가지 범주형 변수(categorical features)들로 구성됩니다. 
-</span>
 
 
 ```python
@@ -366,9 +336,7 @@ for i in range(3):
 plt.show()
 ```
 
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_13_0.png)
-
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_13_0.png)
 
 
 ```python
@@ -384,42 +352,25 @@ for c in counts[2]:
     plt.show()
 ```
 
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_0.png)
 
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_0.png)
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_1.png)
 
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_2.png)
 
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_3.png)
 
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_1.png)
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_4.png)
 
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_5.png)
 
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_6.png)
 
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_2.png)
-
-
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_3.png)
-
-
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_4.png)
-
-
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_5.png)
-
-
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_6.png)
-
-
-
-![png](/assets/Images/kaggletranscription/Mercedes_EDA_and_XGBoost_Starter/output_14_7.png)
+![png](//assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Mercedes_EDA_and_XGBoost_Starter/output_14_7.png)
 
 
 ### XGBoost Starter
-<span style="font-size:11pt">
 이제 데이터가 어떻게 구성되어 있는지에 대한 개요를 알았으므로 간단한 모델을 만들 수 있습니다. XGBoost를 사용해 볼 시간입니다!
-</span>
 
 ```python
 df_test = pd.read_csv('../Dataset/test.csv')
@@ -444,20 +395,6 @@ for column in usable_columns:
         
 x_train.head()
 ```
-
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:18: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:19: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-    
-
-
 
 
 <div>
@@ -628,8 +565,6 @@ x_train.head()
 </div>
 
 
-
-
 ```python
 import xgboost as xgb
 from sklearn.metrics import r2_score
@@ -692,8 +627,6 @@ clf = xgb.train(params, d_train, 1000, watchlist, early_stopping_rounds=50, feva
     [237]	train-rmse:8.27229	valid-rmse:6.98069	train-r2:0.586836	valid-r2:0.653599
     
     
-
-
 ```python
 p_test = clf.predict(d_test)
 
@@ -707,8 +640,6 @@ sub.to_csv('xgb.csv', index=False)
 ```python
 sub.head()
 ```
-
-
 
 
 <div>
@@ -763,8 +694,5 @@ sub.head()
 </table>
 </div>
 
-
-<span style="font-size:11pt">
 저의 EDA를 읽어 주셔서 감사합니다! :)<br><br>
 질문이나 제안이 있으시면 언제든지 의견을 남기십시오. 그리고 도움이 되었다면 upvote를 눌러 주십시오!
-</span>

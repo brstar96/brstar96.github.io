@@ -1,31 +1,33 @@
 ---
-title: "(KR-KaggleKernelTranscription)Titanic Top 4% with ensemble modeling"
-tags: 
-  - Kaggle competition
-  - Machine Learning
-  - KaggleTranscription(Korean)
-categories:
-  - PostTranslation
-toc: true
-author_profile: false
-comments: 
-  provider: "disqus"
-  disqus:
-    shortname: "https-brstar96-github-io"
-header:
-  teaser: /assets/Images/kaggletitanic.png
+layout: post
+title: (KR-KaggleKernelTranscription)Titanic Top 4% with ensemble modeling
+tags: [Kaggle, ML, post translation]
+categories: [MLDLStudy]
+comments: true
+sitemap: true
+image: /assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Introduction-to-EnsemblingStacking/kaggletitanic.png
+accent_image: 
+  background: url('/assets/img/sidebar-bg.gif') center/cover
+  overlay: false
+accent_color: '#ccc'
+theme_color: '#ccc'
+description: >
+  데이터 사이언스에 입문하시는 분들이라면 한번쯤은 마주치는 타이타닉 대회의 유명 커널을 소개합니다. 이번 글에서는 YASSINE GHOUZAM의 "Titanic Top 4% with ensemble modeling" 포스트를 번역했습니다. 
+related_posts:
+    - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 
-<span style="font-size:11pt">This code is written by [Yassine Ghouzam](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling).</span>
+This code is written by [Yassine Ghouzam](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling).
 
 
 ## 1. Introduction
-<span style="font-size:11pt">본 커널은 Feature Engineering과 Ensemble modeling을 소개하기 위해 Yassine Ghouzam가 공개한 커널입니다. 몇 가지 Feature Analysis를 수행한 후 Feature Engineering을 거쳐 데이터에 대한 모델링 작업을 하고 타이타닉 승선자 중 생존자를 투표 방식으로 예측해볼 것입니다. <br><br>
+본 커널은 Feature Engineering과 Ensemble modeling을 소개하기 위해 Yassine Ghouzam가 공개한 커널입니다. 몇 가지 Feature Analysis를 수행한 후 Feature Engineering을 거쳐 데이터에 대한 모델링 작업을 하고 타이타닉 승선자 중 생존자를 투표 방식으로 예측해볼 것입니다. <br><br>
 이 스크립트는 아래의 세 가지 메인 파트로 구성되어 있습니다:<br> 
-    1. Feature Analysis
-    2. Feature Engineering
-    3. Modeling</span>
 
+1. Feature Analysis
+2. Feature Engineering
+3. Modeling
+<br>
 
 ```python
 import os
@@ -77,52 +79,7 @@ print(IDtest) # 승객 ID 출력
     5       897
     6       898
     7       899
-    8       900
-    9       901
-    10      902
-    11      903
-    12      904
-    13      905
-    14      906
-    15      907
-    16      908
-    17      909
-    18      910
-    19      911
-    20      912
-    21      913
-    22      914
-    23      915
-    24      916
-    25      917
-    26      918
-    27      919
-    28      920
-    29      921
            ... 
-    388    1280
-    389    1281
-    390    1282
-    391    1283
-    392    1284
-    393    1285
-    394    1286
-    395    1287
-    396    1288
-    397    1289
-    398    1290
-    399    1291
-    400    1292
-    401    1293
-    402    1294
-    403    1295
-    404    1296
-    405    1297
-    406    1298
-    407    1299
-    408    1300
-    409    1301
-    410    1302
     411    1303
     412    1304
     413    1305
@@ -135,11 +92,11 @@ print(IDtest) # 승객 ID 출력
 
 ## 2.2 Outlier Detection
 
-<span style="font-size:11pt">여기에서는 NaN, Null과 같은 Outliers를 검출해 봅니다.</span> 
+여기에서는 NaN, Null과 같은 Outliers를 검출해 봅니다. 
 
-![IQR](/assets/Images/kaggletranscription/titanic-top4/1.png)
+![IQR](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/1.png)
 
-<span style="font-size:11pt">이미지 출처:https://blog.naver.com/PostView.nhn?blogId=sw4r&logNo=221021173204</span>
+이미지 출처:https://blog.naver.com/PostView.nhn?blogId=sw4r&logNo=221021173204
 
 
 ```python
@@ -178,21 +135,14 @@ def detect_outliers(df,n,features):
 # Age, SibSp, Parch, Fare cols에서 outliers를 검출
 Outliers_to_drop = detect_outliers(train,2,["Age","SibSp","Parch","Fare"])
 ```
-
-    C:\Anaconda3\lib\site-packages\numpy\lib\function_base.py:3652: RuntimeWarning: Invalid value encountered in percentile
-      interpolation=interpolation)
     
-<span style="font-size:11pt">
 Outliers는 특히 prediction(예측) 문제에 있어서 극적인 효과를 불러올 수 있기 때문에 이들을 관리해야 합니다. 여기에서 우리는 Turkey method(Tukey JW., 1977)를 사용하여 분포값(IQR)의 1분위와 3분위 사이에 포함된 사분위수 범위(Interquartile range)를 정의하는 outliers를 탐지했습니다. Outliers는 (IQR - outlier_step) 범위의 밖에 존재하는 행(row)입니다.<br><br> 
-저는 features의 숫자형 값인 Age, SibSp, Sarch, Fare에서 Outliers를 검출하기로 결정했습니다. 그런 다음 Outliers는 적어도 두 개의 치명적인 값이 존재하는 행이라 여기기로 했습니다. <br></span>
+저는 features의 숫자형 값인 Age, SibSp, Sarch, Fare에서 Outliers를 검출하기로 결정했습니다. 그런 다음 Outliers는 적어도 두 개의 치명적인 값이 존재하는 행이라 여기기로 했습니다. <br>
 
 
 ```python
 train.loc[Outliers_to_drop] # Outliers에 해당하는 rows를 출력
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -383,7 +333,7 @@ train.loc[Outliers_to_drop] # Outliers에 해당하는 rows를 출력
 
 
 
-<span style="font-size:11pt">이 결과로 우리는 10개의 outliers를 검출했습니다. 28, 88, 341번째 손님이 높은 티겟값을 지불했고, 7명 정도의 손님이 높은 SinSp값을 갖고 있는 것을 확인할 수 있습니다. 이제 이 Outliers를 버리도록 하겠습니다.</span>
+이 결과로 우리는 10개의 outliers를 검출했습니다. 28, 88, 341번째 손님이 높은 티겟값을 지불했고, 7명 정도의 손님이 높은 SinSp값을 갖고 있는 것을 확인할 수 있습니다. 이제 이 Outliers를 버리도록 하겠습니다.
 
 
 ```python
@@ -392,7 +342,7 @@ train = train.drop(Outliers_to_drop, axis = 0).reset_index(drop=True)
 ```
 
 ## 2.3 Joining and test set
-<span style="font-size:11pt">Categorical로 변환하는 중 동일한 수의 feature를 얻기 위해 train과 test set을 결합(join)합니다.</span> 
+Categorical로 변환하는 중 동일한 수의 feature를 얻기 위해 train과 test set을 결합(join)합니다.
 
 
 ```python
@@ -400,18 +350,8 @@ train_len = len(train) # 881
 dataset = pd.concat(objs=[train, test], axis=0).reset_index(drop=True)
 ```
 
-    C:\Anaconda3\lib\site-packages\ipykernel_launcher.py:2: FutureWarning: Sorting because non-concatenation axis is not aligned. A future version
-    of pandas will change to not sort by default.
-    
-    To accept the future behavior, pass 'sort=False'.
-    
-    To retain the current behavior and silence the warning, pass 'sort=True'.
-    
-      
-    
-
 ## 2.4 Check for null and missing values
-<span style="font-size:11pt">Null값과 Missing values를 확인 및 제거하는 과정을 진행해 봅니다. 이 값들은 학습 진행을 불가능하게 하므로 제어해야 합니다.</span>
+Null값과 Missing values를 확인 및 제거하는 과정을 진행해 봅니다. 이 값들은 학습 진행을 불가능하게 하므로 제어해야 합니다.
 
 
 ```python
@@ -421,9 +361,6 @@ dataset = dataset.fillna(np.nan) # np.nan은 요소에 NaN을 대입하는 Numpy
 # Null값이 존재하는지 확인합니다. 
 dataset.isnull().sum() # pd.isnull()은 누락되거나 NA인 값을 알려주는 불리언 값 객체를 반환합니다. 이를 요약한 결과(sum)를 반환합니다. 
 ```
-
-
-
 
     Age             256
     Cabin          1007
@@ -441,7 +378,7 @@ dataset.isnull().sum() # pd.isnull()은 누락되거나 NA인 값을 알려주�
 
 
 
-<span style="font-size:11pt">Age와 Cabin값은 missing values중 중요한 부분을 차지하고 있습니다. 살아남은 열은 test set에 존재하지 않으며, train과 test set을 연결(concatenate)할때 NaN값으로 대체되었습니다.<br></span>
+Age와 Cabin값은 missing values중 중요한 부분을 차지하고 있습니다. 살아남은 열은 test set에 존재하지 않으며, train과 test set을 연결(concatenate)할때 NaN값으로 대체되었습니다.<br>
 
 
 ```python
@@ -492,9 +429,6 @@ train.isnull().sum()
 ```python
 train.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -609,14 +543,9 @@ train.head()
 </div>
 
 
-
-
 ```python
 train.dtypes
 ```
-
-
-
 
     PassengerId      int64
     Survived         int64
@@ -639,9 +568,6 @@ train.dtypes
 # 데이터 요약해보기(요약 및 통계)
 train.describe()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -759,7 +685,7 @@ train.describe()
 
 # 3. Feature Analysis
 ## 3.1. Numerical values
-<span style="font-size:11pt">여기에서는 Survived를 기준으로 하여 숫자형 값들의 상관 행렬(Correlation Matrix)을 만들어 보겠습니다.</span> 
+여기에서는 Survived를 기준으로 하여 숫자형 값들의 상관 행렬(Correlation Matrix)을 만들어 보겠습니다.
 
 
 ```python
@@ -767,10 +693,9 @@ g = sns.heatmap(train[['Survived', 'SibSp','Parch','Age','Fare']].corr(), annot 
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_22_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_22_0.png)
 
-
-<span style="font-size:11pt">단지 Fare feature만이 생존 확률과 유의미한 상관 관계가 있는 것으로 보입니다. 그러나 다른 features가 유용하지 않다는 의미는 아닙니다. 이러한 features의 하위 집단은 생존 여부와 상관이 있을 수 있습니다. 이를 확인하려면 다른 features를 자세히 조사할 필요가 있습니다.</span> 
+단지 Fare feature만이 생존 확률과 유의미한 상관 관계가 있는 것으로 보입니다. 그러나 다른 features가 유용하지 않다는 의미는 아닙니다. 이러한 features의 하위 집단은 생존 여부와 상관이 있을 수 있습니다. 이를 확인하려면 다른 features를 자세히 조사할 필요가 있습니다.
 
 #### - SibSp Feature에 대해 분석해보기
 
@@ -789,11 +714,10 @@ g = g.set_ylabels("Survival Probability")
       return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
     
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_25_1.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_25_1.png)
 
-
-<span style="font-size:11pt">형제/배우자가 많은 승객은 생존 기회가 적습니다. <br> 
+형제/배우자가 많은 승객은 생존 기회가 적습니다. <br> 
 단일 승객(SibSp 0)이나 두 명의 승객(SibSp 1 또는 2)은 더 많은 생존 기회가 있었습니다. <br> 
 이러한 관측은 꽤 흥미롭습니다. 이를 통해 우리는 이제 이 카테고리를 설명하기 위한 몇 개의 features를 고려할 수 있습니다.<br> 
 
@@ -806,17 +730,11 @@ g = sns.factorplot(x="Parch", y="Survived", data=train, kind="bar", size=6, pale
 g = g.set_ylabels("Survival Probability")
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3672: UserWarning: The `size` paramter has been renamed to `height`; please update your code.
-      warnings.warn(msg, UserWarning)
-    
+
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_28_1.png)
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_28_1.png)
-
-
-<span style="font-size:11pt">작은 가족들은 단일(Parch 0), 중간(Parch 3, 4), 큰(Parch 5, 6) 크기의 가족들에 비해 생존 기회가 더 많았습니다. 부모/자녀가 3명인 승객의 생존 여부에 중요한 표준 편차가 있음에 유의해야 합니다.</span> 
+작은 가족들은 단일(Parch 0), 중간(Parch 3, 4), 큰(Parch 5, 6) 크기의 가족들에 비해 생존 기회가 더 많았습니다. 부모/자녀가 3명인 승객의 생존 여부에 중요한 표준 편차가 있음에 유의해야 합니다. 
 
 #### - Age Feature에 대해 분석해보기
 
@@ -827,11 +745,9 @@ g = sns.FacetGrid(train, col='Survived')
 g = g.map(sns.distplot, 'Age')
 ```
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_31_0.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_31_0.png)
-
-
-<span style="font-size:11pt">연령(Age)에 대한 분포는 꼬리 분포(Tailed distribution, 왼쪽 또는 오른쪽으로 최빈값이 몰려 있고 다른 방향으로 갈수록 꼬리가 길어지는 형태의 분포) 또는 정규분포(Gaussian distribution)인 것처럼 보입니다.<br><br>
+연령(Age)에 대한 분포는 꼬리 분포(Tailed distribution, 왼쪽 또는 오른쪽으로 최빈값이 몰려 있고 다른 방향으로 갈수록 꼬리가 길어지는 형태의 분포) 또는 정규분포(Gaussian distribution)인 것처럼 보입니다.<br><br>
 우리는 생존자 하위 집단과 사망자 하위 집단에서 연령 분포가 동일하게 나타나지 않는다는 것을 알 수 있습니다. 실제로, 젊은 승객에 해당하는 부분에 뾰족한 부분(peak)이 존재하는 것을 알 수 있습니다. 또한 60~80세 사이의 승객이 살아남지 못했음을 알 수 있습니다.<br><br> 
 따라서 Age feature가 생존 여부(Survived)와 상관 관계가 없더라도 생존 기회가 더 많거나 적은 승객의 연령 카테고리가 있음을 알 수 있습니다. <br>
 표를 통해 아주 어린 나이의 승객들의 생존 기회가 더 많았음을 유추해 볼 수 있습니다. <br>
@@ -849,10 +765,10 @@ g = g.legend(['Not Survived', 'Survived'])
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_33_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_33_0.png)
 
 
-<span style="font-size:11pt">두 밀도를 겹쳐서 보게 되면, 우리는 0~5살 사이의 아기들 영역에서 튀는 값(peak)이 존재하는 것을 명확하게 확인할 수 있습니다.</span> 
+두 밀도를 겹쳐서 보게 되면, 우리는 0~5살 사이의 아기들 영역에서 튀는 값(peak)이 존재하는 것을 명확하게 확인할 수 있습니다.
 
 #### - Fare Feature에 대해 분석해보기
 
@@ -861,20 +777,14 @@ g = g.legend(['Not Survived', 'Survived'])
 dataset['Fare'].isnull().sum() # NULL값이 존재하는지 확인해 봅니다. 
 ```
 
-
-
-
     1
-
-
 
 
 ```python
 # missing value를 median value로 채웁니다. 
 dataset['Fare'] = dataset['Fare'].fillna(dataset['Fare'].median())
 ```
-
-<span style="font-size:11pt">Fare feature에 한 개의 missing value가 존재하기 때문에, 예측에 중요한 영향을 미치지 않을 median value(중간값)로 채웁니다.</span> 
+Fare feature에 한 개의 missing value가 존재하기 때문에, 예측에 중요한 영향을 미치지 않을 median value(중간값)로 채웁니다.
 
 
 ```python
@@ -884,10 +794,9 @@ g = g.legend(loc='best')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_39_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_39_0.png)
 
-
-<span style="font-size:11pt">여기서 볼 수 있듯이, Fare의 분포는 매우 기울어 있습니다. 이러한 feature는 scale이 조정된 경우에도 모델에서 매우 높은 값으로 인한 초과(overweight very high values in the model)를 유발할 수 있습니다. 이 경우, 기울기를 줄이기 위해 로그 함수로 변환하는 것이 좋습니다.</span> 
+여기서 볼 수 있듯이, Fare의 분포는 매우 기울어 있습니다. 이러한 feature는 scale이 조정된 경우에도 모델에서 매우 높은 값으로 인한 초과(overweight very high values in the model)를 유발할 수 있습니다. 이 경우, 기울기를 줄이기 위해 로그 함수로 변환하는 것이 좋습니다.
 
 
 ```python
@@ -903,10 +812,10 @@ g = g.legend(loc='best')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_42_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_42_0.png)
 
 
-<span style="font-size:11pt">로그 함수를 취해 주니 확실히 기울기가 줄어든 것이 보입니다.</span> 
+로그 함수를 취해 주니 확실히 기울기가 줄어든 것이 보입니다.
 
 ## 3.2. Categorical values
 
@@ -919,7 +828,7 @@ g = g.set_ylabel('Survival Probability')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_46_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_46_0.png)
 
 
 
@@ -927,8 +836,6 @@ g = g.set_ylabel('Survival Probability')
 # train 내 Sex category에 따라 그룹을 묶고 평균을 출력합니다. 
 train[['Sex', 'Survived']].groupby('Sex').mean() 
 ```
-
-
 
 
 <div>
@@ -969,10 +876,8 @@ train[['Sex', 'Survived']].groupby('Sex').mean()
 </table>
 </div>
 
-
-
-<span style="font-size:11pt">남성이 여성보다 생존 기회가 적었음이 분명합니다. 따라서 성별은 생존 예측에 중요한 역할을 할 수 있다는 것을 알 수 있습니다.<br> 
-1997년 개봉한 영화 타이타닉을 보신 분들이라면 배에서 탈출하는 장면에서의 대사인 "여자와 아이들 먼저"를 기억할 것입니다. <br></span>
+남성이 여성보다 생존 기회가 적었음이 분명합니다. 따라서 성별은 생존 예측에 중요한 역할을 할 수 있다는 것을 알 수 있습니다.<br> 
+1997년 개봉한 영화 타이타닉을 보신 분들이라면 배에서 탈출하는 장면에서의 대사인 "여자와 아이들 먼저"를 기억할 것입니다. <br>
 
 #### - Pclass Feature에 대해 분석해보기
 
@@ -983,14 +888,8 @@ g = sns.factorplot(x='Pclass', y='Survived', data=train, kind='bar', size=6, pal
 g = g.set_ylabels("Survival Probability")
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3672: UserWarning: The `size` paramter has been renamed to `height`; please update your code.
-      warnings.warn(msg, UserWarning)
-    
 
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_50_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_50_1.png)
 
 
 
@@ -1000,18 +899,11 @@ g = sns.factorplot(x='Pclass', y='Survived', hue='Sex', data=train, size=6, kind
 g = g.set_ylabels('Survival Probability')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3672: UserWarning: The `size` paramter has been renamed to `height`; please update your code.
-      warnings.warn(msg, UserWarning)
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_51_1.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_51_1.png)
-
-<span style="font-size:11pt">
 승객들의 생존 여부는 세 클래스 모두 동일하지 않음을 알 수 있습니다. 1등석 승객은 2등석, 3등석 승객보다 생존 기회가 더 많았습니다. <br>
-이 추세는 남녀 승객 모두에 대해서 모두 나타남을 알 수 있습니다. <br></span>
+이 추세는 남녀 승객 모두에 대해서 모두 나타남을 알 수 있습니다. <br>
 
 #### - Embarked Feature에 대해 분석해보기
 
@@ -1020,20 +912,12 @@ g = g.set_ylabels('Survival Probability')
 dataset['Embarked'].isnull().sum() # NULL값 찾기
 ```
 
-
-
-
     2
-
-
 
 
 ```python
 dataset['Embarked']
 ```
-
-
-
 
     0       S
     1       C
@@ -1099,14 +983,12 @@ dataset['Embarked']
     Name: Embarked, Length: 1299, dtype: object
 
 
-
-
 ```python
 # Embarked feature에 존재하는 NaN값들을 데이터셋 내에서 가장 빈도가 높은 값인 'S'로 채웁니다. 
 dataset['Embarked'] = dataset['Embarked'].fillna('S')
 ```
 
-<span style="font-size:11pt">두 개의 누락된 값을 찾아내고 'S'값으로 채웠습니다.</span> 
+두 개의 누락된 값을 찾아내고 'S'값으로 채웠습니다.
 
 
 ```python
@@ -1122,12 +1004,12 @@ g = g.set_ylabels('Survival Probability')
     
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_58_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_58_1.png)
 
 
-<span style="font-size:11pt">Cherbourg(C)에서 오는 승객들에게는 더 많은 생존 기회가 있었던 것으로 보입니다.<br> 
+Cherbourg(C)에서 오는 승객들에게는 더 많은 생존 기회가 있었던 것으로 보입니다.<br> 
 저의 가설(Hypothesis)은 Cherbourg(C)에서 온 1등석 승객의 비율이 Queenstown(Q)과 Southampton(S)에서 온 1등석 승객 비율보다 높다는 것입니다.<br> 
-Pclass의 분포와 Embarked의 분포를 비교해 보겠습니다. <br></span>
+Pclass의 분포와 Embarked의 분포를 비교해 보겠습니다. <br>
 
 
 ```python
@@ -1136,24 +1018,17 @@ g = sns.factorplot('Pclass', col='Embarked', data=train, size=6, kind='count', p
 g = g.set_ylabels('Count')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3672: UserWarning: The `size` paramter has been renamed to `height`; please update your code.
-      warnings.warn(msg, UserWarning)
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_60_1.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_60_1.png)
-
-<span style="font-size:11pt">
 삼등석 클래스는 Southampton(S)과 Queenstown(Q)에서 온 승객들이 가장 많은 반면 Cherbourg에서 온 승객들은 대부분 일등석이었으며, 생존률이 가장 높았습니다.<br><br> 
-이 부분에서 저는 왜 일등석이 높은 생존률을 보이는지 설명할 수 없었습니다. 제 생각에는 일등석이 아마 그들이 가진 영향력 때문에 대피에서 우선 순위가 부여되었던 것 같습니다.<br></span> 
+이 부분에서 저는 왜 일등석이 높은 생존률을 보이는지 설명할 수 없었습니다. 제 생각에는 일등석이 아마 그들이 가진 영향력 때문에 대피에서 우선 순위가 부여되었던 것 같습니다.<br>
 
 # 4. Finding missing Values
 ## 4.1 Age
-<span style="font-size:11pt">전에 보았던 것처럼, 전체 데이터셋 중 Age 열은 256개의 missing values를 갖고 있습니다.<br> 
+전에 보았던 것처럼, 전체 데이터셋 중 Age 열은 256개의 missing values를 갖고 있습니다.<br> 
 생존 기회가 더 많은 하위 집단(ex. 어린이)이 있기 때문에 Age feature를 유지하며 누락된 값을 대체하는 것이 바람직합니다. <br>
-이 문제를 해결하기 위해, Age와 가장 관련성이 높은 features(Sex, Parch, Pclass, SibSp)를 살펴 보겠습니다.<br></span>
+이 문제를 해결하기 위해, Age와 가장 관련성이 높은 features(Sex, Parch, Pclass, SibSp)를 살펴 보겠습니다.<br>
 
 
 ```python
@@ -1164,33 +1039,15 @@ g = sns.factorplot(y='Age', x='Parch', data=dataset, kind='box')
 g = sns.factorplot(y='Age', x='SibSp', data=dataset, kind='box')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_63_1.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_63_2.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_63_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_63_3.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_63_4.png)
 
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_63_2.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_63_3.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_63_4.png)
-
-
-<span style="font-size:11pt">Age 분포는 남성 및 여성의 하위 인구 집단에서 동일하기 때문에 Sex는 Age를 예측하는데 유익하지 않습니다. 그러나 1등석 승객은 2등석 승객보다 나이가 많고, 2등석 승객은 3등석 승객보다 나이가 많습니다. 또한 부모/자녀가 많은 남자 승객일수록 나이가 많으며 형제/배우자가 있는 남자 승객일수록 젊었습니다.</span> 
+Age 분포는 남성 및 여성의 하위 인구 집단에서 동일하기 때문에 Sex는 Age를 예측하는데 유익하지 않습니다. 그러나 1등석 승객은 2등석 승객보다 나이가 많고, 2등석 승객은 3등석 승객보다 나이가 많습니다. 또한 부모/자녀가 많은 남자 승객일수록 나이가 많으며 형제/배우자가 있는 남자 승객일수록 젊었습니다.
 
 
 ```python
@@ -1203,15 +1060,13 @@ dataset['Sex'] = dataset['Sex'].map({'male':0, 'female':1})
 g = sns.heatmap(dataset[['Age', 'Sex', 'SibSp', 'Parch', 'Pclass']].corr(), cmap='BrBG', annot=True)
 ```
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_66_0.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_66_0.png)
-
-<span style="font-size:11pt">
 상관 관계 맵(correlation map)은 Parch를 제외한 factorplots를 보여줍니다. Age는 Sex와 상관이 없지만 Pclass, Parch 및 SibSp와 음의 상관 관계가 있습니다.<br> 
 (역자 주 : 상관관계란 어떤 변수가 증가할 때 다른 변수가 함께 증가하는지 감소하는지를 관찰해 그 관계를 파악하기 위한 것으로, 체중과 신장 사이에는 양의 상관관계가, 수요와 가격의 사이에는 음의 상관관계가 있다고 할 수 있다. 이는 가격이 오르면 대개 해당 상품에 대한 수요가 줄어들기 때문이다. 더 자세한 설명은 https://kiyoo.tistory.com/210 참고.)<br>
 Age에 대한 도표에서 Parch의 기능을 보면, Age는 부모/아이들의 수에 따라 증가하는 것을 확인할 수 있습니다. 그러나 일반적으로 상관 관계는 음(negetive)입니다. <br><br>
 
-그래서 저는 SibSp, Parch, Pclass를 사용하여 누락된 Age를 설명하기로 결정했습니다. 바로 Pclass, Parch, SibSp에 따라 Age를 비슷한 행의 평균 연령으로 채우는 것입니다.<br></span> 
+그래서 저는 SibSp, Parch, Pclass를 사용하여 누락된 Age를 설명하기로 결정했습니다. 바로 Pclass, Parch, SibSp에 따라 Age를 비슷한 행의 평균 연령으로 채우는 것입니다.<br>
 
 
 ```python
@@ -1232,14 +1087,7 @@ for i in index_NaN_age:
     
 ```
 
-    C:\Anaconda3\lib\site-packages\pandas\core\indexing.py:189: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-      self._setitem_with_indexer(indexer, value)
-    
-
-<i><span style="font-size:11pt">(역자 주 : loc과 iloc은 행 및 열을 추출할 때 대표적으로 쓰이는 함수로, loc은 컬럼명과 같이 이름을 기준으로 할 때 많이 쓰이는 반면 iloc은 index 기준, 즉 숫자를 이용하므로 특정 규칙에 따라 추출할 수 있습니다.)</span></i>
+<i>(역자 주 : loc과 iloc은 행 및 열을 추출할 때 대표적으로 쓰이는 함수로, loc은 컬럼명과 같이 이름을 기준으로 할 때 많이 쓰이는 반면 iloc은 index 기준, 즉 숫자를 이용하므로 특정 규칙에 따라 추출할 수 있습니다.)</i>
 
 
 ```python
@@ -1247,32 +1095,18 @@ g = sns.factorplot(x='Survived', y='Age', data=train, kind='box')
 g = sns.factorplot(x='Survived', y='Age', data=train, kind='violin')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_70_1.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_70_2.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_70_1.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_70_2.png)
-
-
-<span style="font-size:11pt">Age에 따른 생존한 하위집단과 사망한 하위집단 사이의 중간값 차이는 존재하지 않습니다. 그러나 생존한 승객들의 바이올린 그래프에서 우리는 여전히 어린 아이들이 높은 생존율을 보이는 것을 확인할 수 있습니다.</span> 
+Age에 따른 생존한 하위집단과 사망한 하위집단 사이의 중간값 차이는 존재하지 않습니다. 그러나 생존한 승객들의 바이올린 그래프에서 우리는 여전히 어린 아이들이 높은 생존율을 보이는 것을 확인할 수 있습니다.
 
 # 5. Feature Engineering
 ## 5.1 Name/Title
 
-
 ```python
 dataset['Name'].head()
 ```
-
-
-
 
     0                              Braund, Mr. Owen Harris
     1    Cumings, Mrs. John Bradley (Florence Briggs Th...
@@ -1283,8 +1117,7 @@ dataset['Name'].head()
 
 
 
-<span style="font-size:11pt">Name feature는 승객 칭호에 대한 정보를 담고 있습니다. 기품 있는 칭호를 가진 승객이 탈출 과정에서 선호될 수 있기 때문에 Name feature를 모델에 추가하는 것은 꽤 흥미롭습니다.</span> 
-
+Name feature는 승객 칭호에 대한 정보를 담고 있습니다. 기품 있는 칭호를 가진 승객이 탈출 과정에서 선호될 수 있기 때문에 Name feature를 모델에 추가하는 것은 꽤 흥미롭습니다.
 
 ```python
 # Name으로부터 칭호 가져오기
@@ -1292,9 +1125,6 @@ dataset_title = [i.split(",")[1].split(".")[0].strip() for i in dataset["Name"]]
 dataset['Title'] = pd.Series(dataset_title)
 dataset["Title"].head()
 ```
-
-
-
 
     0      Mr
     1     Mrs
@@ -1304,18 +1134,15 @@ dataset["Title"].head()
     Name: Title, dtype: object
 
 
-
-
 ```python
 g = sns.countplot(x='Title', data=dataset)
 g = plt.setp(g.get_xticklabels(), rotation=45)
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_76_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_76_0.png)
 
-
-<span style="font-size:11pt">dataset에는 17개의 호칭이 존재합니다. 대부분의 칭호가 매우 드물기 때문에 우리는 4개 정도의 카테고리로 나머지 칭호들을 그룹화할 수 있습니다.</span>
+dataset에는 17개의 호칭이 존재합니다. 대부분의 칭호가 매우 드물기 때문에 우리는 4개 정도의 카테고리로 나머지 칭호들을 그룹화할 수 있습니다.
 
 
 ```python
@@ -1332,8 +1159,7 @@ g = g.set_xticklabels(['Master', 'Miss/Ms/Mme/Mlle/Mrs','Mr', 'Rare'])
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_79_0.png)
-
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_79_0.png)
 
 
 ```python
@@ -1342,16 +1168,11 @@ g = g.set_xticklabels(['Master', 'Miss-Mrs', 'Mr', 'Rare'])
 g = g.set_ylabels('Survival Probability')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_50_1/output_80_1.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_80_1.png)
-
-<span style="font-size:11pt">
 "여성과 어린 아이를 먼저 탈출시켜라"<br>
-희귀한 칭호를 가진 승객은 생존 기회가 더 많은 것을 알 수 있습니다.<br></span> 
+희귀한 칭호를 가진 승객은 생존 기회가 더 많은 것을 알 수 있습니다.<br>
 
 
 ```python
@@ -1360,7 +1181,7 @@ dataset.drop(labels=['Name'], axis=1, inplace=True)
 ```
 
 ## 5.2 Family size
-<span style="font-size:11pt">우리는 여기서 대가족일수록 탈출이 어렵다는 것을 상상해볼 수 있습니다. 탈출하는 동안 자매/형제/부모를 찾아야 하기 때문입니다. 그래서 저는 SibSp, Parch and 1(승객 포함)을 합친 'Fize'(가족 크기)라는 feature를 만들기로 했습니다.</span> 
+우리는 여기서 대가족일수록 탈출이 어렵다는 것을 상상해볼 수 있습니다. 탈출하는 동안 자매/형제/부모를 찾아야 하기 때문입니다. 그래서 저는 SibSp, Parch and 1(승객 포함)을 합친 'Fize'(가족 크기)라는 feature를 만들기로 했습니다.
 
 
 ```python
@@ -1374,15 +1195,10 @@ g = sns.factorplot(x="Fsize",y="Survived",data = dataset)
 g = g.set_ylabels("Survival Probability")
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_85_1.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_85_1.png)
-
-
-<span style="font-size:11pt">가족 크기(Fsize) feature는 중요한 역할을 맡고 있는 것처럼 보입니다. 생존율은 대가족에서 매우 심각했습니다. 여기에 이어서, 저는 가족 크기에 대해 4개의 카테고리를 만들기로 했습니다.</span> 
+가족 크기(Fsize) feature는 중요한 역할을 맡고 있는 것처럼 보입니다. 생존율은 대가족에서 매우 심각했습니다. 여기에 이어서, 저는 가족 크기에 대해 4개의 카테고리를 만들기로 했습니다.
 
 
 ```python
@@ -1408,33 +1224,16 @@ g = sns.factorplot(x='LargeF', y='Survived', data=dataset, kind='bar')
 g = g.set_ylabels('Survival Probability')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_88_1.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_88_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_88_2.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_88_3.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_88_4.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_88_2.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_88_3.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_88_4.png)
-
-
-<span style="font-size:11pt">가족 크기에 따른 Factorplot들은 작거나 중간 크기의 가족들이 혼자 탑승한 승객이나 대가족보다 생존 기회가 더 많았음을 보여줍니다.</span> 
+가족 크기에 따른 Factorplot들은 작거나 중간 크기의 가족들이 혼자 탑승한 승객이나 대가족보다 생존 기회가 더 많았음을 보여줍니다.
 
 
 ```python
@@ -1667,9 +1466,7 @@ dataset['Cabin'].isnull().sum()
 
     1007
 
-
-
-<span style="font-size:11pt">Cabin feature 열은 292개의 값과 1007개의 누락값을 갖고 있습니다. 저는 Cabin(객실)이 없는 승객은 Cabin number를 갖고 있지 않기 때문에 객실 번호 대신 누락된 값을 갖고 있다고 생각합니다.</span> 
+Cabin feature 열은 292개의 값과 1007개의 누락값을 갖고 있습니다. 저는 Cabin(객실)이 없는 승객은 Cabin number를 갖고 있지 않기 때문에 객실 번호 대신 누락된 값을 갖고 있다고 생각합니다.
 
 
 ```python
@@ -1693,8 +1490,7 @@ dataset['Cabin'][dataset['Cabin'].notnull()].head()
 # 만일 객실이 없는 승객이라면 객실 번호(Cabin Number)를 'X'로 바꿉니다. 
 dataset['Cabin'] = pd.Series([i[0] if not pd.isnull(i) else 'X' for i in dataset['Cabin']])
 ```
-
-<span style="font-size:11pt">객실 번호의 첫 번째 문자는 갑판을 가리키며, 이는 타이타닉 호에서 승객이 있을 만한 위치를 가리키기 때문에 이 정보만 유지하도록 하겠습니다.</span> 
+객실 번호의 첫 번째 문자는 갑판을 가리키며, 이는 타이타닉 호에서 승객이 있을 만한 위치를 가리키기 때문에 이 정보만 유지하도록 하겠습니다.
 
 
 ```python
@@ -1702,7 +1498,7 @@ g = sns.countplot(dataset['Cabin'], order=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'T
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_101_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_101_0.png)
 
 
 
@@ -1711,16 +1507,11 @@ g = sns.factorplot(y='Survived', x='Cabin', data=dataset, kind = 'bar', order=['
 g = g.set_ylabels('Survival Probability')
 ```
 
-    C:\Anaconda3\lib\site-packages\seaborn\categorical.py:3666: UserWarning: The `factorplot` function has been renamed to `catplot`. The original name will be removed in a future release. Please update your code. Note that the default `kind` in `factorplot` (`'point'`) has changed `'strip'` in `catplot`.
-      warnings.warn(msg)
-    
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_102_1.png)
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_102_1.png)
-
-
-<span style="font-size:11pt">객실을 가진 승객의 수가 적기 때문에 생존 확률은 중요한 표준편차를 가지며, 따라서 우리는 각각 다른 갑판에서의 승객 생존 확률을 구분할 수 없습니다.<br> 
-그러나 객실이 있던 승객은 객실이 없던 승객보다 생존 기회가 더 많았음을 알 수 있습니다. 객실 B, C, D, E, F의 경우는 특히 더 그렇습니다. <br></span>
+객실을 가진 승객의 수가 적기 때문에 생존 확률은 중요한 표준편차를 가지며, 따라서 우리는 각각 다른 갑판에서의 승객 생존 확률을 구분할 수 없습니다.<br> 
+그러나 객실이 있던 승객은 객실이 없던 승객보다 생존 기회가 더 많았음을 알 수 있습니다. 객실 B, C, D, E, F의 경우는 특히 더 그렇습니다. <br>
 
 
 ```python
@@ -1734,9 +1525,6 @@ dataset = pd.get_dummies(dataset, columns=['Cabin'], prefix='Cabin')
 dataset['Ticket'].head()
 ```
 
-
-
-
     0           A/5 21171
     1            PC 17599
     2    STON/O2. 3101282
@@ -1744,11 +1532,9 @@ dataset['Ticket'].head()
     4              373450
     Name: Ticket, dtype: object
 
-
-<span style="font-size:11pt">
 같은 접두사를 공유하는 티켓의 객실은 같이 배치되어 있다고 볼 수 있습니다. 따라서 실제 객실의 배치를 유추해 볼 수 있습니다.<br>
 같은 접두사를 가진 티켓은 비슷한 객실 등급과 생존율을 가질 수 있습니다. <br>
-따라서 저는 Ticket feature 열을 티겟 접두사로 대체하기로 했습니다. 이게 더 유익할 수 있기 때문입니다.<br></span> 
+따라서 저는 Ticket feature 열을 티겟 접두사로 대체하기로 했습니다. 이게 더 유익할 수 있기 때문입니다.<br>
 
 
 ```python
@@ -1764,17 +1550,12 @@ dataset['Ticket'] = Ticket
 dataset['Ticket'].head()
 ```
 
-
-
-
     0        A5
     1        PC
     2    STONO2
     3         X
     4         X
     Name: Ticket, dtype: object
-
-
 
 
 ```python
@@ -1798,8 +1579,6 @@ dataset.drop(labels=['PassengerId'], axis=1, inplace=True)
 ```python
 dataset.head()
 ```
-
-
 
 
 <div>
@@ -1972,21 +1751,12 @@ dataset.head()
 
 
 # 6. Modeling
-
-
 ```python
 # Train set과 Test set을 분리합니다. 
 train = dataset[:train_len]
 test = dataset[train_len:]
 test.drop(labels = ['Survived'], axis=1, inplace=True)
 ```
-
-    C:\Anaconda3\lib\site-packages\pandas\core\frame.py:3697: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-      errors=errors)
-    
 
 
 ```python
@@ -1996,28 +1766,20 @@ Y_train = train['Survived']
 X_train = train.drop(labels=["Survived"], axis=1)
 ```
 
-    C:\Anaconda3\lib\site-packages\ipykernel_launcher.py:2: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-      
-    
 
 ## 6.1 Simple Modeling
 ### 6.1.1 Cross Validate Models
-<span style="font-size:11pt">저는 10개의 인기있는 분류기를 비교하고 계층화된 K-Fold validation 절차를 통해 각자의 평균 정확도를 평가하기로 했습니다.<br><br> 
-- <span style="font-size:11pt">SVC</span>
-- <span style="font-size:11pt">Decision Tree</span>
-- <span style="font-size:11pt">AdaBoost</span>
-- <span style="font-size:11pt">Random Forest</span>
-- <span style="font-size:11pt">Extra Trees</span>
-- <span style="font-size:11pt">Gradient Boosting</span>
-- <span style="font-size:11pt">Multiple Layer Perceptron (Neural Network)</span>
-- <span style="font-size:11pt">KNN</span>
-- <span style="font-size:11pt">Logistic Regression</span>
-- <span style="font-size:11pt">Linear Discriminant Analysis</span>
-
+저는 10개의 인기있는 분류기를 비교하고 계층화된 K-Fold validation 절차를 통해 각자의 평균 정확도를 평가하기로 했습니다.<br><br> 
+- SVC
+- Decision Tree
+- AdaBoost
+- Extra Trees
+- Random Forest
+- Gradient Boosting
+- Multiple Layer Perceptron (Neural Network
+- KNN
+- Logistic Regression
+- Linear Discriminant Analysis
 
 
 ```python
@@ -2064,14 +1826,14 @@ g = g.set_title('Cross Validation Scores')
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_118_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_118_0.png)
 
 
-<span style="font-size:11pt">저는 앙상블 모델링을 위해 SVC, RandomForest, ExtraTrees 및 GradientBoosting 분류기를 선택하기로 했습니다.</span> 
+저는 앙상블 모델링을 위해 SVC, RandomForest, ExtraTrees 및 GradientBoosting 분류기를 선택하기로 했습니다.
 
 ### 6.1.2 Hyperparameter tunning for best models
-<span style="font-size:11pt">저는 AdaBoost, ExtraTrees, RandomForest, GradientBoosting 및 SVC 분류기에 대한 Grid search 최적화를 수행했습니다. 저는 4개의 CPU를 갖고 있기 때문에 'n_jobs'의 매개 변수를 4로 설정했습니다. 계산 시간이 확실히 줄어듭니다.<br><br> 
-이 단계는 오랜 시간이 걸릴 수 있으므로 유의해야 합니다. 저는 4개의 CPU에서 15분 정도의 시간이 소요되었습니다.<br></span>
+저는 AdaBoost, ExtraTrees, RandomForest, GradientBoosting 및 SVC 분류기에 대한 Grid search 최적화를 수행했습니다. 저는 4개의 CPU를 갖고 있기 때문에 'n_jobs'의 매개 변수를 4로 설정했습니다. 계산 시간이 확실히 줄어듭니다.<br><br> 
+이 단계는 오랜 시간이 걸릴 수 있으므로 유의해야 합니다. 저는 4개의 CPU에서 15분 정도의 시간이 소요되었습니다.<br>
 
 
 ```python
@@ -2104,12 +1866,7 @@ ada_best = gsadaDTC.best_estimator_
 gsadaDTC.best_score_
 ```
 
-
-
-
     0.8240635641316686
-
-
 
 
 ```python
@@ -2143,12 +1900,7 @@ gsExtC.best_score_
     [Parallel(n_jobs=4)]: Done 540 out of 540 | elapsed:   18.9s finished
     
 
-
-
-
     0.8286038592508513
-
-
 
 
 ```python
@@ -2184,12 +1936,7 @@ gsRFC.best_score_
     [Parallel(n_jobs=4)]: Done 540 out of 540 | elapsed:   20.6s finished
     
 
-
-
-
     0.8342792281498297
-
-
 
 
 ```python
@@ -2219,9 +1966,7 @@ gsGBC.best_score_
 
     [Parallel(n_jobs=4)]: Done 212 tasks      | elapsed:    4.0s
     [Parallel(n_jobs=4)]: Done 720 out of 720 | elapsed:   13.2s finished
-    
-
-
+  
 
 
     0.8308740068104427
@@ -2254,15 +1999,12 @@ gsSVMC.best_score_
     [Parallel(n_jobs=4)]: Done 280 out of 280 | elapsed:   17.2s finished
     
 
-
-
-
     0.8331441543700341
 
 
 
 ### 6.1.3 Plot learining curves
-<span style="font-size:11pt">학습 곡선을 그려 보는 것은 Train set에 대한 오버피팅 및 train size가 정확도에 미치는 영향을 확인하는 좋은 방법입니다.</span> 
+학습 곡선을 그려 보는 것은 Train set에 대한 오버피팅 및 train size가 정확도에 미치는 영향을 확인하는 좋은 방법입니다.
 
 
 ```python
@@ -2301,32 +2043,22 @@ g = plot_learning_curve(gsadaDTC.best_estimator_,"AdaBoost learning curves",X_tr
 g = plot_learning_curve(gsGBC.best_estimator_,"GradientBoosting learning curves",X_train,Y_train,cv=kfold)
 ```
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_128_0.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_128_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_128_1.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_128_2.png)
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_128_3.png)
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_128_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4//output_128_4.png)
 
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_128_2.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_128_3.png)
-
-
-
-![png](/assets/Images/kaggletranscription/titanic-top4/output_128_4.png)
-
-<span style="font-size:11pt">
 GradientBoosting 및 AdaBoost 분류기는 Train set에 대해 오버피팅되는 경향이 있습니다. 점차 증가하는 모양의 Cross-Validation curve에 따르면 GradientBoosting과 AdaBoost는 더 많은 triaining example에서 더 잘 수행될 수 있는 것을 알 수 있습니다.<br><br> 
 
-SVC 및 ExtraTrees 분류기는 Train 및 Cross-Validation curve가 서로 가깝기 때문에 prediction에 있어서 더 잘 일반화하는 것으로 보입니다. <br></span>
+SVC 및 ExtraTrees 분류기는 Train 및 Cross-Validation curve가 서로 가깝기 때문에 prediction에 있어서 더 잘 일반화하는 것으로 보입니다. <br>
 
 ### 6.1.4 Feature Importance of Tree Based Classifiers
-<span style="font-size:11pt">승객들의 생존 예측을 위한 가장 유익한 feature를 찾기 위해 저는 네 개의 트리 기반 분류기에 대한 feature importance(중요성)를 출력해 보기로 했습니다.</span>
+승객들의 생존 예측을 위한 가장 유익한 feature를 찾기 위해 저는 네 개의 트리 기반 분류기에 대한 feature importance(중요성)를 출력해 보기로 했습니다.
 
 
 ```python
@@ -2350,18 +2082,18 @@ for row in range(nrows):
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_131_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_131_0.png)
 
 
-<span style="font-size:11pt">네 개의 트리 기반 분류기(AdaBoost, ExtraTrees, RandomForest, GradientBoosting)에 대한 feature importance를 그려 보았습니다.<br><br> 
+네 개의 트리 기반 분류기(AdaBoost, ExtraTrees, RandomForest, GradientBoosting)에 대한 feature importance를 그려 보았습니다.<br><br> 
 4개의 분류기는 상대적인 중요도에 따라 각각 다른 top features를 갖고 있음을 알 수 있습니다. 이는 이 모델들의 예측이 동일한 feature를 기반으로 하지 않음을 의미합니다. 그럼에도 불구하고 이들은 'Fare', 'Title_2', 'Age' 및 'Sex'와 같이 분류를 하는 데 있어서 중요한 몇 가지 공통된 feature들을 공유합니다.<br><br> 
 Title_2는 Mrs/Mlle/Mme/Miss/Ms 카테고리가 Sex와 높은 상관 관계가 있음을 보여줍니다. 따라서 우리는 다음과 같이 이야기할 수 있습니다.<br>
-- <span style="font-size:11pt">Pc_1, Pc_2, Pc_3 및 Fare feature는 승객의 일반적인 사회적 지위를 나타냅니다.</span> 
-- <span style="font-size:11pt">Sex 및 Title_2(Mrs/Mlle/Mme/Miss/Ms) 및 Title_3(Mr)은 성별을 나타냅니다.</span> 
-- <span style="font-size:11pt">Age와 Title(Master)는 승객의 나이를 나타냅니다.</span> 
-- <span style="font-size:11pt">Fsize, LargeF, MedF, Single은 승객 가족의 크기를 나타냅니다.</span> 
+- Pc_1, Pc_2, Pc_3 및 Fare feature는 승객의 일반적인 사회적 지위를 나타냅니다. 
+- Sex 및 Title_2(Mrs/Mlle/Mme/Miss/Ms) 및 Title_3(Mr)은 성별을 나타냅니다. 
+- Age와 Title(Master)는 승객의 나이를 나타냅니다. 
+- Fsize, LargeF, MedF, Single은 승객 가족의 크기를 나타냅니다. 
 
-<span style="font-size:11pt"><b>이 4개 분류기들의 feature importance에 따라, 생존의 예측은 구명 보트의 위치보다 승객의 Age(연령), Sex(성별), Family size(가족 크기) 및 Social Staniding(사회적 지위)와 더 관련이 있는 것으로 보입니다. </b></span>
+<b>이 4개 분류기들의 feature importance에 따라, 생존의 예측은 구명 보트의 위치보다 승객의 Age(연령), Sex(성별), Family size(가족 크기) 및 Social Staniding(사회적 지위)와 더 관련이 있는 것으로 보입니다. </b>
 
 
 ```python
@@ -2378,15 +2110,14 @@ g = sns.heatmap(ensemble_results.corr(), vmin=0.4, vmax=1, cmap="Blues", annot=T
 ```
 
 
-![png](/assets/Images/kaggletranscription/titanic-top4/output_133_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-titanic-top4/output_133_0.png)
 
-
-<span style="font-size:11pt">간혹 AdaBoost가 다른 분류기와 비교되는 것을 제외하고는 다섯 개의 분류기는 꽤 비슷한 결과를 예측하는 것으로 보입니다.<br> 
-다섯 분류기들의 예측값은 다소 비슷한 예측 결과를 보여주지만 약간의 차이가 있습니다. 다섯 분류기들의 예측값에 존재하는 차이들로 인해 앙상블 투표(ensembling vote)를 고려하기에 충분합니다.<br></span> 
+간혹 AdaBoost가 다른 분류기와 비교되는 것을 제외하고는 다섯 개의 분류기는 꽤 비슷한 결과를 예측하는 것으로 보입니다.<br> 
+다섯 분류기들의 예측값은 다소 비슷한 예측 결과를 보여주지만 약간의 차이가 있습니다. 다섯 분류기들의 예측값에 존재하는 차이들로 인해 앙상블 투표(ensembling vote)를 고려하기에 충분합니다.<br>
 
 ## 6.2 Ensemble Modeling
 ### 6.2.1 Combining Models
-<span style="font-size:11pt">투표 분류기(Voting classifier)를 이용하여 다섯 개의 분류기들로부터 나오는 예측값들을 결합하겠습니다. 저는 각 투표의 확률을 고려하기 위해 투표를 위한 변수에 'soft'인자를 전달하는 것을 선호합니다.</span> 
+투표 분류기(Voting classifier)를 이용하여 다섯 개의 분류기들로부터 나오는 예측값들을 결합하겠습니다. 저는 각 투표의 확률을 고려하기 위해 투표를 위한 변수에 'soft'인자를 전달하는 것을 선호합니다.
 
 
 ```python
@@ -2403,9 +2134,4 @@ votingC = votingC.fit(X_train, Y_train)
 test_Survived = pd.Series(votingC.predict(test),name='Survived')
 results = pd.concat([IDtest, test_Survived], axis=1)
 results.to_csv('ensemble_python_voting.csv', index=False)
-```
-
-
-```python
-
 ```

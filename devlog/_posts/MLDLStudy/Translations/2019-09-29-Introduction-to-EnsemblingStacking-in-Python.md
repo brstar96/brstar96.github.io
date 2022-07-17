@@ -17,7 +17,7 @@ related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
 
-<span style="font-size:11pt">This code is written by [Anisotropic](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python).</span>
+This code is written by [Anisotropic](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python).
 
 ## 소개
 이 노트북은 학습 모델을 앙상블(결합)하는 방법, 특히 스태킹(stacking)이라고 알려진 앙상블 기법의 변형에 대해 매우 기본적이고 간단한 소개를 하고 있습니다. 간략하게 말하자면, 첫 번째 레벨(base)에서 사용되는 스태킹은 몇 가지 기본 분류기를 통해 예측을 수행한 다음 두 번째 레벨에서 다른 모델을 사용해 첫 번째 레벨에서 나온 예측 결과를 다시 예측합니다.<br><br> 

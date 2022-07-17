@@ -1,24 +1,23 @@
 ---
-title: "(KR-KaggleKernelTranscription)Simple Exploration Notebook - Mercedes"
-tags: 
-  - Kaggle competition
-  - Machine Learning
-  - KaggleTranscription(Korean)
-categories:
-  - PostTranslation
-toc: true
-author_profile: false
-comments: 
-  provider: "disqus"
-  disqus:
-    shortname: "https-brstar96-github-io"
-header:
-  teaser: /assets/kaggletranscription/Simple_Exploration_Notebook-Mercedes/Mercedes-Benz-Greener-Manufacturing.png
+layout: post
+title: (KR-KaggleKernelTranscription)Simple Exploration Notebook - Mercedes
+tags: [Kaggle, ML, post translation]
+categories: [MLDLStudy]
+comments: true
+sitemap: true
+image: /assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/Mercedes-Benz-Greener-Manufacturing.jpg
+accent_image: 
+  background: url('/assets/img/sidebar-bg.gif') center/cover
+  overlay: false
+accent_color: '#ccc'
+theme_color: '#ccc'
+description: >
+  Mercedes-Benz Greener Manufacturing 대회의 인기 커널 중 하나를 번역했습니다. 이번 포스트에선 높은 분류 성능을 자랑하기보다, EDA를 수행한 후 XGBoost와 Ramdom Forest모델을 활용하여 feature importance를 찾는 방법에 대해 알아봅니다. 
+related_posts:
+    - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 ---
-<span style="font-size:11pt">
-*This notebook is written by [SRK](https://www.kaggle.com/sudalairajkumar/simple-exploration-notebook-mercedes). Thanks for sharing!<br><br>
-(역자주:본 커널은 높은 분류 성능을 자랑하기보다, EDA를 수행한 후 XGBoost와 Ramdom Forest모델을 활용하여 feature importance를 찾는 것에 집중하고 있습니다.)
-</span>
+
+* This notebook is written by [SRK](https://www.kaggle.com/sudalairajkumar/simple-exploration-notebook-mercedes). Thanks for sharing!<br>
 
 ```python
 import numpy as np # linear algebra
@@ -45,8 +44,6 @@ print("Test shape : ", test_df.shape)
 ```python
 train_df.head()
 ```
-
-
 
 
 <div>
@@ -2360,9 +2357,7 @@ train_df.head()
 
 
 #### Target Variable:
-<span style="font-size:11pt">
 "y"는 우리가 예측해야 하는 변수입니다. 먼저 이 변수에 대한 분석을 수행해 봅시다.
-</span>
 
 ```python
 plt.figure(figsize=(8,6))
@@ -2372,13 +2367,10 @@ plt.ylabel('y', fontsize=12)
 plt.show()
 ```
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_5_0.png)
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_5_0.png)
-
-<span style="font-size:11pt">
 하나의 데이터 포인트가 다른 데이터들보다 훨씬 위에 있는 것처럼 보입니다. <br><br>
 이제 분포 그래프(distribution graph)를 그려 봅시다.
-</span>
 
 ```python
 ulimit = 180
@@ -2390,31 +2382,15 @@ plt.xlabel('y value', fontsize=12)
 plt.show()
 ```
 
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:2: DeprecationWarning: 
-    .ix is deprecated. Please use
-    .loc for label based indexing or
-    .iloc for positional indexing
-    
-    See the documentation here:
-    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
-      
-    
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_7_1.png)
 
-
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_7_1.png)
-
-<span style="font-size:11pt">
 이제 데이터셋에 있는 모든 변수의 데이터 타입을 살펴보겠습니다.
-</span>
 
 ```python
 dtype_df = train_df.dtypes.reset_index()
 dtype_df.columns = ["Count", "Column Type"]
 dtype_df.groupby("Column Type").aggregate('count').reset_index()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -2459,25 +2435,11 @@ dtype_df.groupby("Column Type").aggregate('count').reset_index()
 </div>
 
 
-<span style="font-size:11pt">
 대부분의 열은 8개의 범주형(categorical) 열과 1개의 float타입 열(target variable)을 갖고 있습니다. 
-</span>
 
 ```python
 dtype_df.ix[:10,:]
 ```
-
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:1: DeprecationWarning: 
-    .ix is deprecated. Please use
-    .loc for label based indexing or
-    .iloc for positional indexing
-    
-    See the documentation here:
-    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
-      """Entry point for launching an IPython kernel.
-    
-
-
 
 
 <div>
@@ -2562,15 +2524,10 @@ dtype_df.ix[:10,:]
 </table>
 </div>
 
-
-<span style="font-size:11pt">
 X0부터 X8까지는 범주형 열들입니다. 
-</span>
 
 #### Missing values:
-<span style="font-size:11pt">
 이제 누락된 값들을 확인해 보겠습니다. 
-</span>
 
 ```python
 missing_df = train_df.isnull().sum(axis=0).reset_index()
@@ -2579,19 +2536,6 @@ missing_df = missing_df.ix[missing_df['missing_count']>0]
 missing_df = missing_df.sort_values(by='missing_count')
 missing_df
 ```
-
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:3: DeprecationWarning: 
-    .ix is deprecated. Please use
-    .loc for label based indexing or
-    .iloc for positional indexing
-    
-    See the documentation here:
-    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
-      This is separate from the ipykernel package so we can avoid doing imports until
-    
-
-
-
 
 <div>
 <style scoped>
@@ -2620,10 +2564,7 @@ missing_df
 </table>
 </div>
 
-
-<span style="font-size:11pt">
 데이터셋에 누락된값이 없는 것으로 확인됩니다. 
-</span>
 
 #### 정수형 열(Integer columns) 분석해보기:
 
@@ -2649,10 +2590,8 @@ for unique_val, columns in unique_values_dict.items():
     ['X11', 'X93', 'X107', 'X233', 'X235', 'X268', 'X289', 'X290', 'X293', 'X297', 'X330', 'X347']
     --------------------------------------------------
     
-<span style="font-size:11pt">
 모든 정수 열들은 2진수이며, 일부 열은 고유한 값인 0을 갖고 있습니다. 우리는 이러한 열들에 대해 모델링 과정에서 제외할 수 있습니다. <br><br>
 이제 데이터셋에 있는 범주형 열들에 대해 탐색해 보겠습니다. 
-</span>
 
 ```python
 var_name = "X0"
@@ -2666,7 +2605,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_17_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_17_0.png)
 
 
 
@@ -2682,7 +2621,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_18_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_18_0.png)
 
 
 
@@ -2698,7 +2637,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_19_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_19_0.png)
 
 
 
@@ -2713,12 +2652,8 @@ plt.title("Distribution of y variable with "+var_name, fontsize=15)
 plt.show()
 ```
 
-    C:\Users\brsta\Anaconda3\lib\site-packages\scipy\stats\stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
-      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
-    
 
-
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_20_1.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_20_1.png)
 
 
 
@@ -2734,7 +2669,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_21_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_21_0.png)
 
 
 
@@ -2750,7 +2685,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_22_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_22_0.png)
 
 
 
@@ -2766,7 +2701,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_23_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_23_0.png)
 
 
 
@@ -2782,13 +2717,11 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_24_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_24_0.png)
 
 
 #### 이진 변수들에 대해 탐색해보기:
-<span style="font-size:11pt">
 이제 우리는 이진 변수들에 대해 탐색해볼 것입니다. 우리가 이전에 보았던 것들 중 상당수가 있는 것을 볼 수 있습니다. 이 변수들 중에서 0과 1의 값을 얻어오는 것으로 시작해 봅시다.
-</span>
 
 ```python
 zero_count_list = []
@@ -2811,11 +2744,9 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_26_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_26_0.png)
 
-<span style="font-size:11pt">
 이제 각각의 이진 변수에서 평균 y값을 확인해 보겠습니다.
-</span>
 
 ```python
 zero_mean_list = []
@@ -2834,37 +2765,14 @@ plt.title("Mean of y value across binary variables", fontsize=15)
 plt.show()
 ```
 
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:5: DeprecationWarning: 
-    .ix is deprecated. Please use
-    .loc for label based indexing or
-    .iloc for positional indexing
-    
-    See the documentation here:
-    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
-      """
-    C:\Users\brsta\Anaconda3\lib\site-packages\ipykernel_launcher.py:6: DeprecationWarning: 
-    .ix is deprecated. Please use
-    .loc for label based indexing or
-    .iloc for positional indexing
-    
-    See the documentation here:
-    http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
-      
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_28_1.png)
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_28_1.png)
-
-<span style="font-size:11pt">
 위의 그래프에서 0~1 사이의 고른 색상 차이를 보여주는 이진 변수는 더 좋은 예측 결과를 보여줄 수 있는데, 두 클래스 간의 카운트 분포(count distribution)가 양호한 경우도 마찬가지로 더 좋은 예측 결과를 보여줄 수 있습니다. (이전 그래프에서 볼 수 있음). 우리는 이 노트북의 뒷부분에서 중요한 변수들에 대해 더 자세히 살펴볼 것입니다. 
-</span>
 
 #### ID variable:
-<span style="font-size:11pt">
 우리가 살펴 봐야 할 중요한 것은 ID 변수(ID variable)입니다. 이 변수는 train과 test 과정을 위해 어떻게 데이터셋을 쪼갤지에 대한 아이디어를 제공해 줍니다.(랜덤 또는 id 기반 등) 그리고 ID가 예측 성능에 대해 잠재적으로 도움을 줄 수 있는지 확인하는데 도움이 됩니다. (아마 비즈니스에는 도움이 되지 않을 수 있습니다.)<br><br>
 먼저 'y' 변수가 ID 변수를 통해 어떻게 변경되는지 살펴 보겠습니다.
-</span> 
-
 
 ```python
 var_name = "ID"
@@ -2876,16 +2784,10 @@ plt.title("Distribution of y variable with "+var_name, fontsize=15)
 plt.show()
 ```
 
-    C:\Users\brsta\Anaconda3\lib\site-packages\scipy\stats\stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
-      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
-    
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_30_1.png)
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_30_1.png)
-
-<span style="font-size:11pt">
 ID 변수와 관련하여 약간 감소하는 경향이 있는 것으로 보입니다. 이제 train과 test 간에 ID 변수가 어떻게 분포하고 있는지 살펴 보겠습니다. 
-</span>
 
 ```python
 plt.figure(figsize=(6,10))
@@ -2901,21 +2803,12 @@ plt.title("Distribution of ID variable with evaluation set", fontsize=15)
 plt.show()
 ```
 
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_32_1.png)
 
-    <Figure size 432x720 with 0 Axes>
-
-
-
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_32_1.png)
-
-<span style="font-size:11pt">
 train과 test 샘플 사이에 random split을 통해 임의로 분할한 것 같습니다. 
-</span>
 
 #### 중요 변수들:
-<span style="font-size:11pt">
 이제 XGBoost 모델을 사용하여 중요한 변수들을 얻어 보도록 하겠습니다.
-</span>
 
 ```python
 for f in ["X0", "X1", "X2", "X3", "X4", "X5", "X6", "X8"]:
@@ -2948,16 +2841,10 @@ xgb.plot_importance(model, max_num_features=50, height=0.8, ax=ax)
 plt.show()
 ```
 
-    [14:49:30] WARNING: C:/Jenkins/workspace/xgboost-win64_release_0.90/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
-    
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_34_1.png)
 
-
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_34_1.png)
-
-<span style="font-size:11pt">
 범주형 변수들이 이진 변수들에 비해 높은 자리를 차지하고 있습니다. <br><br>
 랜덤 포레스트 모델을 만들고 중요한 변수들을 확인해 봅시다
-</span>
 
 ```python
 from sklearn import ensemble
@@ -2979,9 +2866,7 @@ plt.show()
 ```
 
 
-![png](/assets/Images/kaggletranscription/Simple_Exploration_Notebook-Mercedes/output_36_0.png)
+![png](/assets/img/devlog/MLDLStudy/PostTranslation/KaggleKernelTranscription-Simple_Exploration_Notebook-Mercedes/output_36_0.png)
 
-<span style="font-size:11pt">
 XGBoost와 랜덤 포레스트 간 중요 변수들에 차이가 꽤 있습니다. 왜 그런지는 잘 모르겠습니다.<br><br> 
 곧 업데이트하겠습니다.!
-</span>

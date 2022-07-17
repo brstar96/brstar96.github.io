@@ -1,30 +1,29 @@
 ---
-title: "FacialLandmarkManga 데이터셋 Simple EDA"
-tags: 
-  - Dataset review
-  - EDA
-categories:
-  - shoveling
-toc: true
-author_profile: false
-comments: 
-  provider: "disqus"
-  disqus:
-    shortname: "https-brstar96-github-io"
-header:
-  teaser: /assets/Images/shoveling/FacialLandmarkManga_EDA/Facial_Landmark_Detection_for_Manga_Images.jpg
+layout: post
+title: FacialLandmarkManga 데이터셋 Simple EDA
+tags: [Dataset review, EDA]
+categories: [Shoveling]
+comments: true
+sitemap: true
+image: /assets/img/devlog/shoveling/FacialLandmarkManga_EDA/Facial_Landmark_Detection_for_Manga_Images.jpg
+accent_image: 
+  background: url('/assets/img/sidebar-bg.gif') center/cover
+  overlay: false
+accent_color: '#ccc'
+theme_color: '#ccc'
+description: >
+  이번 포스트에서는 `FacialLandmarkManga` 데이터셋의 EDA를 수행해 봅니다. 
+related_posts:
+    - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
+
 ---
 
 ## FacialLandmarkManga Dataset Simple EDA
-<span style="font-size:11pt">
 [FacialLandmarkManga](https://github.com/oaugereau/FacialLandmarkManga) 데이터셋은 Manga109 데이터셋에 facial landmark annotation을 추가한 데이터셋입니다. `FacialLandmarkManga` 데이터셋은 <b>facial annotation 데이터</b>(`.json`)<b>만 제공</b>하고 있으며, 해당 데이터셋을 원활히 학습에 사용하기 위해서는 [Manga109](http://www.manga109.org/en/) 데이터셋이 추가로 필요합니다. 아마 저작권상의 이유로 따로 받아야 하는 것 같습니다.<br><br>
 `Manga109` 데이터셋을 다운받기 위해서는 도쿄대학교 Aizawa-Yamasaki Lab에 이메일을 보내 연구 목적의 허가를 받아야 하며, 허가 메일과 함께 3일 동안 사용 가능한 데이터셋 다운로드 링크를 제공해 줍니다. 혹시나 이미지 데이터셋이 필요하신 분들은 [Manga109](http://www.manga109.org/en/) 공식 홈페이지에서 안내하는 방법대로 허가를 받으시면 됩니다. 이번 포스트에서는 `FacialLandmarkManga` 데이터셋만 갖고 EDA를 수행해 보았습니다.
-</span> 
 
 ### 1. 데이터셋 포맷 확인
-<span style="font-size:11pt">
 먼저 작업 경로를 설정하고 데이터셋이 어떤 파일들을 포함하고 있는지 확인해 보겠습니다.
-</span>
 
 ```python
 import os
@@ -47,26 +46,20 @@ print(len(entireFilesList))
     ['user0_MeteoSanStrikeDesu_008_face01_x382y574w184h232.json', 'user0_MeteoSanStrikeDesu_015_face00_x514y302w132h136.json', 'user0_MeteoSanStrikeDesu_021_face00_x152y96w121h117.json']
     2105
     
-<span style="font-size:11pt">
 데이터셋은 `.json`파일들로만 구성되어 있습니다. 제일 먼저 해야 할 것은 파일 이름으로부터 캐릭터 이름만 분리해 분포를 확인해 보는 것입니다. `split('_')`을 활용하면 특정 문자를 기준으로 string을 쪼갤 수 있습니다. 쪼개져 반환된 리스트 중 캐릭터 이름은 두 번째 인덱스에 들어 있는 것을 확인할 수 있습니다.
-</span>
+
 
 ```python
 entireFilesList[657].split('_')[1]
 ```
-
-
-
 
     'OhWareraRettouSeitokai'
 
 
 
 ### 2. 캐릭터 이름별 빈도수 확인
-<span style="font-size:11pt">
 각 `.json`파일들은 파일명에 캐릭터의 이름과 Manga109의 파일과 매칭되는 bounding box 정보(e.g. `x382y574w184h232`)를 담고 있습니다. 지금부터는 캐릭터 이름에 따른 등장 빈도를 세어 보겠습니다.<br><br>
 캐릭터의 등장 빈도를 세기 위해, 모든 파일 이름으로부터 캐릭터 이름만 분리합니다. `collections`모듈의 `Counter`를 활용하면 유니크한 값들의 빈도수를 확인할 수 있습니다. 캐릭터 이름에 따른 Count를 확인해 pandas dataframe을 생성합니다.
-</span>
 
 ```python
 EntireCharList = []
@@ -96,8 +89,6 @@ df_charcount = df_charcount.rename(columns = {'index':'CharacterName', 0:'count'
 ```python
 df_charcount
 ```
-
-
 
 
 <div>
@@ -217,10 +208,7 @@ df_charcount
 </table>
 </div>
 
-
-<span style="font-size:11pt">
 dataframe상으로 확인해 보아도 분포가 상당히 치우쳐 있음을 알 수 있습니다. 좀 더 직관적으로 확인해 보기 위해 차트를 그려 봅시다.
-</span>
 
 ```python
 from matplotlib import pyplot as plt
@@ -232,18 +220,15 @@ g = plt.setp(g.get_xticklabels(), rotation=90)
 plt.show()
 ```
 
+![png](/assets/img/devlog/shoveling/FacialLandmarkManga_EDA/output_11_0.png)
 
-![png](/assets/Images/shoveling/FacialLandmarkManga_EDA/output_11_0.png)
 
-<span style="font-size:11pt">
 구도나 얼굴의 왜곡 정도가 만화의 컷마다 달라진다고는 하지만, 분포가 치우치면 빈도수가 잦은 캐릭터의 스타일 정보가 겹치게 되고, 따라서 특정 캐릭터에 쏠림 현상이 발생할 수 있습니다. 즉 `Class imbalance` 문제를 야기할 수 있으므로, 유의하여 샘플링을 할 필요가 있어 보입니다.
-</span>
 
 ### 3. 캐릭터별 Emotion 분포 확인
-<span style="font-size:11pt">
 `FacialLandmarkManga` 데이터셋의 각 `.json`파일은 `"Emotions"`라는 키를 갖고 있습니다. 해당 캐릭터의 감정 상태를 annotation한 것으로, 각 숫자가 어떤 표정을 의미하는지는 확인해 보지 않았습니다. 여기서는 오로지 분포만 확인해 보도록 합니다. <br><br>
 `.json`파일을 연 후 `"Emotions"`키로 접근하면 value를 가져올 수 있습니다.
-</span>
+
 
 ```python
 import json
@@ -256,9 +241,8 @@ print(json_data['Emotions'])
 
     1
     
-<span style="font-size:11pt">
 이제 전체 2105개의 데이터 중 유니크한 캐릭터만 뽑아 정리해 보겠습니다. 파이썬 내장함수 `set`을 활용하면 유니크한 set을 추출할 수 있습니다. 
-</span>
+
 
 ```python
 uniqueCharNames = sorted(list(set(EntireCharList))) # 오름차순(A~Z)으로 리스트 정렬
@@ -273,9 +257,7 @@ print(len(uniqueCharNames))
     ['MeteoSanStrikeDesu', 'MiraiSan', 'MisutenaideDaisy', 'MomoyamaHaikagura', 'Nekodama', 'NichijouSoup', 'Ningyoushi', 'OL', 'OhWareraRettouSeitokai', 'ParaisoRoad', 'PikaruGenkiDesu', 'PlatinumJungle', 'PrayerHaNemurenai', 'PrismHeart', 'PsychoStaff', 'Raphael', 'RinToSiteSippuNoNaka', 'RisingGirl']
     18
     
-<span style="font-size:11pt">
 유니크한 캐릭터는 총 18명으로 확인됩니다. 이제 각 캐릭터가 갖고 있는 `"Emotions"`의 종류와 그 수를 세어 보겠습니다. 유니크한 캐릭터 단위로 반복문을 수행하되 emotion type별로 그 횟수를 세어 dataframe을 생성한 후 `emotiondfList` 리스트에 `append`합니다. 아래에서 이렇게 만들어진 dataframe을 활용해 시각화를 할 것입니다.
-</span>
 
 ```python
 index = 0
@@ -492,16 +474,12 @@ for i in range(len(uniqueCharNames)):
     6            0             3
     7            8            12 
     
-    
-<span style="font-size:11pt">
+  
 `emotiondfList` 리스트의 요소를 하나 찍어보면 아래와 같이 유니크한 캐릭터의 `emotiontype`과 그 횟수가 담긴 dataframe이 출력됩니다. 
-</span>
 
 ```python
 emotiondfList[0]
 ```
-
-
 
 
 <div>
@@ -572,9 +550,7 @@ emotiondfList[0]
 </div>
 
 
-<span style="font-size:11pt">
 위에서 만들어진 `emotiondfList`의 각 dataframe에 캐릭터의 이름 column을 추가해 주겠습니다. 
-</span>
 
 ```python
 for i in range(len(uniqueCharNames)):
@@ -585,8 +561,6 @@ for i in range(len(uniqueCharNames)):
 ```python
 emotiondfList[1]
 ```
-
-
 
 
 <div>
@@ -659,10 +633,8 @@ emotiondfList[1]
 </table>
 </div>
 
-
-<span style="font-size:11pt">
 그리고, 유니크한 캐릭터의 명수에 맞게 올바르게 dataframe들이 생성되었는지 길이를 확인해 봅니다. 이후 `pd.concat`을 활용해 하나의 dataframe으로 합쳐 줍니다. 
-</span>
+
 
 ```python
 print(len(emotiondfList))
@@ -680,9 +652,6 @@ concated_emotiondfList = pd.concat(emotiondfList)
 ```python
 concated_emotiondfList.head(10)
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -772,10 +741,7 @@ concated_emotiondfList.head(10)
 </table>
 </div>
 
-
-<span style="font-size:11pt">
 위에서 만들어진 dataframe을 이용해 시각화를 진행해 봅니다. 여러 그래프가 캐릭터별로 찍히면 혼잡하므로, `seaborn`의 `FacetGrid`를 이용해 한 이미지에 모든 그래프를 출력합니다. 혹시 개별 캐릭터 단위로 출력하고 싶으신 분들을 위해 캐릭터별 그래프를 출력하는 코드도 주석 처리를 하여 아래 셀에 남겨 두었습니다.
-</span>
 
 ```python
 # 캐릭터별 개별 그래프를 출력하고 싶은 경우 실행합니다.
@@ -795,20 +761,6 @@ facet = sns.FacetGrid(concated_emotiondfList, col = 'charname', col_wrap=6, aspe
 facet.map(sns.barplot, 'emotiontype', 'emotioncount').set_titles("{col_name}")
 ```
 
-    C:\ProgramData\Anaconda3\lib\site-packages\seaborn\axisgrid.py:715: UserWarning: Using the barplot function without specifying `order` is likely to produce an incorrect plot.
-      warnings.warn(warning)
-    
+![png](/assets/img/devlog/shoveling/FacialLandmarkManga_EDA//output_30_2.png)
 
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x199d3276358>
-
-
-
-
-![png](/assets/Images/shoveling/FacialLandmarkManga_EDA/output_30_2.png)
-
-<span style="font-size:11pt">
 그래프를 통해 특정 emotion에 대한 Landmark 정보가 지나치게 많아 캐릭터 감정 인식 연구에 본 데이터셋을 활용 시 샘플링에 유의가 필요할 것으로 보입니다. 아울러 오래된 작화 스타일을 갖는 18명의 캐릭터로 2105여 개의 facial landmark 데이터셋을 구성했기 때문에 현대의 스타일과 다소 차이가 존재합니다. 하지만 새로운 데이터셋을 만들기엔 저작권 문제를 회피할 수 없기 때문에, 보다 자유로운 연구를 위해서는 GAN과 같은 Generative model을 활용한 synthesized dataset이 필요할 것으로 생각됩니다.
-</span>
