@@ -863,7 +863,8 @@ for i in range(3):
 ![case_details](/assets/img/devlog/shoveling/CBISDDSM_EDA/output_16_2.png)
 
 위 이미지들을 통해 확인할 수 있듯, cropped ROI에는 히스토그램 평활화로 추정되는 이미지 전처리 기법이 적용되어 있습니다. X-Ray 이미지를 전처리하는 데엔 다양한 방법들이 존재하며, 아래 노트북을 참고해 전처리 및 Augmentaion 작업을 진행하면 큰 도움이 될 것으로 예상됩니다.<br>
-https://github.com/yuyuyu123456/CBIS-DDSM/blob/master/EDA.ipynb <br>
+
+[https://github.com/yuyuyu123456/CBIS-DDSM/blob/master/EDA.ipynb](https://github.com/yuyuyu123456/CBIS-DDSM/blob/master/EDA.ipynb) <br>
 
 ## 2. CSV data EDA
 이제 각 csv 파일이 갖고 있는 column들에 대해 보다 자세히 EDA를 수행한 후 분포를 확인해 보도록 하겠습니다. 각 csv파일들이 갖고 있는 정수형 변수들에 대한 간단한 통계 정보는 아래와 같습니다.
