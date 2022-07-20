@@ -34,54 +34,54 @@ sitemap: false
 
 
 - <b>유사 연구와 샘플 수 비교</b><br>
-<table>
-<thead>
-  <tr>
-    <th></th>
-    <th>Healthy NSR</th>
-    <th>AF NSR</th>
-    <th>Total</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>Nature</td>
-    <td>1,057</td>
-    <td>1,355</td>
-    <td>2,412</td>
-  </tr>
-  <tr>
-    <td>Lancet (8-lead)</td>
-    <td>Not announced</td>
-    <td>Not announced</td>
-    <td>180,922 patients,<br><br>649,931 ecgs</td>
-  </tr>
-  <tr>
-    <td>Ours</td>
-    <td>3,331 ecgs</td>
-    <td>3,331 ecgs</td>
-    <td>6,662 ecgs</td>
-  </tr>
-</tbody>
-</table>
+  <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Healthy NSR</th>
+      <th>AF NSR</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nature</td>
+      <td>1,057</td>
+      <td>1,355</td>
+      <td>2,412</td>
+    </tr>
+    <tr>
+      <td>Lancet (8-lead)</td>
+      <td>Not announced</td>
+      <td>Not announced</td>
+      <td>180,922 patients,<br><br>649,931 ecgs</td>
+    </tr>
+    <tr>
+      <td>Ours</td>
+      <td>3,331 ecgs</td>
+      <td>3,331 ecgs</td>
+      <td>6,662 ecgs</td>
+    </tr>
+  </tbody>
+  </table>
 - <b>Prevalence* & Performance</b>
   - Lancet
-    - train:valid:test 7:1:2, test(class0:positive) 10.89:1
-    - Positive F1 0.87, mean AUC 0.87
+    - Train:Valid:Test 7:1:2, Test(Class0:Positive) 10.89:1
+    - Positive F1 0.87, Mean AUC 0.87
   - Nature
-    - train:valid:test 0.77:1:N/A, external test(class0:positive) 1.29:1
+    - Train:Valid:Test 0.77:1:N/A, External Test(Class0:Positive) 1.29:1
   - Ours
-    - train:valid:test 6:2:2, test(class0:positive) 1:1
-    - Positive F1 0.79, mean AUC 0.81
+    - Train:Valid:Test 6:2:2, Test(Class0:Positive) 1:1
+    - Positive F1 0.79, Mean AUC 0.81
 
-<i>* Estimated prevalence: 1:9(class 0, positive)</i>
+<i>* Estimated Prevalence: 1:9(Class 0, Positive)</i>
 
 
 ### 참여부문 소개 
 - <b>참여 기간:</b> 2022.03.01 ~ 현재
 - <b>참여 연구원 수:</b> 3명
-- <b>참여 내용
-  - </b> `INFINITT`, `PHILIPS`, `GE` Device로 측정한 임상 데이터 326,905례로부터 `*.xml` 파싱 및 실험 가정에 맞도록 환자 병렬처리 스크리닝(`Ray`)
+- <b>참여 내용</b>
+  - `INFINITT`, `PHILIPS`, `GE` Device로 측정한 임상 데이터 326,905례로부터 `*.xml` 파싱 및 실험 가정에 맞도록 환자 병렬처리 스크리닝(`Ray`)
   - Prevalence별 다양한 모델 훈련 및 성능 검증(1D `ResNet-34`, 1D `Transformer`)
   - Gradient map 시각화를 통한 PoC 타당성 인사이트 발굴 
   ![gradient map](/assets/img/projects/NSR_saliency.png)<br>
