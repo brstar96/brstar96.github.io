@@ -15,6 +15,7 @@ image:
 links:
   - title: Link (Service not released yet)
     url: https://www.synergyai.co/
+accent_color: '#4fb1ba'
 accent_image: 
   background: url('/assets/img/projects/ignites_head.png') center/cover
 theme_color: '#193747'

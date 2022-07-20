@@ -6,11 +6,11 @@ description: >
   고령화 시대에 접어들며 전 세계적으로 심방세동 유병률이 증가하고 있습니다. 뇌졸중, 원인 미상 급사 등 중증 질환과 큰 연관이 있는 심방세동의 징후를 사전에 탐지해 관련 기관과 환자에게 알릴 수 있는 체계를 개발하고자 합니다.  
 date: 1 March 2022
 image: 
-  path: /assets/img/projects/ignites_head.png
+  path: /assets/img/projects/SYAI_head.png
   srcset: 
-    1920w: /assets/img/projects/ignites_deid.png
-    960w:  assets/img/projects/ignites_deid@0,5.png
-    480w:  /assets/img/projects/ignites_deid@0,25.png
+    1920w: /assets/img/projects/SYAI_head.png
+    960w:  /assets/img/projects/SYAI_head@0,5.png
+    480w:  /assets/img/projects/SYAI_head@0,25.png
 links:
   - title: Link (Service not released yet)
     url: https://www.synergyai.co/
@@ -31,12 +31,12 @@ sitemap: false
 [1] “심방세동 치료 가이드라인” - 정보영(연세대학교 의과대학 세브란스병원 심장내과), J Korean Med Assoc 2019 May; 62(5):265-274
 </blockquote><br>
 
-- <b>유사 연구와 샘플 수 비교</b>
+- <b>유사 연구와 샘플 수 비교</b><br>
   |   | Healthy NSR  | AF NSR  |  Total |
   |:-:|:-:|:-:|:-:|
   | Nature |  1,057 | 1,355  | 2,412  |
   | Lancet (8-lead)  | Not announced  | Not announced  | 180,922 patients,<br> 649,931 ecgs  |
-  | Ours |  3,331 | 3,331  |  6,662 |
+  | Ours |  3,331 ecgs | 3,331 ecgs |  6,662 ecgs |
 - <b>Prevalence* & Performance</b>
   - Lancet
     - train:valid:test 7:1:2, test(class0:positive) 10.89:1
@@ -53,9 +53,9 @@ sitemap: false
 ### 참여부문 소개 
 - <b>참여 기간:</b> 2022.03.01 ~ 현재
 - <b>참여 연구원 수:</b> 3명
-- <b>참여 내용:
-  - </b> INFINITT, PHILIPS, GE Device로 측정한 임상 데이터 326,905례로부터 `*.xml` 파싱 및 실험 가정에 맞도록 환자 스크리닝 병렬처리(Ray) 코드 작성
-  - Prevalence별 다양한 모델 훈련 및 성능 검증(1D ResNet-34, 1D Transformer)
-  - Gradient map 시각화
+- <b>참여 내용:<br>
+  - </b> `INFINITT`, `PHILIPS`, `GE` Device로 측정한 임상 데이터 326,905례로부터 `*.xml` 파싱 및 실험 가정에 맞도록 환자 스크리닝 병렬처리(`Ray`)
+  - Prevalence별 다양한 모델 훈련 및 성능 검증(1D `ResNet-34`, 1D `Transformer`)
+  - Gradient map 시각화를 통한 PoC 타당성 인사이트 발굴 
   ![gradient map](/assets/img/projects/NSR_saliency.png)<br>
   ![](/assets/img/projects/signal_gradientmap.png)
