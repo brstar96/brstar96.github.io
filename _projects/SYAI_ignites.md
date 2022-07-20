@@ -7,7 +7,7 @@ description: >
 featured: true
 date: 1 Feb 2022
 image: 
-  path: /assets/img/projects/ignites_head.png
+  path: /assets/img/projects/ignites_deid.png
   srcset: 
     1920w: /assets/img/projects/ignites_deid.png
     960w:  assets/img/projects/ignites_deid@0,5.png

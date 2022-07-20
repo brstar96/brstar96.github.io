@@ -31,6 +31,39 @@ sitemap: false
 [1] “심방세동 치료 가이드라인” - 정보영(연세대학교 의과대학 세브란스병원 심장내과), J Korean Med Assoc 2019 May; 62(5):265-274
 </blockquote><br>
 
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>breast density</th>
+      <th>left or right breast</th>
+      <th>image view</th>
+    </tr>
+    <tr>
+      <th>patient_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>P_01830</th>
+      <td>3</td>
+      <td>RIGHT</td>
+      <td>MLO</td>
+    </tr>
+    <tr>
+      <th>P_01002</th>
+      <td>3</td>
+      <td>LEFT</td>
+      <td>CC</td>
+      
+    </tr>
+  </tbody>
+</table>
+
+
 - <b>유사 연구와 샘플 수 비교</b><br>
   |   | Healthy NSR  | AF NSR  |  Total |
   |:-:|:-:|:-:|:-:|
@@ -53,8 +86,8 @@ sitemap: false
 ### 참여부문 소개 
 - <b>참여 기간:</b> 2022.03.01 ~ 현재
 - <b>참여 연구원 수:</b> 3명
-- <b>참여 내용:<br>
-  - </b> `INFINITT`, `PHILIPS`, `GE` Device로 측정한 임상 데이터 326,905례로부터 `*.xml` 파싱 및 실험 가정에 맞도록 환자 스크리닝 병렬처리(`Ray`)
+- <b>참여 내용
+  - </b> `INFINITT`, `PHILIPS`, `GE` Device로 측정한 임상 데이터 326,905례로부터 `*.xml` 파싱 및 실험 가정에 맞도록 환자 병렬처리 스크리닝(`Ray`)
   - Prevalence별 다양한 모델 훈련 및 성능 검증(1D `ResNet-34`, 1D `Transformer`)
   - Gradient map 시각화를 통한 PoC 타당성 인사이트 발굴 
   ![gradient map](/assets/img/projects/NSR_saliency.png)<br>
