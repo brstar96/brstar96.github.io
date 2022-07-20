@@ -4,6 +4,7 @@ title: Synergy A.I. 12-lead PAF Risk Prediction Research PoC (진행중)
 caption: 12-lead Paroxysmal Atrial Fibrillation Risk Modeling 연구는 정상 심전도 신호를 분석해 향후 심방세동 발생 가능성을 추정하는 연구입니다. 
 description: >
   고령화 시대에 접어들며 전 세계적으로 심방세동 유병률이 증가하고 있습니다. 뇌졸중, 원인 미상 급사 등 중증 질환과 큰 연관이 있는 심방세동의 징후를 사전에 탐지해 관련 기관과 환자에게 알릴 수 있는 체계를 개발하고자 합니다.  
+featured: true
 date: 1 March 2022
 image: 
   path: /assets/img/projects/SYAI_head.png
@@ -15,8 +16,8 @@ links:
   - title: Link (Service not released yet)
     url: https://www.synergyai.co/
 accent_color: '#4fb1ba'
-accent_image:
-  background: '#193747'
+accent_image: 
+  background: url('/assets/img/projects/ignites_head.png') center/cover
 theme_color: '#193747'
 sitemap: false
 ---
@@ -31,45 +32,38 @@ sitemap: false
 [1] “심방세동 치료 가이드라인” - 정보영(연세대학교 의과대학 세브란스병원 심장내과), J Korean Med Assoc 2019 May; 62(5):265-274
 </blockquote><br>
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>breast density</th>
-      <th>left or right breast</th>
-      <th>image view</th>
-    </tr>
-    <tr>
-      <th>patient_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>P_01830</th>
-      <td>3</td>
-      <td>RIGHT</td>
-      <td>MLO</td>
-    </tr>
-    <tr>
-      <th>P_01002</th>
-      <td>3</td>
-      <td>LEFT</td>
-      <td>CC</td>
-      
-    </tr>
-  </tbody>
-</table>
-
 
 - <b>유사 연구와 샘플 수 비교</b><br>
-  |   | Healthy NSR  | AF NSR  |  Total |
-  |:-:|:-:|:-:|:-:|
-  | Nature |  1,057 | 1,355  | 2,412  |
-  | Lancet (8-lead)  | Not announced  | Not announced  | 180,922 patients,<br> 649,931 ecgs  |
-  | Ours |  3,331 ecgs | 3,331 ecgs |  6,662 ecgs |
+<table>
+<thead>
+  <tr>
+    <th></th>
+    <th>Healthy NSR</th>
+    <th>AF NSR</th>
+    <th>Total</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nature</td>
+    <td>1,057</td>
+    <td>1,355</td>
+    <td>2,412</td>
+  </tr>
+  <tr>
+    <td>Lancet (8-lead)</td>
+    <td>Not announced</td>
+    <td>Not announced</td>
+    <td>180,922 patients,<br><br>649,931 ecgs</td>
+  </tr>
+  <tr>
+    <td>Ours</td>
+    <td>3,331 ecgs</td>
+    <td>3,331 ecgs</td>
+    <td>6,662 ecgs</td>
+  </tr>
+</tbody>
+</table>
 - <b>Prevalence* & Performance</b>
   - Lancet
     - train:valid:test 7:1:2, test(class0:positive) 10.89:1
