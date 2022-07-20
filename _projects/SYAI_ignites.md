@@ -29,7 +29,7 @@ Ignites는 웹 기반의 ADPKD 신장 볼륨 체적 및 진단보조 리포트 �
 ### 참여부문 소개 
 - <b>참여 기간:</b> 2021.07.26 ~ 현재
 - <b>참여 연구원 수:</b> 2명
-- <b>참여 내용:</b> 3D CT-ADPKD Segmentation 모델 연구 및 논문 투고(DSC 0.97), 사내 인프라에 모델 배포 수행(NVIDIA Triton Inference Server based API Server)
+- <b>참여 내용:</b> 3D CT-ADPKD Segmentation 모델 연구(DSC 0.97), 논문 투고(예정), 사내 인프라에 모델 배포 수행(NVIDIA Triton Inference Server based API Server)(예정)
   ![](/assets/img/projects/01_0001_data_v4_slice80.png)
 - 식약처 인증 통과 완료 및 임상시험(prospective study) 준비중
 - MRI-ADPKD Model Research용 데이터셋 구축 작업 진행중 
