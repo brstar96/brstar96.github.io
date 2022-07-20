@@ -10,7 +10,7 @@ image:
   path: /assets/img/projects/ignites_deid.png
   srcset: 
     1920w: /assets/img/projects/ignites_deid.png
-    960w:  assets/img/projects/ignites_deid@0,5.png
+    960w:  /assets/img/projects/ignites_deid@0,5.png
     480w:  /assets/img/projects/ignites_deid@0,25.png
 links:
   - title: Link (Service not released yet)
