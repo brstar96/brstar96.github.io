@@ -4,7 +4,7 @@ title: Synergy A.I. Ignites (진행중)
 caption: AI Generated 3D Volumetry Solution for TKV(Total Kidney Volume)
 description: >
   Synergy A.I. Ignites 서비스는 CT 영상으로부터 3D Segmentation AI Model을 통해 Kidney를 구분하고, 3D 렌더링 결과물과 함께 TKV, 진단 보조 Report 페이지를 제공해 빠른 의사결정을 돕습니다. 
-  
+featured: true
 date: 1 Feb 2022
 image: 
   path: /assets/img/projects/ignites_head.png
@@ -15,9 +15,8 @@ image:
 links:
   - title: Link (Service not released yet)
     url: https://www.synergyai.co/
-accent_color: '#4fb1ba'
-accent_image:
-  background: '#193747'
+accent_image: 
+  background: url('/assets/img/projects/ignites_head.png') center/cover
 theme_color: '#193747'
 sitemap: false
 ---
