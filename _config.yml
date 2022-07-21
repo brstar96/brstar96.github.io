@@ -20,7 +20,7 @@
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 DarkJohn Devlog
+title:                 BrStar Devlog
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -406,19 +406,19 @@ jekyll_compose:
     drafts:
       layout: post
       description: > 
-        DarkJohn's DevLog
+        BrStar's DevLog
       image:
         path: /assets/img/sidebar-bg.jpg
     posts:
       layout: post
       description: > 
-        DarkJohn's DevLog
+        BrStar's DevLog
       image:
         path: /assets/img/sidebar-bg.gif
     projects:
       layout: project
       description: > 
-        DarkJohn's Project Lists
+        BrStar's Project Lists
       image:
         path: /assets/img/sidebar-bg.gif
       links:
