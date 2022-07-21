@@ -12,7 +12,7 @@ accent_image:
 accent_color: '#ccc'
 theme_color: '#ccc'
 description: >
-  CBIS-DDSM은 유방암 Classfication 또는 Detection 분야에서 종종 사용되는 데이터셋입니다. 이번 포스트에서는 개인 연구에 활용하기 위해 개인적으로 EDA를 수행한 노트북을 다룹니다.
+  딥러닝 모델 학습에 있어서 빠지면 서러운 GPU는 간혹 알 수 없는 오류를 뿜으며 뻗을 때가 있죠. 이 포스팅에서는 깃허브 이슈 페이지와 스택 오버플로우에서 자주 만날 수 있는 GPU-side 에러들에 대해 알아봅니다.
 related_posts:
     - /devlog/_posts/Event&Seminar/2019-02-23-NAVERVisionAIHack.md
 
