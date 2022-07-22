@@ -17,7 +17,7 @@ links:
     url: http://oasis.dcollection.net/srch/srchDetail/200000361093
 accent_color: '#4fb1ba'
 accent_image: 
-  background: url('/assets/img/projects/partialSR_accentImg.png') center/cover
+  background: url('/assets/img/projects/partialSR_accImg.png') center/cover
 theme_color: '#193747'
 sitemap: false
 ---
