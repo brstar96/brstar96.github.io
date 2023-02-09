@@ -43,4 +43,4 @@ My detailed Resume here! [Resume]{:.heading.flip-title}
 <span lang="EN-US" style="font-size:13pt;color:#11999e"><b>Lab. </b>Soongsil University <a href="http://cglab.ssu.ac.kr/" target="_blank">Computer Graphics Lab</a></span><br>
 <span lang="EN-US" style="font-size:13pt;color:#11999e"><b>SlideShare. </b><a href="https://www.slideshare.net/ssuserc9d82a" target="_blank">https://www.slideshare.net/ssuserc9d82a</a></span><br>
 <span lang="EN-US" style="font-size:13pt;color:#11999e"><b>LinkedIn. </b><a href="https://www.linkedin.com/in/myeong-gyu-lee-048b68141/" target="_blank">https://www.linkedin.com/in/myeong-gyu-lee-048b68141/</a></span><br>
-<span lang="EN-US" style="font-size:13pt;color:#11999e"><b>Portfolio (*.pdf). </b><a href="https://www.linkedin.com/in/myeong-gyu-lee-048b68141/" target="_blank">https://www.linkedin.com/in/myeong-gyu-lee-048b68141/</a></span><br><br>
+<span lang="EN-US" style="font-size:13pt;color:#11999e"><b>Portfolio. </b><a href="https://github.com/brstar96/brstar96.github.io/raw/master/assets/attachments/%EC%9D%B4%EB%AA%85%EA%B7%9C_Portfolio_2023.pdf" target="_blank">Download (*.pdf)</a></span><br><br>
